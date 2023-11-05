@@ -1,0 +1,21 @@
+.back_block:hover {
+    background-color: #58585A;
+}
+
+.back_block:active {
+    border: 2px solid #3D3E3F;
+    background-color: #3D3E3F;
+}
+
+.sidebar_list {
+    border-top: 2px solid #454647;
+}
+
+.sidebar_header {
+    width: 100%;
+    min-width: 148px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    border-bottom: 2px solid #000000;
+}

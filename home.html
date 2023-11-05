@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheet/home.css">
+    <link rel="stylesheet" href="./stylesheet/public_style.css">
+    <!--    <style>-->
+    <!--        -->
+    <!--    </style>-->
+    <link rel="icon" href="./images/Marketplace.png">
+    <title>Minecraft 版本库</title>
+</head>
+<body>
+<header>
+    <div id="menu" class="header_menu" onclick="clickedMenu();">
+        <img class="menu_icon" alt="Menu" src="./images/Menu.png">
+    </div>
+    <div class="header_logo" onclick="scrollToTop();">
+        <img class="title_icon" alt="Title Icon" src="./images/Marketplace.png"><span
+            class="header_title">Repository</span>
+    </div>
+    <div id="repo" class="header_repo" onclick="clickedRepo();">
+        <img class="repo_icon" alt="Repo" src="./images/Github.png">
+    </div>
+</header>
+<main id="main">
+    <div id="main_top"></div>
+    <div class="tooltip-area">
+        <div id="tip" class="tooltip normal_tip"></div>
+    </div>
+    <div class="main preview_block">
+        <div id="preview_title" class="preview_title"></div>
+        <div id="preview_detail1" class="preview_detail"></div>
+        <div id="preview_detail2" class="preview_detail"></div>
+        <div class="preview_btns">
+            <button id="preview_btn1" class="btn normal_btn preview_btn" onclick="playSound1();toUpdatelog();"></button>
+            <button id="preview_btn2" class="btn green_btn preview_btn" onclick="playSound2();toRepo();"></button>
+        </div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="header_notice" class="block">
+        <div class="main main-header">
+            <div class="header_notice_title">Minecraft 版本库</div>
+        </div>
+        <div class="main header_notice_body">
+            <div class="description2">
+                <div>
+                    <img class="no_news" alt="news" src="./images/NoNews.png">
+                    <div>没有新通知</div>
+                </div>
+                <div>
+                    <img class="loading_icon" alt="loading" src="./images/Loading_white.gif">
+                    <div>加载中</div>
+                </div>
+            </div>
+        </div>
+        <div class="main header_notice_body">
+            <div class="title3">简介</div>
+            <div class="description2">
+                <p>
+                    Minecraft 版本库是一个开放共享的资源站,
+                    专注于收录<a href="https://www.minecraft.net/" target="_blank" onclick="playSound1();">Minecraft</a>发布过的所有版本.
+                </p>
+            </div>
+        </div>
+        <div class="main header_notice_body">
+            <div class="description2">
+                <p>请积极支持Minecraft正版!</p>
+                <p>你可以通过以下方式购买正版:<br>
+                    <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank"
+                       onclick="playSound1();">Google Play</a> /
+                    <a href="https://apps.apple.com/app/minecraft/id479516143" target="_blank"
+                       onclick="playSound1();">App Store</a> /
+                    <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank"
+                       onclick="playSound1();">PC 捆绑包</a></p>
+                <p>不知道如何购买正版?<br>
+                    <a href="javascript:void(0);" onclick="delayedOpenLink('./default/coming_soon.html');">正版购买指南</a>
+                </p>
+            </div>
+        </div>
+        <div class="main header_notice_body">
+            <div class="title3">使用说明</div>
+            <div class="description2">
+                <p>仓库资源说明:</p>
+                <p>本版本库的资源可分为两大部分, 站内资源和站外资源. 站内资源通常由开发者维护, 提供多渠道下载, 可以保证资源品质(
+                    本站使用的默认网盘服务位于大陆境外, 连接可能会有较大波动); 站外资源通常由第三方维护, 不能保证其资源品质,
+                    请自行甄别(站外资源通常带有链接图标或跳转确认弹窗). 在使用过程中如果发现资源存在问题请及时与我们取得联系,
+                    有想要添加的资源也可以向我们提出.</p>
+                <p>文件命名规则: </p>
+                <p>软件名 版本名 种类 架构 类型.apk/.apks<br>其中种类包括去音乐版(lite), 路径修改版(fix),
+                    官方原版和去验证版(以文件后缀名区分); 架构包括armAll(armv7, armv8), armv7(armeabi-v7a, 32位),
+                    armv8(arm64-v8a, 64位), x86(32位), x64(x86_64, 64位); 类型包括release, beta, preview.</p>
+                <p>关于架构: </p>
+                <div class="table">
+                    <table>
+                        <tr>
+                            <td>架构</td>
+                            <td>适用情况</td>
+                        </tr>
+                        <tr>
+                            <td>armv8</td>
+                            <td>大部分手机,平板设备</td>
+                        </tr>
+                        <tr>
+                            <td>armv7</td>
+                            <td>几乎所有手机,平板设备</td>
+                        </tr>
+                        <tr>
+                            <td>x86</td>
+                            <td>模拟器,极少数平板</td>
+                        </tr>
+                        <tr>
+                            <td>x64</td>
+                            <td>64位模拟器</td>
+                        </tr>
+                    </table>
+                </div>
+                <p>
+                    以上内容根据近年设备架构规律总结, 仅供参考, 可能有部分不符.
+                    你可以使用DevCheck查询你的设备架构以选择合适的版本.</p>
+                <p>关于Apks: </p>
+                <p>本版本库部分安装包使用了Android App Bundle技术. 使用此技术的安装包后缀名为apks而不是apk.你可以使用MT管理器或Split
+                    APKs Installer(SAI)来安装.</p>
+            </div>
+        </div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="bedrock_edition" class="block">
+        <div class="main">
+            <div class="title1">Bedrock Edition</div>
+            <div class="description1">
+                <a href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%88" target="_blank"
+                   onclick="playSound1();">基岩版</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/bedrock_edition.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="pocket_edition" class="block">
+        <div class="main">
+            <div class="title1">Pocket Edition</div>
+            <div class="description1">
+                <a href="https://minecraft.fandom.com/zh/wiki/%E6%90%BA%E5%B8%A6%E7%89%88" target="_blank"
+                   onclick="playSound1();">携带版</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/pocket_edition.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="education_edition" class="block">
+        <div class="main">
+            <div class="title1">Education Edition</div>
+            <div class="description1">
+                <a href="https://minecraft.fandom.com/zh/wiki/%E6%95%99%E8%82%B2%E7%89%88" target="_blank"
+                   onclick="playSound1();">教育版</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/education_edition.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="earth" class="block">
+        <div class="main">
+            <div class="title1">Minecraft Earth</div>
+            <div class="description1">
+                <a href="https://minecraft.fandom.com/zh/wiki/Minecraft_Earth" target="_blank"
+                   onclick="playSound1();">地球</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/earth.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="trial" class="block">
+        <div class="main">
+            <div class="title1">Minecraft Trial</div>
+            <div class="description1">
+                <a href="https://minecraft.fandom.com/zh/wiki/%E6%BC%94%E7%A4%BA%E6%A8%A1%E5%BC%8F" target="_blank"
+                   onclick="playSound1();">试玩版</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/trial.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="demo" class="block">
+        <div class="main">
+            <div class="title1">Minecraft Demo</div>
+            <div class="description1">
+                <a href="https://minecraft.fandom.com/zh/wiki/%E6%BC%94%E7%A4%BA%E6%A8%A1%E5%BC%8F" target="_blank"
+                   onclick="playSound1();">演示版</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/demo.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="more_edition" class="block">
+        <div class="main">
+            <div class="title1">更多版本</div>
+            <div class="description1">这里可能会有你想要的</div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/more_edition.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div id="footer_notice" class="block">
+        <div class="main main-footer">
+            <div class="footer_notice_title">版本库须知</div>
+        </div>
+        <div class="main footer_notice_body">
+            <div class="title3">使用条款与免责声明</div>
+            <div class="description2">
+                <p>本版本库收集的安装包仅供正版玩家学习研究或欣赏, 不得用于其他任何商业或者非商业用途.</p>
+                <p>我们不对你使用本版本库的行为所造成的一切后果负责, 请你在获取到安装包后的24小时内将其删除.</p>
+                <p>
+                    本版本库中的部分链接指向第三方运营的外部网站, 我们不能保证其稳定性和安全性. 在访问这些外部网站时,
+                    你也需要遵循相关的使用条款.</p>
+                <p>使用本版本库即代表你同意此使用条款及免责申明. 下载本版本库提供的安装包即代表你同意<a
+                        href="https://www.minecraft.net/terms" target="_blank"
+                        onclick="playSound1();">Minecraft使用准则</a>.</p>
+            </div>
+        </div>
+        <div class="main footer_notice_body">
+            <div class="title3">关于我们</div>
+            <div class="description2">
+                <p>版本库开发: @Spectrollay</p>
+                <p>版本库维护: @Spectrollay</p>
+                <p>默认网盘提供: @huang1111</p>
+                <p>聊天群组:
+                    <a href="https://t.me/Spectrollay_MCW" target="_blank" onclick="playSound1();">Telegram</a> /
+                    <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609"
+                       target="_blank" onclick="playSound1();">QQ</a> / <a
+                            href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank"
+                            onclick="playSound1();">云湖</a></p>
+            </div>
+        </div>
+        <div class="main footer_notice_body">
+            <div class="title3">捐赠我们</div>
+            <div class="description2">
+                <p>我们用有限的业余时间设计了这个版本库, 虽然它并不完美, 但正努力前行.</p>
+                <p>如果你喜欢它, 可以通过捐赠来支持我们.</p>
+                <p>所有的捐赠都将用于提升环境配置及开发积极性.</p>
+                <div>
+                    <img class="loading_icon" alt="loading" src="./images/Loading_white.gif">
+                    <div>加载中</div>
+                </div>
+            </div>
+        </div>
+        <div class="main footer_notice_body">
+            <div class="title3">友情链接</div>
+            <div class="description2">
+                <div>
+                    <img class="coming_soon-img" alt="Coming Soon Image" src="./images/Building.png">
+                    <div>即将到来</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="page_info"><br></div>
+        <div id="page_info_title1" class="page_info_title"></div>
+        <div id="page_info_detail1" class="page_info"></div>
+        <div id="page_info_title2" class="page_info_title"></div>
+        <div id="page_info_detail2" class="page_info"></div>
+        <div class="page_info"><br></div>
+    </div>
+</main>
+
+<!--侧边栏-->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar_list">
+        <a class="sidebar_item" href="#header_notice">版本库信息</a>
+        <a class="sidebar_item" href="#bedrock_edition">基岩版</a>
+        <a class="sidebar_item" href="#pocket_edition">携带版</a>
+        <a class="sidebar_item" href="#education_edition">教育版</a>
+        <a class="sidebar_item" href="#earth">地球</a>
+        <a class="sidebar_item" href="#trial">试玩版</a>
+        <a class="sidebar_item" href="#demo">演示版</a>
+        <a class="sidebar_item" href="#more_edition">更多版本</a>
+        <a class="sidebar_item" href="#footer_notice">版本库须知</a>
+    </div>
+    <div class="sidebar_info">
+        <div id="sidebar_bottom_title" class="sidebar_detail_title"></div>
+        <div id="sidebar_bottom_detail1" class="sidebar_detail"></div>
+        <div class="sidebar_detail">
+            <button id="sidebar_bottom_btn" class="btn sidebar_btn" onclick="clickedSidebarBottomBtn();"></button>
+        </div>
+    </div>
+</div>
+
+<!--遮罩-->
+<!--除了顶栏-->
+<div id="overlay_main" class="overlay_main" onclick="clickedOverlay();"></div>
+<!--全屏-->
+<div id="overlay" class="overlay"></div>
+
+<!--提示弹窗-->
+<div id="alert_dialog" class="dialog_area">
+    <div class="dialog">
+        <div class="dialog_title">测试提示</div>
+        <div class="dialog_content">
+            <p>欢迎参加测试!</p>
+            <p>发现问题或有好的建议欢迎及时向我们提出.</p>
+        </div>
+        <div class="dialog_btn_area">
+            <button class="btn green_btn dialog_btn" onclick="hideAlertDialog(this);">我知道了</button>
+        </div>
+    </div>
+</div>
+
+<!--音效-->
+<audio id="click" preload="auto">
+    <source src="./sounds/click.ogg" type="audio/ogg">
+</audio>
+<audio id="button" preload="auto">
+    <source src="./sounds/button.ogg" type="audio/ogg">
+</audio>
+
+</body>
+<script src="./javascript/home.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/public_script.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
+</html>

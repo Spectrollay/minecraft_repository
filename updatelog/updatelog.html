@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheet/public_style.css">
+    <title>更新历史</title>
+</head>
+
+<body>
+<header>
+    <div id="back" class="header_back" onclick="clickedBack();">
+        <img class="back_icon" alt="Back" src="../images/Back.png">
+    </div>
+    <div class="header_logo" onclick="scrollToTop();">
+        <img class="title_icon" alt="Title Icon" src="../images/Marketplace.png"><span
+            class="header_title">Repository</span>
+    </div>
+</header>
+<main id="main">
+    <div id="main_top"></div>
+    <div class="block">
+        <div class="main">
+            <div class="title1">更新历史</div>
+        </div>
+        <div class="main">
+            <div class="title2">4.3-Preview3-Final</div>
+            <div>2023-11-01</div>
+            <div class="description2">
+                <li>加入了新的提示</li>
+                <li>修复了一些漏洞</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.3-Preview2</div>
+            <div>2023-10-31</div>
+            <div class="description2">
+                <li>更新了底层框架</li>
+                <li>更新了几乎所有的页面</li>
+                <li>现在下载按钮是动态加载的了</li>
+                <li>现在侧边栏底部的信息是动态加载的了</li>
+                <li>修复了一些漏洞</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.3-Preview1</div>
+            <div>2023-10-31</div>
+            <div class="description2">
+                <li>加入了表格样式</li>
+                <li>加入了小图标样式</li>
+                <li>加入了带有图标的按钮样式</li>
+                <li>加入了带有图片的dialog弹窗样式</li>
+                <li>更新了版本库说明</li>
+                <li>更新了元素选择器</li>
+                <li>为部分按钮加入了text-generation属性,用于控制按钮显示的文字</li>
+                <li>现在会根据引用的文件位置动态加载本地文件路径了</li>
+                <li>链接图标现在在视觉上居中了</li>
+                <li>稍微缩小了顶栏仓库图标的大小</li>
+                <li>重构了获取本地文件的函数</li>
+                <li>优化了动态内容的设置与判定</li>
+                <li>调大了测试提示在提示文本列表中的权值</li>
+                <li>修正了部分标题不正确的问题</li>
+                <li>修正了一些提示文本中标点符号不正确或缺失的问题</li>
+                <li>修复了js未获取到页面元素导致的控制台报错和部分动态元素无法加载的问题</li>
+                <li>修复了网页中不存在某元素时js执行查找该元素并为其赋值时抛出异常并导致加载失败的问题</li>
+                <li>修复了在部分情况下播放音频会出现异常中断的问题</li>
+                <li>修复了按钮被激活时文字不在视觉上居中的问题</li>
+                <li>修复了部分按钮内容会被错误覆盖的问题</li>
+                <li>修复了更新历史页面部分内容缺失的问题</li>
+                <li>修复了部分元素间有不正确间隔的问题</li>
+                <li>修复了一些页面丢失部分元素的问题</li>
+                <li>修复了部分文件无法正确获取的问题</li>
+                <li>修复了一些潜在的崩溃问题</li>
+                <li>暂时回退了上个版本对部分底层的更改</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview10</div>
+            <div>2023-10-30</div>
+            <div class="description2">
+                <li>完善了所有下载页面</li>
+                <li>优化了项目文件结构</li>
+                <li>为部分指向外部链接的按钮加入了链接图标(进行中)</li>
+                <li>现在预览提示和部分下载按钮使用js动态加载了(进行中)</li>
+                <li>修复了按钮文字并不是相对于按钮视觉居中的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview9</div>
+            <div>2023-10-30</div>
+            <div class="description2">
+                <li>新增正版购买指南页面</li>
+                <li>更新了使用说明</li>
+                <li>现在所有已完成的跳转链接都指向正确的链接了</li>
+                <li>修正了一些命名错误</li>
+                <li>修正了部分拼写错误,间隔不正确和大小写不正确的问题</li>
+                <li>修复了免责申明弹窗不会按照预期方式运作的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview8</div>
+            <div>2023-10-21</div>
+            <div class="description2">
+                <li>更新了版本库首页的内容</li>
+                <li>更新了免责申明弹窗</li>
+                <li>移除了所有二级页面的仓库图标</li>
+                <li>修复了部分链接点击时不会播放音效的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview7</div>
+            <div>2023-10-19</div>
+            <div class="description2">
+                <li>更新了版本库首页的内容</li>
+                <li>更新了使用条款与免责声明</li>
+                <li>拆分了部分历史遗留内容</li>
+                <li>修复了当链接跨行显示时会导致下划线消失的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview6</div>
+            <div>2023-10-17</div>
+            <div class="description2">
+                <li>对部分功能和函数进行了拆分</li>
+                <li>打开更新历史页面时不再会创建新的标签页了</li>
+                <li>向showDisclaimerDialog()和hideDisclaimerDialog()函数加入了异常判定</li>
+                <li>修复了部分页面js文件失效的问题</li>
+                <li>修复了一些js运行失败和元素获取失败的问题</li>
+                <li>修复了因异步执行造成的play()方法异常中断的问题</li>
+                <li>修复了hideDisclaimerDialog()函数url为空时的异常问题</li>
+                <li>修复了showDisclaimerDialog()函数向hideDisclaimerDialog()函数传递url参数会导致其无限累加的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview5</div>
+            <div>2023-10-17</div>
+            <div class="description2">
+                <li>为错误页面,更新历史页面和即将到来页面加入了返回按钮</li>
+                <li>加入了免责申明弹窗</li>
+                <li>更新了更新历史页面的页面布局</li>
+                <li>优化了返回功能的逻辑</li>
+                <li>修复了更新历史页面部分内容不正确显示的问题</li>
+                <li>修复了更新历史页面返回顶部功能无法正常生效的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview4</div>
+            <div>2023-10-16</div>
+            <div class="description2">
+                <li>完善了版本库须知</li>
+                <li>重构了更新历史页面</li>
+                <li>更新了子页面的部分内容</li>
+                <li>现在侧边栏的居中项目会根据是否显示滚动条动态加载了</li>
+                <li>调整了一些跳转链接</li>
+                <li>修复了部分页面引用了错误的js和css的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview3</div>
+            <div>2023-10-16</div>
+            <div class="description2">
+                <li>加入了两个新的错误页面</li>
+                <li>加入了即将到来页面</li>
+                <li>为dialog弹窗加入了滚动条</li>
+                <li>更新了预览提示弹窗的内容</li>
+                <li>优化了dialog弹窗的布局</li>
+                <li>修复了dialog弹窗有时会内容溢出的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview2</div>
+            <div>2023-10-10</div>
+            <div class="description2">
+                <li>加入了默认错误界面</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.2-Preview1</div>
+            <div>2023-10-10</div>
+            <div class="description2">
+                <li>添加了预览提示弹窗</li>
+                <li>修复了全屏遮罩会不正确显示的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview8</div>
+            <div>2023-10-09</div>
+            <div class="description2">
+                <li>实现了dialog弹窗</li>
+                <li>为所有多级页面添加了返回首页按钮</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview7</div>
+            <div>2023-10-09</div>
+            <div class="description2">
+                <li>加入了一些新的提示</li>
+                <li>现在网页在加载时对部分音频文件进行预加载了</li>
+                <li>修复了部分情况下音频文件加载不正确的问题</li>
+                <li>移除了一些多余的文件</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview6</div>
+            <div>2023-10-08</div>
+            <div class="description2">
+                <li>将项目同步到gitee仓库</li>
+                <li>修复了音效不能叠加播放的问题</li>
+                <li>修复了部分链接还是没有点击音效的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview5</div>
+            <div>2023-10-07</div>
+            <div class="description2">
+                <li>更新了提示</li>
+                <li>为提示的链接加入了点击音效</li>
+                <li>修复了设计预览提示块有不正确阴影的问题</li>
+                <li>修复了部分页面没有音效的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview4</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>更新了主页的描述</li>
+                <li>修复了除了主页面外的其他页面没有音效的问题</li>
+                <li>修复了部分页面标题不正确的问题</li>
+                <li>修复了部分更新历史指向页面不正确的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview3</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>修复了一些显示问题</li>
+                <li>修复了当文本过长时会出现不正确截断的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview2</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>重新设计了版本库主页</li>
+                <li>拆分各个版本到相应的页面(进行中)</li>
+                <li>提示框现在拥有动态高度了</li>
+                <li>修复了因重构项目架构导致的资源失效问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.1-Preview1</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>重构了项目架构</li>
+                <li>拆分各个版本到相应的页面(进行中)</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview20</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>对部分显示进行了调整</li>
+                <li>因为一些漏洞移除了可折叠组件</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview19</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>为侧边栏加入了可折叠组件</li>
+                <li>为可折叠组件加入了日志</li>
+                <li>完善了其余的下载块</li>
+                <li>加入了更多版本块</li>
+                <li>重构了部分函数</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview18</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>加入了页面日志</li>
+                <li>修复了文本选择函数不会按照预期权值选择文本的问题</li>
+                <li>修复了权值为0的文本被选择时的溢出错误</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview17</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>修复了重复选择函数无法正确执行的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview16</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>重构了文本选择函数与重复检测函数</li>
+                <li>修复了页面内跳转部分元素定位有偏差的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview15</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>修复了重复检测函数的部分问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview14</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>修复了重复检测会返回非法值的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview13</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>为Tip提示框加入了重复检测</li>
+                <li>为提示加入了权值</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview12</div>
+            <div>2023-10-06</div>
+            <div class="description2">
+                <li>更改了提示框的样式</li>
+                <li>现在网页顶部的Tip提示框会在每次加载网页时随机抽取提示了</li>
+                <li>优化了代码</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview11</div>
+            <div>2023-10-05</div>
+            <div class="description2">
+                <li>稍微调慢了侧边栏展开收起动画的速度</li>
+                <li>在侧边栏目录里加入了版本库须知</li>
+                <li>禁用按钮样式的文本颜色现在更浅了</li>
+                <li>修复了版本库须知只有上半部分的问题</li>
+                <li>修复了0.12版本更新日志指向链接不正确的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview10</div>
+            <div>2023-10-05</div>
+            <div class="description2">
+                <li>下载块新增版本推荐</li>
+                <li>再次调整了下载按钮的布局,现在整体是纵向排列了</li>
+                <li>实现了点击侧边栏列表项目跳转至网页相应位置</li>
+                <li>加入了全局遮罩</li>
+                <li>对显示的按钮进行了调整</li>
+                <li>对部分元素的命名进行了规范</li>
+                <li>将网页主体标题更改为版本库须知</li>
+                <li>修复了部分禁用的按钮仍会播放点击音效的问题</li>
+                <li>修复了部分按钮会播放与其不匹配的点击音效的问题</li>
+                <li>修正了一些不正确的显示</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview9</div>
+            <div>2023-10-05</div>
+            <div class="description2">
+                <li>初步实现了下载块</li>
+                <li>将设计预览提示块移至网页顶部</li>
+                <li>为每个大版本加入了更新日志</li>
+                <li>修改下载按钮为横向排列</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview8</div>
+            <div>2023-10-04</div>
+            <div class="description2">
+                <li>加入了网页底部的信息栏</li>
+                <li>为设计预览提示块加入了更新历史按钮</li>
+                <li>现在点击音效可以叠加播放了</li>
+                <li>更新了部分描述文本</li>
+                <li>调整了部分元素的颜色</li>
+                <li>调整了按钮的样式</li>
+                <li>重新定义了各部分的字体样式</li>
+                <li>优化了项目结构</li>
+                <li>修复了部分字体不会被正确覆盖的问题</li>
+                <li>修复了点击音效有时会被略过的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview7</div>
+            <div>2023-10-04</div>
+            <div class="description2">
+                <li>加入了网页主体的标题</li>
+                <li>加入了网页反馈提示框</li>
+                <li>在网页底部加入了设计预览提示块</li>
+                <li>现在点击侧边栏列表项目会跳转到页面指定位置</li>
+                <li>更新了按钮的阴影样式</li>
+                <li>修改侧边栏列表项目为链接样式</li>
+                <li>重新设计了块样式,现在显示更加清晰了</li>
+                <li>现在每一个块的高度是4px,块内元素的高度是2px</li>
+                <li>修复了部分元素无法正确居中的问题</li>
+                <li>修复了在部分情况下音效无法正确播放的问题</li>
+                <li>修复了按钮播放点击动画时文本移动幅度不正确的问题</li>
+                <li>修复了按钮播放点击动画时按钮底部会向上对齐的问题</li>
+                <li>移除了一些调试内容</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview6</div>
+            <div>2023-10-04</div>
+            <div class="description2">
+                <li>按钮现在有点击动画了</li>
+                <li>现在点击顶栏会回到顶部了</li>
+                <li>加入了新的链接样式</li>
+                <li>为页面滑动加入了平滑效果</li>
+                <li>为链接加入了点击音效</li>
+                <li>更新了网页主体的样式</li>
+                <li>提示框现在在标题的下方显示</li>
+                <li>调整了提示框的大小</li>
+                <li>稍微调大了块边距</li>
+                <li>修复了按钮和文本对齐不正确的问题</li>
+                <li>修复了按钮溢出容器的问题</li>
+                <li>由于动画问题回退了上个版本对按钮阴影样式的更改</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview5</div>
+            <div>2023-10-04</div>
+            <div class="description2">
+                <li>加入了推荐,警告,禁用三种按钮样式</li>
+                <li>加入了提示,重要两种提示框样式</li>
+                <li>加入了中文译名修正项目提示框</li>
+                <li>加入了元素点击音效</li>
+                <li>加入了块边距</li>
+                <li>更新了普通按钮样式</li>
+                <li>更新了普通提示框样式</li>
+                <li>调整了按钮的阴影样式</li>
+                <li>网页主体现在按照目录顺序来展示了</li>
+                <li>优化了缩放后的显示</li>
+                <li>修复了网页主体部分内容会被顶栏覆盖的问题</li>
+                <li>禁用了页面选择</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview4</div>
+            <div>2023-10-03</div>
+            <div class="description2">
+                <li>加入了网页主体的基本界面组件</li>
+                <li>加入了普通按钮样式</li>
+                <li>加入了普通提示框样式</li>
+                <li>为网页主体引入了自定义滚动条</li>
+                <li>顶栏现在固定在最上方了</li>
+                <li>可滚动部分现在不包括顶栏了</li>
+                <li>更新了侧边栏目录</li>
+                <li>调整了侧边栏宽度</li>
+                <li>调整了自定义滚动条的样式</li>
+                <li>修复了网页主体出现了横向滚动条的问题</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview3</div>
+            <div>2023-10-03</div>
+            <div class="description2">
+                <li>引入了自定义字体</li>
+                <li>为侧边栏引入了自定义滚动条</li>
+                <li>调整了侧边栏底部的信息显示</li>
+                <li>侧边栏现在会按照预期方式滚动了</li>
+                <li>缩小了顶栏高度</li>
+                <li>缩小了标题字体大小</li>
+                <li>缩小了菜单按钮和仓库按钮</li>
+                <li>缩小了侧边栏宽度</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview2</div>
+            <div>2023-10-03</div>
+            <div class="description2">
+                <li>加入了侧边栏</li>
+                <li>为可点击元素加入了hover效果和active效果</li>
+                <li>现在打开链接时会跳转到新的页面上</li>
+                <li>调整了部分元素的颜色</li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="title2">4.0-Preview1</div>
+            <div>2023-10-03</div>
+            <div class="description2">
+                <li>初步实现了顶栏和页面整体结构</li>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+<style>
+    .block {
+        margin: 20px;
+    }
+
+    .description2 {
+        width: 90%;
+        min-width: 288px;
+        max-width: 500px;
+        margin: 0 6px;
+        justify-self: center;
+        text-align: left;
+    }
+</style>
+<script src="../javascript/public_script.js"></script>
+<script src="../javascript/secondary.js"></script>
+</html>

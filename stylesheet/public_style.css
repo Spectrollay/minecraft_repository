@@ -1,0 +1,643 @@
+/*自定义字体*/
+@font-face {
+    font-family: 'Minecraft Ten';
+    src: url("../fonts/Minecraft-Ten.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'Minecraft Seven';
+    src: url("../fonts/Minecraft-Seven.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'Minecraft Five Bold';
+    src: url("../fonts/Minecraft-Five-Bold.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'Minecraft Five';
+    src: url("../fonts/Minecraft-Five.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'NotoSans Bold';
+    src: url("../fonts/NotoSans-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'NotoSans BoldItalic';
+    src: url("../fonts/NotoSans-BoldItalic.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'NotoSans Italic';
+    src: url("../fonts/NotoSans-Italic.ttf") format('truetype');
+}
+
+/*界面选择事件*/
+::selection {
+    background-color: transparent;
+    color: inherit;
+}
+
+/*总体样式*/
+body {
+    font-family: "NotoSans Bold", sans-serif;
+    background: #48494A;
+    margin: 0;
+    min-width: 360px;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+}
+
+/*顶部应用栏*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    min-width: 360px;
+    height: 40px;
+    background-color: #E6E8EB;
+    border-bottom: 4px solid #B1B2B5;
+    z-index: 9;
+}
+
+.header_menu, .header_back, .header_logo, .header_repo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.header_menu:hover, .header_back:hover, .header_repo:hover {
+    background-color: #F4F6F9;
+}
+
+.header_menu:active, .header_back:active, .header_repo:active {
+    background-color: #D0D1D4;
+}
+
+.header_menu, .header_back {
+    width: 40px;
+    border-right: 2px solid #FFFFFF;
+}
+
+.menu_icon, .repo_icon {
+    height: 32px;
+    width: 32px;
+}
+
+.title_icon {
+    height: 26px;
+    width: 26px;
+}
+
+.header_logo {
+    flex: 1;
+    border-left: 2px solid #A1A3A5;
+    border-right: 2px solid #A1A3A5;
+}
+
+.title_icon {
+    padding-right: 8px;
+}
+
+.header_title {
+    height: 38px;
+    font-family: "Minecraft Ten", sans-serif;
+    font-size: 30px;
+}
+
+.header_repo {
+    width: 40px;
+    border-left: 2px solid #FFFFFF;
+}
+
+/*主体框架*/
+main {
+    height: calc(100% - 44px);
+    top: 44px;
+    width: 100%;
+    min-width: 360px;
+    position: fixed;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/*主体框架滚动条*/
+main::-webkit-scrollbar {
+    top: 44px;
+    width: 12px;
+}
+
+main::-webkit-scrollbar-track {
+    background-color: #58585A;
+    border: 4px solid #48494A;
+}
+
+main::-webkit-scrollbar-thumb {
+    background-color: #E6E8EB;
+    border: 2px solid #000000;
+    box-shadow: inset 0 -4px #58585A, inset 0 -6px #F9FAFA, inset 2px 2px #F9FAFA, inset -2px 0 #F9FAFA;
+}
+
+/*主体块*/
+.main {
+    height: auto;
+    min-height: 66px;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    padding: 8px 0;
+    border-top: 2px solid #5A5B5C;
+    border-bottom: 2px solid #333334;
+    border-left: 2px solid #333334;
+    border-right: 2px solid #333334;
+    color: #FFFFFF;
+}
+
+/*主体上下提示*/
+.main-header, .main-footer {
+    font-family: "Minecraft Ten", sans-serif;
+}
+
+.header_notice_title, .footer_notice_title {
+    font-size: 28px;
+}
+
+.header_notice_body, .footer_notice_body {
+    justify-items: center;
+}
+
+/*预览提示*/
+.preview_block {
+    font-family: "NotoSans Bold", sans-serif;
+    border-top: 4px solid #5A5B5C;
+    border-bottom: 4px solid #333334;
+    border-left: 0;
+    border-right: 0;
+}
+
+.preview_title {
+    font-size: 18px;
+    font-family: "NotoSans Bold", sans-serif;
+    margin: 4px 0;
+}
+
+.preview_detail {
+    font-size: 16px;
+    font-family: "NotoSans Bold", sans-serif;
+    margin: 4px 0;
+}
+
+/*加载中图标*/
+.loading_icon {
+    padding: 10px;
+    height: 32px;
+    width: 32px;
+}
+
+/*主体文字*/
+.title1, .title2, .title3, .description1, .description2 {
+    color: #FFFFFF;
+}
+
+.title1, .title2, .title3 {
+    margin: 4px 0;
+}
+
+.title1 {
+    font-size: 26px;
+    font-family: "Minecraft Seven", sans-serif;
+}
+
+.title2 {
+    font-size: 23px;
+    font-family: "Minecraft Seven", sans-serif;
+}
+
+.title3 {
+    font-size: 20px;
+    font-family: "Minecraft Seven", sans-serif;
+}
+
+.description1 {
+    font-size: 18px;
+    font-family: "NotoSans Bold", sans-serif;
+    margin: 4px 0;
+}
+
+.description2 {
+    font-size: 16px;
+    font-family: "NotoSans Bold", sans-serif;
+    margin: 4px 8px 8px 8px;
+}
+
+.description3 {
+    font-size: 14px;
+    font-family: "NotoSans Bold", sans-serif;
+    width: 80px;
+    margin-top: 4px;
+}
+
+.header_notice_body a, .description1 a, .description2 a {
+    color: inherit;
+    position: relative;
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 0 #FFFFFF;
+}
+
+/*默认按钮样式*/
+.btn {
+    font-family: "NotoSans Bold", sans-serif;
+    height: 40px;
+    width: 200px;
+    margin: 6px;
+    justify-self: center;
+}
+
+.preview_btn {
+    width: 140px;
+}
+
+.download_btn {
+    width: 140px;
+}
+
+.download_btn_large {
+    width: 292px;
+}
+
+.normal_btn {
+    background-color: #D0D1D4;
+    color: #000000;
+    padding-bottom: 6px;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 -4px #58585A, inset 3px 3px #E3E3E5, inset -3px -7px #ECEDEE;
+}
+
+.normal_btn:hover {
+    background-color: #B1B2B5;
+    box-shadow: inset 0 -4px #58585A, inset 3px 3px #EFF0F0, inset -3px -7px #E0E0E1;
+}
+
+.normal_btn:active {
+    margin-top: 10px;
+    height: 36px;
+    padding-bottom: 2px;
+    background-color: #B1B2B5;
+    box-shadow: inset 3px 3px #EFF0F0, inset -3px -3px #E0E0E1;
+}
+
+.green_btn {
+    background-color: #3C8527;
+    color: #FFFFFF;
+    padding-bottom: 6px;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 -4px #1D4D13, inset 3px 3px #639D52, inset -3px -7px #4F913C;
+}
+
+.green_btn:hover {
+    background-color: #2A641C;
+    box-shadow: inset 0 -4px #1D4D13, inset 3px 3px #7FA277, inset -3px -7px #699260;
+}
+
+.green_btn:active {
+    margin-top: 10px;
+    height: 36px;
+    padding-bottom: 2px;
+    background-color: #1D4D13;
+    box-shadow: inset 3px 3px #779471, inset -3px -3px #608259;
+}
+
+.red_btn {
+    background-color: #C33636;
+    color: #FFFFFF;
+    padding-bottom: 6px;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 -4px #AD1D1D, inset 3px 3px #D55E5E, inset -3px -7px #CF4A4A;
+}
+
+.red_btn:hover {
+    background-color: #C02D2D;
+    box-shadow: inset 0 -4px #AD1D1D, inset 3px 3px #DF9696, inset -3px -7px #D98181;
+}
+
+.red_btn:active {
+    margin-top: 10px;
+    height: 36px;
+    padding-bottom: 2px;
+    background-color: #AD1D1D;
+    box-shadow: inset 3px 3px #D68E8E, inset -3px -3px #CE7777;
+}
+
+.disabled_btn {
+    background-color: #D0D1D4;
+    color: #48494A;
+    padding-bottom: 6px;
+    border: 2px solid #8C8D90;
+    box-shadow: inset 0 -4px #B1B2B5;
+}
+
+/*带有图标的按钮*/
+.link_img, .link_img_black {
+    margin-bottom: -1.5px;
+    height: 14px;
+    width: 14px;
+    padding-right: 6px;
+}
+
+/*主体块*/
+.block {
+    margin: 0 20px;
+    border-top: 2px solid #5A5B5C;
+    border-bottom: 2px solid #333334;
+    border-left: 2px solid #333334;
+    border-right: 2px solid #333334;
+}
+
+/*块间隙*/
+.block_spacing {
+    height: 20px;
+}
+
+/*提示框区域*/
+.tooltip-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*提示框主体*/
+.tooltip {
+    font-family: "NotoSans Bold", sans-serif;
+    margin: 10px 20px;
+    padding: 4px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 40px);
+    min-height: 30px;
+    color: #FFFFFF;
+}
+
+.tooltip a {
+    color: inherit;
+    position: relative;
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 0 #FFFFFF;
+}
+
+.information_tip {
+    background-color: #2E6BE5;
+}
+
+.normal_tip {
+    background-color: #1E1E1F;
+}
+
+.important_tip {
+    color: #000000;
+    background-color: #FFE866;
+}
+
+/*按钮块*/
+.download_line, .preview_btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*表格属性*/
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table td {
+    min-width: 100px;
+}
+
+/*dialog弹窗*/
+.dialog_area {
+    display: none;
+    z-index: 11;
+    position: fixed;
+    width: 90%;
+    min-width: 300px;
+    max-width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #1E1E1F;
+}
+
+.dialog {
+    background-color: #313233;
+    color: #FFFFFF;
+    justify-content: center;
+    text-align: center;
+}
+
+.dialog_title {
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #48494A;
+    box-shadow: inset 2px 2px #6D6D6E, inset -2px -2px #5A5B5C;
+}
+
+.dialog_content {
+    padding: 10px 10px 10px 10px;
+    min-height: 60px;
+    max-height: 200px;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog_content::-webkit-scrollbar {
+    top: 44px;
+    width: 12px;
+}
+
+.dialog_content::-webkit-scrollbar-track {
+    background-color: #58585A;
+    border: 4px solid #313233;
+}
+
+.dialog_content::-webkit-scrollbar-thumb {
+    background-color: #E6E8EB;
+    border: 2px solid #000000;
+    box-shadow: inset 0 -4px #58585A, inset 0 -6px #F9FAFA, inset 2px 2px #F9FAFA, inset -2px 0 #F9FAFA;
+}
+
+.dialog_btn_area {
+    background-color: #48494A;
+    border-top: 2px solid #5A5B5C;
+    border-bottom: 2px solid #333334;
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog_btn_group {
+    width: calc(100% - 20px);
+}
+
+.dialog_btns {
+    display: flex;
+    align-items: center;
+}
+
+.dialog_btn {
+    width: 100%;
+}
+
+/*页面底部信息*/
+.page_info_title, .page_info {
+    font-family: "NotoSans Bold", sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.page_info_title {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.page_info {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.page_info a {
+    color: inherit;
+    position: relative;
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+/*侧边栏*/
+.sidebar {
+    height: calc(100% - 44px);
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 44px;
+    left: 0;
+    font-family: "NotoSans Bold", sans-serif;
+    background-color: #313233;
+    overflow-x: hidden;
+    transition: 0.6s;
+}
+
+.sidebar a {
+    text-decoration: none;
+    cursor: default;
+}
+
+.sidebar_list {
+    width: 100%;
+    border-bottom: 2px solid #000000;
+}
+
+.sidebar_item {
+    color: #FFFFFF;
+    width: 100%;
+    min-width: 148px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    height: 40px;
+}
+
+.sidebar_detail_title {
+    font-family: "Minecraft Ten", sans-serif;
+    font-size: 20px;
+    margin: 6px 0;
+    height: 30px;
+}
+
+.sidebar_detail_title, .sidebar_detail {
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar_detail {
+    height: 24px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.sidebar_info {
+    width: 100%;
+    min-width: 148px;
+    border-top: 2px solid #454647;
+}
+
+.sidebar_item:hover, .sidebar_item:active {
+    background-color: #67686A;
+}
+
+.sidebar_btn {
+    width: 140px;
+    background-color: #48494A;
+    color: #FFFFFF;
+    border: 2px solid #131313;
+    box-shadow: inset -1px -1px #1E1E1F, inset 1px 1px #1E1E1F, inset -2px -2px #313233, inset 2px 2px #6D6D6E;
+}
+
+.sidebar_btn:hover, .sidebar_btn:active {
+    background-color: #67686A;
+    border: 2px solid #FFFFFF;
+    box-shadow: unset;
+}
+
+/*侧边栏滚动条*/
+.sidebar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #58585A;
+    border: 4px solid #313233;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #E6E8EB;
+    border: 2px solid #000000;
+    box-shadow: inset 0 -4px #58585A, inset 0 -6px #F9FAFA, inset 2px 2px #F9FAFA, inset -2px 0 #F9FAFA;
+}
+
+/*全屏遮罩*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    display: none;
+}
+
+/*除了顶栏*/
+.overlay_main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    display: none;
+}

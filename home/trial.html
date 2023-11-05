@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheet/editions.css">
+    <link rel="stylesheet" href="../stylesheet/public_style.css">
+    <!--    <style>-->
+    <!--        -->
+    <!--    </style>-->
+    <link rel="icon" href="../images/Marketplace.png">
+    <title>试玩版 - Minecraft 版本库</title>
+</head>
+<body>
+<header>
+    <div id="menu" class="header_menu" onclick="clickedMenu();">
+        <img class="menu_icon" alt="Menu" src="../images/Menu.png">
+    </div>
+    <div class="header_logo" onclick="scrollToTop();">
+        <img class="title_icon" alt="Title Icon" src="../images/Marketplace.png"><span
+            class="header_title">Repository</span>
+    </div>
+</header>
+<main id="main">
+    <div id="main_top"></div>
+    <div class="tooltip-area">
+        <div id="tip" class="tooltip normal_tip"></div>
+    </div>
+    <div class="main preview_block">
+        <div id="preview_title" class="preview_title"></div>
+        <div id="preview_detail1" class="preview_detail"></div>
+        <div id="preview_detail2" class="preview_detail"></div>
+        <div class="preview_btns">
+            <button id="preview_btn1" class="btn normal_btn preview_btn" onclick="playSound1();toUpdatelog();"></button>
+            <button id="preview_btn2" class="btn green_btn preview_btn" onclick="playSound2();toRepo();"></button>
+        </div>
+    </div>
+    <div class="block_spacing"></div>
+    <div class="block">
+        <div class="main back_block back_to_main" onclick="jumpToPage('../home.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
+    <div class="block">
+        <div class="main">
+            <div class="title1">Minecraft Trial</div>
+            <div class="description1">试玩版</div>
+        </div>
+        <div id="1.20" class="main">
+            <div class="title2">1.20 - 足迹与故事</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.20.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn green_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.19" class="main">
+            <div class="title2">1.19 - 荒野更新</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.19.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn green_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.18" class="main">
+            <div class="title2">1.18 - 洞穴与山崖(第二部分)</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.18.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn green_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.17" class="main">
+            <div class="title2">1.17 - 洞穴与山崖(第一部分)</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.17.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn green_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.16" class="main">
+            <div class="title2">1.16 - 下界更新</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.16.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn green_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.14" class="main">
+            <div class="title2">1.14 - 嗡嗡蜂群</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.14.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.13" class="main">
+            <div class="title2">1.13</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.13.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.12" class="main">
+            <div class="title2">1.12</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.12.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.11" class="main">
+            <div class="title2">1.11 - 村庄与掠夺</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.11.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.10" class="main">
+            <div class="title2">1.10</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.10.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.9" class="main">
+            <div class="title2">1.9</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.9.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.8" class="main">
+            <div class="title2">1.8</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.8.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+        <div id="1.7" class="main">
+            <div class="title2">1.7</div>
+            <div class="description2">更新日志:
+                <a class="wiki" href="https://minecraft.fandom.com/zh/wiki/%E5%9F%BA%E5%B2%A9%E7%89%881.7.0"
+                   target="_blank" onclick="playSound1();"></a>
+            </div>
+            <div class="download_group">
+                <div class="download_line">
+                    <div class="description3">下载</div>
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+                <div class="download_line">
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                    <!--                    <a href="" target="_blank">-->
+                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
+                            onclick="playSound(this);"></button>
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="page_info"><br></div>
+        <div id="page_info_title1" class="page_info_title"></div>
+        <div id="page_info_detail1" class="page_info"></div>
+        <div id="page_info_title2" class="page_info_title"></div>
+        <div id="page_info_detail2" class="page_info"></div>
+        <div class="page_info"><br></div>
+    </div>
+</main>
+
+<!--侧边栏-->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar_header">
+        <button class="btn sidebar_btn back_to_main" onclick="jumpToPage('../home.html');"></button>
+    </div>
+    <div class="sidebar_list">
+        <div class="sidebar_item">试玩版</div>
+        <a class="sidebar_item" href="#1.20">1.20</a>
+        <a class="sidebar_item" href="#1.19">1.19</a>
+        <a class="sidebar_item" href="#1.18">1.18</a>
+        <a class="sidebar_item" href="#1.17">1.17</a>
+        <a class="sidebar_item" href="#1.16">1.16</a>
+        <a class="sidebar_item" href="#1.14">1.14</a>
+        <a class="sidebar_item" href="#1.13">1.13</a>
+        <a class="sidebar_item" href="#1.12">1.12</a>
+        <a class="sidebar_item" href="#1.11">1.11</a>
+        <a class="sidebar_item" href="#1.10">1.10</a>
+        <a class="sidebar_item" href="#1.9">1.9</a>
+        <a class="sidebar_item" href="#1.8">1.8</a>
+        <a class="sidebar_item" href="#1.7">1.7</a>
+    </div>
+    <div class="sidebar_info">
+        <div id="sidebar_bottom_title" class="sidebar_detail_title"></div>
+        <div id="sidebar_bottom_detail1" class="sidebar_detail"></div>
+        <div class="sidebar_detail">
+            <button id="sidebar_bottom_btn" class="btn sidebar_btn" onclick="clickedSidebarBottomBtn();"></button>
+        </div>
+    </div>
+</div>
+
+<!--遮罩-->
+<!--除了顶栏-->
+<div id="overlay_main" class="overlay_main" onclick="clickedOverlay();"></div>
+
+</body>
+<script src="../javascript/editions.js"></script>
+<script src="../javascript/secondary.js"></script>
+<script src="../javascript/public_define.js"></script>
+<script src="../javascript/public_script.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
+</html>
