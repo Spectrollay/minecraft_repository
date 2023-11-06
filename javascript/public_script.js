@@ -17,7 +17,7 @@ if (currentPagePath.indexOf('/home.html') !== -1) {
     soundClickPath = './sounds/click.ogg';
     soundButtonPath = './sounds/button.ogg';
     updatelogPath = './updatelog/updatelog.html';
-} else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1)) {
+} else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/default/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1)) {
     soundClickPath = '../sounds/click.ogg';
     soundButtonPath = '../sounds/button.ogg';
     updatelogPath = '../updatelog/updatelog.html';
@@ -28,7 +28,7 @@ for (let i = 0; i < linkImg.length; i++) {
 
     if (currentPagePath.indexOf('/home.html') !== -1) {
         linkImgList.src = "./images/ExternalLink_white.png";
-    } else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1)) {
+    } else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/default/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1)) {
         linkImgList.src = "../images/ExternalLink_white.png";
     }
 }

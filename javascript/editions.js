@@ -29,11 +29,11 @@ function hideDisclaimerDialog(button, state, url) {
     if (url !== null) {
         console.log("获取到跳转链接:" + url);
         if (state === 1) {
+            window.open(url);
+        } else {
             setTimeout(function () {
                 window.location.href = url;
             }, 600);
-        } else {
-            window.open(url);
         }
         console.log("跳转成功");
     } else {
@@ -47,6 +47,8 @@ function howToBuyGame(button, state, url) {
         console.log("选择了了解正版购买");
     }
     console.log("获取到跳转链接: " + url);
-    window.open(url);
+    setTimeout(function () {
+        window.location.href = url;
+    }, 600);
     console.log("跳转成功");
 }
