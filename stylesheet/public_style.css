@@ -243,7 +243,7 @@ main::-webkit-scrollbar-thumb {
     margin-top: 4px;
 }
 
-.header_notice_body a, .description1 a, .description2 a {
+.header_notice_body a, .description1 a, .description2 a, .description3 a {
     color: inherit;
     position: relative;
     text-decoration: none;
