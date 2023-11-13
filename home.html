@@ -76,7 +76,8 @@
                     <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank"
                        onclick="playSound1();">PC 捆绑包</a></p>
                 <p>不知道如何购买正版?<br>
-                    <a href="javascript:void(0);" onclick="delayedOpenLink('./default/coming_soon.html');">正版购买指南</a>
+                    <a href="javascript:void(0);"
+                       onclick="delayedOpenLink('./default/coming_soon.html');">正版购买指南</a>
                 </p>
             </div>
         </div>
@@ -84,38 +85,194 @@
             <div class="title3">使用说明</div>
             <div class="description2">
                 <p>仓库资源说明:</p>
-                <p>本版本库的资源可分为两大部分, 站内资源和站外资源. 站内资源通常由开发者维护, 提供多渠道下载, 可以保证资源品质(
-                    本站使用的默认网盘服务位于大陆境外, 连接可能会有较大波动); 站外资源通常由第三方维护, 不能保证其资源品质,
-                    请自行甄别(站外资源通常带有链接图标或跳转确认弹窗). 在使用过程中如果发现资源存在问题请及时与我们取得联系,
-                    有想要添加的资源也可以向我们提出.</p>
+                <p>本版本库的资源可分为两大部分, 站内资源和站外资源. 站内资源通常由开发者维护, 提供多渠道下载, 可以保证资源品质;
+                    站外资源通常由第三方维护, 不能保证其资源品质, 请自行甄别(站外资源通常带有链接图标或跳转确认弹窗).
+                    在使用过程中如果发现资源存在问题请及时与我们取得联系, 有想要添加的资源也可以向我们提出.</p>
                 <p>文件命名规则: </p>
                 <p>软件名 版本名 种类 架构 类型.apk/.apks<br>其中种类包括去音乐版(lite), 路径修改版(fix),
                     官方原版和去验证版(以文件后缀名区分); 架构包括armAll(armv7, armv8), armv7(armeabi-v7a, 32位),
                     armv8(arm64-v8a, 64位), x86(32位), x64(x86_64, 64位); 类型包括release, beta, preview.</p>
+                <p>关于网盘: </p>
+                <div class="table-area">
+                    <div class="table-big">
+                        <table>
+                            <tr>
+                                <th colspan="7">标准版本分布情况</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>原版<sup>[2]</sup></td>
+                                <td>中文译名修正<sup>[3]</sup></td>
+                                <td>去验证版</td>
+                                <td>去音乐版<sup>[4]</sup></td>
+                                <td>多架构版<sup>[3]</sup></td>
+                                <td>路径修改版<sup>[4]</sup></td>
+                            </tr>
+                            <tr>
+                                <td>默认网盘<sup>[1]</sup></td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>蓝奏云盘</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>部分<sup>[5]</sup></td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>123 云盘</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>天翼云盘</td>
+                                <td>无</td>
+                                <td>有</td>
+                                <td>部分<sup>[2]</sup></td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>百度云盘</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有<sup>[6]</sup></td>
+                                <td>无</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <p class="info_text">标准版本目前仅支持Android平台</p>
+                <div class="info_area">
+                    <div>
+                        <p>
+                            [1]本站使用的默认网盘服务位于大陆境外,连接可能会有较大波动<br>
+                            [2]仅支持1.16及以上版本<br>
+                            [3]仅支持1.20及以上正式版,默认去验证<br>
+                            [4]仅支持1.20及以上开发版,默认去验证<br>
+                            [5]仅支持1.14及以下版本<br>
+                            [6]还包括原版安装包
+                        </p>
+                    </div>
+                </div>
+                <div class="table-area">
+                    <div class="table-big">
+                        <table>
+                            <tr>
+                                <th colspan="8">其他版本分布情况</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>教育版<sup>[1]</sup></td>
+                                <td>试玩版<sup>[1]</sup></td>
+                                <td>演示版<sup>[1]</sup></td>
+                                <td>地下城</td>
+                                <td>传奇</td>
+                                <td>故事模式<sup>[2]</sup></td>
+                                <td>地球<sup>[1]</sup></td>
+                            </tr>
+                            <tr>
+                                <td>默认网盘</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>有</td>
+                                <td>有</td>
+                            </tr>
+                            <tr>
+                                <td>蓝奏云盘</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>有</td>
+                            </tr>
+                            <tr>
+                                <td>123 云盘</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>有</td>
+                                <td>有</td>
+                            </tr>
+                            <tr>
+                                <td>天翼云盘</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>百度云盘</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>有</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>有</td>
+                                <td>有</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <p class="info_text">其他版本支持平台以标注为准</p>
+                <div class="info_area">
+                    <div>
+                        <p style="margin-bottom: 0">
+                            [1]仅支持Android平台<br>
+                            [2]支持Android/iOS/Windows平台
+                        </p>
+                    </div>
+                </div>
                 <p>关于架构: </p>
-                <div class="table">
-                    <table>
-                        <tr>
-                            <td>架构</td>
-                            <td>适用情况</td>
-                        </tr>
-                        <tr>
-                            <td>armv8</td>
-                            <td>大部分手机,平板设备</td>
-                        </tr>
-                        <tr>
-                            <td>armv7</td>
-                            <td>几乎所有手机,平板设备</td>
-                        </tr>
-                        <tr>
-                            <td>x86</td>
-                            <td>模拟器,极少数平板</td>
-                        </tr>
-                        <tr>
-                            <td>x64</td>
-                            <td>64位模拟器</td>
-                        </tr>
-                    </table>
+                <div class="table-area">
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <td>架构</td>
+                                <td>适用情况<sup>[1]</sup></td>
+                            </tr>
+                            <tr>
+                                <td>armv8</td>
+                                <td>大部分手机,平板设备</td>
+                            </tr>
+                            <tr>
+                                <td>armv7</td>
+                                <td>几乎所有手机,平板设备</td>
+                            </tr>
+                            <tr>
+                                <td>x86</td>
+                                <td>模拟器,极少数平板</td>
+                            </tr>
+                            <tr>
+                                <td>x64</td>
+                                <td>64位模拟器</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <p>
                     以上内容根据近年设备架构规律总结, 仅供参考, 可能有部分不符.

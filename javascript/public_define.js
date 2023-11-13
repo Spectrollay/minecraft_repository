@@ -9,7 +9,7 @@ const texts = {
     preview_btn1: "更新历史",
     preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"link\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.5.0.2.Insider_Beta<br>Server Version: 4.0<br>Updated: 2023-11-11-01",
+    page_info_detail1: "Version: 4.5.0.2.Insider_Beta<br>Server Version: 4.0<br>Updated: 2023-11-13-01",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     jump_text: "点击前往下载页面",
@@ -101,7 +101,7 @@ const tipsWithWeights = [
     {text: "!!!1!", weight: 2},
     {text: "llI1IlI11lllI", weight: 2},
     {text: "Wow!", weight: 2},
-    {text: "本条提示出现概率远小于万分之一<br>看到就赶紧去买彩票吧!", weight: 0.001},
+    {text: "这是一条非非非非常稀有的提示<br>看到就赶紧去买彩票吧!", weight: 0.001},
     {text: "这是一条永远不会出现的提示.", weight: 0}
 ];
 

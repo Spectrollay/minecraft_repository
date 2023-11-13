@@ -382,6 +382,8 @@ main::-webkit-scrollbar-thumb {
     justify-content: center;
     width: calc(100% - 40px);
     min-height: 30px;
+    word-wrap: break-word;
+    hyphens: auto;
     color: #FFFFFF;
 }
 
@@ -413,14 +415,67 @@ main::-webkit-scrollbar-thumb {
 }
 
 /*表格属性*/
-.table {
+.table-area {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+table, th, td {
+    border: 1px solid #FFFFFF;
+}
+
+th {
+    height: 40px;
+}
+
+td {
+    height: 60px;
+}
+
+.table {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 600px;
+}
+
+.table-big {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 1000px;
+}
+
 .table td {
     min-width: 100px;
+}
+
+.info_text {
+    margin-bottom: 0;
+}
+
+.info_area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.info_area div {
+    width: 100%;
+    max-width: 1000px;
 }
 
 /*dialog弹窗*/
