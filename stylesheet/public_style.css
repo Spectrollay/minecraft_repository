@@ -403,6 +403,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 .important_tip {
+    font-weight: bolder;
     color: #000000;
     background-color: #FFE866;
 }
