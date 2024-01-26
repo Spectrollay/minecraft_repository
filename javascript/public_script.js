@@ -192,7 +192,7 @@ function clickedBack() {
     }
 }
 
-// 点击遮罩事件
+// 点击全屏遮罩事件
 function clickedOverlay() {
     toggleSidebar();
     toggleOverlay();
@@ -202,6 +202,12 @@ function clickedOverlay() {
 function clickedRepo() {
     playSound1();
     window.open("https://github.com/Spectrollay/minecraft_repository");
+}
+
+// 点击Debug图标事件
+function debugPage() {
+    playSound1();
+    window.location.href = "../advanced/debug.html";
 }
 
 // 点击侧边栏底部按钮事件

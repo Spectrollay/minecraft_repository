@@ -50,7 +50,7 @@ body {
     -webkit-user-select: none;
 }
 
-/*顶部应用栏*/
+/*顶部标题栏*/
 header {
     position: fixed;
     top: 0;
@@ -65,55 +65,61 @@ header {
     z-index: 9;
 }
 
-.header_menu, .header_back, .header_logo, .header_repo {
+/*顶栏元素*/
+.header_menu, .header_back, .header_logo, .header_repo, .header_debug, .header_settings {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
 
-.header_menu:hover, .header_back:hover, .header_repo:hover {
+/*顶栏按钮悬停*/
+.header_menu:hover, .header_back:hover, .header_repo:hover, .header_debug:hover, .header_settings:hover {
     background-color: #F4F6F9;
 }
 
-.header_menu:active, .header_back:active, .header_repo:active {
+/*顶栏按钮激活*/
+.header_menu:active, .header_back:active, .header_repo:active, .header_debug:active, .header_settings:active {
     background-color: #D0D1D4;
 }
 
+/*顶栏左侧按钮*/
 .header_menu, .header_back {
     width: 40px;
     border-right: 2px solid #FFFFFF;
 }
 
-.menu_icon, .repo_icon {
+/*顶栏右侧按钮*/
+.header_repo, .header_debug, .header_settings {
+    width: 40px;
+    border-left: 2px solid #FFFFFF;
+}
+
+/*顶栏按钮图标*/
+.menu_icon, .repo_icon, .debug_icon, .settings_icon {
     height: 32px;
     width: 32px;
 }
 
+/*标题区域*/
 .title_icon {
     height: 26px;
     width: 26px;
+    padding-right: 8px;
 }
 
+/*标题图标*/
 .header_logo {
     flex: 1;
     border-left: 2px solid #A1A3A5;
     border-right: 2px solid #A1A3A5;
 }
 
-.title_icon {
-    padding-right: 8px;
-}
-
+/*标题文字*/
 .header_title {
     height: 38px;
     font-family: "Minecraft Ten", sans-serif;
     font-size: 30px;
-}
-
-.header_repo {
-    width: 40px;
-    border-left: 2px solid #FFFFFF;
 }
 
 /*主体框架*/
@@ -463,10 +469,7 @@ td {
     min-width: 100px;
 }
 
-.info_text {
-    margin-bottom: 0;
-}
-
+/*表格底部信息区域*/
 .info_area {
     display: flex;
     align-items: center;
@@ -477,6 +480,10 @@ td {
 .info_area div {
     width: 100%;
     max-width: 1000px;
+}
+
+.info_text {
+    margin-bottom: 0;
 }
 
 /*dialog弹窗*/
@@ -556,6 +563,11 @@ td {
 
 .dialog_btn {
     width: 100%;
+}
+
+/*Pop弹窗*/
+.pop_area {
+    display: none;
 }
 
 /*页面底部信息*/
