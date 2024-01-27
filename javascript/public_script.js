@@ -212,6 +212,14 @@ function debugPage() {
     }, 600);
 }
 
+// 点击Debug图标事件
+function flagsPage() {
+    playSound1();
+    setTimeout(function () {
+        window.location.href = "../experimental/flags.html";
+    }, 600);
+}
+
 // 点击侧边栏底部按钮事件
 function clickedSidebarBottomBtn() {
     playSound1();

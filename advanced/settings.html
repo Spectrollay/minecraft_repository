@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheet/public_style.css">
+    <link rel="stylesheet" href="../stylesheet/advanced.css">
+    <link rel="icon" href="../images/Settings.png">
     <title>设置</title>
 </head>
 <body>
@@ -12,7 +14,7 @@
     <div id="back" class="header_back" onclick="clickedBack();">
         <img class="back_icon" alt="Back" src="../images/Back.png">
     </div>
-    <div class="header_logo">
+    <div class="header_logo" onclick="scrollToTop();">
         <img class="title_icon" alt="Title Icon" src="../images/Settings.png">
         <span class="header_title">Settings</span>
     </div>
@@ -21,7 +23,28 @@
     </div>
 </header>
 <main id="main">
-
+    <div class="main_setting_title">
+        <div class="main_setting_title_span">设置</div>
+    </div>
+    <div class="setting_title">通用</div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
+    <div class="setting_block">
+        <div class="setting_content">实验性内容</div>
+        <div class="setting_control">
+            <button class="btn normal_btn setting_btn" onclick="playSound1();flagsPage();">查看</button>
+        </div>
+    </div>
+    <div class="setting_title">高级</div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
+    <div class="setting_title">关于</div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
+    <div class="setting_block"></div>
 </main>
 </body>
 <style>

@@ -1,0 +1,49 @@
+main {
+    color: white;
+}
+
+.main_setting_title {
+    font-family: "NotoSans Bold", sans-serif;
+    border-bottom: 2px solid #333334;
+    border-left: 0;
+    border-right: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_setting_title_span {
+    font-size: 24px;
+}
+
+.setting_title {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    min-height: 60px;
+    font-size: 18px;
+}
+
+.setting_block {
+    font-family: "NotoSans Bold", sans-serif;
+    border-top: 2px solid #5A5B5C;
+    border-bottom: 2px solid #333334;
+    border-left: 0;
+    border-right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    min-height: 60px;
+}
+
+.setting_content {
+    flex: 1;
+}
+
+.setting_control {
+}
+
+.setting_btn {
+    width: 100px;
+}
