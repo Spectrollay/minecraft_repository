@@ -51,3 +51,34 @@ main {
 .setting_btn {
     width: 100px;
 }
+
+.setting_block_content {
+    position: relative;
+    display: inline-block;
+}
+
+.tip {
+    visibility: hidden;
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.setting_block_content:hover .tip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon {
+    position: absolute;
+    top: 18px;
+    right: -2px;
+    z-index: 2;
+}
