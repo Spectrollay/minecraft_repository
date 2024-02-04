@@ -37,6 +37,10 @@ main {
     min-height: 60px;
 }
 
+.setting_block_content {
+    margin: 6px 0;
+}
+
 .setting_content {
     flex: 1;
 }
