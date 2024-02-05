@@ -90,7 +90,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 400px;
+    min-width: 360px;
 }
 
 .tab_bar {
