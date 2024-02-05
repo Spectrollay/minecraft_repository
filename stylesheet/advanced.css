@@ -52,12 +52,12 @@ main {
     width: 100px;
 }
 
-.btn_with_tip_cont {
+.btn_with_tooltip_cont {
     position: relative;
     display: inline-block;
 }
 
-.tip {
+.tooltip {
     visibility: hidden;
     background-color: #1F1F1F;
     color: #FFFFFF;
@@ -71,12 +71,12 @@ main {
     transition: opacity 0.3s;
 }
 
-.btn_with_tip_cont:hover .tip {
+.btn_with_tooltip_cont:hover .tooltip {
     visibility: visible;
     opacity: 1;
 }
 
-.icon {
+.key_icon {
     position: absolute;
     top: -2px;
     right: 0;

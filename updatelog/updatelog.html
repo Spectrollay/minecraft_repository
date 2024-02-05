@@ -50,13 +50,15 @@
             <div class="title1">更新历史</div>
             <!-- span>版本类型: Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP</span -->
         </div>
-        <!--        <div class="main">-->
-        <!--            <div class="title2">4.5-Insider_Beta8(4.5.0.9)</div>-->
-        <!--            <div>即将到来</div>-->
-        <!--            <div class="description2">-->
-        <!--                <li>加入了带提示的按钮样式</li>-->
-        <!--            </div>-->
-        <!--        </div>-->
+        <div class="main">
+            <div class="title2">4.5-Insider_Beta8(4.5.0.9)</div>
+            <div>即将到来</div>
+            <div class="description2">
+                <li>加入了带Tooltip的按钮样式</li>
+                <li>将原有的Tooltip重命名为Banner</li>
+                <li>将原有的Dialog重命名为Modal</li>
+            </div>
+        </div>
         <div class="main">
             <div class="title2">4.5-Insider_Beta7(4.5.0.8)</div>
             <div>2024-02-04</div>
@@ -152,7 +154,7 @@
                 <li>加入了表格样式</li>
                 <li>加入了小图标样式</li>
                 <li>加入了带有图标的按钮样式</li>
-                <li>加入了带有图片的dialog弹窗样式</li>
+                <li>加入了带有图片的Modal弹窗样式</li>
                 <li>更新了版本库说明</li>
                 <li>更新了元素选择器</li>
                 <li>为部分按钮加入了text-generation属性,用于控制按钮显示的文字</li>
@@ -226,12 +228,12 @@
             <div class="description2">
                 <li>对部分功能和函数进行了拆分</li>
                 <li>打开更新历史页面时不再会创建新的标签页了</li>
-                <li>向showDisclaimerDialog()和hideDisclaimerDialog()函数加入了异常判定</li>
+                <li>向showDisclaimerModal()和hideDisclaimerModal()函数加入了异常判定</li>
                 <li>修复了部分页面js文件失效的问题</li>
                 <li>修复了一些js运行失败和元素获取失败的问题</li>
                 <li>修复了因异步执行造成的play()方法异常中断的问题</li>
-                <li>修复了hideDisclaimerDialog()函数url为空时的异常问题</li>
-                <li>修复了showDisclaimerDialog()函数向hideDisclaimerDialog()函数传递url参数会导致其无限累加的问题</li>
+                <li>修复了hideDisclaimerModal()函数url为空时的异常问题</li>
+                <li>修复了showDisclaimerModal()函数向hideDisclaimerModal()函数传递url参数会导致其无限累加的问题</li>
             </div>
         </div>
         <div class="main">
@@ -264,10 +266,10 @@
             <div class="description2">
                 <li>加入了两个新的错误页面</li>
                 <li>加入了即将到来页面</li>
-                <li>为dialog弹窗加入了滚动条</li>
+                <li>为Modal弹窗加入了滚动条</li>
                 <li>更新了预览提示弹窗的内容</li>
-                <li>优化了dialog弹窗的布局</li>
-                <li>修复了dialog弹窗有时会内容溢出的问题</li>
+                <li>优化了Modal弹窗的布局</li>
+                <li>修复了Modal弹窗有时会内容溢出的问题</li>
             </div>
         </div>
         <div class="main">
@@ -289,7 +291,7 @@
             <div class="title2">4.1-Preview8</div>
             <div>2023-10-09</div>
             <div class="description2">
-                <li>实现了dialog弹窗</li>
+                <li>实现了Modal弹窗</li>
                 <li>为所有多级页面添加了返回首页按钮</li>
             </div>
         </div>
