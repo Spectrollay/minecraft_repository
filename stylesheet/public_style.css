@@ -371,7 +371,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 /*Banner区域*/
-.banner-area {
+.banner_area {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -422,7 +422,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 /*表格属性*/
-.table-area {
+.table_area {
     width: 100%;
     display: flex;
     align-items: center;

@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="../stylesheet/public_style.css">
     <link rel="stylesheet" href="../stylesheet/advanced.css">
     <link rel="icon" href="../images/Tool.png">
+    <style>
+        .setting_block_content {
+            flex: 1;
+        }
+    </style>
     <title>实验性内容</title>
 </head>
 <body>
@@ -24,7 +29,7 @@
     <div class="main_setting_title">
         <div class="main_setting_title_span">实验性内容</div>
     </div>
-    <div class="banner-area">
+    <div class="banner_area">
         <div class="banner information_banner">
             实验性内容展示的是正在开发中的特性, 这些特性可能在后续的版本中正式加入或发生变动甚至被移除.
             在体验实验性内容时可能会出现一些预料之外的问题, 请及时向我们反馈你的发现和想法.
@@ -57,6 +62,13 @@
         <div class="setting_block_content">
             <span>Tab Bar</span>
             <br>
+            <div class="tab_bar_area">
+                <div class="tab_bar">
+                    <button id="tab1" class="tab_bar_btn active" onclick="selectTab(1);playSound1();">Tab 1</button>
+                    <button id="tab2" class="tab_bar_btn" onclick="selectTab(2);playSound1();">Tab 2</button>
+                    <button id="tab3" class="tab_bar_btn" onclick="selectTab(3);playSound1();">Tab 3</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="setting_block">
@@ -72,8 +84,7 @@
     <div class="setting_block"></div>
 </main>
 </body>
-<style>
-</style>
+<script src="../javascript/advanced.js"></script>
 <script src="../javascript/secondary.js"></script>
 <script src="../javascript/public_script.js"></script>
 </html>
