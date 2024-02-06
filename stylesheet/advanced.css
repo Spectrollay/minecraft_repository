@@ -157,3 +157,7 @@ main {
 .tab_bar_btn.no_active::after {
     height: 4px;
 }
+
+.tab_bar_btn.no_active:active::after {
+    height: 3px;
+}

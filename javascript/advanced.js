@@ -4,6 +4,7 @@ function selectTab(tabNumber) {
         button.classList.add('no_active');
     });
 
-    document.getElementById(`tab${tabNumber}`).classList.add('active');
-    document.getElementById(`tab${tabNumber}`).classList.remove('no_active');
+    let tab_btn = document.getElementById(`tab${tabNumber}`);
+    tab_btn.classList.add('active')
+    tab_btn.classList.remove('no_active');
 }
