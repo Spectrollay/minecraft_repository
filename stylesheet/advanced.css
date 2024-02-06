@@ -131,7 +131,7 @@ main {
     content: "";
     position: absolute;
     width: 20%;
-    height: 2px;
+    height: 3px;
     background-color: white;
     bottom: 0;
     left: 50%;
@@ -151,4 +151,9 @@ main {
 .tab_bar_btn.active::after {
     transform: translateX(-50%) scaleX(1);
     width: 20%;
+}
+
+.tab_bar_btn.no_active:hover::after,
+.tab_bar_btn.no_active::after {
+    height: 4px;
 }
