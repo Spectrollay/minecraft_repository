@@ -54,10 +54,17 @@ links.forEach(function (link) {
     link.draggable = false;
 });
 
+// 禁用右键菜单
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+});
+
+// 输出错误日志
 window.addEventListener("error", function (event) {
     console.error("错误: ", event.message);
 });
 
+// 输出运行日志
 document.addEventListener("DOMContentLoaded", function () {
     console.log("页面加载完成!");
     if (currentURL.startsWith('file:///')) {
