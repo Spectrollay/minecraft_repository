@@ -43,6 +43,17 @@ for (let i = 0; i < linkImgBlack.length; i++) {
     }
 }
 
+// 禁止拖动元素
+const images = document.querySelectorAll("img");
+const links = document.querySelectorAll("a");
+images.forEach(function (image) {
+    image.draggable = false;
+});
+
+links.forEach(function (link) {
+    link.draggable = false;
+});
+
 window.addEventListener("error", function (event) {
     console.error("错误: ", event.message);
 });
@@ -212,7 +223,7 @@ function debugPage() {
     }, 600);
 }
 
-// 点击Debug图标事件
+// 跳转实验性页面
 function flagsPage() {
     playSound1();
     setTimeout(function () {
