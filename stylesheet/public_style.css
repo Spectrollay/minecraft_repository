@@ -40,6 +40,11 @@
     color: inherit;
 }
 
+/* 禁用长按菜单 */
+* {
+    touch-action: manipulation;
+}
+
 /*总体样式*/
 body {
     font-family: "NotoSans Bold", sans-serif;
