@@ -69,6 +69,9 @@
                     <button id="tab3" class="tab_bar_btn no_active" onclick="selectTab(3);">Tab 3</button>
                 </div>
             </div>
+            <div id="content1" class="tab_content active">Content for Tab 1</div>
+            <div id="content2" class="tab_content no_active">Content for Tab 2</div>
+            <div id="content3" class="tab_content no_active">Content for Tab 3</div>
         </div>
     </div>
     <div class="setting_block">
@@ -80,7 +83,14 @@
     <div class="setting_block">
         <div class="setting_block_content">
             <span>Switch</span>
-            <div></div>
+            <div class="switch_content">
+                <div class="switch" id="switch_exp">
+                    <div class="toggle_style left"><img alt="" src="../images/switch_on.png"></div>
+                    <div class="toggle_style right"><img alt="" src="../images/switch_off.png"></div>
+                    <div class="toggle_slider"></div>
+                </div>
+            </div>
+            <div class="switch_status" id="switch_exp_status">开关: 关闭</div>
         </div>
     </div>
     <div class="setting_block">Checkbox</div>

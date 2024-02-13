@@ -110,13 +110,13 @@ main {
     transition: background-color 0.3s;
     padding-bottom: 6px;
     border: 2px solid #1E1E1F;
-    box-shadow: inset 0 -4px #313233, inset 3px 3px #6D6D6E, inset -3px -7px #5A5B5C;
+    box-shadow: inset 0 -4px #313233, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
     position: relative;
 }
 
 .tab_bar_btn:hover {
     background-color: #58585A;
-    box-shadow: inset 0 -4px #313233, inset 3px 3px #79797B, inset -3px -7px #68686A;
+    box-shadow: inset 0 -4px #313233, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
 }
 
 .tab_bar_btn:active {
@@ -124,7 +124,7 @@ main {
     height: 36px;
     padding-bottom: 2px;
     background-color: #313233;
-    box-shadow: inset 3px 3px #5A5B5C, inset -3px -3px #454647;
+    box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
 }
 
 .tab_bar_btn::after {
@@ -144,7 +144,7 @@ main {
     height: 36px;
     padding-bottom: 2px;
     background-color: #313233;
-    box-shadow: inset 3px 3px #5A5B5C, inset -3px -3px #454647;
+    box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
 }
 
 .tab_bar_btn:hover::after,
@@ -160,4 +160,69 @@ main {
 
 .tab_bar_btn.no_active:active::after {
     height: 3px;
+}
+
+.tab_content {
+    display: none;
+}
+
+.tab_content.active {
+    display: block;
+}
+
+/*Switch开关*/
+.switch_content {
+    margin: 6px;
+}
+
+.switch {
+    width: 62px;
+    height: 26px;
+    position: relative;
+    border: 2px solid #1E1E1F;
+    overflow: visible;
+    background: linear-gradient(to right, #3C8527 50%, #8C8D90 50%); /* 左半部分绿色，右半部分灰色 */
+    box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
+}
+
+.toggle_slider {
+    position: absolute;
+    top: -6px;
+    left: -2px;
+    width: 30px;
+    height: 30px;
+    background-color: #D0D1D4;
+    border: 2px solid #1E1E1F;
+    z-index: 1;
+    box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.6), inset -3px -7px rgba(255, 255, 255, 0.4);
+    transition: left 0.2s;
+}
+
+.toggle_slider:hover, .switch:hover .toggle_slider {
+    background-color: #B1B2B5;
+    box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.8), inset -3px -7px rgba(255, 255, 255, 0.6);
+}
+
+.switch.on .toggle_slider {
+    left: 30px;
+}
+
+.toggle_style {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    top: 4px;
+}
+
+.toggle_style.left {
+    left: 6px;
+}
+
+.toggle_style.right {
+    right: 8px;
+}
+
+.toggle_style.left img, .toggle_style.right img {
+    height: 16px;
 }
