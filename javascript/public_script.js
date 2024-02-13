@@ -59,6 +59,11 @@ document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
 });
 
+// 禁用长按菜单
+document.addEventListener('touchstart', function (event) {
+    event.preventDefault();
+}, {passive: false});
+
 // 输出错误日志
 window.addEventListener("error", function (event) {
     console.error("错误: ", event.message);
