@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,15 +10,15 @@
     <!--        -->
     <!--    </style>-->
     <link rel="icon" href="../images/Marketplace.png">
-    <title>演示版 - Minecraft 版本库</title>
+    <title>教育版(预览版) - Minecraft 版本库</title>
 </head>
 
 <body>
 <header>
-    <div id="menu" class="header_menu" onclick="clickedMenu()">
+    <div id="menu" class="header_menu" onclick="clickedMenu();">
         <img class="menu_icon" alt="Menu" src="../images/Menu.png">
     </div>
-    <div class="header_logo" onclick="scrollToTop()">
+    <div class="header_logo" onclick="scrollToTop();">
         <img class="title_icon" alt="Title Icon" src="../images/Marketplace.png"><span
             class="header_title">Repository</span>
     </div>
@@ -36,7 +35,7 @@
         <div class="preview_btns">
             <button id="preview_btn1" class="btn normal_btn preview_btn"
                     onclick="playSound(this);toUpdatelog();"></button>
-            <button id="preview_btn2" class="btn green_btn preview_btn" onclick="playSound(this);toRepo();"></button>
+            <button id="preview_btn2" class="btn green_btn preview_btn" onclick="playSound2(this);toRepo();"></button>
         </div>
     </div>
     <div class="block_spacing"></div>
@@ -46,72 +45,28 @@
     <div class="block_spacing"></div>
     <div class="block">
         <div class="main">
-            <div class="title1">Minecraft Demo</div>
-            <div class="description1">演示版</div>
+            <div class="title1">Education Preview</div>
+            <div class="description1">教育版(预览版)</div>
         </div>
-        <div id="0.2" class="main">
-            <div class="title2">0.2</div>
+        <div id="1.20" class="main">
+            <div class="title2">1.20 - 足迹与故事</div>
             <div class="description2">更新日志:
-                <a class="wiki" href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.2.0"
-                   target="_blank" onclick="playSound1();"></a>
+                <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.20.60.0" target="_blank"
+                   onclick="playSound1();">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
                     <div class="description3">下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android-Demo/0.2/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
-                                onclick="playSound(this);"></button>
-                    </a>
-                </div>
-                <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn9"
                             onclick="playSound(this);"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
-                </div>
-                <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
-                </div>
-            </div>
-        </div>
-        <div id="0.1" class="main">
-            <div class="title2">0.1</div>
-            <div class="description2">更新日志:
-                <a class="wiki" href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.1.0"
-                   target="_blank" onclick="playSound1();"></a>
-            </div>
-            <div class="download_group">
-                <div class="download_line">
-                    <div class="description3">下载</div>
-                </div>
-                <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android-Demo/0.1/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn9"
-                                onclick="playSound(this);"></button>
-                    </a>
-                </div>
-                <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn4"
+                    <button class="btn red_btn download_btn_large" text-generation="download_btn4"
                             onclick="playSound(this);"></button>
                     <!--                    </a>-->
                 </div>
@@ -155,9 +110,8 @@
         <button class="btn sidebar_btn back_to_main" onclick="jumpToPage('../home.html');"></button>
     </div>
     <div class="sidebar_list">
-        <div class="sidebar_item">演示版</div>
-        <a class="sidebar_item" href="#0.2">0.2</a>
-        <a class="sidebar_item" href="#0.1">0.1</a>
+        <div class="sidebar_item">教育版(预览版)</div>
+        <a class="sidebar_item" href="#1.20">1.20</a>
     </div>
     <div class="sidebar_info">
         <div id="sidebar_bottom_title" class="sidebar_detail_title"></div>

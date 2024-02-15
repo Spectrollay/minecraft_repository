@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-    showAlertModal();
+    // showAlertModal();
 });
 
 // 预览提示弹窗
-function showAlertModal() {
-    const overlay = document.getElementById("overlay");
-    const modal = document.getElementById("alert_modal");
-    overlay.style.display = "block";
-    modal.style.display = "block";
-    console.log("显示预览提示弹窗");
-}
+// function showAlertModal() {
+//     const overlay = document.getElementById("overlay");
+//     const modal = document.getElementById("alert_modal");
+//     overlay.style.display = "block";
+//     modal.style.display = "block";
+//     console.log("显示提示弹窗");
+// }
 
 function hideAlertModal(button) {
     const overlay = document.getElementById("overlay");
@@ -17,5 +17,5 @@ function hideAlertModal(button) {
     playSound(button);
     overlay.style.display = "none";
     modal.style.display = "none";
-    console.log("关闭预览提示弹窗");
+    console.log("关闭提示弹窗");
 }

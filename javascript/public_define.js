@@ -1,7 +1,3 @@
-let previousTipIndex = -2;
-let currentTipIndex = -1;
-const tipElement = document.getElementById("tip");
-
 const texts = {
     preview_title: "欢迎观看设计预览!",
     preview_detail1: "我们想听听你对这个新设计的意见.",
@@ -9,7 +5,7 @@ const texts = {
     preview_btn1: "更新历史",
     preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"link\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.5.1.2.Beta<br>Server Version: 4.0<br>Updated: 2024-02-14-02",
+    page_info_detail1: "Version: 4.5.1.4.Beta<br>Server Version: 4.0<br>Updated: 2024-02-15-01",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     page_info_title3: "MADE WITH ❤️ IN CHINA",
@@ -31,6 +27,9 @@ const texts = {
     download_btn9: "<img class=\"link_img_black\" src=\"\" alt=\"link\"/>外部链接",
 };
 
+let previousTipIndex = -2;
+let currentTipIndex = -1;
+const tipElement = document.getElementById("tip");
 const tipsWithWeights = [
     {
         text: "<span>本站有<a href=\"https://spectrollay.github.io/minecraft_repository/home.html\" target=\"_blank\" onclick=\"playSound1();\">国外源</a>和<a href=\"https://spectrollay.gitee.io/minecraft_repository/home.html\" target=\"_blank\" onclick=\"playSound1();\">国内源</a>,如遇加载问题可以切换线路访问.</span>",
@@ -102,6 +101,13 @@ const tipsWithWeights = [
     {text: "这是一条非非非非常稀有的提示<br>看到就赶紧去买彩票吧!", weight: 0.001},
     {text: "这是一条永远不会出现的提示.", weight: 0}
 ];
+
+console.log("LocalStorage数据");
+for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    console.log(key + ': ' + value);
+}
 
 console.log("加载常量和变量完成");
 

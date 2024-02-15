@@ -64,6 +64,49 @@ document.addEventListener('touchstart', function (event) {
     event.preventDefault();
 });
 
+// 兼容性检测
+const compatibilityModal = `
+        <div id="compatibility_modal" class="modal_area">
+            <div class="modal">
+                <div class="modal_title">兼容性提示</div>
+                <div class="modal_content">
+                    <p>不同浏览器之间存在些许差异,为确保你的使用体验,我们推荐通过以下浏览器或内核的最新发行版访问本站以获得完全的特性支持:
+                        Edge / Chrome / Firefox / Safari / WebView Android</p>
+                </div>
+                <div class="modal_btn_area">
+                    <button class="btn red_btn modal_btn" onclick="neverShowCompatibilityModalAgain(this);">不再显示</button>
+                    <button class="btn green_btn modal_btn" onclick="hideCompatibilityModal(this);">我知道了</button>
+                </div>
+            </div>
+        </div>`;
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("浏览器UA: ", navigator.userAgent)
+    if (!localStorage.getItem('neverShowCompatibilityModalAgain') || localStorage.getItem('neverShowCompatibilityModalAgain') === 'false') {
+        const overlay = document.getElementById("overlay");
+        const modal = document.getElementById("compatibility_modal");
+        overlay.style.display = "block";
+        modal.style.display = "block";
+        console.log("显示兼容性提示弹窗");
+    }
+});
+
+function hideCompatibilityModal(button) {
+    const overlay = document.getElementById("overlay");
+    const modal = document.getElementById("compatibility_modal");
+    playSound(button);
+    overlay.style.display = "none";
+    modal.style.display = "none";
+    console.log("关闭兼容性提示弹窗");
+}
+
+function neverShowCompatibilityModalAgain(button) {
+    hideCompatibilityModal(button);
+    localStorage.setItem('neverShowCompatibilityModalAgain', 'true');
+    console.log("关闭兼容性提示弹窗且不再提示");
+}
+
+document.body.insertAdjacentHTML('afterbegin', compatibilityModal);
+
 // 输出错误日志
 window.addEventListener("error", function (event) {
     console.error("错误: ", event.message);

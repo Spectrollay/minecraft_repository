@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <link rel="icon" href="./images/Marketplace.png">
     <title>Minecraft 版本库</title>
 </head>
+
 <body>
 <header>
     <div id="menu" class="header_menu" onclick="clickedMenu();">
@@ -316,6 +318,17 @@
         <div class="main edition_block" onclick="jumpToPage('./home/education_edition.html');"></div>
     </div>
     <div class="block_spacing"></div>
+    <div id="education_edition_preview" class="block">
+        <div class="main">
+            <div class="title1">Education Preview</div>
+            <div class="description1">
+                <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%88" target="_blank"
+                   onclick="playSound1();">教育版(预览版)</a>
+            </div>
+        </div>
+        <div class="main edition_block" onclick="jumpToPage('./home/education_edition_preview.html');"></div>
+    </div>
+    <div class="block_spacing"></div>
     <div id="trial" class="block">
         <div class="main">
             <div class="title1">Minecraft Trial</div>
@@ -421,6 +434,7 @@
         <a class="sidebar_item" href="#bedrock_edition">基岩版</a>
         <a class="sidebar_item" href="#pocket_edition">携带版</a>
         <a class="sidebar_item" href="#education_edition">教育版</a>
+        <a class="sidebar_item" href="#education_edition_preview">教育版(预览版)</a>
         <a class="sidebar_item" href="#trial">试玩版</a>
         <a class="sidebar_item" href="#demo">演示版</a>
         <a class="sidebar_item" href="#more_edition">更多版本</a>
@@ -439,21 +453,21 @@
 <!--除了顶栏-->
 <div id="overlay_main" class="overlay_main" onclick="clickedOverlay();"></div>
 <!--全屏-->
-<!--<div id="overlay" class="overlay"></div>-->
+<div id="overlay" class="overlay"></div>
 
 <!--提示弹窗-->
-<!--<div id="alert_modal" class="modal_area">-->
-<!--    <div class="modal">-->
-<!--        <div class="modal_title">内部测试提示</div>-->
-<!--        <div class="modal_content">-->
-<!--            <p>欢迎参加内部测试!</p>-->
-<!--            <p>发现问题或有好的建议欢迎及时向我们提出.</p>-->
-<!--        </div>-->
-<!--        <div class="modal_btn_area">-->
-<!--            <button class="btn green_btn modal_btn" onclick="hideAlertModal(this);">我知道了</button>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div id="alert_modal" class="modal_area">
+    <div class="modal">
+        <div class="modal_title">提示</div>
+        <div class="modal_content">
+            <p>提示文本</p>
+        </div>
+        <div class="modal_btn_area">
+            <button class="btn red_btn modal_btn" onclick="hideAlertModal(this);">我不知道</button>
+            <button class="btn green_btn modal_btn" onclick="hideAlertModal(this);">我知道了</button>
+        </div>
+    </div>
+</div>
 
 <!--音效-->
 <!--<audio id="click" preload="auto">-->
@@ -464,10 +478,12 @@
 <!--</audio>-->
 
 </body>
+
 <script src="./javascript/home.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/public_script.js"></script>
 <!--<script>-->
 <!--    -->
 <!--</script>-->
+
 </html>
