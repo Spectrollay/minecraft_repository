@@ -52,39 +52,6 @@ main {
     width: 100px;
 }
 
-/*带有Tooltip的按钮样式*/
-.btn_with_tooltip_cont {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip {
-    visibility: hidden;
-    background-color: #1F1F1F;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    top: -30px;
-    right: 10px;
-    opacity: 0;
-    transition: opacity 0.6s;
-}
-
-.btn_with_tooltip_cont:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-.key_icon {
-    position: absolute;
-    top: -2px;
-    right: 0;
-    z-index: 2;
-    height: 20px;
-}
-
 /*Tab Bar组件*/
 .tab_bar_area {
     display: flex;
@@ -176,35 +143,35 @@ main {
 }
 
 .switch {
-    width: 62px;
-    height: 26px;
+    width: 56px;
+    height: 24px;
     position: relative;
     border: 2px solid #1E1E1F;
     overflow: visible;
     background: linear-gradient(to right, #3C8527 50%, #8C8D90 50%); /* 左半部分绿色，右半部分灰色 */
-    box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px rgba(255, 255, 255, 0.1);
 }
 
 .toggle_slider {
     position: absolute;
     top: -6px;
     left: -2px;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     background-color: #D0D1D4;
     border: 2px solid #1E1E1F;
     z-index: 1;
-    box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.6), inset -3px -7px rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
     transition: left 0.2s;
 }
 
 .toggle_slider:hover, .switch:hover .toggle_slider {
     background-color: #B1B2B5;
-    box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.8), inset -3px -7px rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.8), inset -2px -6px rgba(255, 255, 255, 0.6);
 }
 
 .switch.on .toggle_slider {
-    left: 30px;
+    left: 27px;
 }
 
 .toggle_style {
@@ -212,15 +179,15 @@ main {
     width: 16px;
     height: 16px;
     background-color: transparent;
-    top: 4px;
+    top: 3px;
 }
 
 .toggle_style.left {
-    left: 6px;
+    left: 5px;
 }
 
 .toggle_style.right {
-    right: 8px;
+    right: 6px;
 }
 
 .toggle_style.left img, .toggle_style.right img {

@@ -361,6 +361,39 @@ main::-webkit-scrollbar-thumb {
     padding-right: 6px;
 }
 
+/*带有Tooltip的按钮样式*/
+.btn_with_tooltip_cont {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+.btn_with_tooltip_cont:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.key_icon {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    z-index: 2;
+    height: 20px;
+}
+
 /*主体块*/
 .block {
     margin: 0 20px;

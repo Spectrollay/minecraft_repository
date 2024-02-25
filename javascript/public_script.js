@@ -1,8 +1,5 @@
 let sidebarOpen = false;
 let overlayShow = false;
-let soundClickPath;
-let soundButtonPath;
-let updatelogPath;
 
 const startTime = new Date().getTime();
 const audioInstances = [];
@@ -10,38 +7,26 @@ const main = document.getElementById("main");
 
 const currentURL = window.location.href;
 const currentPagePath = window.location.pathname;
+const parts = currentPagePath.split('/').filter(Boolean);
+const rootPath = '/' + (parts.length > 0 ? parts[0] + '/' : '');
 const linkImg = document.getElementsByClassName('link_img');
 const linkImgBlack = document.getElementsByClassName('link_img_black');
-console.log(currentPagePath)
 
-if (currentPagePath.indexOf('/home.html') !== -1) {
-    soundClickPath = './sounds/click.ogg';
-    soundButtonPath = './sounds/button.ogg';
-    updatelogPath = './updatelog/updatelog.html';
-} else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/default/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1) || (currentPagePath.indexOf('/advanced/') !== -1) || (currentPagePath.indexOf('/experimental/') !== -1)) {
-    soundClickPath = '../sounds/click.ogg';
-    soundButtonPath = '../sounds/button.ogg';
-    updatelogPath = '../updatelog/updatelog.html';
-}
+const soundClickPath = rootPath + 'sounds/click.ogg';
+const soundButtonPath = rootPath + 'sounds/button.ogg';
+const updatelogPath = rootPath + 'updatelog/updatelog.html';
+
+console.log("根路径: ", rootPath);
+console.log("当前路径: ", currentPagePath);
 
 for (let i = 0; i < linkImg.length; i++) {
     const linkImgList = linkImg[i];
-
-    if (currentPagePath.indexOf('/home.html') !== -1) {
-        linkImgList.src = "./images/ExternalLink_white.png";
-    } else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/default/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1) || (currentPagePath.indexOf('/advanced/') !== -1) || (currentPagePath.indexOf('/experimental/') !== -1)) {
-        linkImgList.src = "../images/ExternalLink_white.png";
-    }
+    linkImgList.src = rootPath + "images/ExternalLink_white.png";
 }
 
 for (let i = 0; i < linkImgBlack.length; i++) {
     const linkImgList = linkImgBlack[i];
-
-    if (currentPagePath.indexOf('/home.html') !== -1) {
-        linkImgList.src = "./images/ExternalLink.png";
-    } else if ((currentPagePath.indexOf('/home/') !== -1) || (currentPagePath.indexOf('/updatelog/') !== -1)) {
-        linkImgList.src = "../images/ExternalLink.png";
-    }
+    linkImgList.src = rootPath + "images/ExternalLink.png";
 }
 
 // 禁止拖动元素
