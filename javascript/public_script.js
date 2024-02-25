@@ -12,6 +12,7 @@ const currentURL = window.location.href;
 const currentPagePath = window.location.pathname;
 const linkImg = document.getElementsByClassName('link_img');
 const linkImgBlack = document.getElementsByClassName('link_img_black');
+console.log(currentPagePath)
 
 if (currentPagePath.indexOf('/home.html') !== -1) {
     soundClickPath = './sounds/click.ogg';
