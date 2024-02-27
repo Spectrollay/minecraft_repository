@@ -438,6 +438,10 @@ main::-webkit-scrollbar-thumb {
     box-shadow: inset 0 -2px 0 0 #FFFFFF;
 }
 
+.top_banner {
+    margin-bottom: 0;
+}
+
 .information_banner {
     background-color: #2E6BE5;
 }

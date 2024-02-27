@@ -3,9 +3,9 @@ const texts = {
     preview_detail1: "我们想听听你对这个新设计的意见.",
     preview_detail2: "请注意: 新设计还未完工,可能会缺失部分功能.",
     preview_btn1: "更新历史",
-    preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"link\"/>提出反馈",
+    preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.5.1.7.Beta<br>Server Version: 4.0<br>Updated: 2024-02-25-03",
+    page_info_detail1: "Version: 4.5.1.9.Beta<br>Server Version: 4.0<br>Updated: 2024-02-27-12",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     page_info_title3: "MADE WITH ❤️ IN CHINA",
@@ -16,7 +16,7 @@ const texts = {
     sidebar_bottom_btn: "官方网站",
     minecraft_wiki: "中文Minecraft Wiki",
     download_btn1: "官方原版",
-    download_btn1_1: "<img class=\"link_img_black\" src=\"\" alt=\"link\"/>官方原版(外部链接)",
+    download_btn1_1: "<img class=\"link_img_black\" src=\"\" alt=\"\"/>官方原版(外部链接)",
     download_btn2: "中文译名修正",
     download_btn3: "去验证版",
     download_btn4: "默认云盘",
@@ -24,7 +24,7 @@ const texts = {
     download_btn6: "123云盘",
     download_btn7: "天翼云盘",
     download_btn8: "百度云盘",
-    download_btn9: "<img class=\"link_img_black\" src=\"\" alt=\"link\"/>外部链接",
+    download_btn9: "<img class=\"link_img_black\" src=\"\" alt=\"\"/>外部链接",
 };
 
 let previousTipIndex = -2;
@@ -47,6 +47,7 @@ const tipsWithWeights = [
         text: "<span>也来看看我们的<a href=\"https://github.com/Spectrollay/mclang_cn\" target=\"_blank\" onclick=\"playSound1();\">中文译名修正项目</a>!</span>",
         weight: 3
     },
+    {text: "Made by Spectrollay!", weight: 3},
     {text: "← 点击这里可以切换提示 →", weight: 3},
     {text: "↑ 点击标题栏可以快速回到顶部 ↑", weight: 3},
     {text: "本站指向的站外内容可能不受保障!", weight: 3},
@@ -64,8 +65,10 @@ const tipsWithWeights = [
     {text: "我们保留了一些bug,这样你才知道你在使用的是Minecraft 版本库.", weight: 2},
     {text: "你知道吗,版本库界面的构建仅花费了两天时间.", weight: 2},
     {text: "你知道吗,这个项目其实始于2020年.", weight: 2},
+    {text: "现在你看到了一条提示.", weight: 2},
     {text: "猜一猜下一条出现的提示是什么?", weight: 2},
     {text: "猜一猜下一次看到这条提示是什么时候?", weight: 2},
+    {text: "Minecraft, 启动!", weight: 2},
     {text: "看到这条提示就去启动Minecraft吧!", weight: 2},
     {text: "也去玩玩Minceraft吧!", weight: 2},
     {text: "也去玩玩饥荒吧!", weight: 2},
@@ -74,11 +77,13 @@ const tipsWithWeights = [
     {text: "不要这样看着人家,会害羞的啦!", weight: 2},
     {text: "今天是一个不错的日子,你说对吗?", weight: 2},
     {text: "多抬头看看天空吧!", weight: 2},
+    {text: "天空即为极限!", weight: 2},
     {text: "记得要天天开心哦!", weight: 2},
     {text: "是谁把我放在这的?", weight: 2},
     {text: "很高兴看到你!", weight: 2},
     {text: "种一棵树!", weight: 2},
     {text: "劳逸结合!", weight: 2},
+    {text: "持续支持中!", weight: 2},
     {text: "Hello world!", weight: 2},
     {text: "95% OreUI!", weight: 2},
     {text: "90% bug free!", weight: 2},
@@ -86,6 +91,7 @@ const tipsWithWeights = [
     {text: "Hmmmrmm!", weight: 2},
     {text: "Nooooooooooooo!", weight: 2},
     {text: "Everybody do the Leif!", weight: 2},
+    {text: "What DOES the fox say?", weight: 2},
     {text: "/give @a hugs 64", weight: 2},
     {text: "P不包含NP!", weight: 2},
     {text: "Technoblade never dies!", weight: 2},
@@ -106,7 +112,7 @@ console.log("LocalStorage数据");
 for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     const value = localStorage.getItem(key);
-    console.log(key + ': ' + value);
+    console.log("[" + [i + 1] + "]" + " " + key + ': ' + value);
 }
 
 console.log("加载常量和变量完成");
@@ -180,6 +186,16 @@ if (tipElement) {
     console.log("未发现提示框");
 }
 
+if (tipElement) {
+    tipElement.addEventListener("click", (event) => {
+        if (event.target.tagName === "A") {
+            console.log("检测到点击了链接,不执行切换提示操作");
+        } else {
+            tipElement.innerHTML = getRandomTip();
+        }
+    });
+}
+
 function getRandomTip() {
     const totalWeight = tipsWithWeights.reduce((acc, tip) => acc + tip.weight, 0);
     console.log("总权重:" + totalWeight + ",上次选中值:" + previousTipIndex + ",当前选中值:" + currentTipIndex);
@@ -214,11 +230,3 @@ function getRandomTip() {
         }
     }
 }
-
-tipElement.addEventListener("click", (event) => {
-    if (event.target.tagName === "A") {
-        console.log("检测到点击了链接,不执行切换提示操作");
-    } else {
-        tipElement.innerHTML = getRandomTip();
-    }
-});
