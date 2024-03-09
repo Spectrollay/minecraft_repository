@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheet/public_style.css">
     <style>
+        .preview_block {
+            border-top: 0;
+        }
+
         .block {
             margin: 20px;
         }
@@ -36,10 +40,28 @@
 </header>
 <main id="main">
     <div id="main_top"></div>
+    <div class="main preview_block">
+        <div class="preview_title">推出全新的开发日志页面!</div>
+        <div class="preview_detail">我们正在对开发日志页面的体验进行更新.</div>
+        <div class="preview_btns">
+            <button class="btn normal_btn preview_btn" onclick="playSound(this);toNewDesignUpdatelog();">前往新设计
+            </button>
+            <button class="btn green_btn preview_btn" onclick="playSound(this);toRepo();">提出反馈</button>
+        </div>
+    </div>
     <div class="block">
         <div class="main">
             <div class="title1">更新历史</div>
             <!-- span>版本类型: Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP</span -->
+        </div>
+        <div class="main">
+            <div class="title2">4.5.1-RC1(4.5.1.13)</div>
+            <div>2024-03-09</div>
+            <div class="description2">
+                <p>本版本不包含4.6的新特性</p>
+                <li>更新历史页面新增预览提示</li>
+                <li>修复了顶栏的显示问题</li>
+            </div>
         </div>
         <div class="main">
             <div class="title2">4.5.1-Pre1(4.5.1.12)</div>

@@ -7,6 +7,7 @@ const main = document.getElementById("main");
 
 const currentURL = window.location.href;
 const currentPagePath = window.location.pathname;
+const hostPath = window.location.origin;
 const parts = currentPagePath.split('/').filter(Boolean);
 const rootPath = '/' + (parts.length > 0 ? parts[0] + '/' : '');
 const linkImg = document.getElementsByClassName('link_img');
@@ -276,6 +277,12 @@ function flagsPage() {
 function clickedSidebarBottomBtn() {
     playSound1();
     window.open("https://github.com/Spectrollay/minecraft_kit");
+}
+
+function toNewDesignUpdatelog() {
+    setTimeout(function () {
+        window.location.href = hostPath + "/minecraft_repository_test/updatelog/";
+    }, 600);
 }
 
 // 跳转链接

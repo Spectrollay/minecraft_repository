@@ -97,7 +97,7 @@ header {
 /*顶栏右侧按钮*/
 .header_repo, .header_debug, .header_settings {
     width: 40px;
-    border-left: 2px solid #FFFFFF;
+    border-left: 2px solid #A1A3A5;
 }
 
 /*顶栏按钮图标*/
@@ -117,7 +117,7 @@ header {
 .header_logo {
     flex: 1;
     border-left: 2px solid #A1A3A5;
-    border-right: 2px solid #A1A3A5;
+    border-right: 2px solid #FFFFFF;
 }
 
 /*标题文字*/
