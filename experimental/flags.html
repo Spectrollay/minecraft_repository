@@ -17,11 +17,11 @@
 
 <body>
 <header>
-    <div id="back" class="header_back" onclick="clickedBack();">
+    <div class="header_back" id="back" onclick="clickedBack();">
         <img class="back_icon" alt="Back" src="../images/Back.png">
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img class="title_icon" alt="Title Icon" src="../images/Tool.png">
+        <img alt="Title Icon" class="title_icon" src="../images/Tool.png">
         <span class="header_title">Experiments</span>
     </div>
 </header>
@@ -32,80 +32,426 @@
     </div>
     <div class="banner_area">
         <div class="banner information_banner">
-            实验性内容展示的是正在开发中的特性, 这些特性可能在后续的版本中正式加入或发生变动甚至被移除.
+            实验性内容展示的是正在开发中的特性, 这些特性可能在后续的版本中正式加入或发生变动甚至被移除.<br>
             在体验实验性内容时可能会出现一些预料之外的问题, 请及时向我们反馈你的发现和想法.
         </div>
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <span>Button with Tooltip</span>
+            <div>Badge</div>
             <br>
+            <div class="badge_area">
+                <div class="badge green_badge"></div>
+                <div>Green Badge</div>
+            </div>
+            <br>
+            <div class="badge_area">
+                <div class="badge yellow_badge"></div>
+                <div>Yellow Badge</div>
+            </div>
+            <br>
+            <div class="badge_area">
+                <div class="badge blue_badge"></div>
+                <div>Blue Badge</div>
+            </div>
+            <br>
+            <div class="badge_area">
+                <div class="badge red_badge"></div>
+                <div>Red Badge</div>
+            </div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Banner</div>
+            <br>
+            <div class="banner_area">
+                <div class="banner neutral_banner">Neutral Banner</div>
+            </div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Button with Tooltip</div>
+            <br>
+            <div>Normal Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn normal_btn btn_with_tooltip" onclick="playSound(this);">Button1</button>
                 <div class="tooltip">Information1</div>
-                <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
             <br>
+            <br>
+            <div>Green Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn green_btn btn_with_tooltip" onclick="playSound(this);">Button2</button>
                 <div class="tooltip">Information2</div>
-                <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
             <br>
+            <br>
+            <div>Red Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn red_btn btn_with_tooltip" onclick="playSound(this);">Button3</button>
                 <div class="tooltip">Information3</div>
-                <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <span>Tab Bar</span>
             <br>
-            <div class="tab_bar_area">
-                <div class="tab_bar">
-                    <button id="tab1" class="tab_bar_btn active" onclick="selectTab(1);">Tab 1</button>
-                    <button id="tab2" class="tab_bar_btn no_active" onclick="selectTab(2);">Tab 2</button>
-                    <button id="tab3" class="tab_bar_btn no_active" onclick="selectTab(3);">Tab 3</button>
-                </div>
+            <br>
+            <div>Disabled Button</div>
+            <div class="btn_with_tooltip_cont">
+                <button class="btn disabled_btn btn_with_tooltip" onclick="playSound(this);">Button4</button>
+                <div class="tooltip">Information4</div>
+                <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
-            <div id="content1" class="tab_content active">Content for Tab 1</div>
-            <div id="content2" class="tab_content no_active">Content for Tab 2</div>
-            <div id="content3" class="tab_content no_active">Content for Tab 3</div>
         </div>
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <span>Dropdown List</span>
+            <div>Checkbox</div>
             <div></div>
         </div>
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <span>Switch</span>
-            <div class="switch_content">
-                <div class="switch" id="switch_exp">
-                    <div class="toggle_style left"><img alt="" src="../images/switch_on.png"></div>
-                    <div class="toggle_style right"><img alt="" src="../images/switch_off.png"></div>
-                    <div class="toggle_slider"></div>
-                </div>
-            </div>
-            <div class="switch_status" id="switch_exp_status">开关: 关闭</div>
+            <div>Divider</div>
+            <div></div>
         </div>
     </div>
-    <div class="setting_block">Checkbox</div>
-    <div class="setting_block">Radio Group</div>
-    <div class="setting_block">Slider</div>
-    <div class="setting_block">Text Field</div>
-    <div class="setting_block"></div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Dropdown List</div>
+            <div></div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Expandable Card</div>
+            <br>
+            <div>Expandable Card with One Content Open</div>
+            <br>
+            <div class="expandable_card_group">
+                <div class="expandable_card_area" id="expandable_card_area_1">
+                    <div class="expandable_card expanded" onclick="playSound1();">
+                        <div class="expandable_card_text_area">
+                            <div class="expandable_card_text">
+                                <div class="expandable_card_text_title">Card Title</div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_image_area"><img class="expandable_card_image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="expandable_card_down_area">
+                        <div class="expandable_card_down">
+                            <div class="expandable_card_down_content">Card Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>Expandable Card with One Content Close</div>
+            <br>
+            <div class="expandable_card_group">
+                <div class="expandable_card_area" id="expandable_card_area_2">
+                    <div class="expandable_card no_expanded" onclick="playSound1();">
+                        <div class="expandable_card_text_area">
+                            <div class="expandable_card_text">
+                                <div class="expandable_card_text_title">Card Title</div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_image_area"><img class="expandable_card_image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="expandable_card_down_area">
+                        <div class="expandable_card_down">
+                            <div class="expandable_card_down_content">Card Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>Expandable Card with Contents</div>
+            <br>
+            <div class="expandable_card_group">
+                <div class="expandable_card_area" id="expandable_card_area_3">
+                    <div class="expandable_card expanded" onclick="playSound1();">
+                        <div class="expandable_card_text_area">
+                            <div class="expandable_card_text">
+                                <div class="expandable_card_text_title">Card Title</div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_image_area"><img class="expandable_card_image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="expandable_card_down_area">
+                        <div class="expandable_card_down">
+                            <div class="expandable_card_down_content">Card Content 1</div>
+                            <div class="expandable_card_down_br"></div>
+                            <div class="expandable_card_down_content">Card Content 2</div>
+                            <div class="expandable_card_down_br"></div>
+                            <div class="expandable_card_down_content">Card Content 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>Expandable Card Group</div>
+            <br>
+            <div class="expandable_card_group">
+                <div class="expandable_card_area" id="expandable_card_area_4">
+                    <div class="expandable_card expanded" onclick="playSound1();">
+                        <div class="expandable_card_text_area">
+                            <div class="expandable_card_text">
+                                <div class="expandable_card_text_title">Card Title 1</div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_image_area"><img class="expandable_card_image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="expandable_card_down_area">
+                        <div class="expandable_card_down">
+                            <div class="expandable_card_down_content">Card Content 1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="expandable_card_area" id="expandable_card_area_5">
+                    <div class="expandable_card no_expanded" onclick="playSound1();">
+                        <div class="expandable_card_text_area">
+                            <div class="expandable_card_text">
+                                <div class="expandable_card_text_title">Card Title 2</div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_image_area"><img class="expandable_card_image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="expandable_card_down_area">
+                        <div class="expandable_card_down">
+                            <div class="expandable_card_down_content">Card Content 2</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="expandable_card_area" id="expandable_card_area_6">
+                    <div class="expandable_card no_expanded" onclick="playSound1();">
+                        <div class="expandable_card_text_area">
+                            <div class="expandable_card_text">
+                                <div class="expandable_card_text_title">Card Title 3</div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_image_area"><img class="expandable_card_image" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="expandable_card_down_area">
+                        <div class="expandable_card_down">
+                            <div class="expandable_card_down_content">Card Content 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Expandable List</div>
+            <div></div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Radio Group</div>
+            <div></div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Slider</div>
+            <br>
+            <div>Range Slider with Initial Value</div>
+            <div class="slider_content" id="range_slider_1">
+                <div class="slider range_slider"
+                     data-slider='{"minValue":0,"maxValue":100,"segments":null,"initialValue":66.66}'>
+                    <div class="slider_process"></div>
+                    <div class="slider_handle smooth_handle" id="smoothHandle"></div>
+                    <div class="slider_tooltip smooth_tooltip" id="smoothTooltip">0.00</div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>Range Slider with Customized Interval</div>
+            <div class="slider_content" id="range_slider_2">
+                <div class="slider range_slider"
+                     data-slider='{"minValue": 20, "maxValue": 60, "segments": null, "initialValue": null}'>
+                    <div class="slider_process"></div>
+                    <div class="slider_handle smooth_handle" id="smoothHandle2"></div>
+                    <div class="slider_tooltip smooth_tooltip" id="smoothTooltip2">0.00</div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>Disabled Range Slider</div>
+            <br>
+            <br>
+            <div>Set Slider with Initial Value</div>
+            <div class="slider_content" id="set_slider_1">
+                <div class="slider set_slider"
+                     data-slider='{"minValue": 0, "maxValue": 100, "segments": 5, "initialValue": 40}'>
+                    <div class="slider_process"></div>
+                    <div class="slider_handle segmented_handle" id="segmentedHandle"></div>
+                    <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip">0</div>
+                    <div class="slider_segment" style="display: none"></div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>Set Slider with Customized Interval</div>
+            <div class="slider_content" id="set_slider_2">
+                <div class="slider set_slider"
+                     data-slider='{"minValue": 50, "maxValue": 60, "segments": 4, "initialValue": null}'>
+                    <div class="slider_process"></div>
+                    <div class="slider_handle segmented_handle" id="segmentedHandle2"></div>
+                    <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip2">0</div>
+                    <div class="slider_segment" style="display: none"></div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>Disabled Set Slider</div>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Switch</div>
+            <br>
+            <div>Normal Switch 1</div>
+            <div class="switch_content">
+                <div class="switch normal_switch off" id="switch_exp1">
+                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
+                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
+                    <div class="switch_slider can_click"></div>
+                </div>
+            </div>
+            <div id="switch_status_exp1">Toggle: Close</div>
+            <br>
+            <div>Normal Switch 2</div>
+            <div class="switch_content">
+                <div class="switch normal_switch on" id="switch_exp2">
+                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
+                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
+                    <div class="switch_slider can_click"></div>
+                </div>
+            </div>
+            <div id="switch_status_exp2">Toggle: Open</div>
+            <br>
+            <div>Disabled Switch 1</div>
+            <div class="switch_content">
+                <div class="switch disabled_switch off" id="switch_exp3">
+                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
+                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
+                    <div class="switch_slider can_click"></div>
+                </div>
+            </div>
+            <div id="switch_status_exp3">Toggle: Close</div>
+            <br>
+            <div>Disabled Switch 2</div>
+            <div class="switch_content">
+                <div class="switch disabled_switch on" id="switch_exp4">
+                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
+                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
+                    <div class="switch_slider can_click"></div>
+                </div>
+            </div>
+            <div id="switch_status_exp4">Toggle: Open</div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Tab Bar</div>
+            <br>
+            <div>Normal Tab Bar</div>
+            <div class="tab_bar_area">
+                <div class="tab_bar">
+                    <button class="tab_bar_btn active" id="tab1" onclick="selectTab(1);">Tab 1</button>
+                    <button class="tab_bar_btn no_active" id="tab2" onclick="selectTab(2);">Tab 2</button>
+                    <button class="tab_bar_btn no_active" id="tab3" onclick="selectTab(3);">Tab 3</button>
+                </div>
+            </div>
+            <div class="tab_content active" id="content1">Content for Tab 1<br>content 1 line 2<br>content 1 line 3
+            </div>
+            <div class="tab_content no_active" id="content2">Content for Tab 2<br>content 2 line 2<br>content 2 line 3
+            </div>
+            <div class="tab_content no_active" id="content3">Content for Tab 3<br>content 3 line 2<br>content 3 line 3
+            </div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Tag</div>
+            <br>
+            <div>Black Tag</div>
+            <div class="tag_area">
+                <div class="tag_description">
+                    <span class="tag black_tag">Black Tag</span>
+                    This is description.
+                </div>
+            </div>
+            <br>
+            <div>Green Tag</div>
+            <div class="tag_area">
+                <div class="tag_description">
+                    <span class="tag green_tag">Green Tag</span>
+                    This is description.
+                </div>
+            </div>
+            <br>
+            <div>Blue Tag</div>
+            <div class="tag_area">
+                <div class="tag_description">
+                    <span class="tag blue_tag">Blue Tag</span>
+                    This is description.
+                </div>
+            </div>
+            <br>
+            <div>Yellow Tag</div>
+            <div class="tag_area">
+                <div class="tag_description">
+                    <span class="tag yellow_tag">Yellow Tag</span>
+                    This is description.
+                </div>
+            </div>
+            <br>
+            <div>Red Tag</div>
+            <div class="tag_area">
+                <div class="tag_description">
+                    <span class="tag red_tag">Red Tag</span>
+                    This is description.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="setting_block">
+        <div class="setting_block_content">
+            <div>Text Field</div>
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <div class="page_info"><br></div>
+        <div class="page_info_title" id="page_info_title1"></div>
+        <div class="page_info" id="page_info_detail1"></div>
+        <div class="page_info_title" id="page_info_title2"></div>
+        <div class="page_info" id="page_info_detail2"></div>
+        <div class="page_info_title" id="page_info_title3"></div>
+        <div class="page_info"><br></div>
+    </div>
 </main>
 
 <!--遮罩-->
 <!--除了顶栏-->
-<div id="overlay_main" class="overlay_main" onclick="clickedOverlay();"></div>
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 <!--全屏-->
-<div id="overlay" class="overlay"></div>
+<div class="overlay" id="overlay"></div>
 
 </body>
 

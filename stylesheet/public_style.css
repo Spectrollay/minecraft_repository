@@ -170,6 +170,10 @@ main::-webkit-scrollbar-thumb {
     color: #FFFFFF;
 }
 
+#holiday_tip1, #holiday_tip2 {
+    display: none;
+}
+
 /*主体上下提示*/
 .main-header, .main-footer {
     font-family: "Minecraft Ten", sans-serif;
@@ -442,6 +446,10 @@ main::-webkit-scrollbar-thumb {
     margin-bottom: 0;
 }
 
+.neutral_banner {
+    background-color: #1E1E1F;
+}
+
 .information_banner {
     background-color: #2E6BE5;
 }
@@ -454,6 +462,10 @@ main::-webkit-scrollbar-thumb {
     font-weight: bolder;
     color: #000000;
     background-color: #FFE866;
+}
+
+.important_banner a {
+    box-shadow: inset 0 -2px 0 0 #000000;
 }
 
 /*按钮块*/

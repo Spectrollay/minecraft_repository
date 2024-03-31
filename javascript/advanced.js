@@ -1,10 +1,484 @@
+// 实验性
+
+// 监视器配置
+const observerConfig = {attributes: true, attributeFilter: ['class']};
+
+// 创建一个 MutationObserver 实例，传入一个回调函数
+const observer = new MutationObserver(function (mutationsList) {
+    // 遍历所有发生变化的 mutation
+    for (let mutation of mutationsList) {
+        // 检查变化的是哪个元素
+        if (mutation.target.id === 'switch_exp1' || mutation.target.id === 'switch_exp2') {
+            // 更新状态提示
+            const switchExp1 = document.getElementById("switch_exp1");
+            const switchExp2 = document.getElementById("switch_exp2");
+            const switch_status_exp1 = document.getElementById("switch_status_exp1");
+            const switch_status_exp2 = document.getElementById("switch_status_exp2");
+            let exp1IsOn = switchExp1.classList.contains("on");
+            let exp2IsOn = switchExp2.classList.contains("on");
+            switch_status_exp1.textContent = exp1IsOn ? "Toggle: Open" : "Toggle: Close";
+            switch_status_exp2.textContent = exp2IsOn ? "Toggle: Open" : "Toggle: Close";
+        }
+    }
+});
+
+// 选择要观察变化的节点
+const targetNode1 = document.getElementById('switch_exp1');
+const targetNode2 = document.getElementById('switch_exp2');
+
+// 开始观察目标节点
+if (targetNode1) {
+    observer.observe(targetNode1, observerConfig);
+}
+if (targetNode2) {
+    observer.observe(targetNode2, observerConfig);
+}
+
+
+// 主代码
+
+// Expandable Card函数
+const expandableCardGroup = document.getElementsByClassName('expandable_card_group');
+
+for (let i = 0; i < expandableCardGroup.length; i++) {
+    const expandableCardArea = expandableCardGroup[i].querySelectorAll('.expandable_card_area');
+    for (let j = 0; j < expandableCardArea.length; j++) {
+
+        const expandableCardId = document.getElementById(expandableCardArea[j].id);
+        const expandableCard = expandableCardId.querySelector('.expandable_card');
+        const expandableContent = expandableCardId.querySelector('.expandable_card_down_area');
+        const cardImage = expandableCard.querySelector('.expandable_card_image');
+        const cardDown = expandableContent.querySelector('.expandable_card_down');
+
+        let isExpanded = expandableCard.classList.contains("expanded");
+
+        if (isExpanded) {
+            cardImage.src = '../images/arrowUp_white.png';
+            expandableContent.classList.add('expanded');
+
+            setTimeout(function () {
+                const initialHeight = cardDown.scrollHeight;
+                expandableContent.style.height = initialHeight + 'px';
+            }, 400);
+
+        } else {
+            cardImage.src = '../images/arrowDown_white.png';
+            expandableContent.classList.add('no_expanded');
+            expandableContent.style.height = '0';
+        }
+
+        expandableCard.addEventListener('click', () => {
+            isExpanded = expandableCard.classList.contains("expanded");
+            if (isExpanded) {
+                // 折叠当前卡片
+                expandableCard.classList.add('no_expanded');
+                expandableCard.classList.remove('expanded');
+                expandableContent.classList.add('no_expanded');
+                expandableContent.classList.remove('expanded');
+                expandableContent.style.height = '0';
+                cardImage.src = '../images/arrowDown_white.png';
+            } else {
+                for (let k = 0; k < expandableCardArea.length; k++) {
+                    if (k !== j) {
+                        const otherCard = expandableCardArea[k].querySelector('.expandable_card');
+                        const otherContent = expandableCardArea[k].querySelector('.expandable_card_down_area');
+                        const otherCardImage = otherCard.querySelector('.expandable_card_image');
+
+                        otherCard.classList.add('no_expanded');
+                        otherCard.classList.remove('expanded');
+                        otherContent.classList.add('no_expanded');
+                        otherContent.classList.remove('expanded');
+                        otherContent.style.height = '0';
+                        otherCardImage.src = '../images/arrowDown_white.png';
+                    }
+                }
+                // 展开当前卡片
+                expandableCard.classList.add('expanded');
+                expandableCard.classList.remove('no_expanded');
+                expandableContent.classList.add('expanded');
+                expandableContent.classList.remove('no_expanded');
+                expandableContent.style.height = cardDown.scrollHeight + 'px';
+                cardImage.src = '../images/arrowUp_white.png';
+            }
+            isExpanded = !isExpanded;
+        });
+
+        window.addEventListener('resize', function () {
+            if (isExpanded) {
+                expandableContent.style.transition = 'height 0ms';
+                expandableContent.style.height = cardDown.scrollHeight + 'px';
+                setTimeout(function () {
+                    expandableContent.style.transition = 'height 600ms';
+                }, 0);
+            }
+        });
+    }
+}
+
+// Switch开关函数
+const switchElement = document.getElementsByClassName("switch");
+const switchSlider = document.getElementsByClassName("switch_slider");
+
+// 添加点击事件监听器
+for (let i = 0; i < switchElement.length; i++) {
+    let isOn = switchElement[i].classList.contains("on");
+    let isDisabled = switchElement[i].classList.contains("disabled_switch");
+    let startX = 0;
+    let isDragging = false;
+
+    if (!isDisabled) {
+        switchElement[i].addEventListener("click", function () {
+            isOn = !isOn;
+            updateSwitchState(i, isOn);
+        });
+
+        switchElement[i].addEventListener("mousedown", function (e) {
+            isDragging = true;
+            switchSlider[i].classList.add('active');
+            startX = e.clientX;
+        });
+
+        switchElement[i].addEventListener("touchstart", function (e) {
+            isDragging = true;
+            switchSlider[i].classList.add('active');
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener("mouseup", function (e) {
+            if (isDragging) {
+                let elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
+                if (!switchElement[i].contains(elementAtPoint)) {
+                    let currentX = e.clientX;
+                    if (currentX - startX > 10) {
+                        if (!isOn) {
+                            isOn = true;
+                            updateSwitchState(i, isOn);
+                        }
+                    } else if (currentX - startX < -10) {
+                        if (isOn) {
+                            isOn = false;
+                            updateSwitchState(i, isOn);
+                        }
+                    }
+                }
+            }
+            isDragging = false;
+            setTimeout(function () {
+                switchSlider[i].classList.remove('active');
+            }, 0);
+        });
+
+        document.addEventListener("touchend", function (e) {
+            if (isDragging) {
+                let currentX = e.changedTouches[0].clientX;
+                if (currentX - startX > 10) {
+                    if (!isOn) {
+                        isOn = true;
+                        updateSwitchState(i, isOn);
+                    }
+                } else if (currentX - startX < -10) {
+                    if (isOn) {
+                        isOn = false;
+                        updateSwitchState(i, isOn);
+                    }
+                }
+            }
+            isDragging = false;
+            setTimeout(function () {
+                switchSlider[i].classList.remove('active');
+            }, 0);
+        });
+    }
+}
+
+// 更新Switch开关状态函数
+function updateSwitchState(index, isOn) {
+    playSound1();
+    switchElement[index].classList.toggle("on", isOn);
+    switchElement[index].classList.toggle("off", !isOn);
+    if (isOn) {
+        switchSlider[index].classList.add('switch_bounce_left');
+        switchSlider[index].classList.remove('switch_bounce_right');
+        console.log("打开开关", switchElement[index].id);
+    } else {
+        switchSlider[index].classList.add('switch_bounce_right');
+        switchSlider[index].classList.remove('switch_bounce_left');
+        console.log("关闭开关", switchElement[index].id);
+    }
+}
+
+
+// Slider滑块函数
+const sliderContent = document.getElementsByClassName("slider_content");
+
+for (let i = 0; i < sliderContent.length; i++) {
+
+    const contentId = sliderContent[i].id;
+    const content = document.getElementById(contentId);
+    const slider = content.querySelector('.slider');
+    const process = content.querySelector('.slider_process');
+    const handle = content.querySelector('.slider_handle');
+    const tooltip = content.querySelector('.slider_tooltip');
+    const sliderData = JSON.parse(slider.dataset.slider);
+    const minValue = sliderData.minValue;
+    const maxValue = sliderData.maxValue;
+    const segments = sliderData.segments;
+    const initialValue = sliderData.initialValue || minValue; // 使用初始值或最小值作为默认值
+
+    let currentValue = initialValue;
+    let resizing = false;
+
+    // 设置初始值并展示
+    const initialPosition = (initialValue - minValue) / (maxValue - minValue) * 100;
+    handle.style.left = initialPosition + '%';
+    process.style.width = initialPosition + '%';
+
+    if (slider.classList.contains('range_slider')) {
+        // 设置平滑的slider
+
+        let isDragging = false;
+        tooltip.textContent = initialValue.toFixed(2);
+
+        function updateValueSmoothSlider(posX) {
+            const smoothIndex = ((posX) / (slider.offsetWidth - 4));
+            currentValue = smoothIndex * (maxValue - minValue) + minValue;
+            tooltip.textContent = currentValue.toFixed(2);
+        }
+
+        function updateSmoothSlider(e) {
+            updateProcessBar(updateSlider(e));
+            updateValueSmoothSlider(updateSlider(e));
+        }
+
+        function handleDragSmoothSlider(e) {
+            if (isDragging) {
+                updateSmoothSlider(e);
+            }
+        }
+
+        handle.addEventListener('mousedown', function () {
+            process.style.transition = 'none';
+            handle.style.transition = 'none';
+            isDragging = true;
+        });
+
+        document.addEventListener('mousemove', handleDragSmoothSlider);
+
+        document.addEventListener('mouseup', function () {
+            isDragging = false;
+            process.style.transition = 'width 100ms linear';
+            handle.style.transition = 'left 100ms linear';
+            handle.classList.remove('active');
+        });
+
+        handle.addEventListener('touchstart', function () {
+            process.style.transition = 'none';
+            handle.style.transition = 'none';
+            isDragging = true;
+        });
+
+        document.addEventListener('touchmove', function (e) {
+            if (isDragging) {
+                handleDragSmoothSlider(e.touches[0]); // 使用第一个触摸点的位置
+                e.preventDefault();
+            }
+        }, {passive: false});
+
+        document.addEventListener('touchend', function () {
+            isDragging = false;
+            process.style.transition = 'width 100ms linear';
+            handle.style.transition = 'left 100ms linear';
+            handle.classList.remove('active');
+        });
+
+        slider.addEventListener('touchstart', function () {
+        });
+
+        content.addEventListener('click', function (e) {
+            let posX = e.clientX - slider.getBoundingClientRect().left;
+            if (posX < 0) {
+                posX = 0;
+            } else if (posX > (slider.offsetWidth - 4)) {
+                posX = (slider.offsetWidth - 4);
+            }
+            handle.style.left = posX + 'px';
+            updateProcessBar(posX);
+            updateValueSmoothSlider(posX);
+        });
+
+        // 添加最小值和最大值提示
+        const minValueLabel = document.createElement('div');
+        minValueLabel.textContent = minValue.toFixed(2);
+        minValueLabel.style.position = 'absolute';
+        minValueLabel.style.bottom = '-35px';
+        slider.appendChild(minValueLabel);
+
+        const minValueLabelWidth = minValueLabel.offsetWidth;
+        minValueLabel.style.left = `calc(0% - ${minValueLabelWidth / 2}px)`;
+
+        const maxValueLabel = document.createElement('div');
+        maxValueLabel.textContent = maxValue.toFixed(2);
+        maxValueLabel.style.position = 'absolute';
+        maxValueLabel.style.bottom = '-35px';
+        slider.appendChild(maxValueLabel);
+
+        const maxValueLabelWidth = maxValueLabel.offsetWidth;
+        maxValueLabel.style.left = `calc(100% - ${maxValueLabelWidth / 2}px)`;
+
+    } else if (slider.classList.contains('set_slider')) {
+        // 设置分段的slider
+
+        const segmentWidth = (maxValue - minValue) / segments;
+        let isDragging = false;
+        tooltip.textContent = initialValue.toFixed(2).replace(/\.?0+$/, '');
+
+        function updateValueSegmentSlider(posX) {
+            const segmentIndex = Math.round(posX / ((slider.offsetWidth - 4) / segments));
+            currentValue = segmentIndex * segmentWidth + minValue;
+            tooltip.textContent = currentValue.toFixed(2).replace(/\.?0+$/, '');
+            updateProcessBar(posX);
+        }
+
+        function updateSegmentSlider(e) {
+            let posX = e.clientX - slider.getBoundingClientRect().left;
+            updateSlider(e);
+            updateProcessBar(posX);
+        }
+
+        function handleDragSegmentSlider(e) {
+            if (isDragging) {
+                updateSegmentSlider(e);
+            }
+        }
+
+        function moveEnd() {
+            isDragging = false;
+            const segmentIndex = Math.round(handle.offsetLeft / ((slider.offsetWidth - 4) / segments));
+            const segmentPosition = segmentIndex * ((slider.offsetWidth - 4) / segments);
+            handle.style.left = segmentPosition + 'px';
+            handle.classList.remove('active');
+            updateValueSegmentSlider(segmentPosition);
+        }
+
+        handle.addEventListener('mousedown', function () {
+            isDragging = true;
+        });
+
+        document.addEventListener('mousemove', handleDragSegmentSlider);
+
+        document.addEventListener('mouseup', function () {
+            moveEnd();
+        });
+
+        handle.addEventListener('touchstart', function () {
+            isDragging = true;
+        });
+
+        document.addEventListener('touchmove', function (e) {
+            if (isDragging) {
+                handleDragSegmentSlider(e.touches[0]); // 使用第一个触摸点的位置
+                e.preventDefault();
+            }
+        }, {passive: false});
+
+        document.addEventListener('touchend', function () {
+            moveEnd();
+        });
+
+        slider.addEventListener('touchstart', function () {
+        });
+
+        content.addEventListener('click', function (e) {
+            let posX = e.clientX - slider.getBoundingClientRect().left;
+            if (posX < 0) {
+                posX = 0;
+            } else if (posX > (slider.offsetWidth - 4)) {
+                posX = (slider.offsetWidth - 4);
+            }
+            const segmentIndex = Math.round(posX / ((slider.offsetWidth - 4) / segments));
+            const segmentPosition = segmentIndex * ((slider.offsetWidth - 4) / segments);
+            handle.style.left = segmentPosition + 'px';
+            updateValueSegmentSlider(segmentPosition);
+        });
+
+        // 添加分段处提示数值
+        if (segments) {
+            for (let i = 0; i < segments + 1; i++) {
+                const segmentValueLabel = document.createElement('div');
+                const segmentValue = minValue + i * (maxValue - minValue) / segments;
+                segmentValueLabel.textContent = segmentValue.toFixed(2).replace(/\.?0+$/, '');
+                segmentValueLabel.style.position = 'absolute';
+                segmentValueLabel.style.bottom = '-35px';
+                slider.appendChild(segmentValueLabel);
+
+                // 获取标签宽度
+                const labelWidth = segmentValueLabel.offsetWidth;
+                segmentValueLabel.style.left = `calc(${(i / segments) * 100}% - ${labelWidth / 2}px)`;
+            }
+        }
+
+        // 创建分段线
+        if (segments) {
+            for (let i = 1; i < segments; i++) {
+                const segment = document.createElement('div');
+                segment.classList.add('slider_segment');
+                segment.style.left = `calc(${100 / segments * i}% - 1px)`;
+                slider.appendChild(segment);
+            }
+        }
+    }
+
+    function updateSlider(e) {
+        let posX = e.clientX - slider.getBoundingClientRect().left;
+        handle.classList.add('active');
+        if (posX < 0) {
+            posX = 0;
+        } else if (posX > (slider.offsetWidth - 4)) {
+            posX = (slider.offsetWidth - 4);
+        }
+        handle.style.left = posX + 'px';
+        return posX;
+    }
+
+    function updateHandle() {
+        const rect = slider.getBoundingClientRect();
+        const newPosition = (currentValue - minValue) / (maxValue - minValue) * (rect.width - 4);
+        handle.style.left = newPosition + 'px';
+    }
+
+    function updateProcessBar(posX) {
+        process.style.width = posX + 'px';
+    }
+
+    window.addEventListener('resize', function () {
+        if (!resizing) {
+            resizing = true;
+            setTimeout(function () {
+                resizing = false;
+            }, 0);
+            process.style.transition = 'none';
+            handle.style.transition = 'none';
+            updateHandle();
+            updateProcessBar(handle.offsetLeft);
+            setTimeout(function () {
+                process.style.transition = 'width 100ms linear';
+                handle.style.transition = 'left 100ms linear';
+            }, 0);
+        }
+    });
+}
+
 // 切换Tab Bar
-const defaultTabContent = document.querySelector(".tab_content.active");
-console.log("Tab Bar初始选中: ", defaultTabContent.id);
+const tabContent = document.querySelector(".tab_content");
+if (tabContent) {
+    const defaultTabContent = document.querySelector(".tab_content.active");
+    console.log("Tab Bar初始选中: ", defaultTabContent.id);
+}
 
 function selectTab(tabNumber) {
     const currentTabContent = document.querySelector(".tab_content.active");
     const selectedTabContent = document.getElementById("content" + tabNumber);
+    const selectedSidebarContent = document.getElementById("sidebar_content" + tabNumber);
     console.log("Tab Bar当前选中: ", currentTabContent.id);
     console.log("Tab Bar交互选中: ", selectedTabContent.id);
     if (currentTabContent === selectedTabContent) {
@@ -33,25 +507,18 @@ function selectTab(tabNumber) {
         }
         selectedTabContent.classList.add("active");
         selectedTabContent.classList.remove("no_active");
+
+        // 切换侧边栏包含内容
+        const sidebarContents = document.getElementsByClassName("tab_sidebar");
+        if (sidebarContents) {
+            for (let i = 0; i < sidebarContents.length; i++) {
+                sidebarContents[i].classList.remove("active");
+                sidebarContents[i].classList.add("no_active");
+            }
+            selectedSidebarContent.classList.add("active");
+            selectedSidebarContent.classList.remove("no_active");
+        }
+
         console.log("切换与Tab相关的内容");
     }
 }
-
-// 切换开关
-const switchElement = document.getElementById("switch_exp");
-const switch_exp_status = document.getElementById("switch_exp_status");
-let isOn = false;
-
-// 添加点击事件监听器
-switchElement.addEventListener("click", function () {
-    isOn = !isOn;
-    playSound1();
-    switchElement.classList.toggle("on", isOn);
-    if (isOn) {
-        switch_exp_status.textContent = "开关: 开启";
-        console.log("打开开关");
-    } else {
-        switch_exp_status.textContent = "开关: 关闭";
-        console.log("关闭开关");
-    }
-});

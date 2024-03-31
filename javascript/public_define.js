@@ -117,6 +117,77 @@ for (let i = 0; i < localStorage.length; i++) {
 
 console.log("加载常量和变量完成");
 
+// 节日标语
+const holiday_tip1 = document.getElementById('holiday_tip1');
+const holiday_tip2 = document.getElementById('holiday_tip2');
+const holiday_tip_display1 = holiday_tip1.querySelector('.banner');
+const holiday_tip_display2 = holiday_tip2.querySelector('.banner');
+const currentDate = new Date();
+const Y = currentDate.getFullYear();
+const M = currentDate.getMonth() + 1;
+const D = currentDate.getDate();
+const minecraft_birthday = Y - 2009;
+const repository_birthday = Y - 2020;
+
+console.log("当前时间:", Y, M, D)
+
+// 固定日期的节日
+if (M === 1 && D === 1) {
+    holiday_tip2.style.display = 'flex';
+    holiday_tip_display2.innerHTML = 'Happy New Year!';
+} else if (M === 2 && D > 3 && D < 7) {
+    holiday_tip2.style.display = 'flex';
+    holiday_tip_display2.innerHTML = '版本库' + repository_birthday + '周年纪';
+} else if (M === 5 && D > 16 && D < 20) {
+    holiday_tip2.style.display = 'flex';
+    holiday_tip_display2.innerHTML = minecraft_birthday + ' Years of Minecraft';
+} else if (M === 6 && D === 1) {
+    holiday_tip2.style.display = 'flex';
+    holiday_tip_display2.innerHTML = '无论你现在几岁,都要儿童节快乐!';
+} else if (M === 10 && D > 0 && D < 8) {
+    holiday_tip2.style.display = 'flex';
+    holiday_tip_display2.innerHTML = '国庆快乐!';
+} else if (M === 12 && D === 25) {
+    holiday_tip2.style.display = 'flex';
+    holiday_tip_display2.innerHTML = 'Merry Christmas!';
+}
+
+// 愚人节
+if (M === 4 && D === 1) {
+    if (Y === 2024) {
+        holiday_tip2.style.display = 'flex';
+        holiday_tip_display2.innerHTML = "<span>感恩回馈! <a href=\"https://www.bilibili.com/video/BV1GJ411x7h7/\" target=\"_blank\" onclick=\"playSound1();\">抽一人送 Minecraft PC 捆绑包!</a> 距活动结束仅剩1天!</span>";
+    }
+    if (Y === 2025) { // 即将到来
+        holiday_tip2.style.display = 'flex';
+        holiday_tip_display2.innerHTML = "愚人节";
+    }
+}
+
+// 春节
+if (Y === 2024 && M === 2 && D > 8 && D < 18) {
+    holiday_tip1.style.display = 'flex';
+    holiday_tip_display1.innerHTML = '2024龙年大吉!'; // 龙年
+} else if (Y === 2025 && (M === 1 && D > 27) || (M === 2 && D < 6)) {
+    holiday_tip1.style.display = 'flex';
+    holiday_tip_display1.innerHTML = '2025新年快乐!'; // 蛇年
+} else if (Y === 2026 && M === 2 && D > 15 && D < 25) {
+    holiday_tip1.style.display = 'flex';
+    holiday_tip_display1.innerHTML = '2026新年快乐!'; // 马年
+} // TODO 2027年及以后
+
+// 元宵节
+if ((Y === 2024 && M === 2 && D === 24) || (Y === 2025 && M === 2 && D === 12) || (Y === 2026 && M === 3 && D === 3)) {
+    holiday_tip1.style.display = 'flex';
+    holiday_tip_display1.innerHTML = '元宵快乐~';
+} // TODO 2027年及以后
+
+// 端午节
+if ((Y === 2024 && M === 6 && D === 10) || (Y === 2025 && M === 5 && D === 31) || (Y === 2026 && M === 6 && D === 19)) {
+    holiday_tip1.style.display = 'flex';
+    holiday_tip_display1.innerHTML = '端午安康~';
+} // TODO 2027年及以后
+
 const buttons = document.querySelectorAll('.btn');
 
 function updateButtonText(button) {
