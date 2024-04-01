@@ -104,6 +104,7 @@ for (let i = 0; i < expandableCardGroup.length; i++) {
         });
 
         window.addEventListener('resize', function () {
+            isExpanded = expandableCard.classList.contains("expanded");
             if (isExpanded) {
                 expandableContent.style.transition = 'height 0ms';
                 expandableContent.style.height = cardDown.scrollHeight + 'px';

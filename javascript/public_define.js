@@ -5,7 +5,7 @@ const texts = {
     preview_btn1: "更新历史",
     preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.5.2.1.Beta<br>Server Version: 4.0<br>Updated: 2024-03-31-03",
+    page_info_detail1: "Version: 4.5.2.1.Beta<br>Server Version: 4.0<br>Updated: 2024-04-01-01",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     page_info_title3: "MADE WITH ❤️ IN CHINA",
@@ -134,25 +134,25 @@ if (holiday_tip1) {
     // 春节
     if (Y === 2024 && M === 2 && D > 8 && D < 18) {
         holiday_tip1.style.display = 'flex';
-        holiday_tip_display1.innerHTML = '2024龙年大吉!'; // 龙年
+        holiday_tip_display1.innerHTML = "2024龙年大吉!"; // 龙年
     } else if (Y === 2025 && (M === 1 && D > 27) || (M === 2 && D < 6)) {
         holiday_tip1.style.display = 'flex';
-        holiday_tip_display1.innerHTML = '2025新年快乐!'; // 蛇年
+        holiday_tip_display1.innerHTML = "2025新年快乐!"; // 蛇年
     } else if (Y === 2026 && M === 2 && D > 15 && D < 25) {
         holiday_tip1.style.display = 'flex';
-        holiday_tip_display1.innerHTML = '2026新年快乐!'; // 马年
+        holiday_tip_display1.innerHTML = "2026新年快乐!"; // 马年
     } // TODO 2027年及以后
 
     // 元宵节
     if ((Y === 2024 && M === 2 && D === 24) || (Y === 2025 && M === 2 && D === 12) || (Y === 2026 && M === 3 && D === 3)) {
         holiday_tip1.style.display = 'flex';
-        holiday_tip_display1.innerHTML = '元宵快乐~';
+        holiday_tip_display1.innerHTML = "元宵快乐~";
     } // TODO 2027年及以后
 
     // 端午节
     if ((Y === 2024 && M === 6 && D === 10) || (Y === 2025 && M === 5 && D === 31) || (Y === 2026 && M === 6 && D === 19)) {
         holiday_tip1.style.display = 'flex';
-        holiday_tip_display1.innerHTML = '端午安康~';
+        holiday_tip_display1.innerHTML = "端午安康~";
     } // TODO 2027年及以后
 }
 
@@ -161,33 +161,35 @@ if (holiday_tip2) {
     // 固定日期的节日
     if (M === 1 && D === 1) {
         holiday_tip2.style.display = 'flex';
-        holiday_tip_display2.innerHTML = 'Happy New Year!';
+        holiday_tip_display2.innerHTML = "Happy New Year!";
     } else if (M === 2 && D > 3 && D < 7) {
         holiday_tip2.style.display = 'flex';
-        holiday_tip_display2.innerHTML = '版本库' + repository_birthday + '周年纪';
+        holiday_tip_display2.innerHTML = "版本库" + repository_birthday + "周年纪";
     } else if (M === 5 && D > 16 && D < 20) {
         holiday_tip2.style.display = 'flex';
-        holiday_tip_display2.innerHTML = minecraft_birthday + ' Years of Minecraft';
+        holiday_tip_display2.innerHTML = minecraft_birthday + " Years of Minecraft";
     } else if (M === 6 && D === 1) {
         holiday_tip2.style.display = 'flex';
-        holiday_tip_display2.innerHTML = '无论你现在几岁,都要儿童节快乐!';
+        holiday_tip_display2.innerHTML = "无论你现在几岁,都要儿童节快乐!";
     } else if (M === 10 && D > 0 && D < 8) {
         holiday_tip2.style.display = 'flex';
-        holiday_tip_display2.innerHTML = '国庆快乐!';
+        holiday_tip_display2.innerHTML = "国庆快乐!";
     } else if (M === 12 && D === 25) {
         holiday_tip2.style.display = 'flex';
-        holiday_tip_display2.innerHTML = 'Merry Christmas!';
+        holiday_tip_display2.innerHTML = "Merry Christmas!";
     }
 
     // 愚人节
     if (M === 4 && D === 1) {
         if (Y === 2024) {
             holiday_tip2.style.display = 'flex';
-            holiday_tip_display2.innerHTML = "<span>感恩回馈! <a href=\"https://www.bilibili.com/video/BV1GJ411x7h7/\" target=\"_blank\" onclick=\"playSound1();\">抽一人送 Minecraft PC 捆绑包!</a> 距活动结束仅剩1天!</span>";
+            holiday_tip_display2.innerHTML = "<span>版本库4.0满月感恩大回馈! <a href=\"https://www.bilibili.com/video/BV1GJ411x7h7/\" target=\"_blank\" onclick=\"playSound1();\">点此链接抽一人送 Minecraft PC 捆绑包!</a> 距离活动结束仅剩1天!</span>";
         }
         if (Y === 2025) { // 即将到来
             holiday_tip2.style.display = 'flex';
-            holiday_tip_display2.innerHTML = "愚人节";
+            holiday_tip_display2.innerHTML = ""; // 愚人节版本更新主题
+            // 这里放其他的更改(所有页面均生效)
+
         }
     }
 }
