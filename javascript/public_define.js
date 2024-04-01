@@ -5,7 +5,7 @@ const texts = {
     preview_btn1: "更新历史",
     preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.5.2.1.Beta<br>Server Version: 4.0<br>Updated: 2024-04-01-01",
+    page_info_detail1: "Version: 4.5.2.1.Beta<br>Server Version: 4.0<br>Updated: 2024-04-01-06",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     page_info_title3: "MADE WITH ❤️ IN CHINA",
@@ -124,10 +124,17 @@ const currentDate = new Date();
 const Y = currentDate.getFullYear();
 const M = currentDate.getMonth() + 1;
 const D = currentDate.getDate();
+const h = currentDate.getHours();
+const m = currentDate.getMinutes();
+const s = currentDate.getSeconds();
+// DEBUG
+// const Y = 2024; // 年份全称
+// const M = 1; // 一位数不要补零
+// const D = 1; // 一位数不要补零
 const minecraft_birthday = Y - 2009;
 const repository_birthday = Y - 2020;
 
-console.log("当前时间:", Y, M, D)
+console.log("当前时间:", Y + '/' + M + '/' + D, h + ':' + m + ':' + s)
 
 if (holiday_tip1) {
     const holiday_tip_display1 = holiday_tip1.querySelector('.banner');
@@ -180,16 +187,14 @@ if (holiday_tip2) {
     }
 
     // 愚人节
-    if (M === 4 && D === 1) {
+    if (M === 4 && (D === 1 || (D === 2 && h < 12))) {
         if (Y === 2024) {
             holiday_tip2.style.display = 'flex';
-            holiday_tip_display2.innerHTML = "<span>版本库4.0满月感恩大回馈! <a href=\"https://www.bilibili.com/video/BV1GJ411x7h7/\" target=\"_blank\" onclick=\"playSound1();\">点此链接抽一人送 Minecraft PC 捆绑包!</a> 距离活动结束仅剩1天!</span>";
+            holiday_tip_display2.innerHTML = "<span><a href=\"https://www.minecraft.net/article/poisonous-potato-update\" target=\"_blank\" onclick=\"playSound1();\">毒马铃薯更新现已正式发布!</a><br>版本库4.0满月感恩大回馈! <a href=\"https://www.bilibili.com/video/BV1GJ411x7h7/\" target=\"_blank\" onclick=\"playSound1();\">点此链接抽一人送 Minecraft PC 捆绑包!</a> 距离活动结束仅剩1天!</span>";
         }
         if (Y === 2025) { // 即将到来
             holiday_tip2.style.display = 'flex';
             holiday_tip_display2.innerHTML = ""; // 愚人节版本更新主题
-            // 这里放其他的更改(所有页面均生效)
-
         }
     }
 }
