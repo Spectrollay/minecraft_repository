@@ -3,31 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../stylesheet/editions.css">
-    <link rel="stylesheet" href="../stylesheet/public_style.css">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../stylesheet/editions.css" rel="stylesheet">
+    <link href="../stylesheet/public_style.css" rel="stylesheet">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <link rel="icon" href="../images/Marketplace.png">
+    <link href="../images/Marketplace.png" rel="icon">
     <title>基岩版 - Minecraft 版本库</title>
 </head>
 
 <body>
 <header>
-    <div id="menu" class="header_menu" onclick="clickedMenu();">
-        <img class="menu_icon" alt="Menu" src="../images/Menu.png">
+    <div class="header_menu" id="menu" onclick="clickedMenu();">
+        <img alt="Menu" class="menu_icon" src="../images/Menu.png">
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img class="title_icon" alt="Title Icon" src="../images/Marketplace.png"><span
+        <img alt="Title Icon" class="title_icon" src="../images/Marketplace.png"><span
             class="header_title">Repository</span>
     </div>
 </header>
 <main id="main">
     <div id="main_top"></div>
     <div class="banner_area">
-        <div id="tip" class="top_banner banner normal_banner"></div>
+        <div class="top_banner banner normal_banner" id="tip"></div>
     </div>
     <div class="block_spacing"></div>
     <div class="block">
@@ -39,37 +39,38 @@
             <div class="title1">Bedrock Edition</div>
             <div class="description1">基岩版</div>
         </div>
-        <div id="cn_fix" class="banner_area">
+        <div class="banner_area" id="cn_fix">
             <div class="banner information_banner">
-                <a href="https://github.com/Spectrollay/mclang_cn" target="_blank"
-                   onclick="playSound1();">中文译名修正项目</a>
+                <a href="https://github.com/Spectrollay/mclang_cn" onclick="playSound1();"
+                   target="_blank">中文译名修正项目</a>
             </div>
         </div>
-        <div id="1.21" class="main">
+        <div class="main" id="1.21">
             <div class="title2">1.21</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.21.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.21.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
                     <div class="description3">版本推荐</div>
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn1"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
+                    <a href="https://pan.huang1111.cn/s/mQWvT1?path=%2F" target="_blank">
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1"></button>
+                    </a>
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
+                    <a href="https://pan.huang1111.cn/s/WLeDt3?path=%2F" target="_blank">
+                        <button class="btn green_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn2"></button>
+                    </a>
                 </div>
                 <div class="download_line">
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);"></button>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/7M26ug?path=%2F')"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -78,37 +79,37 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/Ewyltb" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn5"></button>
                     <!--                    </a>-->
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn6"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
+                    <a href="https://www.123pan.com/s/qILA-35LN3.html" target="_blank">
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
+                    </a>
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
-                    <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn8"
-                            onclick="playSound(this);"></button>
-                    <!--                    </a>-->
+                    <a href="https://cloud.189.cn/t/2e6BNf7JRn2a" target="_blank">
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn7"></button>
+                    </a>
+                    <a href="https://pan.baidu.com/s/1WumatuKgeiMSbPHYZp44rQ?pwd=1vax" target="_blank">
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
+                    </a>
                 </div>
             </div>
         </div>
-        <div id="1.20" class="main">
+        <div class="main" id="1.20">
             <div class="title2">1.20 - 足迹与故事</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.20.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.20.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -116,19 +117,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/EwyQUb" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/8wMWCQ" target="_blank">
-                        <button class="btn green_btn download_btn_large" text-generation="download_btn2"
-                                onclick="playSound(this);"></button>
+                        <button class="btn green_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn2"></button>
                     </a>
                 </div>
                 <div class="download_line">
-                    <button class="btn normal_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/Gw6guW');"></button>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/Gw6guW');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -137,37 +139,37 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/bgNMtY" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn5"></button>
                     <!--                    </a>-->
                     <a href="https://www.123pan.com/s/qILA-yLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://cloud.189.cn/t/IBvyeaaiURRb" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn7"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn7"></button>
                     </a>
                     <a href="https://pan.baidu.com/s/1Jg0M1VQImCyGIE3pAKPtMQ?pwd=w57h" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.19" class="main">
+        <div class="main" id="1.19">
             <div class="title2">1.19 - 荒野更新</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.19.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.19.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -175,19 +177,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/vBKKhE" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn red_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn red_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/5weghl');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/5weghl');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -196,37 +199,37 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/4eGdhg" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn5"></button>
                     <!--                    </a>-->
                     <a href="https://www.123pan.com/s/qILA-ULLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://cloud.189.cn/t/fANbmaYB3yai" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn7"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn7"></button>
                     </a>
                     <a href="https://pan.baidu.com/s/1Cqsch4CpqxHaGaf-0tQLvQ?pwd=43xz" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.18" class="main">
+        <div class="main" id="1.18">
             <div class="title2">1.18 - 洞穴与山崖(第二部分)</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.18.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.18.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -234,19 +237,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/OWxkiL" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn red_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn red_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/3wMeum');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/3wMeum');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -255,37 +259,37 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/e1GxTg" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn5"></button>
                     <!--                    </a>-->
                     <a href="https://www.123pan.com/s/qILA-uLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://cloud.189.cn/t/iMbMZnraURNv" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn7"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn7"></button>
                     </a>
                     <a href="https://pan.baidu.com/s/1EDKfU2ABGcR24H2YD76cgQ?pwd=wanz" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.17" class="main">
+        <div class="main" id="1.17">
             <div class="title2">1.17 - 洞穴与山崖(第一部分)</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.17.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.17.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -293,19 +297,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/kQagHB" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn red_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn red_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/Mbnxhx');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/Mbnxhx');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -314,37 +319,37 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/Bkvlc6" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn5"></button>
                     <!--                    </a>-->
                     <a href="https://www.123pan.com/s/qILA-KLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://cloud.189.cn/t/UBvIreeMfAB3" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn7"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn7"></button>
                     </a>
                     <a href="https://pan.baidu.com/s/1mgcIJ3fk5JxaL4tLRh7ovA?pwd=mbsp" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.16" class="main">
+        <div class="main" id="1.16">
             <div class="title2">1.16 - 下界更新</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.16.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.16.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -352,19 +357,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/9wd5cd" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn red_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn red_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/Q71wfm');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/Q71wfm');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -373,37 +379,37 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/wQ49hK" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn5"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn5"></button>
                     <!--                    </a>-->
                     <a href="https://www.123pan.com/s/qILA-0LLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://cloud.189.cn/t/Yfe2Yvr673ui" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn7"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn7"></button>
                     </a>
                     <a href="https://pan.baidu.com/s/17AFiv-BH-CPI3r10HUQpbg?pwd=yyei" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.14" class="main">
+        <div class="main" id="1.14">
             <div class="title2">1.14 - 嗡嗡蜂群</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.14.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.14.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -411,19 +417,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.14/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/2wElHN');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/2wElHN');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -432,41 +439,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/2wElHN" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134k8sf" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.14</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-8LLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1cTm_IMQt3yLLoiquzUCscA?pwd=qdyv" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.13" class="main">
+        <div class="main" id="1.13">
             <div class="title2">1.13</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.13.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.13.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -474,19 +481,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.13/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/dR8yUV');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/dR8yUV');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -495,41 +503,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/dR8yUV" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134jlfe" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.13</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-rLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1Mt-yFZs7nBW7ziPkkjY2Xg?pwd=xnqn" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.12" class="main">
+        <div class="main" id="1.12">
             <div class="title2">1.12</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.12.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.12.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -537,19 +545,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.12/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/PmaPfm');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/PmaPfm');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -558,41 +567,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/PmaPfm" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134jdqh" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.12</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-DLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1-SeZb37zlHVb7raAaPSZ_w?pwd=abdu" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.11" class="main">
+        <div class="main" id="1.11">
             <div class="title2">1.11 - 村庄与掠夺</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.11.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.11.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -600,19 +609,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.11/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/yQA1i6');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/yQA1i6');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -621,41 +631,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/yQA1i6" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134itta" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.11</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-RLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1T0JeXI40j5OosqrDRA8DxA?pwd=ihqd" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.10" class="main">
+        <div class="main" id="1.10">
             <div class="title2">1.10</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.10.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.10.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -663,19 +673,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.10/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/1wB5Cv');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/1wB5Cv');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -684,41 +695,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/1wB5Cv" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134hgkh" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.10</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-OLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1SRzlTCMtmN31qMacka-42Q?pwd=cj67" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.9" class="main">
+        <div class="main" id="1.9">
             <div class="title2">1.9</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.9.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.9.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -726,19 +737,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.9/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/RlDQSB');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/RlDQSB');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -747,41 +759,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/RlDQSB" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134hggd" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.9</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-NLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1g01h3rsVF5f_axSHJqNaGQ?pwd=7iry" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.8" class="main">
+        <div class="main" id="1.8">
             <div class="title2">1.8</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.8.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.8.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -789,19 +801,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.8/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/YnPbiA');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/YnPbiA');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -810,41 +823,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/YnPbiA" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134hgda" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.8</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-CLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1C57ieblAdSjYvO6Mb_4W3Q?pwd=9227" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.7" class="main">
+        <div class="main" id="1.7">
             <div class="title2">1.7</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.7.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.7.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -852,19 +865,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.7/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/VGqXfd');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/VGqXfd');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -873,41 +887,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/VGqXfd" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134hfyf" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.7</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-WLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/117iMTIC4dIt_TGj_7wS9CA?pwd=2ba5" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.6" class="main">
+        <div class="main" id="1.6">
             <div class="title2">1.6</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.6.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.6.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -915,19 +929,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.6/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/avl6CG');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/avl6CG');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -936,41 +951,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/avl6CG" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134halc" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.6</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-sLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1hnfFGD55SILO4EewL_s5hA?pwd=ffvb" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.5" class="main">
+        <div class="main" id="1.5">
             <div class="title2">1.5 - 水域更新(第二部分)</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.5.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.5.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -978,19 +993,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.5/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/XK17Fl');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/XK17Fl');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -999,41 +1015,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/XK17Fl" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134h5pg" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.5</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-2LLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1k97HP2LD5vseUOu0epklaA?pwd=5atj" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.4" class="main">
+        <div class="main" id="1.4">
             <div class="title2">1.4 - 水域更新(第一部分)</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.4.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.4.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -1041,19 +1057,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.4/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/oQ2js8');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/oQ2js8');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -1062,41 +1079,41 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/oQ2js8" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134h40f" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.4</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-nLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1ryjlNWocDVAz-kJctLlplg?pwd=qxp3" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
         </div>
-        <div id="1.2" class="main">
+        <div class="main" id="1.2">
             <div class="title2">1.2 - 独乐不如众乐更新</div>
             <div class="description2">更新日志:
-                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.2.0" target="_blank"
-                   onclick="playSound1();">中文Minecraft Wiki</a>
+                <a href="https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%881.2.0" onclick="playSound1();"
+                   target="_blank">中文Minecraft Wiki</a>
             </div>
             <div class="download_group">
                 <div class="download_line">
@@ -1104,19 +1121,20 @@
                 </div>
                 <div class="download_line">
                     <a href="https://mcarc.gitee.io/Android/1.2/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn1_1"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn1_1"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn_large" text-generation="download_btn2"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
+                            text-generation="download_btn2"></button>
                     <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <button class="btn green_btn download_btn_large" text-generation="download_btn3"
-                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/8wxWsQ');"></button>
+                    <button class="btn green_btn download_btn_large"
+                            onclick="playSound(this);showDisclaimerModal('https://pan.huang1111.cn/s/8wxWsQ');"
+                            text-generation="download_btn3"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -1125,32 +1143,32 @@
                 </div>
                 <div class="download_line">
                     <a href="https://pan.huang1111.cn/s/8wxWsQ" target="_blank">
-                        <button class="btn normal_btn download_btn_large" text-generation="download_btn4"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
+                                text-generation="download_btn4"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <a href="https://www.lanzouj.com/b0134gl5g" target="_blank">
                         <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" text-generation="download_btn5"
-                                    onclick="playSound(this);"></button>
+                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
                             <div class="tooltip">密码: 1.2</div>
-                            <img class="key_icon" alt="Key" src="../images/Key.png"/>
+                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
                         </div>
                     </a>
                     <a href="https://www.123pan.com/s/qILA-XLLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn6"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn6"></button>
                     </a>
                 </div>
                 <div class="download_line">
                     <!--                    <a href="" target="_blank">-->
-                    <button class="btn disabled_btn download_btn" text-generation="download_btn7"
-                            onclick="playSound(this);"></button>
+                    <button class="btn disabled_btn download_btn" onclick="playSound(this);"
+                            text-generation="download_btn7"></button>
                     <!--                    </a>-->
                     <a href="https://pan.baidu.com/s/1c0N22AjKfIP1XbrBLeI2Wg?pwd=t7ks" target="_blank">
-                        <button class="btn normal_btn download_btn" text-generation="download_btn8"
-                                onclick="playSound(this);"></button>
+                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
+                                text-generation="download_btn8"></button>
                     </a>
                 </div>
             </div>
@@ -1158,17 +1176,17 @@
     </div>
     <div>
         <div class="page_info"><br></div>
-        <div id="page_info_title1" class="page_info_title"></div>
-        <div id="page_info_detail1" class="page_info"></div>
-        <div id="page_info_title2" class="page_info_title"></div>
-        <div id="page_info_detail2" class="page_info"></div>
-        <div id="page_info_title3" class="page_info_title"></div>
+        <div class="page_info_title" id="page_info_title1"></div>
+        <div class="page_info" id="page_info_detail1"></div>
+        <div class="page_info_title" id="page_info_title2"></div>
+        <div class="page_info" id="page_info_detail2"></div>
+        <div class="page_info_title" id="page_info_title3"></div>
         <div class="page_info"><br></div>
     </div>
 </main>
 
 <!--侧边栏-->
-<div id="sidebar" class="sidebar">
+<div class="sidebar" id="sidebar">
     <div class="sidebar_header">
         <button class="btn sidebar_btn back_to_main" onclick="jumpToPage('../home.html');"></button>
     </div>
@@ -1195,22 +1213,22 @@
         <a class="sidebar_item" href="#1.2">1.2</a>
     </div>
     <div class="sidebar_info">
-        <div id="sidebar_bottom_title" class="sidebar_detail_title"></div>
-        <div id="sidebar_bottom_detail1" class="sidebar_detail"></div>
+        <div class="sidebar_detail_title" id="sidebar_bottom_title"></div>
+        <div class="sidebar_detail" id="sidebar_bottom_detail1"></div>
         <div class="sidebar_detail">
-            <button id="sidebar_bottom_btn" class="btn sidebar_btn" onclick="clickedSidebarBottomBtn();"></button>
+            <button class="btn sidebar_btn" id="sidebar_bottom_btn" onclick="clickedSidebarBottomBtn();"></button>
         </div>
     </div>
 </div>
 
 <!--遮罩-->
 <!--除了顶栏-->
-<div id="overlay_main" class="overlay_main" onclick="clickedOverlay();"></div>
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 <!--全屏-->
-<div id="overlay" class="overlay"></div>
+<div class="overlay" id="overlay"></div>
 
 <!--免责申明弹窗-->
-<div id="disclaimer_modal" class="modal_area">
+<div class="modal_area" id="disclaimer_modal">
     <div class="modal">
         <div class="modal_title">温馨提示</div>
         <div class="modal_content">
@@ -1224,7 +1242,7 @@
                     </button>
                 </div>
                 <div class="modal_btns">
-                    <button id="modal_agree_btn" class="btn green_btn modal_btn"
+                    <button class="btn green_btn modal_btn" id="modal_agree_btn"
                             onclick="hideDisclaimerModal(this,1,openurl);">我知道了
                     </button>
                     <button class="btn red_btn modal_btn" onclick="hideDisclaimerModal(this,-1,null);">我不同意

@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../stylesheet/public_style.css">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../stylesheet/public_style.css" rel="stylesheet">
     <style>
         .preview_block {
             border-top: 0;
@@ -24,17 +24,17 @@
             text-align: left;
         }
     </style>
-    <link rel="icon" href="../images/Marketplace.png">
+    <link href="../images/Marketplace.png" rel="icon">
     <title>更新历史</title>
 </head>
 
 <body>
 <header>
-    <div id="back" class="header_back" onclick="clickedBack();">
-        <img class="back_icon" alt="Back" src="../images/Back.png">
+    <div class="header_back" id="back" onclick="clickedBack();">
+        <img alt="Back" class="back_icon" src="../images/Back.png">
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img class="title_icon" alt="Title Icon" src="../images/Marketplace.png"><span
+        <img alt="Title Icon" class="title_icon" src="../images/Marketplace.png"><span
             class="header_title">Repository</span>
     </div>
 </header>
@@ -48,7 +48,7 @@
             <button class="btn normal_btn preview_btn" onclick="playSound(this);toNewDesignUpdatelog();">前往新设计
             </button>
             <button class="btn green_btn preview_btn" onclick="playSound(this);toRepo();">
-                <img class="link_img" src="" alt=""/>提出建议
+                <img alt="" class="link_img" src=""/>提出建议
             </button>
         </div>
     </div>
@@ -56,6 +56,23 @@
         <div class="main">
             <div class="title1">更新历史</div>
             <!-- span>版本类型: Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP</span -->
+        </div>
+        <div class="main">
+            <div class="title2">4.5.2-Beta2(4.5.2.3)</div>
+            <div>2024-04-07</div>
+            <div class="description2">
+                <p>本版本不包含4.6的新特性</p>
+                <li>加入了1.21的下载地址</li>
+                <li>对节日标语的显示时间进行了调整<br>
+                    - 春节标语现在持续显示8天<br>
+                    - 国庆节标语现在持续显示7天<br>
+                    - 愚人节标语现在持续显示1.5天<br>
+                    - Minecraft周年纪标语现在持续显示3天<br>
+                    - 版本库周年纪标语现在持续显示3天
+                </li>
+                <li>更新了一些节日标语的内容</li>
+                <li>对代码进行了重新排列与格式化</li>
+            </div>
         </div>
         <div class="main">
             <div class="title2">4.5.2-Beta1(4.5.2.1)</div>
@@ -793,9 +810,9 @@
 
 <!--遮罩-->
 <!--除了顶栏-->
-<div id="overlay_main" class="overlay_main" onclick="clickedOverlay();"></div>
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 <!--全屏-->
-<div id="overlay" class="overlay"></div>
+<div class="overlay" id="overlay"></div>
 
 </body>
 
