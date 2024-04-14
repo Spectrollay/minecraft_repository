@@ -133,6 +133,7 @@ main {
     top: 44px;
     width: 100%;
     min-width: 360px;
+    color: #FFFFFF;
     position: fixed;
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -168,6 +169,18 @@ main::-webkit-scrollbar-thumb {
     border-left: 2px solid #333334;
     border-right: 2px solid #333334;
     color: #FFFFFF;
+}
+
+.main_content_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+}
+
+.main_detail_center {
+    font-size: 20px;
+    text-align: center;
 }
 
 #holiday_tip1, #holiday_tip2 {
@@ -274,7 +287,7 @@ main::-webkit-scrollbar-thumb {
     justify-self: center;
 }
 
-.preview_btn {
+.small_btn {
     width: 140px;
 }
 
@@ -469,7 +482,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 /*按钮块*/
-.download_line, .preview_btns {
+.btn_group, .download_line {
     display: flex;
     align-items: center;
     justify-content: center;

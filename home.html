@@ -42,10 +42,8 @@
         <div class="preview_title" id="preview_title"></div>
         <div class="preview_detail" id="preview_detail1"></div>
         <div class="preview_detail" id="preview_detail2"></div>
-        <div class="preview_btns">
-            <button class="btn normal_btn preview_btn" id="preview_btn1"
-                    onclick="playSound(this);toUpdatelog();"></button>
-            <button class="btn green_btn preview_btn" id="preview_btn2" onclick="playSound(this);toRepo();"></button>
+        <div class="btn_group">
+            <button class="btn green_btn" id="preview_btn2" onclick="playSound(this);toRepo();"></button>
         </div>
     </div>
     <div class="block_spacing"></div>
@@ -58,6 +56,10 @@
                 <div>
                     <img alt="news" class="no_news" src="./images/NoNews.png">
                     <div>没有新通知</div>
+                </div>
+                <div class="btn_group">
+                    <button class="btn normal_btn small_btn" onclick="playSound(this);toUpdatelog();">更新历史</button>
+                    <button class="btn normal_btn small_btn" onclick="playSound(this);toMessage();">通知中心</button>
                 </div>
             </div>
         </div>
@@ -73,11 +75,13 @@
             <div class="description2">
                 <p>请积极支持Minecraft正版!</p>
                 <p>你可以通过以下方式购买正版:<br>
-                    <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" onclick="playSound1();"
+                    <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe"
+                       onclick="playSound1();"
                        target="_blank">Google Play</a> /
                     <a href="https://apps.apple.com/app/minecraft/id479516143" onclick="playSound1();"
                        target="_blank">App Store</a> /
-                    <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" onclick="playSound1();"
+                    <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc"
+                       onclick="playSound1();"
                        target="_blank">PC 捆绑包</a></p>
                 <p>不知道如何购买正版?<br>
                     <a href="javascript:void(0);"

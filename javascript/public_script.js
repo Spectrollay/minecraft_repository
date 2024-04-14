@@ -16,6 +16,7 @@ const linkImgBlack = document.getElementsByClassName('link_img_black');
 const soundClickPath = rootPath + 'sounds/click.ogg';
 const soundButtonPath = rootPath + 'sounds/button.ogg';
 const updatelogPath = rootPath + 'updatelog/updatelog.html';
+const messagePath = rootPath + 'notifications/';
 
 console.log("根路径: ", rootPath);
 console.log("当前路径: ", currentPagePath);
@@ -213,6 +214,12 @@ function clickedMenu() {
 function toUpdatelog() {
     setTimeout(function () {
         window.location.href = updatelogPath;
+    }, 600);
+}
+
+function toMessage() {
+    setTimeout(function () {
+        window.location.href = messagePath;
     }, 600);
 }
 
