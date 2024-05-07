@@ -1,4 +1,4 @@
-/*自定义字体*/
+/* 自定义字体 */
 @font-face {
     font-family: 'Minecraft Ten';
     src: url("../fonts/Minecraft-Ten.otf") format('opentype');
@@ -34,18 +34,18 @@
     src: url("../fonts/NotoSans-Italic.ttf") format('truetype');
 }
 
-/*界面选择事件*/
+/* 界面选择事件 */
 ::selection {
     background-color: transparent;
     color: inherit;
 }
 
-/*禁用长按菜单*/
+/* 禁用长按菜单 */
 * {
     touch-action: manipulation;
 }
 
-/*总体样式*/
+/* 总体样式 */
 body {
     font-family: "NotoSans Bold", sans-serif;
     background: #48494A;
@@ -55,7 +55,7 @@ body {
     -webkit-user-select: none;
 }
 
-/*顶部标题栏*/
+/* 顶部标题栏 */
 header {
     position: fixed;
     top: 0;
@@ -70,7 +70,7 @@ header {
     z-index: 9;
 }
 
-/*顶栏元素*/
+/* 顶栏元素 */
 .header_menu, .header_back, .header_logo, .header_repo, .header_debug, .header_settings {
     display: flex;
     align-items: center;
@@ -78,85 +78,194 @@ header {
     height: 100%;
 }
 
-/*顶栏按钮悬停*/
+/* 顶栏按钮悬停 */
 .header_menu:hover, .header_back:hover, .header_repo:hover, .header_debug:hover, .header_settings:hover {
     background-color: #F4F6F9;
 }
 
-/*顶栏按钮激活*/
+/* 顶栏按钮激活 */
 .header_menu:active, .header_back:active, .header_repo:active, .header_debug:active, .header_settings:active {
     background-color: #D0D1D4;
 }
 
-/*顶栏左侧按钮*/
+/* 顶栏左侧按钮 */
 .header_menu, .header_back {
     width: 40px;
     border-right: 2px solid #FFFFFF;
 }
 
-/*顶栏右侧按钮*/
+/* 顶栏右侧按钮 */
 .header_repo, .header_debug, .header_settings {
     width: 40px;
     border-left: 2px solid #A1A3A5;
 }
 
-/*顶栏按钮图标*/
+/* 顶栏按钮图标 */
+.back_icon {
+    height: 32px;
+}
+
 .menu_icon, .repo_icon, .debug_icon, .settings_icon {
     height: 32px;
     width: 32px;
 }
 
-/*标题区域*/
+/* 标题区域 */
 .title_icon {
     height: 26px;
     width: 26px;
     padding-right: 8px;
 }
 
-/*标题图标*/
+/* 标题图标 */
 .header_logo {
     flex: 1;
     border-left: 2px solid #A1A3A5;
     border-right: 2px solid #FFFFFF;
 }
 
-/*标题文字*/
+/* 标题文字 */
 .header_title {
     height: 38px;
     font-family: "Minecraft Ten", sans-serif;
     font-size: 30px;
 }
 
-/*主体框架*/
+/* 主体框架 */
 main {
     height: calc(100% - 44px);
     top: 44px;
     width: 100%;
     min-width: 360px;
-    color: #FFFFFF;
     position: fixed;
+    overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
 
-/*主体框架滚动条*/
+/* 主体框架滚动条 */
 main::-webkit-scrollbar {
     top: 44px;
-    width: 12px;
+    width: 16px;
 }
 
 main::-webkit-scrollbar-track {
     background-color: #58585A;
-    border: 4px solid #48494A;
+    border: 5px solid #48494A;
 }
 
 main::-webkit-scrollbar-thumb {
     background-color: #E6E8EB;
     border: 2px solid #000000;
-    box-shadow: inset 0 -4px #58585A, inset 0 -6px #F9FAFA, inset 2px 2px #F9FAFA, inset -2px 0 #F9FAFA;
+    box-shadow: inset 0 -4px #58585A, inset 0 -7px #F9FAFA, inset 3px 3px #F9FAFA, inset -3px 0 #F9FAFA;
 }
 
-/*主体块*/
+/* Tab Bar组件 */
+.tab_bar_area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 360px;
+    z-index: 9;
+}
+
+.tab_bar_area.main_tab_bar {
+    height: 52px;
+    position: fixed;
+    top: 54px;
+    left: 0;
+    right: 0;
+}
+
+.tab_bar {
+    position: relative;
+    width: calc(100% - 40px);
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab_bar_btn {
+    font-family: "NotoSans Bold", sans-serif;
+    flex: 1;
+    height: 40px;
+    justify-self: center;
+    color: white;
+    background-color: #48494A;
+    transition: background-color 0.3s;
+    padding-bottom: 6px;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 -4px #313233, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.tab_bar_btn:hover {
+    background-color: #58585A;
+    box-shadow: inset 0 -4px #313233, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
+}
+
+.tab_bar_btn:active {
+    margin-top: 4px;
+    height: 36px;
+    padding-bottom: 2px;
+    background-color: #313233;
+    box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
+}
+
+.tab_bar_btn::after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 3px;
+    background-color: white;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transition: transform 0.3s;
+}
+
+.tab_bar_btn.active {
+    margin-top: 4px;
+    height: 36px;
+    padding-bottom: 2px;
+    background-color: #313233;
+    box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
+}
+
+.tab_bar_btn:hover::after,
+.tab_bar_btn.active::after {
+    transform: translateX(-50%) scaleX(1);
+    width: 20%;
+}
+
+.tab_bar_btn.no_active:hover::after,
+.tab_bar_btn.no_active::after {
+    height: 4px;
+}
+
+.tab_bar_btn.no_active:active::after {
+    height: 3px;
+}
+
+.tab_content {
+    display: none;
+    color: #FFFFFF;
+    min-height: 60px;
+}
+
+.tab_content.active {
+    display: block;
+}
+
+.tab_sidebar.no_active {
+    display: none;
+}
+
+.tab_sidebar.active {
+    display: block;
+}
+
+/* 主体块 */
 .main {
     height: auto;
     min-height: 66px;
@@ -171,23 +280,11 @@ main::-webkit-scrollbar-thumb {
     color: #FFFFFF;
 }
 
-.main_content_center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 240px;
-}
-
-.main_detail_center {
-    font-size: 20px;
-    text-align: center;
-}
-
 #holiday_tip1, #holiday_tip2 {
     display: none;
 }
 
-/*主体上下提示*/
+/* 主体上下提示 */
 .main-header, .main-footer {
     font-family: "Minecraft Ten", sans-serif;
 }
@@ -200,7 +297,7 @@ main::-webkit-scrollbar-thumb {
     justify-items: center;
 }
 
-/*预览提示*/
+/* 预览提示 */
 .preview_block {
     font-family: "NotoSans Bold", sans-serif;
     border-top: 4px solid #5A5B5C;
@@ -221,14 +318,14 @@ main::-webkit-scrollbar-thumb {
     margin: 4px 0;
 }
 
-/*加载中图标*/
+/* 加载中图标 */
 .loading_icon {
     padding: 10px;
     height: 32px;
     width: 32px;
 }
 
-/*主体文字*/
+/* 主体文字 */
 .title1, .title2, .title3, .description1, .description2 {
     color: #FFFFFF;
 }
@@ -278,7 +375,7 @@ main::-webkit-scrollbar-thumb {
     box-shadow: inset 0 -2px 0 0 #FFFFFF;
 }
 
-/*默认按钮样式*/
+/* 默认按钮样式 */
 .btn {
     font-family: "NotoSans Bold", sans-serif;
     height: 40px;
@@ -287,7 +384,7 @@ main::-webkit-scrollbar-thumb {
     justify-self: center;
 }
 
-.small_btn {
+.preview_btn {
     width: 140px;
 }
 
@@ -370,7 +467,7 @@ main::-webkit-scrollbar-thumb {
     box-shadow: inset 0 -4px #B1B2B5;
 }
 
-/*带有图标的按钮*/
+/* 带有图标的按钮 */
 .link_img, .link_img_black {
     margin-bottom: -1.5px;
     height: 14px;
@@ -378,13 +475,13 @@ main::-webkit-scrollbar-thumb {
     padding-right: 6px;
 }
 
-/*带有Tooltip的按钮样式*/
+/* 带有Tooltip的按钮 */
 .btn_with_tooltip_cont {
     position: relative;
     display: inline-block;
 }
 
-.tooltip {
+.btn_tooltip {
     visibility: hidden;
     background-color: #1F1F1F;
     color: #FFFFFF;
@@ -398,7 +495,7 @@ main::-webkit-scrollbar-thumb {
     transition: opacity 0.6s;
 }
 
-.btn_with_tooltip_cont:hover .tooltip {
+.btn_with_tooltip_cont:hover .btn_tooltip {
     visibility: visible;
     opacity: 1;
 }
@@ -411,7 +508,7 @@ main::-webkit-scrollbar-thumb {
     height: 20px;
 }
 
-/*主体块*/
+/* 主体块 */
 .block {
     margin: 0 20px;
     border-top: 2px solid #5A5B5C;
@@ -420,19 +517,19 @@ main::-webkit-scrollbar-thumb {
     border-right: 2px solid #333334;
 }
 
-/*块间隙*/
+/* 块间隙 */
 .block_spacing {
     height: 20px;
 }
 
-/*Banner区域*/
+/* Banner区域 */
 .banner_area {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/*Banner主体*/
+/* Banner主体 */
 .banner {
     font-family: "NotoSans Bold", sans-serif;
     margin: 10px 20px;
@@ -467,10 +564,6 @@ main::-webkit-scrollbar-thumb {
     background-color: #2E6BE5;
 }
 
-.normal_banner {
-    background-color: #1E1E1F;
-}
-
 .important_banner {
     font-weight: bolder;
     color: #000000;
@@ -481,14 +574,77 @@ main::-webkit-scrollbar-thumb {
     box-shadow: inset 0 -2px 0 0 #000000;
 }
 
-/*按钮块*/
-.btn_group, .download_line {
+/* 按钮块 */
+.download_line, .preview_btns {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/*表格属性*/
+/* Badge */
+.badge_area {
+    display: flex;
+    align-items: center;
+}
+
+.badge {
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+}
+
+.green_badge {
+    background-color: #6CC349;
+}
+
+.blue_badge {
+    background-color: #8CB3FF;
+}
+
+.yellow_badge {
+    background-color: #FFE866;
+}
+
+.red_badge {
+    background-color: #F46D6D;
+}
+
+/* Tag */
+.tag_area {
+    display: flex;
+    align-items: center;
+}
+
+.tag {
+    align-self: center;
+    color: #000000;
+    margin: 4px;
+    padding: 0 2px;
+    font-size: 12px;
+}
+
+.black_tag {
+    color: #FFFFFF;
+    background-color: #1E1E1F;
+}
+
+.green_tag {
+    background-color: #6CC349;
+}
+
+.blue_tag {
+    background-color: #8CB3FF;
+}
+
+.yellow_tag {
+    background-color: #FFE866;
+}
+
+.red_tag {
+    background-color: #F46D6D;
+}
+
+/* 表格属性 */
 .table_area {
     width: 100%;
     display: flex;
@@ -536,7 +692,7 @@ td {
     min-width: 100px;
 }
 
-/*表格底部信息区域*/
+/* 表格底部信息区域 */
 .info_area {
     display: flex;
     align-items: center;
@@ -553,7 +709,7 @@ td {
     margin-bottom: 0;
 }
 
-/*Modal弹窗*/
+/* Modal弹窗 */
 .modal_area {
     display: none;
     z-index: 11;
@@ -632,12 +788,12 @@ td {
     width: 100%;
 }
 
-/*Pop弹窗*/
+/* Pop弹窗 */
 .pop_area {
     display: none;
 }
 
-/*页面底部信息*/
+/* 页面底部信息 */
 .page_info_title, .page_info {
     font-family: "NotoSans Bold", sans-serif;
     font-size: 12px;
@@ -659,7 +815,7 @@ td {
     box-shadow: inset 0 -2px 0 0 rgba(255, 255, 255, 0.4);
 }
 
-/*侧边栏*/
+/* 侧边栏 */
 .sidebar {
     height: calc(100% - 44px);
     width: 0;
@@ -709,7 +865,7 @@ td {
 
 .sidebar_detail {
     height: 24px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     font-size: 14px;
 }
 
@@ -737,7 +893,7 @@ td {
     box-shadow: unset;
 }
 
-/*侧边栏滚动条*/
+/* 侧边栏滚动条 */
 .sidebar::-webkit-scrollbar {
     width: 12px;
 }
@@ -753,7 +909,7 @@ td {
     box-shadow: inset 0 -4px #58585A, inset 0 -6px #F9FAFA, inset 2px 2px #F9FAFA, inset -2px 0 #F9FAFA;
 }
 
-/*全屏遮罩*/
+/* 全屏遮罩 */
 .overlay {
     position: fixed;
     top: 0;
@@ -765,7 +921,7 @@ td {
     display: none;
 }
 
-/*除了顶栏*/
+/* 除了顶栏 */
 .overlay_main {
     position: fixed;
     top: 0;
@@ -775,4 +931,146 @@ td {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
     display: none;
+}
+
+/* Expandable Card */
+.expandable_card {
+    text-align: center;
+    align-items: center;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    border-top: 2px solid #5A5B5C;
+    border-bottom: 2px solid #333334;
+    border-left: 2px solid #333334;
+    border-right: 2px solid #333334;
+    color: #FFFFFF;
+}
+
+.expandable_card:hover {
+    background-color: #58585A;
+}
+
+.expandable_card:active {
+    border: 2px solid #333334;
+    background-color: #3D3E3F;
+}
+
+.expandable_card_text_area {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.expandable_card_text {
+    font-size: 23px;
+    font-family: "Minecraft Seven", sans-serif;
+}
+
+.expandable_card_text_title {
+}
+
+.expandable_card_image_area {
+    height: 56px;
+    width: 56px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.expandable_card_image {
+    width: 32px;
+}
+
+.expandable_card_down_area {
+    background-color: #313233;
+    overflow: hidden;
+    transition: height 600ms;
+}
+
+.expandable_card_down {
+    padding: 1px;
+}
+
+.expandable_card_down_br {
+    margin: 1px 0;
+    height: 2px;
+    background-color: #48494A;
+}
+
+.expandable_card_down_content {
+    margin: 10px 20px;
+}
+
+/* 开发日志 */
+.log_block {
+    text-align: center;
+}
+
+.release_date {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.release_log_note {
+    border-left: 6px solid #2E6BE5;
+    padding-left: 10px;
+    margin: 6px 0;
+}
+
+.release_log_item {
+    position: relative;
+    padding-left: 16px;
+    margin: 10px 0;
+}
+
+.release_log_item:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+}
+
+.release_log_item.child {
+    position: relative;
+    padding-left: 32px;
+    margin: 10px 0;
+}
+
+.release_log_item.child:before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+}
+
+.release_log_item.grandchild {
+    position: relative;
+    padding-left: 48px;
+    margin: 10px 0;
+}
+
+.release_log_item.grandchild:before {
+    content: "";
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
 }

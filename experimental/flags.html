@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="../stylesheet/public_style.css" rel="stylesheet">
     <link href="../stylesheet/advanced.css" rel="stylesheet">
     <link href="../images/Tool.png" rel="icon">
     <style>
@@ -12,13 +11,48 @@
             flex: 1;
         }
     </style>
+    <script>
+        const loadingMaskStyle = document.createElement('style');
+        loadingMaskStyle.textContent = `
+        .loading_mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #48494A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 1;
+            transition: opacity 0.6s;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+        }
+
+        #spinner_img {
+            width: 50px;
+            height: 50px;
+        }
+    `;
+        document.head.appendChild(loadingMaskStyle);
+
+        const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
+    </script>
     <title>实验性内容</title>
 </head>
 
 <body>
+<div class="loading_mask" id="loading_mask">
+    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+</div>
 <header>
     <div class="header_back" id="back" onclick="clickedBack();">
-        <img alt="Back" class="back_icon" src="../images/Back.png">
+        <img alt="" class="back_icon" id="back_icon" src="">
     </div>
     <div class="header_logo" onclick="scrollToTop();">
         <img alt="Title Icon" class="title_icon" src="../images/Tool.png">
@@ -38,46 +72,12 @@
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <div>Badge</div>
-            <br>
-            <div class="badge_area">
-                <div class="badge green_badge"></div>
-                <div>Green Badge</div>
-            </div>
-            <br>
-            <div class="badge_area">
-                <div class="badge yellow_badge"></div>
-                <div>Yellow Badge</div>
-            </div>
-            <br>
-            <div class="badge_area">
-                <div class="badge blue_badge"></div>
-                <div>Blue Badge</div>
-            </div>
-            <br>
-            <div class="badge_area">
-                <div class="badge red_badge"></div>
-                <div>Red Badge</div>
-            </div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Banner</div>
-            <br>
-            <div class="banner_area">
-                <div class="banner neutral_banner">Neutral Banner</div>
-            </div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
             <div>Button with Tooltip</div>
             <br>
             <div>Normal Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn normal_btn btn_with_tooltip" onclick="playSound(this);">Button1</button>
-                <div class="tooltip">Information1</div>
+                <div class="btn_tooltip">Information1</div>
                 <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
             <br>
@@ -85,7 +85,7 @@
             <div>Green Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn green_btn btn_with_tooltip" onclick="playSound(this);">Button2</button>
-                <div class="tooltip">Information2</div>
+                <div class="btn_tooltip">Information2</div>
                 <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
             <br>
@@ -93,7 +93,7 @@
             <div>Red Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn red_btn btn_with_tooltip" onclick="playSound(this);">Button3</button>
-                <div class="tooltip">Information3</div>
+                <div class="btn_tooltip">Information3</div>
                 <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
             <br>
@@ -101,7 +101,7 @@
             <div>Disabled Button</div>
             <div class="btn_with_tooltip_cont">
                 <button class="btn disabled_btn btn_with_tooltip" onclick="playSound(this);">Button4</button>
-                <div class="tooltip">Information4</div>
+                <div class="btn_tooltip">Information4</div>
                 <img alt="Key" class="key_icon" src="../images/Key.png"/>
             </div>
         </div>
@@ -126,133 +126,13 @@
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <div>Expandable Card</div>
-            <br>
-            <div>Expandable Card with One Content Open</div>
-            <br>
-            <div class="expandable_card_group">
-                <div class="expandable_card_area" id="expandable_card_area_1">
-                    <div class="expandable_card expanded" onclick="playSound1();">
-                        <div class="expandable_card_text_area">
-                            <div class="expandable_card_text">
-                                <div class="expandable_card_text_title">Card Title</div>
-                            </div>
-                        </div>
-                        <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src="">
-                        </div>
-                    </div>
-                    <div class="expandable_card_down_area">
-                        <div class="expandable_card_down">
-                            <div class="expandable_card_down_content">Card Content</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div>Expandable Card with One Content Close</div>
-            <br>
-            <div class="expandable_card_group">
-                <div class="expandable_card_area" id="expandable_card_area_2">
-                    <div class="expandable_card no_expanded" onclick="playSound1();">
-                        <div class="expandable_card_text_area">
-                            <div class="expandable_card_text">
-                                <div class="expandable_card_text_title">Card Title</div>
-                            </div>
-                        </div>
-                        <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src="">
-                        </div>
-                    </div>
-                    <div class="expandable_card_down_area">
-                        <div class="expandable_card_down">
-                            <div class="expandable_card_down_content">Card Content</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div>Expandable Card with Contents</div>
-            <br>
-            <div class="expandable_card_group">
-                <div class="expandable_card_area" id="expandable_card_area_3">
-                    <div class="expandable_card expanded" onclick="playSound1();">
-                        <div class="expandable_card_text_area">
-                            <div class="expandable_card_text">
-                                <div class="expandable_card_text_title">Card Title</div>
-                            </div>
-                        </div>
-                        <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src="">
-                        </div>
-                    </div>
-                    <div class="expandable_card_down_area">
-                        <div class="expandable_card_down">
-                            <div class="expandable_card_down_content">Card Content 1</div>
-                            <div class="expandable_card_down_br"></div>
-                            <div class="expandable_card_down_content">Card Content 2</div>
-                            <div class="expandable_card_down_br"></div>
-                            <div class="expandable_card_down_content">Card Content 3</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div>Expandable Card Group</div>
-            <br>
-            <div class="expandable_card_group">
-                <div class="expandable_card_area" id="expandable_card_area_4">
-                    <div class="expandable_card expanded" onclick="playSound1();">
-                        <div class="expandable_card_text_area">
-                            <div class="expandable_card_text">
-                                <div class="expandable_card_text_title">Card Title 1</div>
-                            </div>
-                        </div>
-                        <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src="">
-                        </div>
-                    </div>
-                    <div class="expandable_card_down_area">
-                        <div class="expandable_card_down">
-                            <div class="expandable_card_down_content">Card Content 1</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="expandable_card_area" id="expandable_card_area_5">
-                    <div class="expandable_card no_expanded" onclick="playSound1();">
-                        <div class="expandable_card_text_area">
-                            <div class="expandable_card_text">
-                                <div class="expandable_card_text_title">Card Title 2</div>
-                            </div>
-                        </div>
-                        <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src="">
-                        </div>
-                    </div>
-                    <div class="expandable_card_down_area">
-                        <div class="expandable_card_down">
-                            <div class="expandable_card_down_content">Card Content 2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="expandable_card_area" id="expandable_card_area_6">
-                    <div class="expandable_card no_expanded" onclick="playSound1();">
-                        <div class="expandable_card_text_area">
-                            <div class="expandable_card_text">
-                                <div class="expandable_card_text_title">Card Title 3</div>
-                            </div>
-                        </div>
-                        <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src="">
-                        </div>
-                    </div>
-                    <div class="expandable_card_down_area">
-                        <div class="expandable_card_down">
-                            <div class="expandable_card_down_content">Card Content 3</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+            <div>Expandable List</div>
+            <div></div>
         </div>
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <div>Expandable List</div>
+            <div>Modal with Close Btn</div>
             <div></div>
         </div>
     </div>
@@ -367,71 +247,6 @@
     </div>
     <div class="setting_block">
         <div class="setting_block_content">
-            <div>Tab Bar</div>
-            <br>
-            <div>Normal Tab Bar</div>
-            <div class="tab_bar_area">
-                <div class="tab_bar">
-                    <button class="tab_bar_btn active" id="tab1" onclick="selectTab(1);">Tab 1</button>
-                    <button class="tab_bar_btn no_active" id="tab2" onclick="selectTab(2);">Tab 2</button>
-                    <button class="tab_bar_btn no_active" id="tab3" onclick="selectTab(3);">Tab 3</button>
-                </div>
-            </div>
-            <div class="tab_content active" id="content1">Content for Tab 1<br>content 1 line 2<br>content 1 line 3
-            </div>
-            <div class="tab_content no_active" id="content2">Content for Tab 2<br>content 2 line 2<br>content 2 line 3
-            </div>
-            <div class="tab_content no_active" id="content3">Content for Tab 3<br>content 3 line 2<br>content 3 line 3
-            </div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Tag</div>
-            <br>
-            <div>Black Tag</div>
-            <div class="tag_area">
-                <div class="tag_description">
-                    <span class="tag black_tag">Black Tag</span>
-                    This is description.
-                </div>
-            </div>
-            <br>
-            <div>Green Tag</div>
-            <div class="tag_area">
-                <div class="tag_description">
-                    <span class="tag green_tag">Green Tag</span>
-                    This is description.
-                </div>
-            </div>
-            <br>
-            <div>Blue Tag</div>
-            <div class="tag_area">
-                <div class="tag_description">
-                    <span class="tag blue_tag">Blue Tag</span>
-                    This is description.
-                </div>
-            </div>
-            <br>
-            <div>Yellow Tag</div>
-            <div class="tag_area">
-                <div class="tag_description">
-                    <span class="tag yellow_tag">Yellow Tag</span>
-                    This is description.
-                </div>
-            </div>
-            <br>
-            <div>Red Tag</div>
-            <div class="tag_area">
-                <div class="tag_description">
-                    <span class="tag red_tag">Red Tag</span>
-                    This is description.
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
             <div>Text Field</div>
             <div></div>
         </div>
@@ -455,8 +270,57 @@
 
 </body>
 
+<script>
+    const public_script = document.createElement('script');
+    const public_define = document.createElement('script');
+
+    public_script.src = root_path + 'javascript/public_script.js';
+    public_define.src = root_path + 'javascript/public_define.js';
+
+    document.head.appendChild(public_script);
+    document.head.appendChild(public_define);
+
+    const menu_icon = document.getElementById('menu_icon');
+    const back_icon = document.getElementById('back_icon');
+
+    if (back_icon) {
+        back_icon.src = root_path + 'images/arrowLeft.png';
+    }
+    if (menu_icon) {
+        menu_icon.src = root_path + 'images/menu.png';
+    }
+
+    const loading_img = document.getElementById('spinner_img');
+    loading_img.src = root_path + 'images/Loading_white.gif';
+    const loading_mask = document.getElementById('loading_mask');
+
+    // 监听页面加载完成事件
+    window.addEventListener('load', function () {
+        let linkImg = document.getElementsByClassName('link_img');
+        let linkImgBlack = document.getElementsByClassName('link_img_black');
+
+        if (linkImg) {
+            for (let i = 0; i < linkImg.length; i++) {
+                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
+            }
+        }
+        if (linkImgBlack) {
+            for (let i = 0; i < linkImgBlack.length; i++) {
+                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
+            }
+        }
+
+        // 延时600ms后隐藏蒙版
+        loading_mask.style.opacity = '0';
+        setTimeout(function () {
+            loading_mask.style.display = 'none';
+        }, 600);
+    });
+</script>
 <script src="../javascript/advanced.js"></script>
-<script src="../javascript/secondary.js"></script>
-<script src="../javascript/public_script.js"></script>
+
+<!--<style>-->
+<!--    -->
+<!--</style>-->
 
 </html>

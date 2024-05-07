@@ -2,10 +2,10 @@ const texts = {
     preview_title: "欢迎观看设计预览!",
     preview_detail1: "我们想听听你对这个新设计的意见.",
     preview_detail2: "请注意: 新设计还未完工,可能会缺失部分功能.",
-    preview_btn1: "更新历史",
+    preview_btn1: "开发日志",
     preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.5.2.5.Beta<br>Server Version: 4.0<br>Updated: 2024-04-14-01",
+    page_info_detail1: "Version: 4.6.1.19.Canary<br>Server Version: 4.0<br>Updated: 2024-04-07-02",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     page_info_title3: "MADE WITH ❤️ IN CHINA",
@@ -27,16 +27,18 @@ const texts = {
     download_btn9: "<img class=\"link_img_black\" src=\"\" alt=\"\"/>外部链接",
 };
 
+const rootPath_d = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
+
 let previousTipIndex = -2;
 let currentTipIndex = -1;
 const tipElement = document.getElementById("tip");
 const tipsWithWeights = [
     {
-        text: "<span>本站有<a href=\"https://spectrollay.github.io/minecraft_repository/home.html\" target=\"_blank\" onclick=\"playSound1();\">国外源</a>和<a href=\"https://spectrollay.gitee.io/minecraft_repository/home.html\" target=\"_blank\" onclick=\"playSound1();\">国内源</a>,如遇加载问题可以切换线路访问.</span>",
+        text: "<span>本站有<a href=\"https://spectrollay.github.io" + rootPath_d + "\" target=\"_blank\" onclick=\"playSound1();\">国外源</a>和<a href=\"https://spectrollay.gitee.io" + rootPath_d + "\" target=\"_blank\" onclick=\"playSound1();\">国内源</a>,如遇加载问题可以切换线路访问.</span>",
         weight: 3
     },
     {
-        text: "<span>发现问题或有好的建议?<a href=\"https://github.com/Spectrollay/minecraft_repository/issues/new\" target=\"_blank\" onclick=\"playSound1();\">欢迎提出</a>!</span>",
+        text: "<span>发现问题或有好的建议?<a href=\"https://github.com/Spectrollay" + rootPath_d + "issues/new\" target=\"_blank\" onclick=\"playSound1();\">欢迎提出</a>!</span>",
         weight: 3
     },
     {
@@ -52,7 +54,7 @@ const tipsWithWeights = [
     {text: "↑ 点击标题栏可以快速回到顶部 ↑", weight: 3},
     {text: "本站指向的站外内容可能不受保障!", weight: 3},
     {text: "转载本站内容时均必须注明出处!", weight: 3},
-    {text: "感谢你使用Minecraft 版本库!", weight: 3},
+    {text: "感谢你使用星月Minecraft版本库!", weight: 3},
     {text: "你完成你的事情了吗?", weight: 3},
     {
         text: "<span style=\"background: linear-gradient(to right, #1C0DFF, #3CBBFC, #B02FED, #FF57AC, #FFB515, #FFEA45, #99FF55, #00FFAA); -webkit-background-clip: text; background-clip: text; color: transparent;\">这是一条彩色的提示!</span>",
@@ -62,7 +64,7 @@ const tipsWithWeights = [
         text: "<span style=\"transform: scaleX(-1) scaleY(-1);\">这是一条颠倒的提示!</span>",
         weight: 2
     },
-    {text: "我们保留了一些bug,这样你才知道你在使用的是Minecraft 版本库.", weight: 2},
+    {text: "我们保留了一些bug,这样你才知道你在使用的是星月Minecraft版本库.", weight: 2},
     {text: "你知道吗,版本库界面的构建仅花费了两天时间.", weight: 2},
     {text: "你知道吗,这个项目其实始于2020年.", weight: 2},
     {text: "现在你看到了一条提示.", weight: 2},
@@ -131,6 +133,7 @@ const s = currentDate.getSeconds();
 // const Y = 2024; // 年份全称
 // const M = 1; // 一位数不要补零
 // const D = 1; // 一位数不要补零
+// const h = 1; // 一位数不要补零
 const minecraft_birthday = Y - 2009;
 const repository_birthday = Y - 2020;
 
@@ -199,6 +202,7 @@ if (holiday_tip2) {
     }
 }
 
+// 为按钮赋值
 const buttons = document.querySelectorAll('.btn');
 
 function updateButtonText(button) {

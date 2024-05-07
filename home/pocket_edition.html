@@ -6,32 +6,66 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="../stylesheet/editions.css" rel="stylesheet">
-    <link href="../stylesheet/public_style.css" rel="stylesheet">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <link href="../images/Marketplace.png" rel="icon">
-    <title>携带版 - Minecraft 版本库</title>
+    <script>
+        const loadingMaskStyle = document.createElement('style');
+        loadingMaskStyle.textContent = `
+        .loading_mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #48494A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 1;
+            transition: opacity 0.6s;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+        }
+
+        #spinner_img {
+            width: 50px;
+            height: 50px;
+        }
+    `;
+        document.head.appendChild(loadingMaskStyle);
+
+        const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
+    </script>
+    <link href="../images/Logo.jpg" rel="icon">
+    <title>携带版 - 星月Minecraft版本库</title>
 </head>
 
 <body>
+<div class="loading_mask" id="loading_mask">
+    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+</div>
 <header>
     <div class="header_menu" id="menu" onclick="clickedMenu();">
-        <img alt="Menu" class="menu_icon" src="../images/Menu.png">
+        <img alt="" class="menu_icon" id="menu_icon" src="">
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="../images/Marketplace.png"><span
+        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"><span
             class="header_title">Repository</span>
     </div>
 </header>
 <main id="main">
     <div id="main_top"></div>
     <div class="banner_area">
-        <div class="top_banner banner normal_banner" id="tip"></div>
+        <div class="top_banner banner neutral_banner" id="tip"></div>
     </div>
     <div class="block_spacing"></div>
     <div class="block">
-        <div class="main back_block back_to_main" onclick="jumpToPage('../home.html');"></div>
+        <div class="main back_block back_to_main" onclick="jumpToPage('../');"></div>
     </div>
     <div class="block_spacing"></div>
     <div class="block">
@@ -50,10 +84,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/1.1/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/1.1/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -61,34 +94,28 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/GlMoSW" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/GlMoSW');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134gdcf" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 1.1</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <a href="https://www.123pan.com/s/qILA-VcLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn6"></button>
-                    </a>
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134gdcf');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 1.1</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-VcLN3.html');"
+                            text-generation="download_btn6"></button>
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1eo8QYz7Gw1bv3pCwgXGwNQ?pwd=tkaj" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1eo8QYz7Gw1bv3pCwgXGwNQ?pwd=tkaj');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -103,10 +130,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/1.0/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/1.0/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -114,34 +140,28 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/lKkkCL" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/lKkkCL');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134gbzg" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 1.0</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <a href="https://www.123pan.com/s/qILA-5cLN3.html" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn6"></button>
-                    </a>
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134gbzg');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 1.0</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-5cLN3.html');"
+                            text-generation="download_btn6"></button>
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1depcCPb-ISmp5DFDqNmoUA?pwd=ezj4" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1depcCPb-ISmp5DFDqNmoUA?pwd=ezj4');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -156,10 +176,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.16/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.16/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -167,34 +186,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/AvMRsB" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/AvMRsB');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fpji" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.16</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpji');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.16</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/19g2lEFbqnHSUOy-BuKgfxg?pwd=e2ha" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/19g2lEFbqnHSUOy-BuKgfxg?pwd=e2ha');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -209,10 +221,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.15/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.15/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -220,34 +231,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/bAXMiY" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/bAXMiY');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fphg" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.15</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fphg');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.15</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1Qg_7btK0vUk5JhkCQh4ooA?pwd=6m4m" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1Qg_7btK0vUk5JhkCQh4ooA?pwd=6m4m');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -262,10 +266,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.14/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.14/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -273,34 +276,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/4avWIg" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/4avWIg');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fpfe" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.14</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpfe');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.14</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1WTBcaymV1pB8ZD22fLMzWA?pwd=hvtd" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1WTBcaymV1pB8ZD22fLMzWA?pwd=hvtd');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -315,10 +311,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.13/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.13/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -326,34 +321,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/vgk9iE" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/vgk9iE');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fpcb" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.13</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpcb');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.13</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1h3qm_Mnzidy6Ju3rQu4t4Q?pwd=3n9q" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1h3qm_Mnzidy6Ju3rQu4t4Q?pwd=3n9q');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -368,10 +356,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.12/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.12/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -379,34 +366,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/qXkxs3" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/qXkxs3');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fpaj" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.12</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpaj');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.12</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1_Ig7YTkzMIib_42CXECKNA?pwd=ezq9" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1_Ig7YTkzMIib_42CXECKNA?pwd=ezq9');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -421,10 +401,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.11/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.11/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -432,34 +411,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/MKMOHx" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/MKMOHx');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fp9i" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.11</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp9i');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.11</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1jcyhM2pChDtKgT6GPJ4OGQ?pwd=ng4r" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1jcyhM2pChDtKgT6GPJ4OGQ?pwd=ng4r');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -474,10 +446,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.10/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.10/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -485,34 +456,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/wxkBhK" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/wxkBhK');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fp6f" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.10</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp6f');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.10</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1Obe5VGnHEEC5ezJj43Nfbg?pwd=rrr4" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1Obe5VGnHEEC5ezJj43Nfbg?pwd=rrr4');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -527,10 +491,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.9/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.9/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -538,34 +501,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/9xMBTd" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/9xMBTd');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fp4d" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.9</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp4d');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.9</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1N8gW7u42UvPMFFlRs_TbAw?pwd=a3a8" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1N8gW7u42UvPMFFlRs_TbAw?pwd=a3a8');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -580,10 +536,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.8/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.8/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -591,34 +546,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/zyq6HM" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/zyq6HM');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fp3c" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.8</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp3c');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.8</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1x67QXMQ3Gi6VNpPyDCaetA?pwd=jh8n" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1x67QXMQ3Gi6VNpPyDCaetA?pwd=jh8n');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -633,10 +581,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.7/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.7/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -644,34 +591,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/dmV8CV" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/dmV8CV');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fp2b" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.7</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp2b');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.7</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/17WbdUsuZFBPjtLQoyrmlZw?pwd=w3vb" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/17WbdUsuZFBPjtLQoyrmlZw?pwd=w3vb');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -686,10 +626,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.6/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.6/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -697,34 +636,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/PD56hm" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/PD56hm');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fozi" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.6</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fozi');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.6</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1BIFPsanmDhuFpL62Nq-MBw?pwd=4hir" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1BIFPsanmDhuFpL62Nq-MBw?pwd=4hir');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -739,10 +671,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.5/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.5/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -750,34 +681,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/1DGzuv" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/1DGzuv');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134foxg" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.5</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134foxg');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.5</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1vYQP00tXOWsQ5ghBaECTmQ?pwd=vcqh" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1vYQP00tXOWsQ5ghBaECTmQ?pwd=vcqh');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -792,10 +716,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.4/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.4/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -803,34 +726,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/xvDkIV" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/xvDkIV');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fowf" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.4</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fowf');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.4</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1aKmzhIWWJ-qDIaWvMW_AZQ?pwd=kqde" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1aKmzhIWWJ-qDIaWvMW_AZQ?pwd=kqde');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -845,10 +761,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.3/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.3/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -856,34 +771,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/Xx7oul" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/Xx7oul');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fotc" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.3</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fotc');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.3</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1tARDI2dh4pN_xNurzznF6w?pwd=mbd3" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1tARDI2dh4pN_xNurzznF6w?pwd=mbd3');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -898,10 +806,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.2/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.2/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -909,34 +816,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/6YDAfN" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/6YDAfN');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fora" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.2</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fora');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.2</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1dkjCRvmGS_TUaHFDbhWuxQ?pwd=czb7" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1dkjCRvmGS_TUaHFDbhWuxQ?pwd=czb7');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -951,10 +851,9 @@
                     <div class="description3">官方原版</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://mcarc.gitee.io/Android/0.1/" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://mcarc.gitee.io/Android/0.1/');"
+                            text-generation="download_btn9"></button>
                 </div>
             </div>
             <div class="download_group">
@@ -962,34 +861,27 @@
                     <div class="description3">网盘下载</div>
                 </div>
                 <div class="download_line">
-                    <a href="https://pan.huang1111.cn/s/xVmEUV" target="_blank">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn_large"
+                            onclick="playSound(this);openLink('https://pan.huang1111.cn/s/xVmEUV');"
+                            text-generation="download_btn4"></button>
                 </div>
                 <div class="download_line">
-                    <a href="https://www.lanzouj.com/b0134fopi" target="_blank">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip download_btn" onclick="playSound(this);"
-                                    text-generation="download_btn5"></button>
-                            <div class="tooltip">密码: 0.1</div>
-                            <img alt="Key" class="key_icon" src="../images/Key.png"/>
-                        </div>
-                    </a>
-                    <!--                    <a href="" target="_blank">-->
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn normal_btn btn_with_tooltip download_btn"
+                                onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fopi');"
+                                text-generation="download_btn5"></button>
+                        <div class="btn_tooltip">密码: 0.1</div>
+                        <img alt="Key" class="key_icon" src="../images/Key.png"/>
+                    </div>
                     <button class="btn red_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn6"></button>
-                    <!--                    </a>-->
                 </div>
                 <div class="download_line">
-                    <!--                    <a href="" target="_blank">-->
                     <button class="btn disabled_btn download_btn" onclick="playSound(this);"
                             text-generation="download_btn7"></button>
-                    <!--                    </a>-->
-                    <a href="https://pan.baidu.com/s/1LvdOgSedhJmEnAxC1Q4SKA?pwd=r3z3" target="_blank">
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </a>
+                    <button class="btn normal_btn download_btn"
+                            onclick="playSound(this);openLink('https://pan.baidu.com/s/1LvdOgSedhJmEnAxC1Q4SKA?pwd=r3z3');"
+                            text-generation="download_btn8"></button>
                 </div>
             </div>
         </div>
@@ -1008,7 +900,7 @@
 <!--侧边栏-->
 <div class="sidebar" id="sidebar">
     <div class="sidebar_header">
-        <button class="btn sidebar_btn back_to_main" onclick="jumpToPage('../home.html');"></button>
+        <button class="btn sidebar_btn back_to_main" onclick="jumpToPage('../');"></button>
     </div>
     <div class="sidebar_list">
         <div class="sidebar_item">携带版</div>
@@ -1048,12 +940,57 @@
 
 </body>
 
+<script>
+    const public_script = document.createElement('script');
+    const public_define = document.createElement('script');
+
+    public_script.src = root_path + 'javascript/public_script.js';
+    public_define.src = root_path + 'javascript/public_define.js';
+
+    document.head.appendChild(public_script);
+    document.head.appendChild(public_define);
+
+    const menu_icon = document.getElementById('menu_icon');
+    const back_icon = document.getElementById('back_icon');
+
+    if (back_icon) {
+        back_icon.src = root_path + 'images/arrowLeft.png';
+    }
+    if (menu_icon) {
+        menu_icon.src = root_path + 'images/menu.png';
+    }
+
+    const loading_img = document.getElementById('spinner_img');
+    loading_img.src = root_path + 'images/Loading_white.gif';
+    const loading_mask = document.getElementById('loading_mask');
+
+    // 监听页面加载完成事件
+    window.addEventListener('load', function () {
+        let linkImg = document.getElementsByClassName('link_img');
+        let linkImgBlack = document.getElementsByClassName('link_img_black');
+
+        if (linkImg) {
+            for (let i = 0; i < linkImg.length; i++) {
+                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
+            }
+        }
+        if (linkImgBlack) {
+            for (let i = 0; i < linkImgBlack.length; i++) {
+                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
+            }
+        }
+
+        // 延时600ms后隐藏蒙版
+        loading_mask.style.opacity = '0';
+        setTimeout(function () {
+            loading_mask.style.display = 'none';
+        }, 600);
+    });
+</script>
 <script src="../javascript/editions.js"></script>
-<script src="../javascript/secondary.js"></script>
-<script src="../javascript/public_define.js"></script>
-<script src="../javascript/public_script.js"></script>
-<!--<script>-->
+
+<!--<style>-->
 <!--    -->
-<!--</script>-->
+<!--</style>-->
 
 </html>

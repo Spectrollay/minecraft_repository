@@ -3,18 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="3;url=./" http-equiv="refresh">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <style>
-        .redirect_title, .redirect_message {
-            color: #FFFFFF;
-        }
-
-        .message {
-            margin: 10px 0;
-        }
-    </style>
+    <!--    <style>-->
+    <!--        -->
+    <!--    </style>-->
     <script>
         const loadingMaskStyle = document.createElement('style');
         loadingMaskStyle.textContent = `
@@ -47,8 +40,7 @@
 
         const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
     </script>
-    <link href="./images/Logo.jpg" rel="icon">
-    <title>星月Minecraft版本库</title>
+    <title>Template</title>
 </head>
 
 <body>
@@ -59,17 +51,11 @@
     <div class="header_back" id="back" onclick="clickedBack();">
         <img alt="Back" class="back_icon" id="back_icon" src="">
     </div>
-    <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="./images/Logo.jpg">
-        <span class="header_title">Repository</span>
+    <div class="header_logo"><span class="header_title">Minecraft Kit</span>
     </div>
 </header>
-<main>
-    <div>
-        <h2 class="redirect_title">页面已迁移至新地址</h2>
-        <h4 class="message redirect_message"><span id="second">3</span>秒后将自动重定向</h4>
-        <h4 class="message redirect_message">没有成功重定向?<a onclick="jumpToPage('./');">点此前往</a></h4>
-    </div>
+<main class="main-cont">
+
 </main>
 
 <!--遮罩-->
@@ -126,41 +112,10 @@
             loading_mask.style.display = 'none';
         }, 600);
     });
-
-    const secondElement = document.getElementById('second');
-    if (secondElement) {
-        let count = parseInt(secondElement.textContent);
-
-        const secondInterval = setInterval(function () {
-            count--;
-            secondElement.textContent = count.toString();
-            if (count <= 0) {
-                clearInterval(secondInterval);
-            }
-        }, 1000);
-    }
-
 </script>
 
-<style>
-    main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    a {
-        color: inherit;
-        cursor: default;
-        position: relative;
-        text-decoration: none;
-        box-shadow: inset 0 -2px 0 0 #FFFFFF;
-    }
-
-    h2 {
-        margin: 10px 0;
-    }
-</style>
+<!--<style>-->
+<!--    -->
+<!--</style>-->
 
 </html>
