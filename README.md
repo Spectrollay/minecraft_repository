@@ -16,4 +16,3 @@
 项目地址:
 
 - (GitHub) https://spectrollay.github.io/minecraft_repository_test/
-- (Gitee) https://spectrollay.gitee.io/minecraft_repository_test/

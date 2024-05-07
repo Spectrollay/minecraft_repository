@@ -5,7 +5,7 @@ const texts = {
     preview_btn1: "开发日志",
     preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"\"/>提出反馈",
     page_info_title1: "INFORMATION",
-    page_info_detail1: "Version: 4.6.1.19.Canary<br>Server Version: 4.0<br>Updated: 2024-04-07-02",
+    page_info_detail1: "Version: 4.5.10.20.Preview<br>Server Version: 4.0<br>Updated: 2024-05-07-11",
     page_info_title2: "ABOUT US",
     page_info_detail2: "<span>Developer: @Spectrollay<br>Maintainer: @Spectrollay<br>Chat Group: [<a href=\"https://t.me/Spectrollay_MCW\" target=\"_blank\" onclick=\"playSound1();\">Telegram</a>] [<a href=\"https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609\" target=\"_blank\" onclick=\"playSound1();\">QQ</a>] [<a href=\"https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802\" target=\"_blank\" onclick=\"playSound1();\">云湖</a>]<span>",
     page_info_title3: "MADE WITH ❤️ IN CHINA",
@@ -33,10 +33,11 @@ let previousTipIndex = -2;
 let currentTipIndex = -1;
 const tipElement = document.getElementById("tip");
 const tipsWithWeights = [
-    {
-        text: "<span>本站有<a href=\"https://spectrollay.github.io" + rootPath_d + "\" target=\"_blank\" onclick=\"playSound1();\">国外源</a>和<a href=\"https://spectrollay.gitee.io" + rootPath_d + "\" target=\"_blank\" onclick=\"playSound1();\">国内源</a>,如遇加载问题可以切换线路访问.</span>",
-        weight: 3
-    },
+    // Gitee Pages 已下线
+    // {
+    //     text: "<span>本站有<a href=\"https://spectrollay.github.io" + rootPath_d + "\" target=\"_blank\" onclick=\"playSound1();\">国外源</a>和<a href=\"https://spectrollay.gitee.io" + rootPath_d + "\" target=\"_blank\" onclick=\"playSound1();\">国内源</a>,如遇加载问题可以切换线路访问.</span>",
+    //     weight: 3
+    // },
     {
         text: "<span>发现问题或有好的建议?<a href=\"https://github.com/Spectrollay" + rootPath_d + "issues/new\" target=\"_blank\" onclick=\"playSound1();\">欢迎提出</a>!</span>",
         weight: 3
@@ -172,10 +173,10 @@ if (holiday_tip2) {
     if (M === 1 && D === 1) {
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = "Happy New Year!";
-    } else if (M === 2 && D > 3 && D < 7) {
+    } else if (M === 2 && D > 2 && D < 6) { // 02.03
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = "版本库" + repository_birthday + "周年纪";
-    } else if (M === 5 && D > 16 && D < 20) {
+    } else if (M === 5 && D > 16 && D < 20) { //05.17
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = minecraft_birthday + " Years of Minecraft";
     } else if (M === 6 && D === 1) {
@@ -184,7 +185,7 @@ if (holiday_tip2) {
     } else if (M === 10 && D > 0 && D < 8) {
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = "国庆快乐!";
-    } else if (M === 12 && D === 25) {
+    } else if (M === 12 && (D === 24 || D === 25)) {
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = "Merry Christmas!";
     }
@@ -198,6 +199,18 @@ if (holiday_tip2) {
         if (Y === 2025) { // 即将到来
             holiday_tip2.style.display = 'flex';
             holiday_tip_display2.innerHTML = ""; // 愚人节版本更新主题
+        }
+    }
+
+    // 世界地球日
+    if (M === 4 && D > 19 && D < 26) {
+        if (Y === 2024) {
+            holiday_tip2.style.display = 'flex';
+            holiday_tip_display2.innerHTML = "<span>2024 世界地球日<br><a href=\"https://www.earthday.org/earth-day-2024/\" target=\"_blank\" onclick=\"playSound1();\">Planet vs. Plastics</a></span>";
+        }
+        if (Y === 2025) { // 即将到来
+            holiday_tip2.style.display = 'flex';
+            holiday_tip_display2.innerHTML = "";
         }
     }
 }
