@@ -88,10 +88,29 @@
         </div>
         <div class="main header_notice_body">
             <div class="description2">
-                <div>
-                    <img alt="news" class="no_news" src="./images/NoNews.png">
-                    <div>没有新通知</div>
-                </div>
+                <table class="notice_table">
+                    <tr>
+                        <th colspan="2">
+                            <div class="title3">消息</div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <img alt="" src="images/event/Anniversary15/Event.png" style="width: 350px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left_table">
+                            <div class="description2">[2024-05-17]</div>
+                        </td>
+                        <td class="right_table">
+                            <div class="description2">
+                                <a href="https://spectrollay.github.io/minecraft_repository_test/notifications/#message_2"
+                                   onclick="playSound1();" target="_blank">Minecraft 15 周年庆典!</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="main header_notice_body">
@@ -480,18 +499,42 @@
 <div class="overlay" id="overlay"></div>
 
 <!--提示弹窗-->
+<!--<div class="modal_area" id="alert_modal">-->
+<!--    <div class="modal">-->
+<!--        <div class="modal_title">提示</div>-->
+<!--        <div class="modal_content">-->
+<!--            <p>提示文本</p>-->
+<!--        </div>-->
+<!--        <div class="modal_btn_area">-->
+<!--            <button class="btn red_btn modal_btn" onclick="hideAlertModal(this);">我不知道</button>-->
+<!--            <button class="btn green_btn modal_btn" onclick="hideAlertModal(this);">我知道了</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="modal_area" id="alert_modal">
     <div class="modal">
-        <div class="modal_title">提示</div>
+        <div class="modal_title">Minecraft 15 周年庆典</div>
         <div class="modal_content">
-            <p>提示文本</p>
+            <div>
+                <img alt="" class="Anniversary15Event" src="images/event/Anniversary15/Event.png"/>
+                <p>塑造你的世界</p>
+                <p>从默默无闻到风靡全球，Minecraft 15 周年纪念带给我们喜悦和惊奇的际遇。祝愿我们有更多方块遍布的岁月！</p>
+            </div>
         </div>
         <div class="modal_btn_area">
-            <button class="btn red_btn modal_btn" onclick="hideAlertModal(this);">我不知道</button>
-            <button class="btn green_btn modal_btn" onclick="hideAlertModal(this);">我知道了</button>
+            <button class="btn normal_btn modal_btn"
+                    onclick="hideAlertModal(this);localStorage.setItem('neverShowAnniversary15EventModalAgain', '1');openLink('https://www.minecraft.net/zh-hans/15th-anniversary');">
+                <img alt="link" class="link_img_black" src=""/>查看详情
+            </button>
+            <button class="btn normal_btn modal_btn"
+                    onclick="hideAlertModal(this);localStorage.setItem('neverShowAnniversary15EventModalAgain', '1');">
+                继续
+            </button>
         </div>
     </div>
 </div>
+<div class="overlay" id="overlay_alert_modal"></div>
 
 <!--音效-->
 <!--<audio id="click" preload="auto">-->
@@ -550,21 +593,28 @@
         }, 600);
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        // showAlertModal();
-    });
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
 
-    // 预览提示弹窗
-    // function showAlertModal() {
-    //     const overlay = document.getElementById("overlay");
-    //     const modal = document.getElementById("alert_modal");
-    //     overlay.style.display = "block";
-    //     modal.style.display = "block";
-    //     console.log("显示提示弹窗");
-    // }
+    if (month === 5 && day > 15 && day < 31) {
+        setTimeout(function () {
+            if (!localStorage.getItem('neverShowAnniversary15EventModalAgain') || localStorage.getItem('neverShowAnniversary15EventModalAgain') !== '1') {
+                showAlertModal();
+            }
+        }, 100);
+    }
+
+    function showAlertModal() {
+        const overlay = document.getElementById("overlay_alert_modal");
+        const modal = document.getElementById("alert_modal");
+        overlay.style.display = "block";
+        modal.style.display = "block";
+        console.log("显示提示弹窗");
+    }
 
     function hideAlertModal(button) {
-        const overlay = document.getElementById("overlay");
+        const overlay = document.getElementById("overlay_alert_modal");
         const modal = document.getElementById("alert_modal");
         playSound(button);
         overlay.style.display = "none";
@@ -581,6 +631,30 @@
     .edition_block:active {
         border: 2px solid #3D3E3F;
         background-color: #3D3E3F;
+    }
+
+    .notice_table {
+        width: auto;
+    }
+
+    .notice_table, .notice_table th, .notice_table td {
+        border: 0;
+    }
+
+    .notice_table td {
+        height: 25px;
+    }
+
+    .notice_table .left_table {
+        text-align: right;
+    }
+
+    .notice_table .right_table {
+        text-align: left;
+    }
+
+    .Anniversary15Event {
+        width: calc(min(80%, 350px));
     }
 </style>
 
