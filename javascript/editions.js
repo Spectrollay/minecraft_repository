@@ -2,7 +2,7 @@ let openurl;
 
 // 免责申明弹窗
 function showDisclaimerModal(url) {
-    const overlay = document.getElementById("overlay");
+    const overlay = document.getElementById("overlay_disclaimer_modal");
     const modal = document.getElementById("disclaimer_modal");
     overlay.style.display = "block";
     modal.style.display = "block";
@@ -15,7 +15,7 @@ function showDisclaimerModal(url) {
 }
 
 function hideDisclaimerModal(button, state, url) {
-    const overlay = document.getElementById("overlay");
+    const overlay = document.getElementById("overlay_disclaimer_modal");
     const modal = document.getElementById("disclaimer_modal");
     playSound(button);
     overlay.style.display = "none";

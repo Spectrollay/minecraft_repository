@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <!--        <style>-->
-    <!--            -->
-    <!--        </style>-->
+    <!--    <style>-->
+    <!--        -->
+    <!--    </style>-->
     <script>
         const loadingMaskStyle = document.createElement('style');
         loadingMaskStyle.textContent = `
@@ -27,7 +27,10 @@
         }
 
         .spinner {
-            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             height: 50px;
         }
 
@@ -35,59 +38,60 @@
             width: 50px;
             height: 50px;
         }
+
+        .spinner_text {
+            color: #FFFFFF;
+            font-size: 20px;
+        }
     `;
         document.head.appendChild(loadingMaskStyle);
 
         const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
     </script>
-    <link href="../images/Logo.jpg" rel="icon">
-    <title>正版购买指南</title>
+    <title>漏洞追踪器</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
-    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+    </div>
 </div>
 <header>
-    <div class="header_back" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src="">
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="Back" class="back_icon" id="back_icon" src=""/>
     </div>
-    <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"><span
-            class="header_title">Repository</span>
-    </div>
+    <div class="header_logo"><span class="header_title">Bugs</span></div>
+    <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<main id="main">
-    <div class="block">
-        <div class="main">
-            <div class="title1">正版购买指南</div>
-            <div class="description1">2024-01-01</div>
-        </div>
-        <div class="banner_area">
-            <div class="banner information_banner">
-                <a href="https://zh.minecraft.wiki/w/Tutorial:%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B4%AD%E4%B9%B0"
-                   onclick="playSound1();" target="_blank">Minecraft Wiki 教程</a>
-            </div>
-        </div>
-        <div class="main">即将到来</div>
-    </div>
-</main>
+<scroll-container>
+    <main class="main_content_center main_scroll_container" id="main">
+    </main>
+</scroll-container>
+<custom-scrollbar>
+    <custom-scrollbar-track></custom-scrollbar-track>
+    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+</custom-scrollbar>
 
 <!--遮罩-->
 <!--除了顶栏-->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
-<!--全屏-->
-<div class="overlay" id="overlay"></div>
 
 </body>
 
 <script>
+    const custom_elements_js = document.createElement('script');
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
+    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
     public_script.src = root_path + 'javascript/public_script.js';
     public_define.src = root_path + 'javascript/public_define.js';
 
+    document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
@@ -107,20 +111,6 @@
 
     // 监听页面加载完成事件
     window.addEventListener('load', function () {
-        let linkImg = document.getElementsByClassName('link_img');
-        let linkImgBlack = document.getElementsByClassName('link_img_black');
-
-        if (linkImg) {
-            for (let i = 0; i < linkImg.length; i++) {
-                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
-            }
-        }
-        if (linkImgBlack) {
-            for (let i = 0; i < linkImgBlack.length; i++) {
-                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
-            }
-        }
-
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
@@ -129,10 +119,8 @@
     });
 </script>
 
-<style>
-    .block {
-        margin: 20px;
-    }
-</style>
+<!--<style>-->
+<!--    -->
+<!--</style>-->
 
 </html>

@@ -28,13 +28,21 @@
         }
 
         .spinner {
-            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             height: 50px;
         }
 
         #spinner_img {
             width: 50px;
             height: 50px;
+        }
+
+        .spinner_text {
+            color: #FFFFFF;
+            font-size: 20px;
         }
     `;
         document.head.appendChild(loadingMaskStyle);
@@ -47,332 +55,364 @@
 
 <body>
 <div class="loading_mask" id="loading_mask">
-    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+    </div>
 </div>
 <header>
-    <div class="header_menu" id="menu" onclick="clickedMenu();">
-        <img alt="" class="menu_icon" id="menu_icon" src="">
+    <div class="header_item header_item_left" id="menu" onclick="clickedMenu();">
+        <img alt="" class="menu_icon" id="menu_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"><span
+        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"/><span
             class="header_title">Repository</span>
     </div>
+    <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<main id="main">
-    <div id="main_top"></div>
-    <div class="tab_bar_area main_tab_bar">
-        <div class="tab_bar">
-            <button class="tab_bar_btn active" id="tab1" onclick="selectTab(1);toTop();">Release</button>
-            <button class="tab_bar_btn no_active" id="tab2" onclick="selectTab(2);toTop();">Preview</button>
-        </div>
-    </div>
-    <div class="banner_area">
-        <div class="top_banner banner neutral_banner" id="tip"></div>
-    </div>
-    <div class="block_spacing"></div>
-    <div class="block">
-        <div class="main back_block back_to_main" onclick="jumpToPage('../');"></div>
-    </div>
-    <div class="block_spacing"></div>
-    <div class="tab_content active" id="content1">
-        <div class="block">
-            <div class="main">
-                <div class="title1">Education Edition</div>
-                <div class="description1">正式版</div>
-            </div>
-            <div class="main" id="release_1.20">
-                <div class="title2">1.20 - 足迹与故事</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.20.12" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.20/');"
-                                text-generation="download_btn9"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);openLink('https://pan.huang1111.cn/s/dnMyuV');"
-                                text-generation="download_btn4"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-ND5N3.html');"
-                                text-generation="download_btn6"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://pan.baidu.com/s/1OaVLmcWF9_iGriLkgoebcQ?pwd=b6db');"
-                                text-generation="download_btn8"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main" id="release_1.19">
-                <div class="title2">1.19 - 荒野更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.19.52" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.19/');"
-                                text-generation="download_btn9"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);openLink('https://pan.huang1111.cn/s/P9WPHm');"
-                                text-generation="download_btn4"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-CD5N3.html');"
-                                text-generation="download_btn6"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://pan.baidu.com/s/1fPh6EXwO3xdttA9O7-IV8Q?pwd=q3bc');"
-                                text-generation="download_btn8"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main" id="release_1.18">
-                <div class="title2">1.18 - Mobile, Multiplayer & More</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.18.32" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.18/');"
-                                text-generation="download_btn9"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);openLink('https://pan.huang1111.cn/s/jVM2Iy');"
-                                text-generation="download_btn4"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-WD5N3.html');"
-                                text-generation="download_btn6"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://pan.baidu.com/s/1pmm3mtLkfxIry5c5jme6-g?pwd=d2q2');"
-                                text-generation="download_btn8"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main" id="release_1.17">
-                <div class="title2">1.17 - 山羊更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.17.30" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.17/');"
-                                text-generation="download_btn9"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn6"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main" id="release_1.14.70">
-                <div class="title2">1.14.70 - Camps & Clubs</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.14.70" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.14.70/');"
-                                text-generation="download_btn9"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn6"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main" id="release_1.14">
-                <div class="title2">1.14 - Chromebook更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.14.31" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.14/');"
-                                text-generation="download_btn9"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn4"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn6"></button>
-                    </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn8"></button>
-                    </div>
-                </div>
+<scroll-container>
+    <main class="main_scroll_container main_with_tab_bar" id="main">
+        <div id="main_top"></div>
+        <div class="tab_bar_area main_tab_bar">
+            <div class="tab_bar">
+                <button class="tab_bar_btn active" id="tab1" onclick="playSound(this);selectTab(1);toTop();">
+                    Release
+                </button>
+                <button class="tab_bar_btn no_active" id="tab2" onclick="playSound(this);selectTab(2);toTop();">
+                    Preview
+                </button>
             </div>
         </div>
-    </div>
-    <div class="tab_content no_active" id="content2">
-        <div class="block">
-            <div class="main">
-                <div class="title1">Education Edition</div>
-                <div class="description1">预览版</div>
-            </div>
-            <div class="main" id="preview_1.20">
-                <div class="title2">1.20 - 足迹与故事</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.20.60.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
+        <div class="block_spacing"></div>
+        <div class="tab_content active" id="content1">
+            <div class="block">
+                <div class="main">
+                    <div class="title1">
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%88" onclick="playSound1();"
+                           target="_blank">Education Edition</a>
+                    </div>
+                    <div class="description1">正式版</div>
                 </div>
-                <div class="download_group">
-                    <div class="download_line">
-                        <div class="description3">下载</div>
+                <div class="main" id="release_1.20">
+                    <div class="title2">1.20 - 足迹与故事</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.20.12" onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
                     </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn_large" onclick="playSound(this);"
-                                text-generation="download_btn9"></button>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.20/');"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://pan.huang1111.cn/s/dnMyuV');"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-ND5N3.html');"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://pan.baidu.com/s/1OaVLmcWF9_iGriLkgoebcQ?pwd=b6db');"
+                                    text-generation="download_btn8"></button>
+                        </div>
                     </div>
-                    <div class="download_line">
-                        <button class="btn normal_btn download_btn_large" onclick="playSound(this);openLink('https://pan.huang1111.cn/s/2A8lSN');"
-                                text-generation="download_btn4"></button>
+                </div>
+                <div class="main" id="release_1.19">
+                    <div class="title2">1.19 - 荒野更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.19.52" onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
                     </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn5"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-OD5N3.html');"
-                                text-generation="download_btn6"></button>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.19/');"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://pan.huang1111.cn/s/P9WPHm');"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-CD5N3.html');"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://pan.baidu.com/s/1fPh6EXwO3xdttA9O7-IV8Q?pwd=q3bc');"
+                                    text-generation="download_btn8"></button>
+                        </div>
                     </div>
-                    <div class="download_line">
-                        <button class="btn disabled_btn download_btn" onclick="playSound(this);"
-                                text-generation="download_btn7"></button>
-                        <button class="btn normal_btn download_btn" onclick="playSound(this);openLink('https://pan.baidu.com/s/1UJ4ugE9QQGfWL1sZ52UHkg?pwd=5sdt');"
-                                text-generation="download_btn8"></button>
+                </div>
+                <div class="main" id="release_1.18">
+                    <div class="title2">1.18 - Mobile, Multiplayer & More</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.18.32" onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.18/');"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://pan.huang1111.cn/s/jVM2Iy');"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-WD5N3.html');"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://pan.baidu.com/s/1pmm3mtLkfxIry5c5jme6-g?pwd=d2q2');"
+                                    text-generation="download_btn8"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main" id="release_1.17">
+                    <div class="title2">1.17 - 山羊更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.17.30" onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.17/');"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn large_btn" onclick="playSound(this);"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn8"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main" id="release_1.14.70">
+                    <div class="title2">1.14.70 - Camps & Clubs</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.14.70" onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.14.70/');"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn large_btn" onclick="playSound(this);"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn8"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main" id="release_1.14">
+                    <div class="title2">1.14 - Chromebook更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.14.31" onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://mcarc.github.io/Android-Education/1.14/');"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn large_btn" onclick="playSound(this);"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn8"></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-        <div class="page_info"><br></div>
-        <div class="page_info_title" id="page_info_title1"></div>
-        <div class="page_info" id="page_info_detail1"></div>
-        <div class="page_info_title" id="page_info_title2"></div>
-        <div class="page_info" id="page_info_detail2"></div>
-        <div class="page_info_title" id="page_info_title3"></div>
-        <div class="page_info"><br></div>
-    </div>
-</main>
+        <div class="tab_content no_active" id="content2">
+            <div class="block">
+                <div class="main">
+                    <div class="title1">
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%88" onclick="playSound1();"
+                           target="_blank">Education Edition</a>
+                    </div>
+                    <div class="description1">预览版</div>
+                </div>
+                <div class="main" id="preview_1.20">
+                    <div class="title2">1.20 - 足迹与故事</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%95%99%E8%82%B2%E7%89%881.20.60.0"
+                           onclick="playSound1();"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn large_btn" onclick="playSound(this);"
+                                    text-generation="download_btn9"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSound(this);openLink('https://pan.huang1111.cn/s/2A8lSN');"
+                                    text-generation="download_btn4"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn5"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-OD5N3.html');"
+                                    text-generation="download_btn6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSound(this);"
+                                    text-generation="download_btn7"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSound(this);openLink('https://pan.baidu.com/s/1UJ4ugE9QQGfWL1sZ52UHkg?pwd=5sdt');"
+                                    text-generation="download_btn8"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page_info"></div>
+    </main>
+</scroll-container>
+<custom-scrollbar>
+    <custom-scrollbar-track></custom-scrollbar-track>
+    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+</custom-scrollbar>
 
 <!--侧边栏-->
 <div class="sidebar" id="sidebar">
-    <div class="sidebar_header">
-        <button class="btn sidebar_btn back_to_main" onclick="jumpToPage('../');"></button>
-    </div>
-    <div class="sidebar_list tab_sidebar active" id="sidebar_content1">
-        <div class="sidebar_item">教育版 Release</div>
-        <a class="sidebar_item" href="#release_1.20">1.20</a>
-        <a class="sidebar_item" href="#release_1.19">1.19</a>
-        <a class="sidebar_item" href="#release_1.18">1.18</a>
-        <a class="sidebar_item" href="#release_1.17">1.17</a>
-        <a class="sidebar_item" href="#release_1.14.70">1.14.70</a>
-        <a class="sidebar_item" href="#release_1.14">1.14</a>
-    </div>
-    <div class="sidebar_list tab_sidebar no_active" id="sidebar_content2">
-        <div class="sidebar_item">教育版 Preview</div>
-        <a class="sidebar_item" href="#release_1.20">1.20</a>
-    </div>
-    <div class="sidebar_info">
-        <div class="sidebar_detail_title" id="sidebar_bottom_title"></div>
-        <div class="sidebar_detail" id="sidebar_bottom_detail1"></div>
-        <div class="sidebar_detail">
-            <button class="btn sidebar_btn" id="sidebar_bottom_btn" onclick="clickedSidebarBottomBtn();"></button>
+    <scroll-container id="sidebar_scroll_container">
+        <div class="sidebar_area main_scroll_container">
+            <div class="sidebar_content">
+                <div class="sidebar_header">
+                    <button class="btn sidebar_btn back_to_main" onclick="mainPage();"></button>
+                </div>
+                <div class="sidebar_list tab_sidebar active" id="sidebar_content1">
+                    <div class="sidebar_item">教育版 Release</div>
+                    <a class="sidebar_item" href="#release_1.20">1.20</a>
+                    <a class="sidebar_item" href="#release_1.19">1.19</a>
+                    <a class="sidebar_item" href="#release_1.18">1.18</a>
+                    <a class="sidebar_item" href="#release_1.17">1.17</a>
+                    <a class="sidebar_item" href="#release_1.14.70">1.14.70</a>
+                    <a class="sidebar_item" href="#release_1.14">1.14</a>
+                </div>
+                <div class="sidebar_list tab_sidebar no_active" id="sidebar_content2">
+                    <div class="sidebar_item">教育版 Preview</div>
+                    <a class="sidebar_item" href="#release_1.20">1.20</a>
+                </div>
+                <div class="sidebar_info">
+                    <div class="sidebar_detail_title" id="sidebar_bottom_title"></div>
+                    <div class="sidebar_detail" id="sidebar_bottom_detail1"></div>
+                    <div class="sidebar_detail">
+                        <custom-button data="sidebar|normal||sidebar_bottom_btn|false||" js="clickedSidebarBottomBtn();"
+                                       text=""></custom-button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </scroll-container>
+    <custom-scrollbar>
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
 </div>
 
 <!--遮罩-->
 <!--除了顶栏-->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
-<!--全屏-->
-<div class="overlay" id="overlay"></div>
 
 </body>
 
 <script>
+    const custom_elements_js = document.createElement('script');
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
+    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
     public_script.src = root_path + 'javascript/public_script.js';
     public_define.src = root_path + 'javascript/public_define.js';
 
+    document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
@@ -391,20 +431,6 @@
     const loading_mask = document.getElementById('loading_mask');
     // 监听页面加载完成事件
     window.addEventListener('load', function () {
-        let linkImg = document.getElementsByClassName('link_img');
-        let linkImgBlack = document.getElementsByClassName('link_img_black');
-
-        if (linkImg) {
-            for (let i = 0; i < linkImg.length; i++) {
-                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
-            }
-        }
-        if (linkImgBlack) {
-            for (let i = 0; i < linkImgBlack.length; i++) {
-                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
-            }
-        }
-
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
@@ -415,7 +441,7 @@
 <script src="../javascript/editions.js"></script>
 
 <style>
-    main {
+    scroll-container {
         top: 100px;
         height: calc(100% - 100px);
     }

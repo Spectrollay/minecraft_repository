@@ -2,21 +2,6 @@ main {
     color: white;
 }
 
-.main_setting_title {
-    font-family: "NotoSans Bold", sans-serif;
-    border-bottom: 2px solid #333334;
-    border-left: 0;
-    border-right: 0;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.main_setting_title_span {
-    font-size: 24px;
-}
-
 .setting_title {
     display: flex;
     align-items: center;
@@ -26,15 +11,8 @@ main {
 }
 
 .setting_block {
-    font-family: "NotoSans Bold", sans-serif;
-    border-top: 2px solid #5A5B5C;
-    border-bottom: 2px solid #333334;
-    border-left: 0;
-    border-right: 0;
     display: flex;
     align-items: center;
-    padding: 0 16px;
-    min-height: 60px;
 }
 
 .setting_block_content {
@@ -42,6 +20,7 @@ main {
 }
 
 .setting_content {
+    align-self: center;
     flex: 1;
 }
 
@@ -49,120 +28,7 @@ main {
 }
 
 .setting_btn {
-    width: 100px;
-}
-
-/* Switch开关 */
-.switch_content {
-    margin: 6px;
-}
-
-.switch {
-    width: 56px;
-    height: 24px;
-    position: relative;
-    overflow: visible;
-}
-
-.normal_switch {
-    border: 2px solid #1E1E1F;
-    background: linear-gradient(to right, #3C8527 50%, #8C8D90 50%); /* 左半部分绿色，右半部分灰色 */
-    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px rgba(255, 255, 255, 0.1);
-}
-
-.disabled_switch {
-    border: 2px solid #8C8D90;
-    background: #D0D1D4;
-}
-
-.switch_style {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: transparent;
-    top: 3px;
-}
-
-.switch_style.left {
-    left: 5px;
-}
-
-.switch_style.right {
-    right: 6px;
-}
-
-.switch_style.left img, .switch_style.right img {
-    height: 16px;
-}
-
-.disabled_switch .switch_style.left img {
-    filter: grayscale(100%) brightness(50%);
-}
-
-.disabled_switch .switch_style.right img {
-    filter: invert(100%) grayscale(100%) brightness(50%);
-}
-
-@keyframes bounce_left {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(0);
-    }
-    48% {
-        transform: translateX(-2px);
-    }
-    52% {
-        transform: translateX(0px);
-    }
-}
-
-@keyframes bounce_right {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(0);
-    }
-    48% {
-        transform: translateX(2px);
-    }
-    52% {
-        transform: translateX(0px);
-    }
-}
-
-.switch_bounce_left {
-    animation: bounce_right 175ms ease-in-out 2;
-}
-
-.switch_bounce_right {
-    animation: bounce_left 175ms ease-in-out 2;
-}
-
-.switch_slider {
-    position: absolute;
-    top: -6px;
-    left: -2px;
-    width: 28px;
-    height: 28px;
-    z-index: 1;
-    background-color: #D0D1D4;
-    transition: left 125ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.normal_switch .switch_slider {
-    border: 2px solid #1E1E1F;
-    box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
-}
-
-.disabled_switch .switch_slider {
-    border: 2px solid #8C8D90;
-    box-shadow: inset 0 -4px #B1B2B5;
-}
-
-.normal_switch .switch_slider:hover, .normal_switch .switch_slider:active, .normal_switch .switch:hover .switch_slider, .normal_switch .switch_slider.active {
-    background-color: #B1B2B5;
-    box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.8), inset -2px -6px rgba(255, 255, 255, 0.6);
-}
-
-.switch.on .switch_slider {
-    left: 27px;
+    width: 120px;
 }
 
 /* Slider滑块 */
@@ -228,4 +94,31 @@ main {
     height: 8px;
     top: 50%; /* 分段线垂直居中 */
     transform: translateY(-50%); /* 分段线垂直居中 */
+}
+
+.disabled_slider.slider {
+    background: #CFD0D4;
+    border: 2px solid #8C8D90;
+}
+
+.disabled_slider .slider_segment {
+    background-color: #8C8D90;
+}
+
+.disabled_slider .slider_process {
+    background: #CFD0D4;
+    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
+}
+
+
+.disabled_slider .slider_handle {
+    background-color: #CFD0D4;
+    border: 2px solid #8B8C90;
+    box-shadow: inset 0 -4px #B0B1B5, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
+}
+
+.disabled_slider .slider_handle:hover, .disabled_slider .slider_handle:active, .slider_content:hover .disabled_slider .slider_handle, .disabled_slider .slider_handle.active {
+    background-color: #CFD0D4;
+    border: 2px solid #8B8C90;
+    box-shadow: inset 0 -4px #B0B1B5, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
 }

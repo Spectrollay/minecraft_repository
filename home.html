@@ -34,13 +34,21 @@
         }
 
         .spinner {
-            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             height: 50px;
         }
 
         #spinner_img {
             width: 50px;
             height: 50px;
+        }
+
+        .spinner_text {
+            color: #FFFFFF;
+            font-size: 20px;
         }
     `;
         document.head.appendChild(loadingMaskStyle);
@@ -53,40 +61,53 @@
 
 <body>
 <div class="loading_mask" id="loading_mask">
-    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+    </div>
 </div>
 <header>
-    <div class="header_back" id="back" onclick="clickedBack();">
-        <img alt="Back" class="back_icon" id="back_icon" src="">
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="Back" class="back_icon" id="back_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="./images/Logo.jpg">
+        <img alt="Title Icon" class="title_icon" src="./images/Logo.jpg"/>
         <span class="header_title">Repository</span>
     </div>
+    <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<main>
-    <div>
-        <h2 class="redirect_title">页面已迁移至新地址</h2>
-        <h4 class="message redirect_message"><span id="second">3</span>秒后将自动重定向</h4>
-        <h4 class="message redirect_message">没有成功重定向?<a onclick="jumpToPage('./');">点此前往</a></h4>
-    </div>
-</main>
+<scroll-container>
+    <main class="main_content_center main_scroll_container" id="main">
+        <div>
+            <h2 class="redirect_title">页面已迁移至新地址</h2>
+            <h4 class="message redirect_message"><span id="second">3</span>秒后将自动重定向</h4>
+            <h4 class="message redirect_message">没有成功重定向?<a onclick="jumpToPage('./');">点此前往</a></h4>
+        </div>
+    </main>
+</scroll-container>
+<custom-scrollbar>
+    <custom-scrollbar-track></custom-scrollbar-track>
+    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+</custom-scrollbar>
 
 <!--遮罩-->
 <!--除了顶栏-->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
-<!--全屏-->
-<div class="overlay" id="overlay"></div>
 
 </body>
 
 <script>
+    const custom_elements_js = document.createElement('script');
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
+    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
     public_script.src = root_path + 'javascript/public_script.js';
     public_define.src = root_path + 'javascript/public_define.js';
 
+    document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
@@ -106,20 +127,6 @@
 
     // 监听页面加载完成事件
     window.addEventListener('load', function () {
-        let linkImg = document.getElementsByClassName('link_img');
-        let linkImgBlack = document.getElementsByClassName('link_img_black');
-
-        if (linkImg) {
-            for (let i = 0; i < linkImg.length; i++) {
-                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
-            }
-        }
-        if (linkImgBlack) {
-            for (let i = 0; i < linkImgBlack.length; i++) {
-                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
-            }
-        }
-
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
@@ -148,14 +155,6 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-    }
-
-    a {
-        color: inherit;
-        cursor: default;
-        position: relative;
-        text-decoration: none;
-        box-shadow: inset 0 -2px 0 0 #FFFFFF;
     }
 
     h2 {

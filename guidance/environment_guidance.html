@@ -27,7 +27,10 @@
         }
 
         .spinner {
-            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             height: 50px;
         }
 
@@ -35,45 +38,85 @@
             width: 50px;
             height: 50px;
         }
+
+        .spinner_text {
+            color: #FFFFFF;
+            font-size: 20px;
+        }
     `;
         document.head.appendChild(loadingMaskStyle);
 
         const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
     </script>
-    <title>环境指南</title>
+    <title>项目环境指南</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
-    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+    </div>
 </div>
 <header>
-    <div class="header_back" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src="">
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="" class="back_icon" id="back_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
         <span class="header_title">Minecraft Kit</span>
     </div>
+    <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<main id="main">
-
-</main>
+<scroll-container>
+    <main class="main_scroll_container" id="main">
+        <div class="main_title">
+            <div class="main_title_area">
+                <div class="main_title_span">项目环境指南</div>
+                <div class="description1">2024-01-01</div>
+            </div>
+        </div>
+        <!--  TODO: 移除时一并移除相应样式  -->
+        <div class="main preview_block">
+            <div class="preview_title" id="preview_title"></div>
+            <div class="preview_detail" id="preview_detail1"></div>
+            <div class="preview_detail" id="preview_detail2"></div>
+            <div class="btn_group">
+                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();"
+                               text=""></custom-button>
+                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+            </div>
+        </div>
+        <div class="main_block description">
+            <p>欢迎来到项目环境指南页面!</p>
+            <p>页面内容待完成...</p>
+            <p>敬请期待.</p>
+        </div>
+        <div id="page_info"></div>
+    </main>
+</scroll-container>
+<custom-scrollbar>
+    <custom-scrollbar-track></custom-scrollbar-track>
+    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+</custom-scrollbar>
 
 <!--遮罩-->
 <!--除了顶栏-->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
-<!--全屏-->
-<div class="overlay" id="overlay"></div>
 
 </body>
 
 <script>
+    const custom_elements_js = document.createElement('script');
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
+    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
     public_script.src = root_path + 'javascript/public_script.js';
     public_define.src = root_path + 'javascript/public_define.js';
 
+    document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
@@ -93,20 +136,6 @@
 
     // 监听页面加载完成事件
     window.addEventListener('load', function () {
-        let linkImg = document.getElementsByClassName('link_img');
-        let linkImgBlack = document.getElementsByClassName('link_img_black');
-
-        if (linkImg) {
-            for (let i = 0; i < linkImg.length; i++) {
-                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
-            }
-        }
-        if (linkImgBlack) {
-            for (let i = 0; i < linkImgBlack.length; i++) {
-                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
-            }
-        }
-
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
@@ -115,8 +144,12 @@
     });
 </script>
 
-<!--    <style>-->
-<!--        -->
-<!--    </style>-->
+<style>
+    /* TODO: 在移除预览提示块时移除该样式 */
+    .preview_block {
+        border-top: 2px solid #5A5B5C;
+        border-bottom: 2px solid #333334;
+    }
+</style>
 
 </html>

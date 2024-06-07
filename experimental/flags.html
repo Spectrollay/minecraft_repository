@@ -30,13 +30,21 @@
         }
 
         .spinner {
-            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             height: 50px;
         }
 
         #spinner_img {
             width: 50px;
             height: 50px;
+        }
+
+        .spinner_text {
+            color: #FFFFFF;
+            font-size: 20px;
         }
     `;
         document.head.appendChild(loadingMaskStyle);
@@ -48,235 +56,282 @@
 
 <body>
 <div class="loading_mask" id="loading_mask">
-    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+    </div>
 </div>
 <header>
-    <div class="header_back" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src="">
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="" class="back_icon" id="back_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="../images/Tool.png">
+        <img alt="Title Icon" class="title_icon" src="../images/Tool.png"/>
         <span class="header_title">Experiments</span>
     </div>
+    <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<main id="main">
-    <div id="main_top"></div>
-    <div class="main_setting_title">
-        <div class="main_setting_title_span">实验性内容</div>
-    </div>
-    <div class="banner_area">
-        <div class="banner information_banner">
-            实验性内容展示的是正在开发中的特性, 这些特性可能在后续的版本中正式加入或发生变动甚至被移除.<br>
-            在体验实验性内容时可能会出现一些预料之外的问题, 请及时向我们反馈你的发现和想法.
+<scroll-container>
+    <main class="main_scroll_container" id="main">
+        <div id="main_top"></div>
+        <div class="main_title">
+            <div class="main_title_span">实验性内容</div>
         </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Button with Tooltip</div>
-            <br>
-            <div>Normal Button</div>
-            <div class="btn_with_tooltip_cont">
-                <button class="btn normal_btn btn_with_tooltip" onclick="playSound(this);">Button1</button>
-                <div class="btn_tooltip">Information1</div>
-                <img alt="Key" class="key_icon" src="../images/Key.png"/>
-            </div>
-            <br>
-            <br>
-            <div>Green Button</div>
-            <div class="btn_with_tooltip_cont">
-                <button class="btn green_btn btn_with_tooltip" onclick="playSound(this);">Button2</button>
-                <div class="btn_tooltip">Information2</div>
-                <img alt="Key" class="key_icon" src="../images/Key.png"/>
-            </div>
-            <br>
-            <br>
-            <div>Red Button</div>
-            <div class="btn_with_tooltip_cont">
-                <button class="btn red_btn btn_with_tooltip" onclick="playSound(this);">Button3</button>
-                <div class="btn_tooltip">Information3</div>
-                <img alt="Key" class="key_icon" src="../images/Key.png"/>
-            </div>
-            <br>
-            <br>
-            <div>Disabled Button</div>
-            <div class="btn_with_tooltip_cont">
-                <button class="btn disabled_btn btn_with_tooltip" onclick="playSound(this);">Button4</button>
-                <div class="btn_tooltip">Information4</div>
-                <img alt="Key" class="key_icon" src="../images/Key.png"/>
+        <div class="banner_area">
+            <div class="banner information_banner">
+                实验性内容页面展示的是一部分正在开发中的特性,
+                这些特性可能在后续的版本中正式加入或发生变动甚至被移除.<br>
+                在体验实验性内容时可能会出现一些预料之外的问题, 请及时向我们提出你的发现和想法.
             </div>
         </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Checkbox</div>
-            <div></div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>功能</div>
+                <br>
+                <div class="flex">
+                    <div class="setting_content">设置页面</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">通知页面</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">环境指南页面</div>
+                    <custom-switch active="off" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">自定义元素</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">正版购买指南页面</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">新的基岩版下载页面</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">惰性加载机制</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <divider></divider>
+                <div class="flex">
+                    <div class="setting_content">全新的滚动条</div>
+                    <custom-switch active="on" status="disabled"></custom-switch>
+                </div>
+                <br>
+            </div>
         </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Divider</div>
-            <div></div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Adaptive Folding Component</div>
+                <br>
+                <div class="message">列表1</div>
+                <div class="message">列表2</div>
+                <div class="message">列表3</div>
+                <div class="message">列表4</div>
+                <div class="message">列表5</div>
+                <div class="message">列表6</div>
+                <div class="message">列表7</div>
+                <div class="message">列表8</div>
+                <div class="message">列表9</div>
+                <div class="message">列表10</div>
+                <div class="message">列表11</div>
+                <div class="message">列表12</div>
+                <div class="folding_button_group">
+                    <div class="folding_button_list">
+                        <custom-button class="folding_custom_btn" data="folding|green|small|showMoreBtn|false||"
+                                       js="false" text="显示更多"></custom-button>
+                        <custom-button class="folding_custom_btn" data="folding|normal|small|showLessBtn|false||"
+                                       js="false" text="显示更少"></custom-button>
+                    </div>
+                </div>
+                <br>
+            </div>
         </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Dropdown List</div>
-            <div></div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Expandable List</div>
-            <div></div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Modal with Close Btn</div>
-            <div></div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Radio Group</div>
-            <div></div>
-        </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Slider</div>
-            <br>
-            <div>Range Slider with Initial Value</div>
-            <div class="slider_content" id="range_slider_1">
-                <div class="slider range_slider"
-                     data-slider='{"minValue":0,"maxValue":100,"segments":null,"initialValue":66.66}'>
-                    <div class="slider_process"></div>
-                    <div class="slider_handle smooth_handle" id="smoothHandle"></div>
-                    <div class="slider_tooltip smooth_tooltip" id="smoothTooltip">0.00</div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Checkbox</div>
+                <br>
+                <div>
+                    <div>Normal Checkbox 1</div>
+                    <custom-checkbox active="off" id="exp_checkbox_1" status="enabled"></custom-checkbox>
+                </div>
+                <div>
+                    <div>Normal Checkbox 2</div>
+                    <custom-checkbox active="on" id="exp_checkbox_2" status="enabled"></custom-checkbox>
+                </div>
+                <div>
+                    <div>Disabled Checkbox 1</div>
+                    <custom-checkbox active="off" id="exp_checkbox_3" status="disabled"></custom-checkbox>
+                </div>
+                <div>
+                    <div>Disabled Checkbox 2</div>
+                    <custom-checkbox active="on" id="exp_checkbox_4" status="disabled"></custom-checkbox>
                 </div>
             </div>
-            <br>
-            <br>
-            <div>Range Slider with Customized Interval</div>
-            <div class="slider_content" id="range_slider_2">
-                <div class="slider range_slider"
-                     data-slider='{"minValue": 20, "maxValue": 60, "segments": null, "initialValue": null}'>
-                    <div class="slider_process"></div>
-                    <div class="slider_handle smooth_handle" id="smoothHandle2"></div>
-                    <div class="slider_tooltip smooth_tooltip" id="smoothTooltip2">0.00</div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div>Disabled Range Slider</div>
-            <br>
-            <br>
-            <div>Set Slider with Initial Value</div>
-            <div class="slider_content" id="set_slider_1">
-                <div class="slider set_slider"
-                     data-slider='{"minValue": 0, "maxValue": 100, "segments": 5, "initialValue": 40}'>
-                    <div class="slider_process"></div>
-                    <div class="slider_handle segmented_handle" id="segmentedHandle"></div>
-                    <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip">0</div>
-                    <div class="slider_segment" style="display: none"></div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div>Set Slider with Customized Interval</div>
-            <div class="slider_content" id="set_slider_2">
-                <div class="slider set_slider"
-                     data-slider='{"minValue": 50, "maxValue": 60, "segments": 4, "initialValue": null}'>
-                    <div class="slider_process"></div>
-                    <div class="slider_handle segmented_handle" id="segmentedHandle2"></div>
-                    <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip2">0</div>
-                    <div class="slider_segment" style="display: none"></div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div>Disabled Set Slider</div>
-            <br>
-            <br>
         </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Switch</div>
-            <br>
-            <div>Normal Switch 1</div>
-            <div class="switch_content">
-                <div class="switch normal_switch off" id="switch_exp1">
-                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
-                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
-                    <div class="switch_slider can_click"></div>
-                </div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Dropdown List</div>
+                <div></div>
             </div>
-            <div id="switch_status_exp1">Toggle: Close</div>
-            <br>
-            <div>Normal Switch 2</div>
-            <div class="switch_content">
-                <div class="switch normal_switch on" id="switch_exp2">
-                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
-                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
-                    <div class="switch_slider can_click"></div>
-                </div>
-            </div>
-            <div id="switch_status_exp2">Toggle: Open</div>
-            <br>
-            <div>Disabled Switch 1</div>
-            <div class="switch_content">
-                <div class="switch disabled_switch off" id="switch_exp3">
-                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
-                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
-                    <div class="switch_slider can_click"></div>
-                </div>
-            </div>
-            <div id="switch_status_exp3">Toggle: Close</div>
-            <br>
-            <div>Disabled Switch 2</div>
-            <div class="switch_content">
-                <div class="switch disabled_switch on" id="switch_exp4">
-                    <div class="switch_style left"><img alt="" src="../images/switch_on.png"></div>
-                    <div class="switch_style right"><img alt="" src="../images/switch_off.png"></div>
-                    <div class="switch_slider can_click"></div>
-                </div>
-            </div>
-            <div id="switch_status_exp4">Toggle: Open</div>
         </div>
-    </div>
-    <div class="setting_block">
-        <div class="setting_block_content">
-            <div>Text Field</div>
-            <div></div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Expandable List</div>
+                <div></div>
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="page_info"><br></div>
-        <div class="page_info_title" id="page_info_title1"></div>
-        <div class="page_info" id="page_info_detail1"></div>
-        <div class="page_info_title" id="page_info_title2"></div>
-        <div class="page_info" id="page_info_detail2"></div>
-        <div class="page_info_title" id="page_info_title3"></div>
-        <div class="page_info"><br></div>
-    </div>
-</main>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Pop Dialog</div>
+                <div></div>
+            </div>
+        </div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Radio Group</div>
+                <div></div>
+            </div>
+        </div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Slider</div>
+                <br>
+                <div>Range Slider with Initial Value</div>
+                <div class="slider_content" id="range_slider_1">
+                    <div class="slider range_slider"
+                         data-slider='{"minValue":0,"maxValue":100,"segments":null,"initialValue":55.55}'>
+                        <div class="slider_process"></div>
+                        <div class="slider_handle smooth_handle" id="smoothHandle"></div>
+                        <div class="slider_tooltip smooth_tooltip" id="smoothTooltip">0.00</div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>Range Slider with Customized Interval</div>
+                <div class="slider_content" id="range_slider_2">
+                    <div class="slider range_slider"
+                         data-slider='{"minValue": 20, "maxValue": 60, "segments": null, "initialValue": null}'>
+                        <div class="slider_process"></div>
+                        <div class="slider_handle smooth_handle" id="smoothHandle2"></div>
+                        <div class="slider_tooltip smooth_tooltip" id="smoothTooltip2">0.00</div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>Disabled Range Slider</div>
+                <div class="slider_content" id="disabled_range_slider_1">
+                    <div class="slider range_slider disabled_slider"
+                         data-slider='{"minValue": 0, "maxValue": 100, "segments": null, "initialValue": 60.00}'>
+                        <div class="slider_process"></div>
+                        <div class="slider_handle smooth_handle" id="smoothHandle3"></div>
+                        <div class="slider_tooltip smooth_tooltip" id="smoothTooltip3">60.00</div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>Set Slider with Initial Value</div>
+                <div class="slider_content" id="set_slider_1">
+                    <div class="slider set_slider"
+                         data-slider='{"minValue": 0, "maxValue": 100, "segments": 5, "initialValue": 40}'>
+                        <div class="slider_process"></div>
+                        <div class="slider_handle segmented_handle" id="segmentedHandle"></div>
+                        <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip">0</div>
+                        <div class="slider_segment" style="display: none"></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>Set Slider with Customized Interval</div>
+                <div class="slider_content" id="set_slider_2">
+                    <div class="slider set_slider"
+                         data-slider='{"minValue": 50, "maxValue": 60, "segments": 4, "initialValue": null}'>
+                        <div class="slider_process"></div>
+                        <div class="slider_handle segmented_handle" id="segmentedHandle2"></div>
+                        <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip2">0</div>
+                        <div class="slider_segment" style="display: none"></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>Disabled Set Slider</div>
+                <div class="slider_content" id="disabled_set_slider_1">
+                    <div class="slider set_slider disabled_slider"
+                         data-slider='{"minValue": 0, "maxValue": 100, "segments": 5, "initialValue": 60}'>
+                        <div class="slider_process"></div>
+                        <div class="slider_handle segmented_handle" id="segmentedHandle3"></div>
+                        <div class="slider_tooltip segmented_tooltip" id="segmentedTooltip3">60</div>
+                        <div class="slider_segment" style="display: none"></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Switch</div>
+                <br>
+                <div>
+                    <div>Normal Switch 1</div>
+                    <custom-switch active="off" id="exp_switch_1" status="enabled"></custom-switch>
+                </div>
+                <div>
+                    <div>Normal Switch 2</div>
+                    <custom-switch active="on" id="exp_switch_2" status="enabled"></custom-switch>
+                </div>
+                <div>
+                    <div>Disabled Switch 1</div>
+                    <custom-switch active="off" id="exp_switch_3" status="disabled"></custom-switch>
+                </div>
+                <div>
+                    <div>Disabled Switch 2</div>
+                    <custom-switch active="on" id="exp_switch_4" status="disabled"></custom-switch>
+                </div>
+            </div>
+        </div>
+        <div class="main_block setting_block">
+            <div class="setting_block_content">
+                <div>Text Field</div>
+                <div></div>
+            </div>
+        </div>
+        <div id="page_info"></div>
+    </main>
+</scroll-container>
+<custom-scrollbar>
+    <custom-scrollbar-track></custom-scrollbar-track>
+    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+</custom-scrollbar>
 
 <!--遮罩-->
 <!--除了顶栏-->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
-<!--全屏-->
-<div class="overlay" id="overlay"></div>
 
 </body>
 
 <script>
+    const custom_elements_js = document.createElement('script');
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
+    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
     public_script.src = root_path + 'javascript/public_script.js';
     public_define.src = root_path + 'javascript/public_define.js';
 
+    document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
@@ -296,20 +351,6 @@
 
     // 监听页面加载完成事件
     window.addEventListener('load', function () {
-        let linkImg = document.getElementsByClassName('link_img');
-        let linkImgBlack = document.getElementsByClassName('link_img_black');
-
-        if (linkImg) {
-            for (let i = 0; i < linkImg.length; i++) {
-                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
-            }
-        }
-        if (linkImgBlack) {
-            for (let i = 0; i < linkImgBlack.length; i++) {
-                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
-            }
-        }
-
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {

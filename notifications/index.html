@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../images/Messages.png" rel="icon">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
@@ -27,7 +28,10 @@
         }
 
         .spinner {
-            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             height: 50px;
         }
 
@@ -35,44 +39,174 @@
             width: 50px;
             height: 50px;
         }
+
+        .spinner_text {
+            color: #FFFFFF;
+            font-size: 20px;
+        }
     `;
         document.head.appendChild(loadingMaskStyle);
 
         const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
     </script>
-    <title>通知</title>
+    <title>消息中心</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
-    <div class="spinner"><img alt="" id="spinner_img" src=""></div>
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+    </div>
 </div>
 <header>
-    <div class="header_back" id="back" onclick="clickedBack();">
-        <img alt="Back" class="back_icon" id="back_icon" src="">
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="Back" class="back_icon" id="back_icon" src=""/>
     </div>
-    <div class="header_logo"><span class="header_title">Messages</span>
+    <div class="header_logo" onclick="scrollToTop();">
+        <img alt="Title Icon" class="title_icon" src="../images/Messages.png"/>
+        <span class="header_title">Messages</span>
     </div>
+    <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<main class="main-cont">
-
-</main>
+<scroll-container>
+    <main class="main_scroll_container" id="main">
+        <!--  TODO: 移除时一并移除相应样式  -->
+        <div class="main preview_block">
+            <div class="preview_title" id="preview_title"></div>
+            <div class="preview_detail" id="preview_detail1"></div>
+            <div class="preview_detail" id="preview_detail2"></div>
+            <div class="btn_group">
+                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();"
+                               text=""></custom-button>
+                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+            </div>
+        </div>
+        <div>
+            <div class="block">
+                <div class="main">
+                    <div class="title1">消息中心</div>
+                </div>
+                <div class="main message">
+                    <article_block id="feedback_rewards">
+                        <article_title>版本库反馈有奖活动上线!</article_title>
+                        <article_date>2024-06-03</article_date>
+                        <article_detail>
+                            <p>为了版本库更好的发展,我们隆重地推出反馈激励计划!</p>
+                            <p>从即日起,在反馈渠道内向我们提出发现的问题或好的想法,满足条件即可以获得积分.积分可用于兑换奖励.</p>
+                            <p>反馈仓库: 版本库测试仓库(需加入内部测试)</p>
+                            <p>反馈渠道: 测试仓库GitHub Issues</p>
+                            <p>满足条件: 满足反馈格式.对于发现的问题,要会对版本库造成一定危害,且首次被发现并提出;对于好的想法,要独到,会对版本库起到一定的促进作用,且首次提出</p>
+                            <p>我们期待你的反馈!</p>
+                        </article_detail>
+                    </article_block>
+                </div>
+                <div class="main message">
+                    <article_block id="mc_15_y">
+                        <article_title>Minecraft 15 周年庆典!</article_title>
+                        <article_date>2024-05-17</article_date>
+                        <article_detail>
+                            <p>1. 周年庆大促</p>
+                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/Sale.png"/></div>
+                            <p>在5月15日至6月22日期间, 快来获取 Minecraft / Minecraft Dungeons / Minecraft Legends 等内容,
+                                折扣高达50%. 你想要建造一件艺术品, 与朋友并肩作战, 拯救主世界, 还是三者兼而有之?</p>
+                            <p><a href="https://www.minecraft.net/" onclick="playSound1();"
+                                  target="_blank">前往官方网站购买</a></p>
+                            <p>2. Minecraft 15天</p>
+                            <div class="article_image">
+                                <img alt="" src="../images/event/Anniversary15/DressingRoom.png"/>
+                            </div>
+                            <p>获取持续发放15天的免费角色道具, 庆祝 Minecraft 15周年纪念! 在5月15日至29日期间, 每日均可在
+                                Minecraft 基岩版更衣室领取礼物.</p>
+                            <p>3. TikTok 15天</p>
+                            <div class="article_image">
+                                <img alt="" src="../images/event/Anniversary15/TikTok.jpg"
+                                     style="height: 220px; width: unset"/>
+                            </div>
+                            <p><a href="https://www.minecraft.net/en-us/redeem" onclick="playSound1();"
+                                  target="_blank">在这里</a>收集你的独家 TikTok 15天 Minecraft 角色创建器物品!</p>
+                            <p>请在6月1日前完成任务并兑换</p>
+                            <p>4. Twitch 15天</p>
+                            <div class="article_image">
+                                <img alt="" src="../images/event/Anniversary15/Twitch.jpg"
+                                     style="height: 220px; width: unset"/>
+                            </div>
+                            <p><a href="https://www.minecraft.net/en-us/redeem" onclick="playSound1();"
+                                  target="_blank">在这里</a>收集你的独家 Twitch 15天 Minecraft 观看时长任务的紫心披风和支持主播的故障面具!
+                            </p>
+                            <p>请在6月1日前完成任务并兑换</p>
+                            <p>5. 15周年纪念披风</p>
+                            <div class="article_image">
+                                <img alt="" src="../images/event/Anniversary15/Cape.png"/>
+                            </div>
+                            <p><a href="https://www.minecraft.net/zh-hans/15th-anniversary" onclick="playSound1();"
+                                  target="_blank">点击前往官网领取</a>, 位于活动页面底部</p>
+                            <p>6. 15周年庆典地图</p>
+                            <div class="article_image">
+                                <img alt="" src="../images/event/Anniversary15/15YearJourney.jpg"/>
+                            </div>
+                            <p>前往基岩版商城领取地图15年之旅, 回顾Minecraft的15周年</p>
+                        </article_detail>
+                    </article_block>
+                </div>
+                <div class="main message">
+                    <article_block id="repo_v4_r">
+                        <article_title>版本库V4正式发布!</article_title>
+                        <article_date>2024-02-09</article_date>
+                        <article_detail>
+                            <p>2023年的10月初, 我们发布了版本库V4的首个预览版. 这是自2021年12月底V3.1.7版本更新之后很长一段时间内的首次更新.
+                                一方面, 是发现很久没更新了, 里面的东西很多都过时了, 另一方面, 是相关联的项目有了具体的推进,
+                                想着顺带对版本库一同进行重构. 于是, 版本库V4就提上日程了.</p>
+                            <p>不同于版本库V1-V3采用的默认HTML样式及后面改善的Minecraft Feedback网站样式,
+                                V4采用了全新的OreUI样式(虽然直到现在仍在开发中), 大大提高了界面的美观程度,
+                                当然在另一方面这也带来了大量的设计成本和调试成本, 因此开发进程并不是那么顺利.</p>
+                            <p>经过了4个多月的开发, 迭代了55个开发版本, 直到现在, 版本库V4才达到了我们认为可以公开发布的标准.
+                                因此, 我们于2024年的春节当天, 一个辞旧迎新的好日子, 公开发布了它, 作为早已停止维护的版本库V3的接替.
+                                至此, 版本库V3完成了它的使命正式下线.</p>
+                            <p>诚然, 如版本库首页所言, 我们深知这个版本库还很不尽人意, 界面简陋, 功能稀少, 甚至可能还有一堆的问题.
+                                相较于版本库V3缺少了些许内容. 因此我们仍在不断地完善改进它, 希望能给每一个使用版本库的你,
+                                带来更好的体验. 版本库V4的发布, 不代表开发的告一段落, 而是一个新的开始.</p>
+                            <p>那么, 新的一年, 让我们一起好好加油吧. 在这里也祝大家龙年大吉!</p>
+                        </article_detail>
+                    </article_block>
+                </div>
+                <div class="main">
+                    <div class="folding_button_group">
+                        <div class="folding_button_list">
+                            <custom-button class="folding_custom_btn" data="folding|green|small|showMoreBtn|false||"
+                                           js="false" text="显示更多"></custom-button>
+                            <custom-button class="folding_custom_btn" data="folding|normal|small|showLessBtn|false||"
+                                           js="false" text="显示更少"></custom-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</scroll-container>
+<custom-scrollbar>
+    <custom-scrollbar-track></custom-scrollbar-track>
+    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+</custom-scrollbar>
 
 <!--遮罩-->
 <!--除了顶栏-->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
-<!--全屏-->
-<div class="overlay" id="overlay"></div>
 
 </body>
 
 <script>
+    const custom_elements_js = document.createElement('script');
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
+    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
     public_script.src = root_path + 'javascript/public_script.js';
     public_define.src = root_path + 'javascript/public_define.js';
 
+    document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
@@ -90,22 +224,14 @@
     loading_img.src = root_path + 'images/Loading_white.gif';
     const loading_mask = document.getElementById('loading_mask');
 
+    // 惰性加载
+    const lazyImages = document.querySelectorAll('img');
+    lazyImages.forEach(img => {
+        img.setAttribute('loading', 'lazy');
+    });
+
     // 监听页面加载完成事件
     window.addEventListener('load', function () {
-        let linkImg = document.getElementsByClassName('link_img');
-        let linkImgBlack = document.getElementsByClassName('link_img_black');
-
-        if (linkImg) {
-            for (let i = 0; i < linkImg.length; i++) {
-                linkImg[i].src = root_path + 'images/ExternalLink_white.png';
-            }
-        }
-        if (linkImgBlack) {
-            for (let i = 0; i < linkImgBlack.length; i++) {
-                linkImgBlack[i].src = root_path + 'images/ExternalLink.png';
-            }
-        }
-
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
@@ -114,8 +240,39 @@
     });
 </script>
 
-<!--<style>-->
-<!--    -->
-<!--</style>-->
+<style>
+    /* TODO: 在移除预览提示块时移除该样式 */
+    .preview_block {
+        border-top: 0;
+    }
+
+    .block {
+        margin: 20px;
+    }
+
+    .message {
+        padding: 0;
+    }
+
+    p {
+        text-indent: 2em;
+    }
+
+    article_detail {
+        background-color: #313233;
+        margin: 0;
+        padding: 10px 20px;
+        min-height: 60px;
+    }
+
+    .article_image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .article_image img {
+        width: calc(min(80%, 450px));
+    }
+</style>
 
 </html>

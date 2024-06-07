@@ -15,4 +15,4 @@ Join groups:
 
 Project address:
 
-- (GitHub) https://spectrollay.github.io/minecraft_repository_test/
+- (GitHub) https://spectrollay.github.io/minecraft_repository/
