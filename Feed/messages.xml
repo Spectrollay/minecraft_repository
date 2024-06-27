@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>星月Minecraft版本库 - 通知中心</title>
+        <link>https://spectrollay.github.io/minecraft_repository/notifications/</link>
+        <description>星月Minecraft版本库是一个开放共享的资源站,专注于收录Minecraft发布过的所有版本.</description>
+        <language>zh-cn</language>
+        <item>
+            <title>RSS订阅测试</title>
+            <link>https://spectrollay.github.io/minecraft_repository/</link>
+            <description>我们正在测试RSS订阅,它会在测试完成后公开发布.</description>
+            <pubDate>Tue, 08 Jun 2024 12:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

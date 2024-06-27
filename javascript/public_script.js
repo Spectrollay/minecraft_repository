@@ -109,12 +109,15 @@ function onDrag(e) {
     const maxThumbTop = containerHeight - thumbHeight;
     const newTop = Math.min(Math.max(mouseY - top - thumbHeight / 2, 0), maxThumbTop);
     const maxScrollTop = mainContent.scrollHeight - containerHeight;
-    scrollContainer.scrollTop = (newTop / maxThumbTop) * maxScrollTop;
+    scrollContainer.scrollTo({
+        top: (newTop / maxThumbTop) * maxScrollTop,
+        behavior: "instant"
+    });
     updateThumb();
 }
 
 function stopDrag() {
-    isDragging = false;
+    setTimeout(() => { isDragging = false; }, 0);
     document.removeEventListener('mousemove', onDrag);
     document.removeEventListener('mouseup', stopDrag);
     document.removeEventListener('touchmove', onDrag);
@@ -122,6 +125,8 @@ function stopDrag() {
 }
 
 function handleScrollbarClick(e) {
+    if (isDragging) return;
+
     const {top, height: scrollbarHeight} = customScrollbar.getBoundingClientRect();
     const clickPosition = e.clientY - top;
     const thumbHeight = customThumb.offsetHeight;

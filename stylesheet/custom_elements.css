@@ -300,7 +300,7 @@ del-line {
 
 
 /* Modal弹窗 */
-#overlay_clear_storage_warning, #overlay_reload_page_warning, #overlay_version_info_modal, #overlay_disclaimer_modal {
+#overlay_clear_storage_warning, #overlay_reload_page_warning, #overlay_version_info_modal, #overlay_disclaimer_modal, #overlay_donate_modal {
     z-index: 12;
 }
 
@@ -329,7 +329,7 @@ modal_area {
     outline: none;
 }
 
-#clear_storage_warning, #reload_page_warning, #version_info_modal, #disclaimer_modal {
+#clear_storage_warning, #reload_page_warning, #version_info_modal, #disclaimer_modal, #donate_modal {
     z-index: 13;
 }
 

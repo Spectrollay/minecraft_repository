@@ -2,13 +2,13 @@
 // TODO 需在每次提交前检查
 const primary_version_name = "4.5"; // 例 4.0
 const secondary_version_name = primary_version_name + ".10"; // 例 4.0.0
-const version_name_short = secondary_version_name + ".66"; // 例 4.0.0.1 // NOTE 小版本
+const version_name_short = secondary_version_name + ".70"; // 例 4.0.0.1 // NOTE 小版本
 const version_type = "Preview"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP
-const version_type_count = version_type + "6"; // 例 Build1 // NOTE 小版本
+const version_type_count = version_type + "7"; // 例 Build1 // NOTE 小版本
 const version_name = version_name_short + "." + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + "-" + version_type_count; // 例 4.0.0-Build1
 const server_version = "4.0";
-const update_count = "2024-06-07-01"; // NOTE 小版本
+const update_count = "2024-06-27-01"; // NOTE 小版本
 let commit = "#"; // 例 #2024010101 , 仅留 # 则从 update_count 提取 // NOTE 有提交就变
 if (commit === "#") {
     commit = "#" + update_count.replace(/-/g, "");
@@ -21,22 +21,24 @@ const texts = {
     preview_detail1: "我们想听听你对这个新设计的意见.",
     preview_detail2: "请注意: 新设计仍未完工,可能会缺失部分功能.",
     preview_btn1: "开发日志",
-    preview_btn2: "<img class=\"link_img\" src=\"\" alt=\"\"/>提出反馈",
+    preview_btn2: "<img class='link_img' src='' alt=''/>提出反馈",
     back_to_main: "返回首页",
     sidebar_bottom_title: "Minecraft Kit",
     sidebar_bottom_detail1: "© 2020 Spectrollay",
     sidebar_bottom_btn: "官方网站",
     minecraft_wiki: "中文Minecraft Wiki",
-    download_btn1: "官方原版",
-    download_btn1_1: "<img class=\"link_img_black\" src=\"\" alt=\"\"/>官方原版(外部链接)",
-    download_btn2: "中文译名修正",
-    download_btn3: "去验证版",
-    download_btn4: "默认云盘",
-    download_btn5: "蓝奏云盘",
-    download_btn6: "123云盘",
-    download_btn7: "天翼云盘",
-    download_btn8: "百度云盘",
-    download_btn9: "<img class=\"link_img_black\" src=\"\" alt=\"\"/>外部链接",
+    download_channel1: "默认云盘",
+    download_channel2: "蓝奏云盘",
+    download_channel3: "123云盘",
+    download_channel4: "天翼云盘",
+    download_channel5: "百度云盘",
+    download_channel6: "<img class='link_img_black' src='' alt=''/>外部链接",
+    download_type1: "官方原版",
+    download_type1_out: "<img class='link_img_black' src='' alt=''/>官方原版(外部链接)",
+    download_type2: "中文译名修正",
+    download_type3: "去验证版",
+    download_type4: "多架构版",
+    download_type5: "精简版",
 };
 
 const rootPath_d = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
@@ -214,7 +216,7 @@ if (holiday_tip2) {
     } else if (M === 6 && D === 1) {
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = "无论你现在几岁,都祝你儿童节快乐!";
-    }else if (M === 6 && D > 5 && D < 11) {
+    } else if (M === 6 && D > 5 && D < 11) {
         holiday_tip2.style.display = 'flex';
         holiday_tip_display2.innerHTML = "高考加油!";
     } else if (M === 10 && D > 0 && D < 8) {
@@ -296,6 +298,16 @@ setElementText("preview_detail1", texts.preview_detail1);
 setElementText("preview_detail2", texts.preview_detail2);
 setElementText("setting_version", version_name_short);
 setElementText("setting_version_detail", version_info);
+
+const donate_message = document.getElementById('donate_message');
+if (donate_message) {
+    donate_message.innerHTML = `<div>
+        <p>这是一个始于2020年的项目, 做它的初衷, 只是为了给我玩的为数不多的游戏一个版本留档, 当时这还只是一个私有项目, 并不对外开放.</p>
+        <p>后来, 渐渐的我发现有许多人, 因为各种各样的原因, 有心购买游戏却无力, 亦或是需要某个特定的版本来完成特定的事, 在网上苦苦寻找却不得. 我想, 既然我有这些资源, 为什么不公开出来供大家一起使用呢? 这便是版本库对外开放的契因.</p>
+        <p>我们深知这个版本库还很不尽人意, 界面简陋, 功能稀少, 甚至可能还有一堆的问题. 因此我们从V1开始, 就一直在不断地完善改进它, 希望能给每一个使用版本库的你, 带来更好的体验.</p>
+        <p>如果你喜欢它, 且已经实现了经济独立, 可以考虑通过捐赠来支持我们. 这可以在很大程度上用于提升环境配置及开发积极性. 否则请你不要打赏, 分享与宣传也是对我们的强有力的支持.</p>
+    </div>`;
+}
 
 const pageInfo = document.getElementById('page_info');
 if (pageInfo) {

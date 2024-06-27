@@ -5,9 +5,17 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <!--    <style>-->
-    <!--        -->
-    <!--    </style>-->
+    <style>
+        .donate_block {
+            margin: 12px;
+            width: 280px;
+        }
+
+        .donate_qrcode {
+            margin: 6px 0 0 0;
+            width: 280px;
+        }
+    </style>
     <script>
         const loadingMaskStyle = document.createElement('style');
         loadingMaskStyle.textContent = `
@@ -48,7 +56,7 @@
 
         const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
     </script>
-    <title>项目环境指南</title>
+    <title>感谢支持~</title>
 </head>
 
 <body>
@@ -62,35 +70,39 @@
 </div>
 <header>
     <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src=""/>
+        <img alt="Back" class="back_icon" id="back_icon" src=""/>
     </div>
-    <div class="header_logo" onclick="scrollToTop();">
-        <span class="header_title">Minecraft Kit</span>
-    </div>
+    <div class="header_logo"><span class="header_title">Minecraft Kit</span></div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
 <scroll-container>
     <main class="main_scroll_container" id="main">
         <div class="main_title">
             <div class="main_title_area">
-                <div class="main_title_span">项目环境指南</div>
-                <div class="description1">2024-01-01</div>
+                <div class="main_title_span">捐赠支持</div>
             </div>
         </div>
-        <!--  TODO: 移除时一并移除相应样式  -->
-        <div class="main preview_block">
-            <div class="preview_title" id="preview_title"></div>
-            <div class="preview_detail" id="preview_detail1"></div>
-            <div class="preview_detail" id="preview_detail2"></div>
-            <div class="btn_group">
-                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
-                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+        <div class="banner_area">
+            <div class="banner information_banner">
+                如果你还未实现经济独立, 请不要向我们打赏, 你的心意我们领了. 父母赚钱不易, 请把钱花在更重要的地方吧. 如果你非要表示一下支持, 那就让更多需要的人知道我们, 这也是对我们的强有力的支持.
             </div>
         </div>
-        <div class="main_block description">
-            <p>欢迎来到项目环境指南页面!</p>
-            <p>页面内容待完成...</p>
-            <p>敬请期待.</p>
+        <div class="main main_block">
+            <div class="main_block_cont">
+                <div>感谢你的支持!</div>
+                <div class="wrap_flex">
+                    <div class="donate_block">
+                        <div>微信</div>
+                        <img alt="" class="donate_qrcode" src="./images/donate/Wechat%20Pay.jpg"/>
+                        <custom-button data="default|normal|small||false||" js="saveImage(this);" text="保存图片"></custom-button>
+                    </div>
+                    <div class="donate_block">
+                        <div>支付宝</div>
+                        <img alt="" class="donate_qrcode" src="./images/donate/Alipay.jpg"/>
+                        <custom-button data="default|normal|small||false||" js="saveImage(this);" text="保存图片"></custom-button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="page_info"></div>
     </main>
@@ -141,13 +153,33 @@
             loading_mask.style.display = 'none';
         }, 600);
     });
+
+    function saveImage(button) {
+        let parent = button.parentElement;
+        while (parent && !parent.classList.contains('donate_block')) {
+            parent = parent.parentElement;
+        }
+        if (parent) {
+            const image = parent.querySelector('.donate_qrcode');
+            const imageUrl = image.src;
+            const fileName = decodeURIComponent(imageUrl.substring(imageUrl.lastIndexOf('/') + 1));
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.download = fileName || 'downloaded_image.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
 </script>
 
 <style>
-    /* TODO: 在移除预览提示块时移除该样式 */
-    .preview_block {
-        border-top: 2px solid #5A5B5C;
-        border-bottom: 2px solid #333334;
+    .main_block_cont {
+        margin: 6px 0;
+    }
+
+    .wrap_flex {
+        justify-content: center;
     }
 </style>
 

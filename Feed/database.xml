@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>星月Minecraft版本库 - 数据库</title>
+        <link>https://spectrollay.github.io/minecraft_repository/</link>
+        <description>星月Minecraft版本库是一个开放共享的资源站,专注于收录Minecraft发布过的所有版本.</description>
+        <language>zh-cn</language>
+        <item>
+            <title>Minecraft教育版1.21.01.0预览版已上传至版本库</title>
+            <link>https://spectrollay.github.io/minecraft_repository/</link>
+            <description>数据库已更新</description>
+            <pubDate>>Wed, 26 Jun 2024 20:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Minecraft1.21.1正式版已上传至版本库</title>
+            <link>https://spectrollay.github.io/minecraft_repository/</link>
+            <description>数据库已更新</description>
+            <pubDate>Fri, 21 Jun 2024 22:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Minecraft1.21.10.24开发版已上传至版本库</title>
+            <link>https://spectrollay.github.io/minecraft_repository/</link>
+            <description>数据库已更新</description>
+            <pubDate>Fri, 21 Jun 2024 16:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Minecraft1.21.0正式版已上传至版本库</title>
+            <link>https://spectrollay.github.io/minecraft_repository/</link>
+            <description>数据库已更新</description>
+            <pubDate>Fri, 14 Jun 2024 12:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

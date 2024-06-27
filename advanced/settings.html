@@ -83,8 +83,7 @@
             <div class="preview_detail">你认为我们有什么可以改进的地方吗?</div>
             <div class="preview_detail">请注意: 开发仍在进行中,可能会缺失部分功能.</div>
             <div class="btn_group">
-                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();"
-                               text=""></custom-button>
+                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
                 <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
             </div>
         </div>
@@ -149,22 +148,19 @@
         <div class="main_block setting_block">
             <div class="setting_content">清除存储数据</div>
             <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="showModal('clear_storage_warning');"
-                               text="清除"></custom-button>
+                <custom-button data="setting|red|||false||" js="showModal('clear_storage_warning');" text="清除"></custom-button>
             </div>
         </div>
         <div class="main_block setting_block">
             <div class="setting_content">重载容器环境</div>
             <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="showModal('reload_page_warning');"
-                               text="重载"></custom-button>
+                <custom-button data="setting|red|||false||" js="showModal('reload_page_warning');" text="重载"></custom-button>
             </div>
         </div>
         <div class="main_block setting_block">
             <div class="setting_content">加载调试程序</div>
             <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="jumpToPage('../default/error_no-access.html');"
-                               text="调试"></custom-button>
+                <custom-button data="setting|red|||false||" js="jumpToPage('../default/error_no-access.html');" text="调试"></custom-button>
             </div>
         </div>
         <div class="setting_title">关于</div>
@@ -180,16 +176,14 @@
             <div class="setting_content">版本: <span id="setting_version"></span></div>
             <div class="setting_control_right setting_control_right_large">
                 <div>
-                    <custom-button data="setting|normal|||false||" js="showModal('version_info_modal');"
-                                   text="详情"></custom-button>
+                    <custom-button data="setting|normal|||false||" js="showModal('version_info_modal');" text="详情"></custom-button>
                 </div>
             </div>
         </div>
         <div class="main_block setting_block">
             <div class="setting_content">开发者: Spectrollay</div>
             <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="jumpToPage('../default/error_not-found.html');"
-                               text="瞅一瞅"></custom-button>
+                <custom-button data="setting|normal|||false||" js="jumpToPage('../default/error_not-found.html');" text="瞅一瞅"></custom-button>
             </div>
         </div>
         <div class="main_block setting_block">
@@ -210,15 +204,13 @@
         <div class="main_block setting_block">
             <div class="setting_content">联系我们</div>
             <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="jumpToPage('../default/error_not-found.html');"
-                               text="打开"></custom-button>
+                <custom-button data="setting|normal|||false||" js="jumpToPage('../default/error_not-found.html');" text="打开"></custom-button>
             </div>
         </div>
         <div class="main_block setting_block">
             <div class="setting_content">捐赠支持</div>
             <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="jumpToPage('../default/error_not-found.html');"
-                               text="打开"></custom-button>
+                <custom-button data="setting|normal|||false||" js="showModal('donate_modal');" text="支持"></custom-button>
             </div>
         </div>
         <div class="main_block setting_block">
@@ -275,8 +267,7 @@
             <modal_button_group>
                 <modal_button_list>
                     <custom-button data="modal|normal|||false||" js="hideModal(this);" text="取消"></custom-button>
-                    <custom-button data="modal|red|||false||" js="hideModal(this);clearStorage();mainPage();"
-                                   text="我知道我在做什么!"></custom-button>
+                    <custom-button data="modal|red|||false||" js="hideModal(this);clearStorage();mainPage();" text="我知道我在做什么!"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
@@ -300,8 +291,29 @@
             <modal_button_group>
                 <modal_button_list>
                     <custom-button data="modal|normal|||false||" js="hideModal(this);" text="取消"></custom-button>
-                    <custom-button data="modal|normal|||false||" js="hideModal(this);reloadPage();"
-                                   text="继续"></custom-button>
+                    <custom-button data="modal|normal|||false||" js="hideModal(this);reloadPage();" text="继续"></custom-button>
+                </modal_button_list>
+            </modal_button_group>
+        </modal_button_area>
+    </modal>
+</modal_area>
+
+<!--捐赠支持弹窗-->
+<div class="overlay" id="overlay_donate_modal" tabindex="-1"></div>
+<modal_area id="donate_modal" tabindex="-1">
+    <modal>
+        <modal_title_area>
+            <modal_title>捐赠支持</modal_title>
+            <modal_close_btn class="close_btn" onclick="hideModal(this);" tabindex="0">
+                <img alt="" class="modal_close_btn_img" src=""/>
+            </modal_close_btn>
+        </modal_title_area>
+        <modal_content id="donate_message">
+        </modal_content>
+        <modal_button_area>
+            <modal_button_group>
+                <modal_button_list>
+                    <custom-button data="modal|normal|||false||" js="hideModal(this);jumpToPage(`${root_path}donate.html`);" text="打赏"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>

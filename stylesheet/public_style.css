@@ -60,12 +60,17 @@
     display: flex;
 }
 
+.wrap_flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* 总体样式 */
 body {
     font-family: "NotoSans Bold", sans-serif;
     background: #48494A;
     margin: 0;
-    min-width: 360px;
+    min-width: 330px;
     overflow-x: hidden;
     -webkit-user-select: none;
 }
@@ -78,7 +83,7 @@ header {
     right: 0;
     display: flex;
     align-items: center;
-    min-width: 360px;
+    min-width: 330px;
     height: 40px;
     background-color: #E6E8EB;
     border-bottom: 4px solid #B1B2B5;
@@ -93,7 +98,7 @@ header {
     height: 100%;
 }
 
-.header_item{
+.header_item {
     cursor: pointer;
 }
 
@@ -164,9 +169,9 @@ header {
 }
 
 .repository_logo_area {
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .repository_logo_img {
@@ -188,7 +193,7 @@ scroll-container {
 
 main {
     width: 100vw;
-    min-width: 360px;
+    min-width: 330px;
     color: #FFFFFF;
 }
 
@@ -233,7 +238,7 @@ custom-scrollbar-thumb {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 360px;
+    min-width: 330px;
     z-index: 9;
 }
 
@@ -515,7 +520,7 @@ a {
     align-self: center;
     justify-self: center;
     width: 272px;
-    margin: 5px 0;
+    margin: 5px 12px;
 }
 
 .btn_group {
