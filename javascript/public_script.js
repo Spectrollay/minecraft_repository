@@ -44,8 +44,6 @@ function updateThumb() {
     const currentScrollTop = Math.round(scrollContainer.scrollTop);
     const thumbPosition = (currentScrollTop / maxScrollTop) * (containerHeight - (thumbHeight + 4));
     customThumb.style.top = `${thumbPosition}px`;
-    console.log(thumbHeight)
-    console.log(containerHeight)
     if (thumbHeight + 0.5 >= containerHeight) {
         customScrollbar.style.display = 'none';
     } else {
@@ -117,7 +115,9 @@ function onDrag(e) {
 }
 
 function stopDrag() {
-    setTimeout(() => { isDragging = false; }, 0);
+    setTimeout(() => {
+        isDragging = false;
+    }, 0);
     document.removeEventListener('mousemove', onDrag);
     document.removeEventListener('mouseup', stopDrag);
     document.removeEventListener('touchmove', onDrag);
@@ -223,27 +223,37 @@ if (hostPath.includes('file:///')) {
     document.addEventListener('touchstart', function (event) {
         event.preventDefault();
     });
-    // Gitee Pages 已下线
-// } else if (hostPath.includes('gitee.io')) {
-//     console.log("当前运行在Gitee");
-//     // 禁用右键菜单
-//     document.addEventListener('contextmenu', function (event) {
-//         event.preventDefault();
-//     });
-//     // 禁用长按菜单
-//     document.addEventListener('touchstart', function (event) {
-//         event.preventDefault();
-//     });
 } else {
     console.log("当前运行在" + hostPath);
 }
-if (rootPath.includes('test')) {
+if (rootPath.includes('_test')) {
     console.log("环境为测试环境");
 } else {
     console.log("环境为标准环境");
 }
 
 console.log("当前位于" + pageLevel);
+
+if (rootPath.includes('_test') && !localStorage.getItem('repository_attribute')) {
+    localStorage.setItem('repository_attribute', 'test=true');
+} else if (!rootPath.includes('_test') && !localStorage.getItem('repository_attribute')) {
+    localStorage.setItem('repository_attribute', 'test=false');
+}
+
+function joinTest() {
+    localStorage.setItem('repository_attribute', 'test=true');
+    setTimeout(function () {
+        window.location.href = hostPath + "/minecraft_repository_test";
+    }, 600);
+}
+
+function leaveTest() {
+    localStorage.setItem('repository_attribute', 'test=false');
+    localStorage.removeItem('(/minecraft_repository/)neverShowIn15Days');
+    setTimeout(function () {
+        window.location.href = hostPath + "/minecraft_repository";
+    }, 600);
+}
 
 // 禁止拖动元素
 const images = document.querySelectorAll("img");
@@ -338,7 +348,10 @@ function checkFirstVisit() {
     const firstVisitAllowedPaths = [
         `${rootPath}`,
         `${rootPath}index.html`,
-        `${rootPath}home.html`
+        `${rootPath}home.html`,
+        `${rootPath}donate.html`,
+        `${rootPath}updatelog/`,
+        `${rootPath}updatelog/index.html`
     ];
 
     // 检查是否是第一次访问且路径不在允许的路径中且不是404页面
@@ -571,17 +584,10 @@ function settingsPage() {
     }, 600);
 }
 
-// 点击Debug图标事件
-function debugPage() {
-    setTimeout(function () {
-        window.location.href = rootPath + "advanced/debug.html";
-    }, 600);
-}
-
 // 跳转实验性页面
 function flagsPage() {
     setTimeout(function () {
-        window.location.href = rootPath + "experimental/flags.html";
+        window.location.href = rootPath + "experiments/flags.html";
     }, 600);
 }
 
@@ -636,6 +642,26 @@ function toTop() {
         top: 0,
         behavior: "instant"
     });
+}
+
+// 复制文本
+function copyText(text) {
+    let textToCopy = text;
+    let tempTextarea = document.createElement("textarea");
+
+    tempTextarea.value = textToCopy;
+    document.body.appendChild(tempTextarea);
+
+    tempTextarea.select();
+    tempTextarea.setSelectionRange(0, 999999); // 兼容移动设备
+
+    navigator.clipboard.writeText(tempTextarea.value)
+        .then(() => {
+            console.log('复制成功: ', tempTextarea.value);
+        })
+        .catch(err => {
+            console.log('复制失败');
+        });
 }
 
 // Expandable Card函数
@@ -803,17 +829,3 @@ setTimeout(function () {
         });
     }
 }, 600);
-
-// 清除存储
-function clearStorage() {
-    localStorage.clear();
-    sessionStorage.clear();
-    console.log('清除存储数据成功');
-}
-
-// 重载页面
-function reloadPage() {
-    sessionStorage.clear();
-    location.reload();
-    console.log('重载容器环境成功');
-}

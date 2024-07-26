@@ -5,59 +5,20 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
     <style>
         .main_block_cont {
             margin: 6px 0;
         }
     </style>
-    <script>
-        const loadingMaskStyle = document.createElement('style');
-        loadingMaskStyle.textContent = `
-        .loading_mask {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #48494A;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 1;
-            transition: opacity 0.6s;
-        }
-
-        .spinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 50px;
-        }
-
-        #spinner_img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .spinner_text {
-            color: #FFFFFF;
-            font-size: 20px;
-        }
-    `;
-        document.head.appendChild(loadingMaskStyle);
-
-        const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-    </script>
-    <link href="../images/Logo.jpg" rel="icon">
+    <link href="/minecraft_repository/images/Logo.jpg" rel="icon">
     <title>正版购买指南 - 星月Minecraft版本库</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
@@ -68,7 +29,7 @@
         <img alt="" class="back_icon" id="back_icon" src=""/>
     </div>
     <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"/><span
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Logo.jpg"/><span
             class="header_title">Repository</span>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
@@ -79,16 +40,6 @@
             <div class="main_title_area">
                 <div class="main_title_span">正版购买指南</div>
                 <div class="description1">2024-01-01</div>
-            </div>
-        </div>
-        <!--  TODO: 移除时一并移除相应样式  -->
-        <div class="main preview_block">
-            <div class="preview_title" id="preview_title"></div>
-            <div class="preview_detail" id="preview_detail1"></div>
-            <div class="preview_detail" id="preview_detail2"></div>
-            <div class="btn_group">
-                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
-                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
             </div>
         </div>
         <div class="banner_area">
@@ -105,37 +56,37 @@
                     <p>一. 官方网站购买</p>
                     <p>
                         1. 访问<a href="https://www.minecraft.net/zh-hans" onclick="playSound1();" target="_blank">官网</a>, 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/website/website.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/website.png"/>
                     </p>
                     <p>
                         2. 点击右上角<a href="https://www.minecraft.net/zh-hans/login" onclick="playSound1();" target="_blank">登录</a>, 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/website/login1.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/login1.png"/>
                         进入登录页面.
-                        <img alt="" src="../images/guide/how_to_buy/website/login2.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/login2.png"/>
                         这里需要使用微软账号登录, 如果你没有微软账号, 可以点击注册按钮根据引导免费注册, 如果已有微软账号, 请点击登录.
                         Mojang账号已不再能够登录, 如果你的Mojang账号没有迁移, 请点击按钮下方的链接了解详情.
                     </p>
                     <p>
                         3. 登录成功后点击网页顶栏[游戏], 选择[Minecraft], 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/website/buy_pre.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/buy_pre.png"/>
                         点击后会自动跳转至<a href="https://www.minecraft.net/zh-hans/about-minecraft" onclick="playSound1();" target="_blank">该界面</a>.
-                        <img alt="" src="../images/guide/how_to_buy/website/buy1.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/buy1.png"/>
                         点击[获取Minecraft], 进入<a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" onclick="playSound1();" target="_blank">购买页面</a>, 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/website/buy2.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/buy2.png"/>
                     </p>
                     <p>
                         4. 在一般情况下, 推荐选择Minecraft(PC捆绑包), 包含Java版/基岩版/启动器, 售价¥89.00, 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/website/buy3.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/buy3.png"/>
                         当然, 如果你想要豪华版, 请选择Deluxe Collection, 售价¥119.00<br>
                         选择完成后,点击[结账]支付, 如图所示, 在支付完成后即可下载游玩.
-                        <img alt="" src="../images/guide/how_to_buy/website/buy4.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/buy4.png"/>
                     </p>
                     <p>二. 微软商店购买</p>
                     <p>
                         在你的电脑中找到[Microsoft Store], 点击启动, 启动完成后在顶部搜索栏中搜索[Minecraft], 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/microsoft_store/search.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/microsoft_store/search.png"/>
                         在搜索结果中找到[Minecraft: Java & Bedrock Edition for PC], 点击进入, 在<a href="https://www.microsoft.com/store/productId/9NXP44L49SHJ" onclick="playSound1();" target="_blank">应用详情页</a>内选择购买, 如图所示.
-                        <img alt="" src="../images/guide/how_to_buy/microsoft_store/detail.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/microsoft_store/detail.png"/>
                         在进行身份验证和支付后, 即可下载游玩.
                     </p>
                 </div>
@@ -155,11 +106,11 @@
                     <p>
                         1. <a href="https://accounts.google.com/" onclick="playSound1();" target="_blank">注册或登录</a>Google账号.
                         如果你已有Google账号, 请填写账号密码登录, 否则请根据引导免费注册.
-                        <img alt="" src="../images/guide/how_to_buy/google_play_store/login.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/google_play_store/login.png"/>
                     </p>
                     <p>
                         2. 在Google Play Store内搜索[Minecraft], 进入<a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" onclick="playSound1();" target="_blank">应用详情页</a>
-                        <img alt="" src="../images/guide/how_to_buy/google_play_store/detail.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/google_play_store/detail.png"/>
                     </p>
                     <p>
                         3. 使用官方自带的支付方式进行支付, 如果你没有相应的支付方式, 可以选择代购礼品卡充值进自己的账号内再使用账号余额支付, 支付完成后即可下载游玩.
@@ -171,11 +122,11 @@
                     <p>
                         1. <a href="https://appleid.apple.com/" onclick="playSound1();" target="_blank">注册或登录</a>Apple账号.
                         如果你已有Apple账号, 请点击登录, 否则请根据引导免费注册.
-                        <img alt="" src="../images/guide/how_to_buy/app_store/login.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/app_store/login.png"/>
                     </p>
                     <p>
                         2. 在App Store内搜索[Minecraft], 进入<a href="https://apps.apple.com/us/app/minecraft/id479516143" onclick="playSound1();" target="_blank">应用详情页</a>
-                        <img alt="" src="../images/guide/how_to_buy/app_store/detail.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/app_store/detail.png"/>
                     </p>
                     <p>
                         3. 使用官方自带的支付方式进行支付, 支付完成即可下载游玩.
@@ -189,7 +140,7 @@
                 <div class="description">
                     <p>
                         <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" onclick="playSound1();" target="_blank">官网购买页面</a>中提供了其他平台的下载方式, 如图所示, 你可以选择你想要的版本进行购买, 这些链接会跳转到对应平台的购买方式上.
-                        <img alt="" src="../images/guide/how_to_buy/website/buy5.png"/>
+                        <img alt="" src="/minecraft_repository/images/guide/how_to_buy/website/buy5.png"/>
                     </p>
                 </div>
             </div>
@@ -213,9 +164,9 @@
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
-    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
-    public_script.src = root_path + 'javascript/public_script.js';
-    public_define.src = root_path + 'javascript/public_define.js';
+    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
+    public_script.src = '/minecraft_repository/javascript/public_script.js';
+    public_define.src = '/minecraft_repository/javascript/public_define.js';
 
     document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
@@ -225,14 +176,12 @@
     const back_icon = document.getElementById('back_icon');
 
     if (back_icon) {
-        back_icon.src = root_path + 'images/arrowLeft.png';
+        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
     }
     if (menu_icon) {
-        menu_icon.src = root_path + 'images/menu.png';
+        menu_icon.src = '/minecraft_repository/images/menu.png';
     }
 
-    const loading_img = document.getElementById('spinner_img');
-    loading_img.src = root_path + 'images/Loading_white.gif';
     const loading_mask = document.getElementById('loading_mask');
 
     // 惰性加载
@@ -241,22 +190,32 @@
         img.setAttribute('loading', 'lazy');
     });
 
-    // 监听页面加载完成事件
-    window.addEventListener('load', function () {
+    function hide_mask() {
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
             loading_mask.style.display = 'none';
         }, 600);
+    }
+
+    // 加载超过8秒时
+    let count = 8;
+    const secondInterval = setInterval(function () {
+        count--;
+        if (count <= 0) {
+            clearInterval(secondInterval);
+            hide_mask();
+        }
+    }, 1000);
+
+    // 页面加载完成时
+    window.addEventListener('load', function () {
+        hide_mask();
     });
 </script>
 
-<style>
-    /* TODO: 在移除预览提示块时移除该样式 */
-    .preview_block {
-        border-top: 2px solid #5A5B5C;
-        border-bottom: 2px solid #333334;
-    }
-</style>
+<!--<style>-->
+<!--    -->
+<!--</style>-->
 
 </html>

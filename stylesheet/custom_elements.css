@@ -240,6 +240,7 @@ custom-checkbox {
     background-color: #8C8D90;
     border: 2px solid #1E1E1F;
     box-shadow: inset 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 .custom-checkbox:hover {
@@ -266,6 +267,7 @@ custom-checkbox {
     background-color: #D0D1D4;
     border: 2px solid #8C8D90;
     box-shadow: none;
+    cursor: not-allowed;
 }
 
 .custom-checkbox.disabled:hover, .custom-checkbox.disabled:active {
@@ -443,6 +445,100 @@ modal_button_list {
 }
 
 
+/* Slider滑块 */
+.slider_content {
+    display: flex;
+    width: calc(100% - 32px);
+    height: 30px;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    width: 100%; /* 进度条宽度 */
+    height: 8px; /* 进度条高度 */
+    margin: 0 10px;
+    border: 2px solid #1E1E1F;
+    background: #8C8D90;
+    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
+    position: relative; /* 相对定位,用于子元素绝对定位的参考 */
+    cursor: pointer;
+}
+
+.slider_process {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    max-width: 100%;
+    background: #3C8527;
+    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
+    transition: width 100ms linear;
+}
+
+.slider_slider {
+    position: absolute; /* 相对于包含它的 .slider 元素绝对定位 */
+    width: 28px;
+    height: 28px;
+    top: 50%; /* 滑块垂直居中 */
+    z-index: 1;
+    transform: translate(-50%, -50%); /* 水平和垂直居中 */
+    background-color: #D0D1D4;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
+    transition: left 100ms linear;
+}
+
+.slider_slider:hover, .slider_slider:active, .slider_content:hover .slider_slider, .slider_slider.active {
+    background-color: #B1B2B5;
+    box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.8), inset -2px -6px rgba(255, 255, 255, 0.6);
+}
+
+.slider_segment { /* Set Slider的分段线样式 */
+    position: absolute;
+    background-color: #1E1E1F;
+    width: 2px;
+    height: 8px;
+    top: 50%; /* 分段线垂直居中 */
+    transform: translateY(-50%); /* 分段线垂直居中 */
+}
+
+.slider_value_info {
+    cursor: default;
+}
+
+.disabled_slider {
+    cursor: not-allowed;
+}
+
+.disabled_slider.slider {
+    background: #CFD0D4;
+    border: 2px solid #8C8D90;
+}
+
+.disabled_slider .slider_segment {
+    background-color: #8C8D90;
+}
+
+.disabled_slider .slider_process {
+    background: #CFD0D4;
+    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
+}
+
+
+.disabled_slider .slider_slider {
+    background-color: #CFD0D4;
+    border: 2px solid #8B8C90;
+    box-shadow: inset 0 -4px #B0B1B5, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
+}
+
+.disabled_slider .slider_slider:hover, .disabled_slider .slider_slider:active, .slider_content:hover .disabled_slider .slider_slider, .disabled_slider .slider_slider.active {
+    background-color: #CFD0D4;
+    border: 2px solid #8B8C90;
+    box-shadow: inset 0 -4px #B0B1B5, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
+}
+
 /* Switch开关 */
 .switch_content {
     margin: 6px;
@@ -453,6 +549,7 @@ modal_button_list {
     height: 24px;
     position: relative;
     overflow: visible;
+    cursor: pointer;
 }
 
 .normal_switch {
@@ -464,6 +561,7 @@ modal_button_list {
 .disabled_switch {
     border: 2px solid #8C8D90;
     background: #D0D1D4;
+    cursor: not-allowed;
 }
 
 .switch_style {

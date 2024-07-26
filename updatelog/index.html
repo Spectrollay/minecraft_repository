@@ -5,58 +5,19 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="../stylesheet/advanced.css" rel="stylesheet">
+    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="/minecraft_repository/stylesheet/advanced.css" rel="stylesheet">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <script>
-        const loadingMaskStyle = document.createElement('style');
-        loadingMaskStyle.textContent = `
-        .loading_mask {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #48494A;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 1;
-            transition: opacity 0.6s;
-        }
-
-        .spinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 50px;
-        }
-
-        #spinner_img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .spinner_text {
-            color: #FFFFFF;
-            font-size: 20px;
-        }
-    `;
-        document.head.appendChild(loadingMaskStyle);
-
-        const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-    </script>
-    <link href="../images/Logo.jpg" rel="icon">
+    <link href="/minecraft_repository/images/Logo.jpg" rel="icon">
     <title>开发日志 - 星月Minecraft版本库</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
@@ -67,11 +28,11 @@
         <img alt="" class="back_icon" id="back_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"/><span
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Logo.jpg"/><span
             class="header_title">Repository</span>
     </div>
     <div class="header_item header_item_right" id="feedback" onclick="playSound(this);toRepo();">
-        <img alt="" class="feedback_icon" src="../images/Feedback.png"/>
+        <img alt="" class="feedback_icon" src="/minecraft_repository/images/Feedback.png"/>
     </div>
 </header>
 <scroll-container>
@@ -95,16 +56,62 @@
                         这些规划可能随着开发的进展而发生变化, 本处列出的条目仅作参考.
                     </div>
                 </div>
+
+                <!--<div class="main plan_block_main">-->
+                <!--    <div class="plan_block">计划版本号</div>-->
+                <!--    <div class="plan_block_area">-->
+                <!--        <div class="plan_block_content">-->
+                <!--            <article_block>-->
+                <!--                <article_detail>-->
+                <!--                    <article_note>本版本计划于{时间}更新</article_note>-->
+                <!--                    <article_list>计划更新内容</article_list>-->
+                <!--                </article_detail>-->
+                <!--            </article_block>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+
                 <div class="main plan_block_main">
-                    <div class="plan_block">未知版本</div>
+                    <div class="plan_block">计划中</div>
                     <div class="plan_block_area">
                         <div class="plan_block_content">
                             <article_block>
                                 <article_detail>
-                                    <article_list>重新设计下载块,优化下载块的样式与下载体验</article_list>
-                                    <article_list>全面适配与支持无障碍</article_list>
-                                    <article_list>根据页面自适应的布局</article_list>
+                                    <article_list>实验性内容页面解耦合</article_list>
+                                    <article_list>特别鸣谢板块</article_list>
+                                    <article_list>友情链接板块</article_list>
+                                    <article_list>快速启动游戏</article_list>
+                                    <article_list>本地解析下载</article_list>
                                     <article_list>Minecraft Java版镜像源</article_list>
+                                </article_detail>
+                            </article_block>
+                        </div>
+                    </div>
+                </div>
+                <div class="main plan_block_main">
+                    <div class="plan_block">开发中</div>
+                    <div class="plan_block_area">
+                        <div class="plan_block_content">
+                            <article_block>
+                                <article_detail>
+                                    <article_list>
+                                        <div class="tag_area"><span class="tag yellow_tag">33%</span><span>设置页面</span></div>
+                                    </article_list>
+                                    <article_list>
+                                        <div class="tag_area"><span class="tag green_tag">92%</span><span>中文译名修正页面</span></div>
+                                    </article_list>
+                                    <article_list>
+                                        <div class="tag_area"><span class="tag red_tag">26%</span><span>优化下载块的样式与下载体验</span></div>
+                                    </article_list>
+                                    <article_list>
+                                        <div class="tag_area"><span class="tag green_tag">75%</span><span>全面适配与支持无障碍</span></div>
+                                    </article_list>
+                                    <article_list>
+                                        <div class="tag_area"><span class="tag green_tag">67%</span><span>惰性加载机制</span></div>
+                                    </article_list>
+                                    <article_list>
+                                        <div class="tag_area"><span class="tag red_tag">16%</span><span>响应式页面布局</span></div>
+                                    </article_list>
                                 </article_detail>
                             </article_block>
                         </div>
@@ -171,6 +178,58 @@
                             <div class="expandable_card_down">
                                 <div class="expandable_card_down_content">
                                     <article_block>
+                                        <article_title>4.6.5-Canary8(4.6.5.20)</article_title>
+                                        <article_date>2024-06-30</article_date>
+                                        <article_detail>
+                                            <article_note>
+                                                本次更新主要对网页性能进行了优化并对Slider滑块进行了重做, 欢迎告诉我们你对此的想法.
+                                            </article_note>
+                                            <article_list>
+                                                <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>更新了Slider滑块<span></span></div>
+                                            </article_list>
+                                            <article_list_level2>现在Slider滑块属于自定义元素了</article_list_level2>
+                                            <article_list_level2>优化了Slider滑块的选中提示方式</article_list_level2>
+                                            <article_list_level2>更新了Slider滑块的标签显示机制</article_list_level2>
+                                            <article_list_level2>Set Slider滑块的选项可以不是数值了</article_list_level2>
+                                            <article_list_level2>Set Slider现在在滑动中改变选中提示了</article_list_level2>
+                                            <article_list_level2>Set Slider滑块现在没有拖动滑动动画了</article_list_level2>
+                                            <article_list_level2>修复了在拖动滑块时仍然能控制页面滑动的问题</article_list_level2>
+                                            <article_list>合并了一些来自其他仓库的OreUI特性</article_list>
+                                            <article_list>更新了部分元素的鼠标指针</article_list>
+                                            <article_list_level2>将以下元素的鼠标指针更改为pointer: Checkbox复选框(除禁用样式),Slider滑块(除禁用样式),Switch开关(除禁用样式)</article_list_level2>
+                                            <article_list_level2>将以下元素的鼠标指针更改为not-allowed: Checkbox复选框(仅禁用样式),Slider滑块(仅禁用样式),Switch开关(仅禁用样式)</article_list_level2>
+                                            <article_list>更新了中文译名修正项目页面</article_list>
+                                            <article_list>更新了提示列表,优化了提示加载逻辑</article_list>
+                                            <article_list>更新了测试方式及测试提示</article_list>
+                                            <article_list>优化了元素计算的性能</article_list>
+                                            <article_list>优化了加载遮罩的加载</article_list>
+                                            <article_list>优化了重定向跳转判定</article_list>
+                                            <article_list>修复了15天之内不再提示功能不会正确生效的问题</article_list>
+                                            <article_list>移除了一些遗留的调试输出</article_list>
+                                        </article_detail>
+                                    </article_block>
+                                </div>
+                                <div class="expandable_card_down_br"></div>
+                                <div class="expandable_card_down_content">
+                                    <article_block>
+                                        <article_title>4.6.5-Canary7(4.6.5.16)</article_title>
+                                        <article_date>2024-06-28</article_date>
+                                        <article_detail>
+                                            <article_note>
+                                                本次更新优化了一些内容并修复了一些漏洞.
+                                            </article_note>
+                                            <article_list>更新了开发日志页面</article_list>
+                                            <article_list_level2>现在更新计划会区分即将到来的计划和进行中的计划了</article_list_level2>
+                                            <article_list_level2>进行中的计划现在有开发进度值了</article_list_level2>
+                                            <article_list>正版购买指南页面不再属于实验性内容了</article_list>
+                                            <article_list>新的基岩版下载页面页面不再属于实验性内容了</article_list>
+                                            <article_list>修复了部分字体显示不正确的问题</article_list>
+                                        </article_detail>
+                                    </article_block>
+                                </div>
+                                <div class="expandable_card_down_br"></div>
+                                <div class="expandable_card_down_content">
+                                    <article_block>
                                         <article_title>4.6.5-Canary6(4.6.5.11)</article_title>
                                         <article_date>2024-06-26</article_date>
                                         <article_detail>
@@ -178,6 +237,7 @@
                                                 本次更新加入了教育版1.21的下载方式.
                                             </article_note>
                                             <article_list>加入了教育版1.21的下载方式</article_list>
+                                            <article_list>修复了一些问题</article_list>
                                         </article_detail>
                                     </article_block>
                                 </div>
@@ -1502,13 +1562,28 @@
                             <div class="expandable_card_down">
                                 <div class="expandable_card_down_content">
                                     <article_block>
+                                        <article_title>4.5.10-Preview8(4.5.10.82)</article_title>
+                                        <article_date>2024-07-27</article_date>
+                                        <article_detail>
+                                            <article_note>
+                                                本次更新主要优化了网页性能并跟进了一些新的特性. 玩得愉快!
+                                            </article_note>
+                                            <article_note>本版本现已跟进4.6.5.20</article_note>
+                                            <article_list>具体内容详见对应版本区间更新日志</article_list>
+                                        </article_detail>
+                                    </article_block>
+                                </div>
+                                <div class="expandable_card_down_br"></div>
+                                <div class="expandable_card_down_content">
+                                    <article_block>
                                         <article_title>4.5.10-Preview7(4.5.10.70)</article_title>
                                         <article_date>2024-06-27</article_date>
                                         <article_detail>
                                             <article_note>
-                                                暑假快乐!
+                                                暑假快乐! 本次更新主要优化了底层代码和滚动条的性能.
                                             </article_note>
                                             <article_note>本版本现已跟进4.6.5.11</article_note>
+                                            <article_list>具体内容详见对应版本区间更新日志</article_list>
                                         </article_detail>
                                     </article_block>
                                 </div>
@@ -1519,10 +1594,11 @@
                                         <article_date>2024-06-07</article_date>
                                         <article_detail>
                                             <article_note>
-                                                高考加油!
+                                                高考加油! 本次更新包含了大量的新内容和改进, 欢迎体验.
                                             </article_note>
                                             <article_note>本版本现已跟进4.6.3.60</article_note>
                                             <article_list>修正了一些问题</article_list>
+                                            <article_list>具体内容详见对应版本区间更新日志</article_list>
                                         </article_detail>
                                     </article_block>
                                 </div>
@@ -1536,6 +1612,7 @@
                                                 Minecraft 15 周年庆典来啦! 本次更新加入了庆典相关内容并完善了一些内容和机制. 玩的开心!
                                             </article_note>
                                             <article_list>加入了 Minecraft 15 周年庆典相关内容</article_list>
+                                            <article_list>具体内容详见对应版本区间更新日志</article_list>
                                         </article_detail>
                                     </article_block>
                                 </div>
@@ -1554,6 +1631,7 @@
                                             <article_list>将指向Gitee的链接重定向至了Github</article_list>
                                             <article_list>调整了部分节日事件的提示</article_list>
                                             <article_list>移除了版本库的Gitee源</article_list>
+                                            <article_list>具体内容详见对应版本区间更新日志</article_list>
                                         </article_detail>
                                     </article_block>
                                 </div>
@@ -2676,9 +2754,9 @@
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
-    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
-    public_script.src = root_path + 'javascript/public_script.js';
-    public_define.src = root_path + 'javascript/public_define.js';
+    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
+    public_script.src = '/minecraft_repository/javascript/public_script.js';
+    public_define.src = '/minecraft_repository/javascript/public_define.js';
 
     document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
@@ -2688,23 +2766,35 @@
     const back_icon = document.getElementById('back_icon');
 
     if (back_icon) {
-        back_icon.src = root_path + 'images/arrowLeft.png';
+        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
     }
     if (menu_icon) {
-        menu_icon.src = root_path + 'images/menu.png';
+        menu_icon.src = '/minecraft_repository/images/menu.png';
     }
 
-    const loading_img = document.getElementById('spinner_img');
-    loading_img.src = root_path + 'images/Loading_white.gif';
     const loading_mask = document.getElementById('loading_mask');
 
-    // 监听页面加载完成事件
-    window.addEventListener('load', function () {
+    function hide_mask() {
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
             loading_mask.style.display = 'none';
         }, 600);
+    }
+
+    // 加载超过8秒时
+    let count = 8;
+    const secondInterval = setInterval(function () {
+        count--;
+        if (count <= 0) {
+            clearInterval(secondInterval);
+            hide_mask();
+        }
+    }, 1000);
+
+    // 页面加载完成时
+    window.addEventListener('load', function () {
+        hide_mask();
     });
 </script>
 

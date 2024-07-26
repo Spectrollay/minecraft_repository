@@ -5,57 +5,18 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="../images/Messages.png" rel="icon">
+    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="/minecraft_repository/images/Messages.png" rel="icon">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <script>
-        const loadingMaskStyle = document.createElement('style');
-        loadingMaskStyle.textContent = `
-        .loading_mask {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #48494A;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 1;
-            transition: opacity 0.6s;
-        }
-
-        .spinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 50px;
-        }
-
-        #spinner_img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .spinner_text {
-            color: #FFFFFF;
-            font-size: 20px;
-        }
-    `;
-        document.head.appendChild(loadingMaskStyle);
-
-        const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-    </script>
     <title>消息中心</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
@@ -66,24 +27,13 @@
         <img alt="Back" class="back_icon" id="back_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="../images/Messages.png"/>
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Messages.png"/>
         <span class="header_title">Messages</span>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
 <scroll-container>
     <main class="main_scroll_container" id="main">
-        <!--  TODO: 移除时一并移除相应样式  -->
-        <div class="main preview_block">
-            <div class="preview_title" id="preview_title"></div>
-            <div class="preview_detail" id="preview_detail1"></div>
-            <div class="preview_detail" id="preview_detail2"></div>
-            <div class="btn_group">
-                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();"
-                               text=""></custom-button>
-                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
-            </div>
-        </div>
         <div>
             <div class="block">
                 <div class="main">
@@ -109,25 +59,25 @@
                         <article_date>2024-05-17</article_date>
                         <article_detail>
                             <p>1. 周年庆大促</p>
-                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/Sale.png"/></div>
+                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Sale.png"/></div>
                             <p>在5月15日至6月22日期间, 快来获取 Minecraft / Minecraft Dungeons / Minecraft Legends 等内容, 折扣高达50%. 你想要建造一件艺术品, 与朋友并肩作战, 拯救主世界, 还是三者兼而有之?</p>
                             <p><a href="https://www.minecraft.net/" onclick="playSound1();" target="_blank">前往官方网站购买</a></p>
                             <p>2. Minecraft 15天</p>
-                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/DressingRoom.png"/></div>
+                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/DressingRoom.png"/></div>
                             <p>获取持续发放15天的免费角色道具, 庆祝 Minecraft 15周年纪念! 在5月15日至29日期间, 每日均可在 Minecraft 基岩版更衣室领取礼物.</p>
                             <p>3. TikTok 15天</p>
-                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/TikTok.jpg" style="height: 220px; width: unset"/></div>
+                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/TikTok.jpg" style="height: 220px; width: unset"/></div>
                             <p><a href="https://www.minecraft.net/en-us/redeem" onclick="playSound1();" target="_blank">在这里</a>收集你的独家 TikTok 15天 Minecraft 角色创建器物品!</p>
                             <p>请在6月1日前完成任务并兑换</p>
                             <p>4. Twitch 15天</p>
-                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/Twitch.jpg" style="height: 220px; width: unset"/></div>
+                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Twitch.jpg" style="height: 220px; width: unset"/></div>
                             <p><a href="https://www.minecraft.net/en-us/redeem" onclick="playSound1();" target="_blank">在这里</a>收集你的独家 Twitch 15天 Minecraft 观看时长任务的紫心披风和支持主播的故障面具!</p>
                             <p>请在6月1日前完成任务并兑换</p>
                             <p>5. 15周年纪念披风</p>
-                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/Cape.png"/></div>
+                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Cape.png"/></div>
                             <p><a href="https://www.minecraft.net/zh-hans/15th-anniversary" onclick="playSound1();" target="_blank">点击前往官网领取</a>, 位于活动页面底部</p>
                             <p>6. 15周年庆典地图</p>
-                            <div class="article_image"><img alt="" src="../images/event/Anniversary15/15YearJourney.jpg"/></div>
+                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/15YearJourney.jpg"/></div>
                             <p>前往基岩版商城领取地图15年之旅, 回顾Minecraft的15周年</p>
                         </article_detail>
                     </article_block>
@@ -173,9 +123,9 @@
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
-    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
-    public_script.src = root_path + 'javascript/public_script.js';
-    public_define.src = root_path + 'javascript/public_define.js';
+    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
+    public_script.src = '/minecraft_repository/javascript/public_script.js';
+    public_define.src = '/minecraft_repository/javascript/public_define.js';
 
     document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
@@ -185,14 +135,12 @@
     const back_icon = document.getElementById('back_icon');
 
     if (back_icon) {
-        back_icon.src = root_path + 'images/arrowLeft.png';
+        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
     }
     if (menu_icon) {
-        menu_icon.src = root_path + 'images/menu.png';
+        menu_icon.src = '/minecraft_repository/images/menu.png';
     }
 
-    const loading_img = document.getElementById('spinner_img');
-    loading_img.src = root_path + 'images/Loading_white.gif';
     const loading_mask = document.getElementById('loading_mask');
 
     // 惰性加载
@@ -201,22 +149,31 @@
         img.setAttribute('loading', 'lazy');
     });
 
-    // 监听页面加载完成事件
-    window.addEventListener('load', function () {
+    function hide_mask() {
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
             loading_mask.style.display = 'none';
         }, 600);
+    }
+
+    // 加载超过8秒时
+    let count = 8;
+    const secondInterval = setInterval(function () {
+        count--;
+        if (count <= 0) {
+            clearInterval(secondInterval);
+            hide_mask();
+        }
+    }, 1000);
+
+    // 页面加载完成时
+    window.addEventListener('load', function () {
+        hide_mask();
     });
 </script>
 
 <style>
-    /* TODO: 在移除预览提示块时移除该样式 */
-    .preview_block {
-        border-top: 0;
-    }
-
     .block {
         margin: 20px;
     }

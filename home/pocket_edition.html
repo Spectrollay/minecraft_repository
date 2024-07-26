@@ -5,58 +5,19 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="../stylesheet/editions.css" rel="stylesheet">
+    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="/minecraft_repository/stylesheet/editions.css" rel="stylesheet">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <script>
-        const loadingMaskStyle = document.createElement('style');
-        loadingMaskStyle.textContent = `
-        .loading_mask {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #48494A;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 1;
-            transition: opacity 0.6s;
-        }
-
-        .spinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 50px;
-        }
-
-        #spinner_img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .spinner_text {
-            color: #FFFFFF;
-            font-size: 20px;
-        }
-    `;
-        document.head.appendChild(loadingMaskStyle);
-
-        const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-    </script>
-    <link href="../images/Logo.jpg" rel="icon">
+    <link href="/minecraft_repository/images/Logo.jpg" rel="icon">
     <title>携带版 - 星月Minecraft版本库</title>
 </head>
 
 <body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src=""/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
@@ -67,7 +28,7 @@
         <img alt="" class="menu_icon" id="menu_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="../images/Logo.jpg"/><span
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Logo.jpg"/><span
             class="header_title">Repository</span>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
@@ -115,7 +76,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134gdcf');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 1.1</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn normal_btn small_btn"
                                 onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-VcLN3.html');"
@@ -161,7 +122,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134gbzg');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 1.0</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn normal_btn small_btn"
                                 onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-5cLN3.html');"
@@ -207,7 +168,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpji');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.16</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -252,7 +213,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fphg');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.15</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -297,7 +258,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpfe');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.14</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -342,7 +303,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpcb');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.13</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -387,7 +348,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpaj');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.12</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -432,7 +393,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp9i');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.11</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -477,7 +438,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp6f');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.10</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -522,7 +483,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp4d');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.9</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -567,7 +528,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp3c');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.8</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -612,7 +573,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp2b');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.7</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -657,7 +618,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fozi');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.6</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -702,7 +663,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134foxg');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.5</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -747,7 +708,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fowf');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.4</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -792,7 +753,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fotc');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.3</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -837,7 +798,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fora');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.2</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -882,7 +843,7 @@
                                     onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fopi');"
                                     text-generation="download_channel2"></button>
                             <div class="btn_tooltip">密码: 0.1</div>
-                            <img alt="Key" class="tip_icon" src="../images/Key.png"/>
+                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
                         </div>
                         <button class="btn red_btn small_btn" onclick="playSound(this);"
                                 text-generation="download_channel3"></button>
@@ -911,7 +872,7 @@
         <div class="sidebar_area main_scroll_container">
             <div class="sidebar_content">
                 <div class="sidebar_header">
-                    <button class="btn sidebar_btn back_to_main" onclick="mainPage();"></button>
+                    <button class="btn sidebar_btn" id="back_to_main" onclick="mainPage();"></button>
                 </div>
                 <div class="sidebar_list">
                     <div class="sidebar_item">携带版</div>
@@ -962,9 +923,9 @@
     const public_script = document.createElement('script');
     const public_define = document.createElement('script');
 
-    custom_elements_js.src = root_path + 'javascript/custom_elements.js';
-    public_script.src = root_path + 'javascript/public_script.js';
-    public_define.src = root_path + 'javascript/public_define.js';
+    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
+    public_script.src = '/minecraft_repository/javascript/public_script.js';
+    public_define.src = '/minecraft_repository/javascript/public_define.js';
 
     document.head.appendChild(custom_elements_js);
     document.head.appendChild(public_script);
@@ -974,26 +935,38 @@
     const back_icon = document.getElementById('back_icon');
 
     if (back_icon) {
-        back_icon.src = root_path + 'images/arrowLeft.png';
+        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
     }
     if (menu_icon) {
-        menu_icon.src = root_path + 'images/menu.png';
+        menu_icon.src = '/minecraft_repository/images/menu.png';
     }
 
-    const loading_img = document.getElementById('spinner_img');
-    loading_img.src = root_path + 'images/Loading_white.gif';
     const loading_mask = document.getElementById('loading_mask');
 
-    // 监听页面加载完成事件
-    window.addEventListener('load', function () {
+    function hide_mask() {
         // 延时600ms后隐藏蒙版
         loading_mask.style.opacity = '0';
         setTimeout(function () {
             loading_mask.style.display = 'none';
         }, 600);
+    }
+
+    // 加载超过8秒时
+    let count = 8;
+    const secondInterval = setInterval(function () {
+        count--;
+        if (count <= 0) {
+            clearInterval(secondInterval);
+            hide_mask();
+        }
+    }, 1000);
+
+    // 页面加载完成时
+    window.addEventListener('load', function () {
+        hide_mask();
     });
 </script>
-<script src="../javascript/editions.js"></script>
+<script src="/minecraft_repository/javascript/editions.js"></script>
 
 <!--<style>-->
 <!--    -->
