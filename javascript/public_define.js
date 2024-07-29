@@ -44,7 +44,7 @@ const texts = {
 const rootPath_d = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
 const hostPath_d = window.location.origin;
 
-let isRelease = version_type === "Release" || version_type === "SP";
+let isRelease = version_type === "Beta" || version_type === "Pre" || version_type === "RC" || version_type === "Release" || version_type === "SP";
 
 const currentDate = new Date();
 let Y = currentDate.getFullYear();
@@ -186,7 +186,7 @@ if (!isRelease) {
         {text: "想要退出测试?前往设置页面选择退出.期待你的下次加入!", weight: 5},
         {text: "想要贡献自己的代码?你可以在Github上协助我们一起开发!", weight: 5},
         {text: "我们欢迎你的反馈!前往项目仓库提交或直接向开发者汇报你的发现!", weight: 5},
-        {text: "不要担心漏洞!开发版中发现的问题往往会在正式版发布前得以解决.", weight: 5}
+        {text: "不要担心漏洞!测试仓库中发现的问题往往会在发布仓库更新前得以解决.", weight: 5}
     ]);
 }
 
