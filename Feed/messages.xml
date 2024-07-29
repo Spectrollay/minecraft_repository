@@ -6,6 +6,12 @@
         <description>星月Minecraft版本库是一个开放共享的资源站,专注于收录Minecraft发布过的所有版本.</description>
         <language>zh-cn</language>
         <item>
+            <title>关于版本机制的变更说明</title>
+            <link>https://spectrollay.github.io/minecraft_repository/notifications/#mechanism_update_notice</link>
+            <description>版本库更新资讯</description>
+            <pubDate>Sat, 27 Jul 2024 16:00:00 GMT</pubDate>
+        </item>
+        <item>
             <title>RSS订阅测试</title>
             <link>https://spectrollay.github.io/minecraft_repository/</link>
             <description>我们正在测试RSS订阅,它会在测试完成后公开发布.</description>
