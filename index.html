@@ -82,6 +82,16 @@
                         </tr>
                         <tr>
                             <td class="left_table">
+                                <div class="description2">[2024-07-27]</div>
+                            </td>
+                            <td class="right_table">
+                                <div class="description2">
+                                    <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/notifications/#mechanism_update_notice');">关于版本机制的变更说明</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left_table">
                                 <div class="description2">[2024-06-03]</div>
                             </td>
                             <td class="right_table">
@@ -97,16 +107,6 @@
                             <td class="right_table">
                                 <div class="description2">
                                     <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/notifications/#mc_15_y');">Minecraft 15 周年庆典!</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="left_table">
-                                <div class="description2">[2024-02-09]</div>
-                            </td>
-                            <td class="right_table">
-                                <div class="description2">
-                                    <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/notifications/#repo_v4_r');">版本库V4正式发布!</a>
                                 </div>
                             </td>
                         </tr>
@@ -589,26 +589,26 @@
             if (diff > fifteenDays) {
                 localStorage.removeItem(`(${root_path})neverShowIn15Days`);
             } else {
-                console.log("时间未到,不显示开发版本提示");
+                console.log("时间未到,不显示测试仓库提示");
             }
         } else {
             const modal = document.getElementById("alert_modal");
             modal.innerHTML = `
                 <modal>
                     <modal_title_area>
-                        <modal_title>开发版本提示</modal_title>
+                        <modal_title>测试仓库提示</modal_title>
                         <modal_close_btn class="close_btn" onclick="hideModal(this);">
                             <img alt="" class="modal_close_btn_img" src=""/>
                         </modal_close_btn>
                     </modal_title_area>
                     <modal_content class="main_page_alert">
                         <div>
-                            <p>你正在使用的是开发版本, 在继续之前, 你需要了解以下内容: </p>
-                            <article_list>开发版本可能包含部分未完成的功能和各种已知或未知的错误, 我们鼓励你在发现问题时及时提供反馈, 帮助我们进行改进.</article_list>
-                            <article_list>开发版本可能包含部分未启用的或处于实验阶段的功能, 这些功能可能会在后续的版本发生变动, 请不要过度依赖于这些功能.</article_list>
-                            <article_list>开发版本为快速迭代版本, 更新频率较高, 请及时关注版本更新以了解改进和修复. 在提交建议或反馈之前请先检查你的版本.</article_list>
-                            <article_list>当你在使用过程中想要回到正式版本时可以前往设置页面选择退出测试以重定向至正式版本. 后续你还可以通过邀测重新加入测试.</article_list>
-                            <p>如果你不能承受内测带来的风险且不同意上述内容, 请选择返回正式版本.</p>
+                            <p>你正在使用的是测试仓库, 在继续之前, 你需要了解以下内容: </p>
+                            <article_list>测试仓库可能包含部分未完成的功能和各种已知或未知的错误, 我们鼓励你在发现问题时及时提供反馈, 帮助我们进行改进.</article_list>
+                            <article_list>测试仓库可能包含部分未启用的或处于实验阶段的功能, 这些功能可能会在后续的版本发生变动, 请不要过度依赖于这些功能.</article_list>
+                            <article_list>测试仓库为快速迭代版本, 更新频率较高, 请及时关注版本更新以了解改进和修复. 在提交建议或反馈之前请先检查你的版本.</article_list>
+                            <article_list>当你在使用过程中想要回到发布仓库时可以前往设置页面选择退出测试以重定向至发布仓库. 后续你还可以通过邀测重新加入测试.</article_list>
+                            <p>如果你不能承受内测带来的风险且不同意上述内容, 请选择返回发布仓库.</p>
                         </div>
                     </modal_content>
                     <modal_checkbox_area>
@@ -616,14 +616,14 @@
                     <modal_button_area>
                         <modal_button_group>
                             <modal_button_list>
-                                <custom-button data="modal|normal|||false||" js="leaveTest();hideAlertModal(this);" text="返回正式版本"></custom-button>
+                                <custom-button data="modal|normal|||false||" js="leaveTest();hideAlertModal(this);" text="返回发布仓库"></custom-button>
                                 <custom-button data="modal|normal|||false||" js="hideAlertModal(this);" text="继续"></custom-button>
                             </modal_button_list>
                         </modal_button_group>
                     </modal_button_area>
                 </modal>`;
             showAlertModal();
-            console.log("开发环境,显示开发版本提示");
+            console.log("开发环境,显示测试仓库提示");
         }
 
         console.log("开发环境,不显示内测邀请");
@@ -643,8 +643,8 @@
                         <div>
                             <p>哇哦! 祝贺你被选中参加测试, 成为小部分可以抢先体验新版本的用户! 这里有一些你需要了解的内容: </p>
                             <article_list>请加入我们的内测群组以了解最新开发动态: <a href="https://t.me/Spectrollay_MCW" target="_blank" onclick="playSound1();">Telegram</a> / <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WVA6aPqtv99hiYleW7vUq5OsBIufCAB1&authKey=B0%2BaXMCTqnmQrGh0wzCZTyWTIPyHS%2FPEM5QXcFfVwroFowNnzs6Yg1er1%2F8Fekqp&noverify=0&group_code=833473609" target="_blank" onclick="playSound1();">QQ</a> / <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank" onclick="playSound1();">云湖</a></article_list>
-                            <article_list>加入测试后你将无法访问正式版本, 直到你选择退出测试. 访问正式版本将会被重定向至开发版本.</article_list>
-                            <article_list>不同于正式版本, 开发版本并不稳定, 可能存在部分问题以及正在测试的内容. 因此我们需要你在发现问题或有想法时及时向我们反馈.</article_list>
+                            <article_list>加入测试后你将无法访问发布仓库, 直到你选择退出测试. 访问发布仓库将会被重定向至测试仓库.</article_list>
+                            <article_list>不同于发布仓库, 测试仓库并不稳定, 可能存在部分问题以及正在测试的内容. 因此我们需要你在发现问题或有想法时及时向我们反馈.</article_list>
                             <article_list>悄悄地说一句, 积极参与内测可能会有奖励哦.</article_list>
                             <p>如果你可以承受内测带来的风险并同意上述内容, 请选择加入测试, 否则请取消.</p>
                         </div>
@@ -662,7 +662,7 @@
             console.log("显示内测邀请");
         }
 
-        console.log("正式环境,不显示开发版本提示");
+        console.log("正式环境,不显示测试仓库提示");
     }
 
     function showAlertModal() {

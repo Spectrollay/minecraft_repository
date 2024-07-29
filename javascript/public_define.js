@@ -1,10 +1,10 @@
 // 版本变量
 // TODO 需在每次提交前检查
-const primary_version_name = "4.5"; // 例 4.0
-const secondary_version_name = primary_version_name + ".10"; // 例 4.0.0
-const version_name_short = secondary_version_name + ".82"; // 例 4.0.0.1 // NOTE 小版本
-const version_type = "Preview"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP
-const version_type_count = version_type + "8"; // 例 Build1 // NOTE 小版本
+const primary_version_name = "4.6"; // 例 4.0
+const secondary_version_name = primary_version_name + ".5"; // 例 4.0.0
+const version_name_short = secondary_version_name + ".20"; // 例 4.0.0.1 // NOTE 小版本
+const version_type = "Beta"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP
+const version_type_count = version_type + "1"; // 例 Build1 // NOTE 小版本
 const version_name = version_name_short + "." + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + "-" + version_type_count; // 例 4.0.0-Build1
 const server_version = "4.0";
@@ -177,7 +177,7 @@ const replaceTips = (newTips) => {
 if (!isRelease) {
     addTips([
         {text: "很高兴你能够加入测试!", weight: 5},
-        {text: "你当前使用的是开发版本!", weight: 5},
+        {text: "你当前使用的是测试仓库!", weight: 5},
         {text: "开发版本并不代表最终品质!", weight: 5},
         {text: "发现了漏洞?快来向我们反馈吧!", weight: 5},
         {text: "你觉得我们有什么需要改进的地方吗?", weight: 5},
