@@ -664,7 +664,7 @@ function copyText(text) {
             console.log('复制成功: ', tempTextarea.value);
         })
         .catch(err => {
-            console.log('复制失败');
+            console.log('复制失败: ', err);
         });
 }
 
