@@ -50,7 +50,7 @@
             <div class="banner important_banner" style="margin-bottom: 0"></div>
         </div>
         <div class="banner_area">
-            <div class="banner neutral_banner" id="tip"></div>
+            <div class="banner neutral_banner" id="banner_tip"></div>
         </div>
         <div class="main preview_block">
             <div class="preview_title" id="preview_title"></div>
@@ -482,12 +482,12 @@
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 
 <!--提示弹窗-->
-<!--<div class="overlay" id="overlay_alert_modal" tabindex="-1"></div>-->
-<!--<modal_area id="alert_modal" tabindex="-1">-->
+<!--<div class="overlay" id="overlay_alert_modal"></div>-->
+<!--<modal_area id="alert_modal">-->
 <!--    <modal>-->
 <!--        <modal_title_area>-->
 <!--            <modal_title>提示</modal_title>-->
-<!--            <modal_close_btn class="close_btn" onclick="hideModal(this);" tabindex="0">-->
+<!--            <modal_close_btn class="close_btn" onclick="hideModal(this);">-->
 <!--                <img alt="" class="modal_close_btn_img" src=""/>-->
 <!--            </modal_close_btn>-->
 <!--        </modal_title_area>-->
@@ -607,7 +607,7 @@
                             <article_list>测试仓库可能包含部分未完成的功能和各种已知或未知的错误, 我们鼓励你在发现问题时及时提供反馈, 帮助我们进行改进.</article_list>
                             <article_list>测试仓库可能包含部分未启用的或处于实验阶段的功能, 这些功能可能会在后续的版本发生变动, 请不要过度依赖于这些功能.</article_list>
                             <article_list>测试仓库为快速迭代版本, 更新频率较高, 请及时关注版本更新以了解改进和修复. 在提交建议或反馈之前请先检查你的版本.</article_list>
-                            <article_list>当你在使用过程中想要回到发布仓库时可以前往设置页面选择退出测试以重定向至发布仓库. 后续你还可以通过邀测重新加入测试.</article_list>
+                            <article_list>如果你在使用过程中想要退出测试, 可以前往设置页面选择退出测试以重定向至发布仓库. 后续你还可以通过邀测重新加入测试.</article_list>
                             <p>如果你不能承受内测带来的风险且不同意上述内容, 请选择返回发布仓库.</p>
                         </div>
                     </modal_content>
@@ -616,8 +616,8 @@
                     <modal_button_area>
                         <modal_button_group>
                             <modal_button_list>
-                                <custom-button data="modal|normal|||false||" js="leaveTest();hideAlertModal(this);" text="返回发布仓库"></custom-button>
-                                <custom-button data="modal|normal|||false||" js="hideAlertModal(this);" text="继续"></custom-button>
+                                <custom-button data="modal|green|||false||" js="leaveTest();hideAlertModal(this);" text="返回发布仓库"></custom-button>
+                                <custom-button data="modal|normal||continue_test_btn|false||" js="hideAlertModal(this);" text="继续"></custom-button>
                             </modal_button_list>
                         </modal_button_group>
                     </modal_button_area>
@@ -653,7 +653,7 @@
                         <modal_button_group>
                             <modal_button_list>
                                 <custom-button data="modal|normal|||false||" js="hideAlertModal(this);" text="取消"></custom-button>
-                                <custom-button data="modal|green|||false||" js="hideAlertModal(this);joinTest();" text="加入测试"></custom-button>
+                                <custom-button data="modal|green||join_test_btn|false||" js="hideAlertModal(this);joinTest();" text="加入测试"></custom-button>
                             </modal_button_list>
                         </modal_button_group>
                     </modal_button_area>
@@ -665,11 +665,62 @@
         console.log("正式环境,不显示测试仓库提示");
     }
 
+    setTimeout(function () {
+        let joinTestBtn, continueTestBtn, joinTestFrame, continueTestFrame;
+        joinTestBtn = document.getElementById('join_test_btn');
+        continueTestBtn = document.getElementById('continue_test_btn');
+        if (joinTestBtn) {
+            joinTestFrame = joinTestBtn.parentElement;
+            startCountdown(joinTestBtn, joinTestFrame.getAttribute('text'), 10);
+        }
+        if (continueTestBtn) {
+            continueTestFrame = continueTestBtn.parentElement;
+            startCountdown(continueTestBtn, continueTestFrame.getAttribute('text'), 10);
+        }
+
+        function startCountdown(button, initialText, countdownTime) {
+            let remainingTime = countdownTime;
+            if (joinTestBtn) {
+                joinTestFrame.setAttribute('data', 'modal|disabled||join_test_btn|false||');
+                joinTestFrame.setAttribute('js', 'false');
+                joinTestFrame.setAttribute('text', `${initialText}(${remainingTime}s)`);
+            } else if (continueTestBtn) {
+                continueTestFrame.setAttribute('data', 'modal|disabled||continue_test_btn|false||');
+                continueTestFrame.setAttribute('js', 'false');
+                continueTestFrame.setAttribute('text', `${initialText}(${remainingTime}s)`);
+            }
+
+            const countdownInterval = setInterval(() => {
+                remainingTime -= 1;
+                if (joinTestBtn) {
+                    joinTestFrame.setAttribute('text', `${initialText}(${remainingTime}s)`);
+                } else if (continueTestBtn) {
+                    continueTestFrame.setAttribute('text', `${initialText}(${remainingTime}s)`);
+                }
+
+                if (remainingTime <= 0) {
+                    clearInterval(countdownInterval);
+                    if (joinTestBtn) {
+                        joinTestFrame.setAttribute('data', 'modal|green||join_test_btn|false||');
+                        joinTestFrame.setAttribute('js', 'hideAlertModal(this);joinTest();');
+                        joinTestFrame.setAttribute('text', `${initialText}`);
+                    } else if (continueTestBtn) {
+                        continueTestFrame.setAttribute('data', 'modal|normal||continue_test_btn|false||');
+                        continueTestFrame.setAttribute('js', 'hideAlertModal(this);');
+                        continueTestFrame.setAttribute('text', `${initialText}`);
+                    }
+                    setTimeout(updateFocusableElements, 0);
+                }
+            }, 1000);
+        }
+    }, 500);
+
     function showAlertModal() {
         const overlay = document.getElementById("overlay_alert_modal");
         const modal = document.getElementById("alert_modal");
         overlay.style.display = "block";
         modal.style.display = "block";
+        modal.focus();
         console.log("显示提示弹窗");
     }
 

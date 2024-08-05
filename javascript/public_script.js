@@ -186,14 +186,17 @@ const rootPath = '/' + (parts.length > 0 ? parts[0] + '/' : '');
 const slashCount = (currentPagePath.match(/\//g) || []).length;
 
 // 创建内联元素
+const accessibility_js = document.createElement('script');
+accessibility_js.src = '/minecraft_repository/javascript/accessibility.js';
 const custom_elements_css = document.createElement('link');
 custom_elements_css.rel = 'stylesheet';
-custom_elements_css.href = rootPath + 'stylesheet/custom_elements.css';
+custom_elements_css.href = '/minecraft_repository/stylesheet/custom_elements.css';
 const public_style = document.createElement('link');
 public_style.rel = 'stylesheet';
-public_style.href = rootPath + 'stylesheet/public_style.css';
+public_style.href = '/minecraft_repository/stylesheet/public_style.css';
 
 // 将内联元素添加到头部
+document.head.appendChild(accessibility_js);
 document.head.appendChild(custom_elements_css);
 document.head.appendChild(public_style);
 
@@ -298,6 +301,7 @@ setTimeout(function () {
         const modal = document.getElementById("compatibility_modal");
         overlay.style.display = "block";
         modal.style.display = "block";
+        modal.focus();
         console.log("显示兼容性提示弹窗");
     }
 }, 100);
@@ -757,75 +761,65 @@ for (let i = 0; i < expandableCardGroup.length; i++) {
 }
 
 // 自适应折叠组件
-setTimeout(function () {
-    const mainDiv = document.getElementById('main');
-    const allMessages = mainDiv.querySelectorAll('.message');
-    const threshold = 5; // 初始阈值
-    let currentThreshold = threshold; // 当前展开的阈值
+const mainDiv = document.getElementById('main');
+const allMessages = mainDiv.querySelectorAll('.message');
+const threshold = 5; // 初始阈值
+let currentThreshold = threshold; // 当前展开的阈值
 
-    // 隐藏超过阈值的消息
-    for (let i = threshold; i < allMessages.length; i++) {
-        allMessages[i].style.display = 'none';
-    }
+// 隐藏超过阈值的消息
+for (let i = threshold; i < allMessages.length; i++) {
+    allMessages[i].style.display = 'none';
+}
 
-    const showMoreBtn = document.getElementById('showMoreBtn');
-    const showLessBtn = document.getElementById('showLessBtn');
+const foldingBtn = document.querySelector('.folding_custom_btn');
 
-    function updateButtonsVisibility() {
-        const showMore = showMoreBtn.parentElement;
-        const showLess = showLessBtn.parentElement;
+function updateButtonsVisibility() {
+    setTimeout(function () {
+        let showMoreBtn = document.getElementById('showMoreBtn');
+        let showLessBtn = document.getElementById('showLessBtn');
+
         if (showMoreBtn) {
+            let showMore = showMoreBtn.parentElement;
             if (allMessages.length > currentThreshold) {
                 showMore.setAttribute('data', 'folding|green|small|showMoreBtn|false||');
-                showMoreBtn.classList.remove('disabled_btn');
-                showMoreBtn.classList.add('green_btn');
             } else {
                 showMore.setAttribute('data', 'folding|disabled|small|showMoreBtn|false||');
-                showMoreBtn.classList.remove('green_btn');
-                showMoreBtn.classList.add('disabled_btn');
             }
         }
         if (showLessBtn) {
+            let showLess = showLessBtn.parentElement;
             if (currentThreshold > threshold) {
-                showLess.setAttribute('data', 'folding|normal|small|showMoreBtn|false||');
-                showLessBtn.classList.remove('disabled_btn');
-                showLessBtn.classList.add('normal_btn');
+                showLess.setAttribute('data', 'folding|normal|small|showLessBtn|false||');
             } else {
-                showLess.setAttribute('data', 'folding|disabled|small|showMoreBtn|false||');
-                showLessBtn.classList.remove('normal_btn');
-                showLessBtn.classList.add('disabled_btn');
+                showLess.setAttribute('data', 'folding|disabled|small|showLessBtn|false||');
             }
         }
-    }
+    }, 10);
+}
 
-    // 初始化
-    if (showMoreBtn || showLessBtn) {
-        updateButtonsVisibility();
-    }
+// 初始化
+if (foldingBtn) {
+    updateButtonsVisibility();
+}
 
-    if (showMoreBtn) {
-        showMoreBtn.addEventListener('click', function () {
-            const numToDisplay = Math.min(threshold, allMessages.length - currentThreshold);
-            for (let i = currentThreshold; i < currentThreshold + numToDisplay; i++) {
-                allMessages[i].style.display = 'block';
-            }
-            currentThreshold += numToDisplay;
-            updateButtonsVisibility();
-            handleScroll();
-            console.log("展开消息");
-        });
+function showMore() {
+    const numToDisplay = Math.min(threshold, allMessages.length - currentThreshold);
+    for (let i = currentThreshold; i < currentThreshold + numToDisplay; i++) {
+        allMessages[i].style.display = 'block';
     }
+    currentThreshold += numToDisplay;
+    updateButtonsVisibility();
+    handleScroll();
+    console.log("展开消息");
+}
 
-    if (showLessBtn) {
-        showLessBtn.addEventListener('click', function () {
-            const numToHide = Math.min(threshold, currentThreshold - threshold);
-            for (let i = currentThreshold - 1; i >= currentThreshold - numToHide; i--) {
-                allMessages[i].style.display = 'none';
-            }
-            currentThreshold -= numToHide;
-            updateButtonsVisibility();
-            handleScroll();
-            console.log("收起消息");
-        });
+function showLess() {
+    const numToHide = Math.min(threshold, currentThreshold - threshold);
+    for (let i = currentThreshold - 1; i >= currentThreshold - numToHide; i--) {
+        allMessages[i].style.display = 'none';
     }
-}, 600);
+    currentThreshold -= numToHide;
+    updateButtonsVisibility();
+    handleScroll();
+    console.log("收起消息");
+}

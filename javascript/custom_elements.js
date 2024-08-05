@@ -5,6 +5,14 @@ class CustomButton extends HTMLElement {
         this.render();
     }
 
+    static get observedAttributes() {
+        return ['data', 'js', 'text'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        this.render();
+    }
+
     render() {
         const data = this.getAttribute('data') || '';
         const [type, status, size, id, isTip, tip, icon] = data.split('|').map(item => item.trim());
@@ -21,22 +29,22 @@ class CustomButton extends HTMLElement {
         if (ctype === "default") {
             if (cisTip === true) {
                 this.innerHTML = `
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn ${csize}_btn ${status}_btn" id="${cid}">${text}</button>
-                            <div class="btn_tooltip">${ctip}</div>
-                            <img alt="" class="tip_icon" src="/minecraft_repository/images/${icon}.png"/>
-                        </div>
-                    `;
+                    <div class="btn_with_tooltip_cont">
+                        <button class="btn ${csize}_btn ${status}_btn" id="${cid}">${text}</button>
+                        <div class="btn_tooltip">${ctip}</div>
+                        <img alt="" class="tip_icon" src="/minecraft_repository/images/${icon}.png"/>
+                    </div>
+                `;
             } else {
                 this.innerHTML = `
-                        <button class="btn ${csize}_btn ${status}_btn" id="${cid}">${text}</button>
-                    `;
+                    <button class="btn ${csize}_btn ${status}_btn" id="${cid}">${text}</button>
+                `;
             }
         } else {
             this.classList.add(ctype + "_custom_btn");
             this.innerHTML = `
-                    <button class="btn ${status}_btn ${ctype}_btn" id="${cid}">${text}</button>
-                `;
+                <button class="btn ${status}_btn ${ctype}_btn" id="${cid}">${text}</button>
+            `;
         }
 
         const button = this.querySelector('button');
@@ -116,59 +124,12 @@ customElements.define('custom-checkbox', CustomCheckbox);
 
 
 // Modal弹窗
-setTimeout(function () {
-    const modals = document.querySelectorAll('modal');
-    if (modals) {
-        modals.forEach((modal) => {
-            const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-            let focusableElements = modal.querySelectorAll(focusableElementsString);
-            focusableElements = Array.prototype.slice.call(focusableElements);
-
-            const firstTabStop = focusableElements[0];
-            const lastTabStop = focusableElements[focusableElements.length - 1];
-
-            modal.addEventListener('keydown', function (e) {
-                if (e.key === 'Tab') {
-                    if (e.shiftKey) {
-                        // Shift + Tab
-                        if (document.activeElement === firstTabStop) {
-                            e.preventDefault();
-                            lastTabStop.focus();
-                        }
-                    } else {
-                        // Tab
-                        if (document.activeElement === lastTabStop) {
-                            e.preventDefault();
-                            firstTabStop.focus();
-                        }
-                    }
-                }
-            });
-            // 聚焦模态框内的第一个可聚焦元素
-            modal.addEventListener('shown.modal', function () {
-                firstTabStop.focus();
-            });
-        });
-    }
-}, 100);
-
-const modalCloseBtns = document.querySelectorAll('modal_close_btn');
-if (modalCloseBtns) {
-    modalCloseBtns.forEach((modalCloseBtn) => {
-        modalCloseBtn.setAttribute('tabindex', '0');
-        modalCloseBtn.addEventListener('keyup', function (event) {
-            if (event.key === 'Enter') {
-                modalCloseBtn.click();
-            }
-        });
-    });
-}
-
 function showModal(modal) {
     const overlay = document.getElementById("overlay_" + modal);
     const frame = document.getElementById(modal);
     overlay.style.display = "block";
     frame.style.display = "block";
+    frame.focus();
 }
 
 function hideModal(button) {
@@ -403,6 +364,14 @@ class CustomSwitch extends HTMLElement {
         this.render();
     }
 
+    static get observedAttributes() {
+        return ['active', 'status'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        this.render();
+    }
+
     render() {
         const active = this.getAttribute('active') || 'off';
         const status = this.getAttribute('status') || 'disabled_switch';
@@ -445,6 +414,14 @@ class CustomSwitch extends HTMLElement {
             switchElement.addEventListener("click", () => {
                 isSwitchOn = !isSwitchOn;
                 this.updateSwitchState(isSwitchOn);
+            });
+
+            // 键盘事件监听器
+            switchElement.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    isSwitchOn = !isSwitchOn;
+                    this.updateSwitchState(isSwitchOn);
+                }
             });
 
             // 拖动事件

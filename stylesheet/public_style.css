@@ -713,15 +713,6 @@ td {
     margin-bottom: 0;
 }
 
-/* Divider分割线 */
-divider {
-    display: block;
-    margin: 6px 0;
-    height: 4px;
-    width: 100%;
-    box-shadow: inset 0 2px #333334, inset 0 -2px #5A5B5C;
-}
-
 /* Pop弹窗 */
 .pop_area {
     display: none;
@@ -956,12 +947,6 @@ divider {
 
 .expandable_card_down {
     padding: 1px;
-}
-
-.expandable_card_down_br {
-    margin: 1px 0;
-    height: 2px;
-    background-color: #48494A;
 }
 
 .expandable_card_down_content, .plan_block_content {

@@ -12,6 +12,7 @@ function showDisclaimerModal(url) {
     } else {
         openurl = url;
     }
+    modal.focus();
 }
 
 function hideDisclaimerModal(button, state, url) {

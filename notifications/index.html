@@ -45,12 +45,12 @@
                         <article_date>发布: 2024-07-27</article_date>
                         <article_detail>
                             <p>随着4.6.5.20版本的发布(这大概率是今年的最后一个版本), 一项新的版本机制已实装至版本库. 为了防止从旧版本升级上来的用户产生困惑以及更好地服务其他依靠本仓库开发的三方开发者, 我们撰写了本变更说明.</p>
-                            <divider></divider>
+                            <line></line>
                             <p>面向普通用户</p>
                             <p>本版本库主要分为发布仓库和测试仓库两大分支. 发布仓库主要用于发布较为稳定的更新, 测试仓库主要用于发布仍在测试中的更新. 在早先的版本中, 你可以同时不受限制地访问发布仓库和测试仓库, 但是从本版本起, 你将只能使用其中的一个仓库.</p>
                             <p>发布仓库是默认的仓库, 在正常情况下, 你从外部发现的宣传链接应该是指向发布仓库的. 在使用发布仓库后, 你有几率在版本库主页发现邀测弹窗, 这会让你选择是否加入测试仓库进行测试. 当你选择加入测试时会自动重定向至测试仓库. 当然你也可以直接通过邀测链接加入测试仓库, 这两者是等价的. 不过需要注意的是, 加入测试仓库后除非你选择退出测试否则无法访问发布仓库.</p>
                             <p>测试仓库是不公开的仓库, 仅可以通过邀测弹窗或邀测链接访问. 测试仓库可能并不稳定, 因此如果你没有一定的自主学习和解决问题的能力不建议加入测试. 加入测试仓库后可以参与反馈激励计划(发布仓库无效), 详情请见下一条消息通知. 想要访问发布仓库你需要前往设置页面找到退出测试选项选择离开, 这会带你返回发布仓库.</p>
-                            <divider></divider>
+                            <line></line>
                             <p>面向三方开发者</p>
                             <p>从本版本起, 我们的版本号将遵循版本号规范发布, 具体内容如下:</p>
                             <p>版本库的版本号有4位, 其中前2位为主版本号, 第3位为次版本号, 第4位为修订号. 以4.6.5.20为例, 4.6为主版本号, 5为次版本号, 20为修订号. 此外, 版本还具有类型/名称等属性, 这里涉及的更改并不多, 不做过多赘述.</p>
@@ -65,15 +65,18 @@
                 <div class="main message">
                     <article_block id="feedback_rewards">
                         <article_title>版本库反馈有奖活动上线!</article_title>
-                        <article_date>发布: 2024-06-03 | 编辑: 2024-07-27</article_date>
+                        <article_date>发布: 2024-06-03<vertical-line></vertical-line>编辑: 2024-07-27</article_date>
                         <article_detail>
+                            <p>为了版本库更好的发展,我们隆重地推出反馈激励计划!</p>
+                            <p>从即日起,在反馈渠道内向我们提出发现的问题或好的想法,满足条件即可以获得积分.积分可用于兑换奖励.</p>
+                            <p>反馈仓库: 版本库测试仓库(需加入内部测试)</p>
                             <p>为了版本库更好的发展, 我们隆重地推出反馈激励计划!</p>
                             <p>从即日起, 在反馈渠道内向我们提出发现的问题或好的想法, 满足条件即可以获得星币. 星币可用于兑换奖励.</p>
                             <p>反馈仓库: 版本库测试仓库(需加入<a href="https://spectrollay.github.io/minecraft_repository_test" onclick="playSound1();">内部测试</a>)</p>
                             <p>反馈渠道: 测试仓库GitHub Issues</p>
                             <p>满足条件: 满足反馈格式. 对于发现的问题, 要会对版本库造成一定危害, 且首次被发现并提出; 对于好的想法, 要独到, 会对版本库起到一定的促进作用, 且首次提出.</p>
                             <p>我们期待你的反馈!</p>
-                            <divider></divider>
+                            <line></line>
                             <p>附: 关于星币的说明</p>
                             <p>星币是一种仅适用于星月Minecraft版本库的虚拟货币, 用于兑换可选的奖励. 星币可以和人民币以及<a href="https://www.yhchat.com/" onclick="playSound1();">云湖</a>金币在一定范围内相互转化. 其转化标准为10星币=1人民币=20云湖金币.</p>
                             <p>星币可兑换的奖励包括但不仅限于: 正版Minecraft, 部分视频和音乐平台的会员. 具体可兑换目录需要加入群聊向管理员咨询.</p>
@@ -126,8 +129,8 @@
                 <div class="main">
                     <div class="folding_button_group">
                         <div class="folding_button_list">
-                            <custom-button class="folding_custom_btn" data="folding|green|small|showMoreBtn|false||" js="false" text="显示更多"></custom-button>
-                            <custom-button class="folding_custom_btn" data="folding|normal|small|showLessBtn|false||" js="false" text="显示更少"></custom-button>
+                            <custom-button class="folding_custom_btn" data="folding|green|small|showMoreBtn|false||" js="showMore();" text="显示更多"></custom-button>
+                            <custom-button class="folding_custom_btn" data="folding|normal|small|showLessBtn|false||" js="showLess();" text="显示更少"></custom-button>
                         </div>
                     </div>
                 </div>
@@ -210,6 +213,12 @@
         padding: 0;
     }
 
+    article_date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     article_detail p {
         text-indent: 2em;
     }
@@ -228,6 +237,10 @@
 
     .article_image img {
         width: calc(min(80%, 450px));
+    }
+
+    vertical-line {
+        height: 20px;
     }
 </style>
 

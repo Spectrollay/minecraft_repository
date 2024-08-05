@@ -40,10 +40,8 @@
         <div id="main_top"></div>
         <div class="tab_bar_area main_tab_bar">
             <div class="tab_bar">
-                <button class="tab_bar_btn no_active" id="tab1" onclick="playSound(this);selectTab(1);toTop();">更新计划
-                </button>
-                <button class="tab_bar_btn active" id="tab2" onclick="playSound(this);selectTab(2);toTop();">更新历史
-                </button>
+                <button class="tab_bar_btn no_active" id="tab1" onclick="playSound(this);selectTab(1);toTop();">更新计划</button>
+                <button class="tab_bar_btn active" id="tab2" onclick="playSound(this);selectTab(2);toTop();">更新历史</button>
             </div>
         </div>
         <div class="tab_content no_active" id="content1">
@@ -52,9 +50,7 @@
                     <div class="title1">更新计划</div>
                 </div>
                 <div class="banner_area">
-                    <div class="banner information_banner">更新计划展示的是我们的未来更新规划,
-                        这些规划可能随着开发的进展而发生变化, 本处列出的条目仅作参考.
-                    </div>
+                    <div class="banner information_banner">更新计划展示的是我们的未来更新规划, 这些规划可能随着开发的进展而发生变化, 本处列出的条目仅作参考.</div>
                 </div>
 
                 <!--<div class="main plan_block_main">-->
@@ -104,7 +100,7 @@
                                         <div class="tag_area"><span class="tag red_tag">26%</span><span>优化下载块的样式与下载体验</span></div>
                                     </article_list>
                                     <article_list>
-                                        <div class="tag_area"><span class="tag green_tag">75%</span><span>全面适配与支持无障碍</span></div>
+                                        <div class="tag_area"><span class="tag green_tag">87%</span><span>全面适配与支持无障碍</span></div>
                                     </article_list>
                                     <article_list>
                                         <div class="tag_area"><span class="tag green_tag">67%</span><span>惰性加载机制</span></div>
@@ -123,10 +119,10 @@
             <div class="block">
                 <div class="main">
                     <div class="title1">更新历史</div>
+                    <!-- span>版本类型: Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP</span -->
                 </div>
                 <div class="banner_area">
-                    <div class="banner information_banner">带有 * 标识的版本为不稳定版本, 可能会出现各种难以预料的问题,
-                        请及时向我们提出你的发现和想法.
+                    <div class="banner information_banner">带有 * 标识的版本为不稳定版本, 可能会出现各种难以预料的问题, 请及时向我们提出你的发现和想法.
                     </div>
                 </div>
                 <div class="expandable_card_group">
@@ -157,7 +153,7 @@
                     <!--                    </article_detail>-->
                     <!--                </article_block>-->
                     <!--            </div>-->
-                    <!--            <div class="expandable_card_down_br"></div>-->
+                    <!--            <line></line>-->
 
                     <!--        </div>-->
                     <!--    </div>-->
@@ -181,7 +177,7 @@
                                         <article_date>2024-06-30</article_date>
                                         <article_detail>
                                             <article_note>
-                                                本次更新主要对网页性能进行了优化并对Slider滑块进行了重做, 欢迎告诉我们你对此的想法.
+                                                本次更新主要对网页性能进行了优化, 进一步提升了无障碍体验并对Slider滑块进行了重做, 欢迎告诉我们你对此的想法.
                                             </article_note>
                                             <article_list>
                                                 <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>更新了Slider滑块<span></span></div>
@@ -193,22 +189,34 @@
                                             <article_list_level2>Set Slider现在在滑动中改变选中提示了</article_list_level2>
                                             <article_list_level2>Set Slider滑块现在没有拖动滑动动画了</article_list_level2>
                                             <article_list_level2>修复了在拖动滑块时仍然能控制页面滑动的问题</article_list_level2>
+                                            <article_list>
+                                                <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>Button按钮和Switch开关现在可以自更新了<span></span></div>
+                                            </article_list>
+                                            <article_list>加入了文本转语音接口和屏幕阅读器接口</article_list>
+                                            <article_list_level2>正在开发中,无法通过常规手段访问</article_list_level2>
                                             <article_list>合并了一些来自其他仓库的OreUI特性</article_list>
+                                            <article_list>现在以下元素可以通过键盘访问了</article_list>
+                                            <article_list_level2>新增可以通过键盘Tab键选中的元素: 顶栏左右两侧按钮,主页版本跳转可点击区域,主页顶部提示框,可折叠组件,Slider滑块,Switch开关</article_list_level2>
+                                            <article_list_level2>新增可以通过键盘Enter键交互的元素: 主页顶部提示框(交互切换提示),可折叠组件(交互切换展开收起状态),Slider滑块(待完善),Switch开关(交互切换开关状态)</article_list_level2>
                                             <article_list>更新了部分元素的鼠标指针</article_list>
                                             <article_list_level2>将以下元素的鼠标指针更改为pointer: Checkbox复选框(除禁用样式),Slider滑块(除禁用样式),Switch开关(除禁用样式)</article_list_level2>
                                             <article_list_level2>将以下元素的鼠标指针更改为not-allowed: Checkbox复选框(仅禁用样式),Slider滑块(仅禁用样式),Switch开关(仅禁用样式)</article_list_level2>
                                             <article_list>更新了中文译名修正项目页面</article_list>
                                             <article_list>更新了提示列表,优化了提示加载逻辑</article_list>
                                             <article_list>更新了测试方式及测试提示</article_list>
+                                            <article_list>统一了部分元素的样式</article_list>
+                                            <article_list>优化了部分元素的输入焦点事件</article_list>
+                                            <article_list>优化了网页的无障碍体验</article_list>
                                             <article_list>优化了元素计算的性能</article_list>
                                             <article_list>优化了加载遮罩的加载</article_list>
                                             <article_list>优化了重定向跳转判定</article_list>
                                             <article_list>修复了15天之内不再提示功能不会正确生效的问题</article_list>
+                                            <article_list>修复了自定义折叠组件的一些异常问题</article_list>
                                             <article_list>移除了一些遗留的调试输出</article_list>
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary7(4.6.5.16)</article_title>
@@ -226,7 +234,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary6(4.6.5.11)</article_title>
@@ -240,7 +248,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary5(4.6.5.10)</article_title>
@@ -259,7 +267,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary4(4.6.5.8)</article_title>
@@ -283,7 +291,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary3(4.6.5.5)</article_title>
@@ -299,7 +307,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary2(4.6.5.3)</article_title>
@@ -314,7 +322,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.5-Canary1(4.6.5.0)</article_title>
@@ -448,7 +456,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary9(4.6.3.55)</article_title>
@@ -477,7 +485,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary8(4.6.3.53)</article_title>
@@ -500,7 +508,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary7(4.6.3.52)</article_title>
@@ -521,7 +529,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary6(4.6.3.51)</article_title>
@@ -539,7 +547,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary5(4.6.3.50)</article_title>
@@ -560,7 +568,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary4(4.6.3.49)</article_title>
@@ -582,7 +590,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary3(4.6.3.48)</article_title>
@@ -599,7 +607,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary2(4.6.3.47)</article_title>
@@ -624,7 +632,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.3-Canary1(4.6.3.46)</article_title>
@@ -675,7 +683,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary14(4.6.2.40)</article_title>
@@ -695,7 +703,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary12(4.6.2.37)</article_title>
@@ -726,7 +734,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary10(4.6.2.35)</article_title>
@@ -743,7 +751,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary9(4.6.2.33)</article_title>
@@ -762,7 +770,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary8(4.6.2.32)</article_title>
@@ -779,7 +787,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary7(4.6.2.31)</article_title>
@@ -795,7 +803,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary6(4.6.2.30)</article_title>
@@ -811,7 +819,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary5(4.6.2.29)</article_title>
@@ -828,7 +836,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary4(4.6.2.28)</article_title>
@@ -848,7 +856,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.2-Canary3(4.6.2.27)</article_title>
@@ -869,7 +877,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.2-Canary2(4.6.2.26)</article_title>
@@ -887,7 +895,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.2-Canary1(4.6.2.25)</article_title>
@@ -948,7 +956,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary18(4.6.1.22)</article_title>
@@ -967,7 +975,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary17(4.6.1.21)</article_title>
@@ -978,7 +986,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary16(4.6.1.20)</article_title>
@@ -991,7 +999,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary15(4.6.1.19)</article_title>
@@ -1006,7 +1014,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary14(4.6.1.17)</article_title>
@@ -1024,7 +1032,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary13(4.6.1.16)</article_title>
@@ -1041,7 +1049,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.1-Canary12(4.6.1.15)</article_title>
@@ -1057,7 +1065,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary11(4.6.1.13)</article_title>
@@ -1069,7 +1077,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary10(4.6.1.12)</article_title>
@@ -1088,7 +1096,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary9(4.6.1.9)</article_title>
@@ -1102,7 +1110,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary8(4.6.1.8)</article_title>
@@ -1115,7 +1123,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary7(4.6.1.7)</article_title>
@@ -1141,7 +1149,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary6(4.6.1.6)</article_title>
@@ -1163,7 +1171,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary5(4.6.1.5)</article_title>
@@ -1174,7 +1182,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary4(4.6.1.4)</article_title>
@@ -1188,7 +1196,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary3(4.6.1.3)</article_title>
@@ -1207,7 +1215,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary2(4.6.1.2)</article_title>
@@ -1221,7 +1229,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.1-Canary1(4.6.1.1)</article_title>
@@ -1260,7 +1268,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.0-Canary16(4.6.0.25)</article_title>
@@ -1281,7 +1289,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.0-Canary15(4.6.0.24)</article_title>
@@ -1316,7 +1324,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary14(4.6.0.23)</article_title>
@@ -1359,7 +1367,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary13(4.6.0.21)</article_title>
@@ -1373,7 +1381,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary12(4.6.0.20)</article_title>
@@ -1387,7 +1395,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary11(4.6.0.17)</article_title>
@@ -1401,7 +1409,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary10(4.6.0.16)</article_title>
@@ -1419,7 +1427,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary9(4.6.0.9)</article_title>
@@ -1430,7 +1438,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary8(4.6.0.8)</article_title>
@@ -1459,7 +1467,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary7(4.6.0.7)</article_title>
@@ -1472,7 +1480,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.6.0-Canary6(4.6.0.6)</article_title>
@@ -1487,7 +1495,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.0-Canary4(4.6.0.4)</article_title>
@@ -1500,7 +1508,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.0-Canary3(4.6.0.3)</article_title>
@@ -1516,7 +1524,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.0-Canary2(4.6.0.2)</article_title>
@@ -1530,7 +1538,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.6.0-Canary1(4.6.0.1)</article_title>
@@ -1572,7 +1580,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.10-Preview7(4.5.10.70)</article_title>
@@ -1586,7 +1594,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.10-Preview6(4.5.10.66)</article_title>
@@ -1601,7 +1609,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.10-Preview2(4.5.10.24)</article_title>
@@ -1615,7 +1623,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.10-Preview1(4.5.10.20)</article_title>
@@ -1666,7 +1674,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.2-Beta2(4.5.2.3)</article_title>
@@ -1689,7 +1697,7 @@
                                             <article_list>对代码进行了重新排列与格式化</article_list>
                                         </article_detail>
                                     </article_block>
-                                    <div class="expandable_card_down_br"></div>
+                                    <line></line>
                                     <article_block>
                                         <article_title>4.5.2-Beta1(4.5.2.1)</article_title>
                                         <article_date>2024-03-31</article_date>
@@ -1770,7 +1778,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.1-RC1(4.5.1.13)</article_title>
@@ -1782,7 +1790,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.1-Pre1(4.5.1.12)</article_title>
@@ -1794,7 +1802,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.1-Beta6(4.5.1.9)</article_title>
@@ -1807,7 +1815,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.5.1-Beta5(4.5.1.7)</article_title>
@@ -1825,7 +1833,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.1-Beta4(4.5.1.6)</article_title>
@@ -1837,7 +1845,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.5.1-Beta3(4.5.1.4)</article_title>
@@ -1851,7 +1859,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.1-Beta2(4.5.1.2)</article_title>
@@ -1861,7 +1869,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5.1-Beta1(4.5.1.1)</article_title>
@@ -1914,7 +1922,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5 Alice(4.5.0.24)</article_title>
@@ -1926,7 +1934,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-RC1(4.5.0.19)</article_title>
@@ -1936,7 +1944,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Pre4(4.5.0.15)</article_title>
@@ -1946,7 +1954,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Pre3(4.5.0.14)</article_title>
@@ -1956,7 +1964,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Pre2(4.5.0.13)</article_title>
@@ -1968,7 +1976,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Pre1(4.5.0.12)</article_title>
@@ -1979,7 +1987,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta8(4.5.0.9)</article_title>
@@ -1999,7 +2007,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta7(4.5.0.8)</article_title>
@@ -2009,7 +2017,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta6(4.5.0.7)</article_title>
@@ -2022,7 +2030,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta5(4.5.0.6)</article_title>
@@ -2035,7 +2043,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta4(4.5.0.5)</article_title>
@@ -2050,7 +2058,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta3(4.5.0.3)</article_title>
@@ -2064,7 +2072,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta2(4.5.0.2)</article_title>
@@ -2076,7 +2084,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.5-Insider_Beta1(4.5.0.1)</article_title>
@@ -2114,7 +2122,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>*4.3-Preview2</article_title>
@@ -2128,7 +2136,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.3-Preview1</article_title>
@@ -2191,7 +2199,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview9</article_title>
@@ -2206,7 +2214,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview8</article_title>
@@ -2219,7 +2227,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview7</article_title>
@@ -2232,7 +2240,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview6</article_title>
@@ -2249,7 +2257,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview5</article_title>
@@ -2264,7 +2272,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview4</article_title>
@@ -2279,7 +2287,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview3</article_title>
@@ -2294,7 +2302,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview2</article_title>
@@ -2304,7 +2312,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.2-Preview1</article_title>
@@ -2340,7 +2348,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview7</article_title>
@@ -2353,7 +2361,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview6</article_title>
@@ -2365,7 +2373,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview5</article_title>
@@ -2378,7 +2386,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview4</article_title>
@@ -2391,7 +2399,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview3</article_title>
@@ -2402,7 +2410,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview2</article_title>
@@ -2415,7 +2423,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.1-Preview1</article_title>
@@ -2451,7 +2459,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview19</article_title>
@@ -2465,7 +2473,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview18</article_title>
@@ -2477,7 +2485,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview17</article_title>
@@ -2487,7 +2495,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview16</article_title>
@@ -2498,7 +2506,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview15</article_title>
@@ -2508,7 +2516,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview14</article_title>
@@ -2518,7 +2526,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview13</article_title>
@@ -2529,7 +2537,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview12</article_title>
@@ -2541,7 +2549,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview11</article_title>
@@ -2555,7 +2563,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview10</article_title>
@@ -2574,7 +2582,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview9</article_title>
@@ -2587,7 +2595,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview8</article_title>
@@ -2606,7 +2614,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview7</article_title>
@@ -2628,7 +2636,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview6</article_title>
@@ -2649,7 +2657,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview5</article_title>
@@ -2670,7 +2678,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview4</article_title>
@@ -2689,7 +2697,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview3</article_title>
@@ -2706,7 +2714,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview2</article_title>
@@ -2719,7 +2727,7 @@
                                         </article_detail>
                                     </article_block>
                                 </div>
-                                <div class="expandable_card_down_br"></div>
+                                <line></line>
                                 <div class="expandable_card_down_content">
                                     <article_block>
                                         <article_title>4.0-Preview1</article_title>
