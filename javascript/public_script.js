@@ -690,7 +690,7 @@ for (let i = 0; i < expandableCardGroup.length; i++) {
             setTimeout(function () {
                 const initialHeight = cardDown.scrollHeight;
                 expandableContent.style.height = initialHeight + 'px';
-            }, 400);
+            }, 500);
 
         } else {
             cardImage.src = `${rootPath}images/arrowDown_white.png`;
