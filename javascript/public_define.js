@@ -66,7 +66,7 @@ const texts = {
 rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
 hostPath = window.location.origin;
 
-let isRelease = (version_type === "Beta" || version_type === "Pre" || version_type === "RC" || version_type === "Release" || version_type === "Stale" || version_type === "SP");
+let isRelease = (version_type === "Beta" || version_type === "Pre" || version_type === "RC" || version_type === "Release" || version_type === "Stable" || version_type === "SP");
 let isFullVersion = (version_type !== "Demo" && version_type !== "Trial" && version_type !== "Lite");
 let mode;
 if (version_type === "Demo") {
