@@ -1,3 +1,25 @@
+<!--
+  ~ Copyright © 2020-2024. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
 <!DOCTYPE html>
 <html lang="zh">
 
@@ -524,16 +546,16 @@
     document.head.appendChild(public_script);
     document.head.appendChild(public_define);
 
-    const root_path = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
+    rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
     const repositoryAttribute = localStorage.getItem('repository_attribute');
 
     if (repositoryAttribute) {
         if (repositoryAttribute.includes('test=true')) {
-            if (!root_path.includes('_test')) {
+            if (!rootPath.includes('_test')) {
                 window.location.href = window.location.origin + "/minecraft_repository_test";
             }
         } else if (repositoryAttribute.includes('test=false')) {
-            if (root_path.includes('_test')) {
+            if (rootPath.includes('_test')) {
                 localStorage.setItem('repository_attribute', 'test=true');
             }
         }
@@ -579,15 +601,15 @@
     const month = date.getMonth() + 1;
     const day = date.getDate();
 
-    if (root_path.includes('_test')) {
-        const neverShowIn15Days = localStorage.getItem(`(${root_path})neverShowIn15Days`);
+    if (rootPath.includes('_test')) {
+        const neverShowIn15Days = localStorage.getItem(`(${rootPath})neverShowIn15Days`);
         if (neverShowIn15Days) {
             const lastHideTime = new Date(parseInt(neverShowIn15Days, 10));
             const now = new Date();
             const diff = now - lastHideTime;
             const fifteenDays = 15 * 24 * 60 * 60 * 1000;
             if (diff > fifteenDays) {
-                localStorage.removeItem(`(${root_path})neverShowIn15Days`);
+                localStorage.removeItem(`(${rootPath})neverShowIn15Days`);
             } else {
                 console.log("时间未到,不显示测试仓库提示");
             }

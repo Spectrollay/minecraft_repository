@@ -1,15 +1,37 @@
+/*
+ * Copyright © 2020-2024. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 // 版本变量
 // TODO 需在每次提交前检查
 const primary_version_name = "4.6"; // 例 4.0
 const secondary_version_name = primary_version_name + ".5"; // 例 4.0.0
 const version_name_short = secondary_version_name + ".20"; // 例 4.0.0.1 // NOTE 小版本
-const version_type = "Beta"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Release/SP
-const version_type_count = version_type + "1"; // 例 Build1 // NOTE 小版本
+const version_type = "Stable"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Stable/Release/SP
+const version_type_count = version_type + ""; // 例 Build1 // NOTE 小版本
 const version_name = version_name_short + "." + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + "-" + version_type_count; // 例 4.0.0-Build1
 const server_version = "4.0";
 const update_count = "2024-07-27-01"; // NOTE 小版本
-let commit = "#2024080501"; // 例 #2024010101 , 仅留 # 则从 update_count 提取 // NOTE 有提交就变
+let commit = "#2024082501"; // 例 #2024010101 , 仅留 # 则从 update_count 提取 // NOTE 有提交就变
 if (commit === "#") {
     commit = "#" + update_count.replace(/-/g, "");
 }
@@ -41,10 +63,19 @@ const texts = {
     download_type5: "精简版",
 };
 
-const rootPath_d = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-const hostPath_d = window.location.origin;
+rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
+hostPath = window.location.origin;
 
-let isRelease = version_type === "Beta" || version_type === "Pre" || version_type === "RC" || version_type === "Release" || version_type === "SP";
+let isRelease = (version_type === "Beta" || version_type === "Pre" || version_type === "RC" || version_type === "Release" || version_type === "Stale" || version_type === "SP");
+let isFullVersion = (version_type !== "Demo" && version_type !== "Trial" && version_type !== "Lite");
+let mode;
+if (version_type === "Demo") {
+    mode = "演示";
+} else if (version_type === "Trial") {
+    mode = "试用";
+} else if (version_type === "Lite") {
+    mode = "精简";
+}
 
 const currentDate = new Date();
 let Y = currentDate.getFullYear();
@@ -63,9 +94,9 @@ let previousTipIndex = -2;
 let currentTipIndex = -1;
 const tipElement = document.getElementById("banner_tip");
 let tipsWithWeights;
-const fixedTips = [
+const commonTips = [
     {
-        text: "<span>发现问题或有好的建议?<a href=\"https://github.com/Spectrollay" + rootPath_d + "issues/new\" target='_blank' onclick='playSound1();'>欢迎提出</a>!</span>",
+        text: "<span>发现问题或有好的建议?<a href=\"https://github.com/Spectrollay" + rootPath + "issues/new\" target='_blank' onclick='playSound1();'>欢迎提出</a>!</span>",
         weight: 3
     },
     {
@@ -90,6 +121,8 @@ const fixedTips = [
     {text: "本站指向的站外内容可能不受保障!", weight: 3},
     {text: "请直接分享本站而不是转载其中的内容!", weight: 3},
     {text: "感谢你使用星月Minecraft版本库!", weight: 3},
+];
+const fullVersionTips = [
     {text: "你完成你的事情了吗?", weight: 3},
     {text: "我们保留了一些bug,这样你才知道你在使用的是星月Minecraft版本库.", weight: 2},
     {text: "你知道吗,版本库的第一个版本仅用了两天时间构建.", weight: 2},
@@ -161,13 +194,13 @@ const fixedTips = [
     {text: "<span style='color: dodgerblue'>驯服宠物: 六角恐龙!</span>", weight: 1},
     {text: "<span style='color: gold'>获得稀有物品: 附魔金苹果!</span>", weight: 0.1},
     {text: "<span style='color: yellow'>解锁隐藏成就: 仓库尽头的提示</span>", weight: 0.001},
-    {text: "这是一条永远不会出现的提示.", weight: 0}
+    {text: "这是一条永远不会出现的提示.", weight: 0},
 ];
 
-tipsWithWeights = [...fixedTips];
+tipsWithWeights = [...commonTips, ...fullVersionTips];
 
-const addTips = (newTips) => {
-    tipsWithWeights = [...newTips, ...tipsWithWeights];
+const addTips = (newTips, oldTips) => {
+    tipsWithWeights = [...newTips, ...oldTips];
 };
 
 const replaceTips = (newTips) => {
@@ -186,11 +219,38 @@ if (!isRelease) {
         {text: "想要退出测试?前往设置页面选择退出.期待你的下次加入!", weight: 5},
         {text: "想要贡献自己的代码?你可以在Github上协助我们一起开发!", weight: 5},
         {text: "我们欢迎你的反馈!前往项目仓库提交或直接向开发者汇报你的发现!", weight: 5},
-        {text: "不要担心漏洞!测试仓库中发现的问题往往会在发布仓库更新前得以解决.", weight: 5}
-    ]);
+        {text: "不要担心漏洞!测试仓库中发现的问题往往会在发布仓库更新前得以解决.", weight: 5},
+    ], fullVersionTips);
 }
 
-if (hostPath_d.includes('file:///') || hostPath_d.includes('localhost')) {
+if (!isFullVersion) {
+    const notFullVersionTips = [
+        {text: `你当前使用的是${mode}模式!`, weight: 5},
+        {text: `要想体验完整的版本库功能,你需要退出${mode}模式.`, weight: 5},
+        {text: `在退出${mode}模式时遇到了问题?加入官方频道或群组进行咨询!`, weight: 5},
+        ...commonTips];
+    replaceTips(notFullVersionTips);
+
+    if (version_type === "Demo") {
+        addTips([
+            {text: "演示模式仅供演示使用,无法调用版本库核心功能!", weight: 5},
+        ], notFullVersionTips);
+    } else if (version_type === "Trial") {
+        addTips([
+            {text: "试用模式缺少部分版本库核心功能!", weight: 5},
+            {text: "试用模式在部分功能上有所限制!", weight: 5},
+            {text: "试用模式将会在一定期限后到期!", weight: 5},
+        ], notFullVersionTips);
+    } else if (version_type === "Lite") {
+        addTips([
+            {text: "精简模式提供了极简的版本库设计,适合喜欢简单的你!", weight: 5},
+            {text: "精简模式拥有大多数的版本库核心功能,但是诸如个性化等功能将不受支持!", weight: 5},
+            {text: "在精简模式下部分完整版本的特性将会受到限制或无法使用!", weight: 5},
+        ], notFullVersionTips);
+    }
+}
+
+if (hostPath.includes('file:///') || hostPath.includes('localhost')) {
     console.log("LocalStorage数据");
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
