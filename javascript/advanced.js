@@ -41,9 +41,17 @@ function debugPage() {
 
 // 清除存储
 function clearStorage() {
-    localStorage.clear();
+    const keyPatterns = ["(/minecraft_repository/)", "minecraft_repository_attribute"];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (keyPatterns.some(pattern => key.includes(pattern))) {
+            localStorage.removeItem(key);
+            i--;
+        }
+    }
     sessionStorage.clear();
     console.log('清除存储数据成功');
+    mainPage();
 }
 
 // 重载页面

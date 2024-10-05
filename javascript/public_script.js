@@ -259,21 +259,21 @@ if (rootPath.includes('_test')) {
 
 console.log("当前位于" + pageLevel);
 
-if (rootPath.includes('_test') && !localStorage.getItem('repository_attribute')) {
-    localStorage.setItem('repository_attribute', 'test=true');
-} else if (!rootPath.includes('_test') && !localStorage.getItem('repository_attribute')) {
-    localStorage.setItem('repository_attribute', 'test=false');
+if (rootPath.includes('_test') && !localStorage.getItem('minecraft_repository_attribute')) {
+    localStorage.setItem('minecraft_repository_attribute', 'test=true');
+} else if (!rootPath.includes('_test') && !localStorage.getItem('minecraft_repository_attribute')) {
+    localStorage.setItem('minecraft_repository_attribute', 'test=false');
 }
 
 function joinTest() {
-    localStorage.setItem('repository_attribute', 'test=true');
+    localStorage.setItem('minecraft_repository_attribute', 'test=true');
     setTimeout(function () {
         window.location.href = hostPath + "/minecraft_repository_test";
     }, 600);
 }
 
 function leaveTest() {
-    localStorage.setItem('repository_attribute', 'test=false');
+    localStorage.setItem('minecraft_repository_attribute', 'test=false');
     localStorage.removeItem('(/minecraft_repository/)neverShowIn15Days');
     setTimeout(function () {
         window.location.href = hostPath + "/minecraft_repository";

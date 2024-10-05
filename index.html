@@ -547,7 +547,7 @@
     document.head.appendChild(public_define);
 
     rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-    const repositoryAttribute = localStorage.getItem('repository_attribute');
+    const repositoryAttribute = localStorage.getItem('minecraft_repository_attribute');
 
     if (repositoryAttribute) {
         if (repositoryAttribute.includes('test=true')) {
@@ -556,7 +556,7 @@
             }
         } else if (repositoryAttribute.includes('test=false')) {
             if (rootPath.includes('_test')) {
-                localStorage.setItem('repository_attribute', 'test=true');
+                localStorage.setItem('minecraft_repository_attribute', 'test=true');
             }
         }
     } else {

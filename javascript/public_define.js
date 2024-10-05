@@ -30,8 +30,8 @@ const version_type_count = version_type + ""; // 例 Build1 // NOTE 小版本
 const version_name = version_name_short + "." + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + "-" + version_type_count; // 例 4.0.0-Build1
 const server_version = "4.0";
-const update_count = "2024-07-27-01"; // NOTE 小版本
-let commit = "#2024082501"; // 例 #2024010101 , 仅留 # 则从 update_count 提取 // NOTE 有提交就变
+const update_count = "2024-10-05-01"; // NOTE 小版本
+let commit = "#"; // 例 #2024010101 , 仅留 # 则从 update_count 提取 // NOTE 有提交就变
 if (commit === "#") {
     commit = "#" + update_count.replace(/-/g, "");
 }
@@ -296,6 +296,12 @@ if (holiday_tip1) {
     if ((Y === 2024 && M === 6 && D === 10) || (Y === 2025 && M === 5 && D === 31) || (Y === 2026 && M === 6 && D === 19)) {
         holiday_tip1.style.display = 'flex';
         holiday_tip_display1.innerHTML = "端午安康~";
+    } // TODO 2027年及以后
+
+    // 中秋节
+    if ((Y === 2024 && M === 9 && D === 17) || (Y === 2025 && M === 10 && D === 6) || (Y === 2026 && M === 9 && D === 25)) {
+        holiday_tip1.style.display = 'flex';
+        holiday_tip_display1.innerHTML = "中秋快乐~";
     } // TODO 2027年及以后
 }
 
