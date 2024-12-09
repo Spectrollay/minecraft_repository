@@ -1,5 +1,8 @@
 blank_issues_enabled: true
 contact_links:
+  - name: 请注意
+    url: https://github.com/Spectrollay/minecraft_repository_test
+    about: 本仓库不接受建议与反馈!请前往开发仓库使用开发版本并提出建议与反馈.
   - name: 版本库Telegram频道
     url: https://t.me/spectrollay_minecraft_repository
     about: 版本库消息推送以及聊天,建议和反馈途径
