@@ -1,0 +1,46 @@
+name: 新功能提议
+description: 向我们提出你希望的新功能
+title: "[新功能]: "
+labels: ["新功能(new feature)"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 感谢你愿意向我们提议新功能!
+        ## 以下是一些注意事项,请务必阅读让我们能够更容易处理
+
+        ### 确定没有相同或类似的Issue已被提出或实现.
+        ### 确定现有的PR和代码并没有该功能的实现/相似的功能.
+        ### 如果你不知道如何有效且精准地表述,我们强烈建议你先阅读[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md).
+
+        ---
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 请确保你已阅读以上注意事项,然后勾选下方的确认框.
+      options:
+        - label: 我确定这是一个从未被提出和实现过的功能.
+          required: true
+        - label: 我已经在 [Issue Tracker](https://github.com/Spectrollay/minecraft_repository/issues) 以及 [Pull Request](https://github.com/Spectrollay/minecraft_repository/pulls) 中找过我要提出的新功能,没有找到相同或类似的Issue和PR.
+          required: true
+        - label: 我已知晓并同意,本处仅用于提议新功能,否则请在 [这里](https://github.com/Spectrollay/minecraft_repository/issues/new/choose) 选择合适的模板.若该Issue是关于其他内容则可能会被无条件自动关闭或/并锁定.
+          required: true
+        - label: 我已知晓并同意,如果我不按照模板提供的指示进行填写,则该Issue可能会被无条件删除.
+          required: true
+
+  - type: textarea
+    id: feature-request
+    attributes:
+      label: 需要添加的功能内容
+      description: |
+        请具体提出想要添加的功能,包括添加的位置与形式(如有)和预期实现的效果
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## 感谢你的提议!我们稍后将评估你的提议并向你返回评估结果.

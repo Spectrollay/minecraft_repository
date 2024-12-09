@@ -1,0 +1,11 @@
+name: 提出建议
+description: 分享你的看法
+title: "[建议]: "
+labels: ["优化改进(opt & imp)"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 本仓库不接受建议!
+        ### 请前往[开发仓库](https://github.com/Spectrollay/minecraft_repository_test)使用开发版本并查看你想要提出的建议是否实现,若没有相关实现请前往开发仓库的Issue中提出建议.

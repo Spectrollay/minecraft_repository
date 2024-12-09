@@ -1,0 +1,11 @@
+name: 反馈问题
+description: 反馈你遇到的问题
+title: "[错误]: "
+labels: ["发生的错误(bug & error)"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 本仓库不接受反馈!
+        ### 请前往[开发仓库](https://github.com/Spectrollay/minecraft_repository_test)使用开发版本并验证你想要反馈的问题是否存在,若依旧存在相应问题请前往开发仓库的Issue中提出反馈.
