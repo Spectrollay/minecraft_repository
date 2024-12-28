@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020-2024. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,30 +25,58 @@ main {
 }
 
 .setting_title {
-    display: flex;
     align-items: center;
-    padding: 0 16px;
-    min-height: 60px;
+    display: flex;
     font-size: 18px;
+    min-height: 60px;
+    padding: 0 16px;
 }
 
 .setting_block {
-    display: flex;
     align-items: center;
+    display: flex;
+    padding: 10px 16px;
+}
+
+.setting_block_title {
+    font-size: 16px;
+}
+
+.setting_block_description {
+    color: #D0D1D4;
+    font-size: 14px;
 }
 
 .setting_block_content {
     margin: 6px 0;
+    width: 100%;
 }
 
-.setting_content {
+.setting_title_content {
     align-self: center;
     flex: 1;
 }
 
 .setting_control_right {
+    width: 140px;
 }
 
 .setting_btn {
-    width: 120px;
+    width: calc(100% - 12px);
+}
+
+#debug {
+    display: none;
+}
+
+#the_end {
+    display: none;
+    margin: 20px;
+    min-height: 60px;
+}
+
+.red_stroke {
+    color: #C02D2D;
+    -webkit-text-stroke: 0.1em #FFFFFF;
+    paint-order: stroke;
 }

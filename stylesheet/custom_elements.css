@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020-2024. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,23 +23,27 @@
 /* 文章样式 */
 article_block {
     display: block;
+    min-width: 270px;
     text-align: center;
+    width: 90%;
 }
 
 article_title {
-    display: block;
     color: #FFFFFF;
-    font-size: 23px;
+    display: block;
     font-family: "Minecraft Seven", sans-serif;
-    margin: 15px 0;
+    font-size: 23px;
     height: auto;
+    margin: 15px 0;
     width: 100%;
 }
 
-article_date {
+article_date, article_subtitle {
     display: block;
-    margin: 10px 0;
+    font-family: "Minecraft Seven", sans-serif;
+    font-size: 20px;
     height: auto;
+    margin: 10px 0;
     width: 100%;
 }
 
@@ -47,82 +51,93 @@ article_detail {
     display: block;
     font-family: "NotoSans Bold", sans-serif;
     margin: 0 6px;
-    min-width: 260px;
     text-align: left;
 }
 
 article_note {
-    display: block;
+    background-color: rgba(46, 107, 229, 0.1);
     border-left: 6px solid #2E6BE5;
-    padding-left: 10px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
     margin: 6px 0;
+    padding: 10px;
+}
+
+article_list_title {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 6px solid #FFFFFF;
+    display: block;
+    font-size: 17px;
+    margin: 10px 0;
+    padding: 4px 0 4px 10px;
 }
 
 article_list {
     display: block;
-    position: relative;
-    padding-left: 16px;
     margin: 10px 0;
+    padding-left: 16px;
+    position: relative;
 }
 
 article_list:before {
+    background-color: #FFFFFF;
+    border-radius: 50%;
     content: "";
-    position: absolute;
+    height: 6px;
     left: 0;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 6px;
-    height: 6px;
-    background-color: #FFFFFF;
-    border-radius: 50%;
 }
 
 article_list_level2 {
     display: block;
-    position: relative;
-    padding-left: 32px;
     margin: 10px 0;
+    padding-left: 32px;
+    position: relative;
 }
 
 article_list_level2:before {
+    background-color: #FFFFFF;
+    border-radius: 50%;
     content: "";
-    position: absolute;
+    height: 6px;
     left: 16px;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 6px;
-    height: 6px;
-    background-color: #FFFFFF;
-    border-radius: 50%;
 }
 
 article_list_level3 {
     display: block;
-    position: relative;
-    padding-left: 48px;
     margin: 10px 0;
+    padding-left: 48px;
+    position: relative;
 }
 
 article_list_level3:before {
+    background-color: #FFFFFF;
+    border-radius: 50%;
     content: "";
-    position: absolute;
+    height: 6px;
     left: 32px;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 6px;
-    height: 6px;
-    background-color: #FFFFFF;
-    border-radius: 50%;
 }
 
 
 /* 按钮 */
 .btn {
+    cursor: pointer;
     font-family: "NotoSans Bold", sans-serif;
     height: 40px;
-    margin: 6px;
     justify-self: center;
-    cursor: pointer;
+    margin: 6px;
 }
 
 .small_btn {
@@ -139,10 +154,10 @@ article_list_level3:before {
 
 .normal_btn {
     background-color: #D0D1D4;
-    color: #000000;
-    padding-bottom: 6px;
     border: 2px solid #1E1E1F;
     box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.6), inset -3px -7px rgba(255, 255, 255, 0.4);
+    color: #000000;
+    padding-bottom: 6px;
 }
 
 .normal_btn:hover {
@@ -151,19 +166,19 @@ article_list_level3:before {
 }
 
 .normal_btn:active {
-    margin-top: 10px;
-    height: 36px;
-    padding-bottom: 2px;
     background-color: #B1B2B5;
     box-shadow: inset 3px 3px rgba(255, 255, 255, 0.8), inset -3px -3px rgba(255, 255, 255, 0.6);
+    height: 36px;
+    margin-top: 10px;
+    padding-bottom: 2px;
 }
 
 .green_btn {
     background-color: #3C8527;
-    color: #FFFFFF;
-    padding-bottom: 6px;
     border: 2px solid #1E1E1F;
     box-shadow: inset 0 -4px #1D4D13, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    padding-bottom: 6px;
 }
 
 .green_btn:hover {
@@ -172,19 +187,19 @@ article_list_level3:before {
 }
 
 .green_btn:active {
-    margin-top: 10px;
-    height: 36px;
-    padding-bottom: 2px;
     background-color: #1D4D13;
     box-shadow: inset 3px 3px rgba(255, 255, 255, 0.4), inset -3px -3px rgba(255, 255, 255, 0.3);
+    height: 36px;
+    margin-top: 10px;
+    padding-bottom: 2px;
 }
 
 .red_btn {
     background-color: #C33636;
-    color: #FFFFFF;
-    padding-bottom: 6px;
     border: 2px solid #1E1E1F;
     box-shadow: inset 0 -4px #AD1D1D, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    padding-bottom: 6px;
 }
 
 .red_btn:hover {
@@ -193,78 +208,99 @@ article_list_level3:before {
 }
 
 .red_btn:active {
-    margin-top: 10px;
-    height: 36px;
-    padding-bottom: 2px;
     background-color: #AD1D1D;
     box-shadow: inset 3px 3px rgba(255, 255, 255, 0.5), inset -3px -3px rgba(255, 255, 255, 0.4);
+    height: 36px;
+    margin-top: 10px;
+    padding-bottom: 2px;
 }
 
 .disabled_btn {
     background-color: #D0D1D4;
-    color: #48494A;
-    padding-bottom: 6px;
     border: 2px solid #8C8D90;
     box-shadow: inset 0 -4px #B1B2B5;
+    color: #48494A;
     cursor: not-allowed;
+    padding-bottom: 6px;
 }
 
 /* 带有图标的按钮 */
 .link_img, .link_img_black {
-    margin-bottom: -1.5px;
     height: 14px;
-    width: 14px;
+    margin-bottom: -1.5px;
     padding-right: 6px;
+    width: 14px;
+}
+
+/* 侧边栏按钮 */
+.sidebar_btn {
+    background-color: #48494A;
+    border: 2px solid #131313;
+    box-shadow: inset -1px -1px #1E1E1F, inset 1px 1px #1E1E1F, inset -2px -2px #313233, inset 2px 2px #6D6D6E;
+    color: #FFFFFF;
+    height: 40px;
+    margin: 6px;
+    padding-bottom: 2px;
+    width: 140px;
+}
+
+.sidebar_btn:hover, .sidebar_btn:active {
+    background-color: #67686A;
+    border: 2px solid #FFFFFF;
+    box-shadow: unset;
+    height: 40px;
+    margin: 6px;
+    padding-bottom: 2px;
 }
 
 /* 带有Tooltip的按钮 */
 .btn_with_tooltip_cont {
-    position: relative;
     display: inline-block;
+    position: relative;
 }
 
 .btn_tooltip {
-    visibility: hidden;
     background-color: #1F1F1F;
     color: #FFFFFF;
-    text-align: center;
+    opacity: 0;
     padding: 5px;
     position: absolute;
-    z-index: 1;
-    top: -30px;
     right: 10px;
-    opacity: 0;
+    text-align: center;
+    top: -30px;
     transition: opacity 0.6s;
+    visibility: hidden;
+    z-index: 1;
 }
 
 .btn_with_tooltip_cont:hover .btn_tooltip {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
 }
 
 .tip_icon {
-    position: absolute;
-    top: -2px;
-    right: 0;
-    z-index: 2;
     height: 20px;
+    position: absolute;
+    right: 0;
+    top: -2px;
+    z-index: 2;
 }
 
 
-/* Checkbox复选框 */
+/* Checkbox 复选框 */
 custom-checkbox {
     display: inline-block;
     margin: 5px;
 }
 
 .custom-checkbox {
-    width: 20px;
-    height: 20px;
-    position: relative;
     background-color: #8C8D90;
     border: 2px solid #1E1E1F;
     box-shadow: inset 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px rgba(255, 255, 255, 0.1);
     cursor: pointer;
+    height: 20px;
+    position: relative;
+    width: 20px;
 }
 
 .custom-checkbox:hover {
@@ -302,12 +338,12 @@ custom-checkbox {
 
 .custom-checkbox img {
     display: none;
+    height: 27px;
+    left: 50%;
     position: absolute;
     top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
     width: 27px;
-    height: 27px;
 }
 
 .custom-checkbox.disabled img {
@@ -324,117 +360,225 @@ del-line {
     text-decoration: line-through;
 }
 
-/* Divider分割线 */
+/* Divider 分割线 */
 divider {
+    background-color: #58585A;
     display: block;
+    height: 2px;
     margin: 6px 0;
-    height: 4px;
     width: 100%;
-    box-shadow: inset 0 2px #333334, inset 0 -2px #5A5B5C;
 }
 
-/* Line分割线 */
-line {
+divider-box {
+    box-shadow: inset 0 2px #333334, inset 0 -2px #5A5B5C;
     display: block;
-    margin: 1px 0;
-    height: 2px;
+    height: 4px;
+    margin: 6px 0;
     width: 100%;
+}
+
+/* Line 分割线 */
+line {
     background-color: #48494A;
+    display: block;
+    height: 2px;
+    margin: 1px 0;
+    width: 100%;
 }
 
 vertical-line {
-    display: inline-block;
-    margin: 0 6px;
-    height: 100%;
-    width: 2px;
     background-color: #FFFFFF;
+    display: inline-block;
+    height: 100%;
+    margin: 0 6px;
+    width: 2px;
 }
+
+
+/* 自定义Dropdown下拉菜单 */
+custom-dropdown {
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    margin: 6px; /* 外边距,js里有用到 */
+    position: relative;
+    width: calc(100% - 12px); /* 减去外边距的2倍 */
+}
+
+custom-dropdown .disabled_dropdown {
+    cursor: not-allowed;
+}
+
+.dropdown_label {
+    align-items: center;
+    background-color: #D0D1D4;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.6), inset -3px -7px rgba(255, 255, 255, 0.4);
+    box-sizing: border-box; /* 包括内边距和边框 */
+    color: #000000;
+    display: flex;
+    height: 40px;
+    padding: 10px 10px 16px 10px;
+}
+
+
+.dropdown_label:hover {
+    background-color: #B1B2B5;
+    box-shadow: inset 0 -4px #58585A, inset 3px 3px rgba(255, 255, 255, 0.8), inset -3px -7px rgba(255, 255, 255, 0.6);
+}
+
+
+.dropdown_label.disabled_dropdown {
+    background-color: #D0D1D4;
+    border: 2px solid #8C8D90;
+    box-shadow: inset 0 -4px #B1B2B5;
+    color: #48494A;
+    cursor: not-allowed;
+}
+
+.dropdown_arrow {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 2px);
+    transform: translateY(-50%);
+    width: 24px;
+}
+
+.disabled_dropdown_arrow {
+    filter: invert(100%) grayscale(100%) brightness(50%);
+}
+
+.dropdown_options {
+    background-color: #58585A;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 2px 0 #8C8D90, inset -2px 0 #8C8D90, inset 0 2px #8C8D90, inset 0 -2px #8C8D90;
+    color: #FFFFFF;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 4px); /* 减去边框的2倍 */
+    z-index: 5;
+}
+
+.dropdown_option {
+    align-items: center;
+    box-shadow: inset 0 1px #8C8D90, inset 0 -1px #8C8D90;
+    box-sizing: border-box; /* 包括内边距和边框 */
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    padding: 0 10px;
+    width: 100%
+}
+
+.dropdown_checkmark {
+    width: 24px;
+}
+
+.dropdown_option.selected .dropdown_checkmark {
+    display: block;
+}
+
+.dropdown_option .dropdown_checkmark {
+    display: none;
+}
+
 
 /* Modal弹窗 */
-#overlay_clear_storage_warning, #overlay_reload_page_warning, #overlay_version_info_modal, #overlay_disclaimer_modal, #overlay_donate_modal {
-    z-index: 12;
-}
-
-#overlay_alert_modal {
-    z-index: 14;
-}
-
-#overlay_first_visit_today_modal {
-    z-index: 18;
-}
-
-#overlay_compatibility_modal {
-    z-index: 20;
-}
-
-modal_area {
-    display: none;
-    z-index: 11;
-    position: fixed;
-    min-width: 320px;
-    max-width: calc(min(600px, 100vw));
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid #1E1E1F;
-    outline: none;
-}
-
-#clear_storage_warning, #reload_page_warning, #version_info_modal, #disclaimer_modal, #donate_modal {
+#overlay_clear_storage_warning, #overlay_reload_page_warning, #overlay_clear_all_warning, #overlay_version_info_modal, #overlay_disclaimer_modal, #overlay_donate_modal, #overlay_acknowledgments_modal {
     z-index: 13;
 }
 
-#alert_modal {
+#overlay_alert_modal {
     z-index: 15;
 }
 
-#first_visit_today_modal {
+#overlay_first_visit_today_modal {
+    z-index: 17;
+}
+
+#overlay_compatibility_modal {
     z-index: 19;
 }
 
+#overlay_status_modal {
+    z-index: 99;
+}
+
+modal_area {
+    border: 2px solid #1E1E1F;
+    display: none;
+    left: 50%;
+    max-width: calc(min(600px, 100vw));
+    min-width: 320px;
+    outline: none;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 12;
+}
+
+#clear_storage_warning, #reload_page_warning, #clear_all_warning, #version_info_modal, #disclaimer_modal, #donate_modal, #acknowledgments_modal {
+    z-index: 14;
+}
+
+#alert_modal {
+    z-index: 16;
+}
+
+#first_visit_today_modal {
+    z-index: 18;
+}
+
 #compatibility_modal {
-    z-index: 21;
+    z-index: 20;
+}
+
+#status_modal {
+    z-index: 100;
 }
 
 modal {
-    display: block;
     background-color: #313233;
     color: #FFFFFF;
+    display: block;
     text-align: center;
 }
 
 modal_title_area {
-    display: block;
-    height: 40px;
-    font-size: 18px;
-    position: relative;
     background-color: #48494A;
     box-shadow: inset 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px rgba(255, 255, 255, 0.1);
+    display: block;
+    font-size: 18px;
+    height: 40px;
+    position: relative;
 }
 
 modal_title {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 50%;
     position: absolute;
     top: calc(50% - 1px);
-    left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
     width: 100%;
 }
 
 modal_close_btn {
-    position: absolute;
-    top: 50%;
-    right: 4px;
-    transform: translateY(-50%);
-    display: flex;
     align-items: center;
-    justify-content: center;
-    height: calc(100% - 8px);
-    width: 32px;
     cursor: pointer;
+    display: flex;
+    height: calc(100% - 8px);
+    justify-content: center;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
 }
 
 modal_close_btn:hover, modal_close_btn:active {
@@ -447,33 +591,48 @@ modal_close_btn:hover, modal_close_btn:active {
 }
 
 modal_content {
-    padding: 10px 10px 10px 10px;
-    display: block;
-    min-height: 60px;
+    display: grid;
+    align-items: center;
     max-height: calc(min(450px, calc(90vh - 150px)));
+    min-height: 60px;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 10px 10px 10px 10px;
     scrollbar-width: none;
 }
 
 modal_checkbox_area {
-    background-color: #48494A;
-    border-top: 2px solid #5A5B5C;
-    border-bottom: 2px solid #333334;
-    padding: 2px;
-    display: flex;
     align-items: center;
-    justify-content: left;
+    background-color: #48494A;
+    border-bottom: 2px solid #333334;
+    border-top: 2px solid #5A5B5C;
     cursor: pointer;
+    display: flex;
+    justify-content: left;
+    padding: 2px;
 }
 
 modal_button_area {
-    background-color: #48494A;
-    border-top: 2px solid #5A5B5C;
-    border-bottom: 2px solid #333334;
-    padding: 2px 0;
-    display: flex;
     align-items: center;
+    background-color: #48494A;
+    border-bottom: 2px solid #333334;
+    border-top: 2px solid #5A5B5C;
+    display: flex;
     justify-content: center;
+    padding: 2px 0;
+}
+
+modal_textfield_area {
+    background-color: #48494A;
+    border-bottom: 2px solid #333334;
+    border-top: 2px solid #5A5B5C;
+    display: block;
+    padding: 2px 0;
+    text-align: left;
+}
+
+modal_textfield_title {
+    margin: 10px;
 }
 
 .modal_custom_btn {
@@ -485,8 +644,8 @@ modal_button_group {
 }
 
 modal_button_list {
-    display: flex;
     align-items: center;
+    display: flex;
 }
 
 .modal_btn {
@@ -494,49 +653,49 @@ modal_button_list {
 }
 
 
-/* Slider滑块 */
+/* Slider 滑块 */
 .slider_content {
-    display: flex;
-    width: calc(100% - 32px);
-    height: 30px;
-    margin: 20px;
     align-items: center;
+    display: flex;
+    height: 30px;
     justify-content: center;
+    margin: 14px 0;
+    width: 100%;
 }
 
 .slider {
-    width: 100%; /* 进度条宽度 */
-    height: 8px; /* 进度条高度 */
-    margin: 0 10px;
-    border: 2px solid #1E1E1F;
     background: #8C8D90;
+    border: 2px solid #1E1E1F;
     box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
-    position: relative; /* 相对定位,用于子元素绝对定位的参考 */
     cursor: pointer;
+    height: 8px; /* 进度条高度 */
+    margin: 6px;
+    position: relative; /* 相对定位,用于子元素绝对定位的参考 */
+    width: 100%; /* 进度条宽度 */
 }
 
 .slider_process {
+    background: #3C8527;
+    bottom: 0;
+    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
+    left: 0;
+    max-width: 100%;
     position: absolute;
     top: 0;
-    left: 0;
-    bottom: 0;
-    max-width: 100%;
-    background: #3C8527;
-    box-shadow: inset 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px rgba(255, 255, 255, 0.2);
     transition: width 100ms linear;
 }
 
 .slider_slider {
-    position: absolute; /* 相对于包含它的 .slider 元素绝对定位 */
-    width: 28px;
-    height: 28px;
-    top: 50%; /* 滑块垂直居中 */
-    z-index: 1;
-    transform: translate(-50%, -50%); /* 水平和垂直居中 */
     background-color: #D0D1D4;
     border: 2px solid #1E1E1F;
     box-shadow: inset 0 -4px #58585A, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
+    height: 28px;
+    position: absolute; /* 相对于包含它的 .slider 元素绝对定位 */
+    top: 50%; /* 滑块垂直居中 */
+    transform: translate(-50%, -50%); /* 水平和垂直居中 */
     transition: left 100ms linear;
+    width: 28px;
+    z-index: 1;
 }
 
 .slider_slider:hover, .slider_slider:active, .slider_content:hover .slider_slider, .slider_slider.active {
@@ -545,12 +704,12 @@ modal_button_list {
 }
 
 .slider_segment { /* Set Slider的分段线样式 */
-    position: absolute;
     background-color: #1E1E1F;
-    width: 2px;
     height: 8px;
+    position: absolute;
     top: 50%; /* 分段线垂直居中 */
     transform: translateY(-50%); /* 分段线垂直居中 */
+    width: 2px;
 }
 
 .slider_value_info {
@@ -578,55 +737,56 @@ modal_button_list {
 
 .disabled_slider .slider_slider {
     background-color: #CFD0D4;
-    border: 2px solid #8B8C90;
+    border: 2px solid #8C8D90;
     box-shadow: inset 0 -4px #B0B1B5, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
 }
 
 .disabled_slider .slider_slider:hover, .disabled_slider .slider_slider:active, .slider_content:hover .disabled_slider .slider_slider, .disabled_slider .slider_slider.active {
     background-color: #CFD0D4;
-    border: 2px solid #8B8C90;
+    border: 2px solid #8C8D90;
     box-shadow: inset 0 -4px #B0B1B5, inset 2px 2px rgba(255, 255, 255, 0.6), inset -2px -6px rgba(255, 255, 255, 0.4);
 }
 
-/* Switch开关 */
+
+/* Switch 开关 */
 .switch_content {
     margin: 6px;
 }
 
 .switch {
-    width: 56px;
-    height: 24px;
-    position: relative;
-    overflow: visible;
     cursor: pointer;
+    height: 24px;
+    overflow: visible;
+    position: relative;
+    width: 58px;
 }
 
 .normal_switch {
-    border: 2px solid #1E1E1F;
     background: linear-gradient(to right, #3C8527 50%, #8C8D90 50%); /* 左半部分绿色，右半部分灰色 */
+    border: 2px solid #1E1E1F;
     box-shadow: inset 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px rgba(255, 255, 255, 0.1);
 }
 
 .disabled_switch {
-    border: 2px solid #8C8D90;
     background: #D0D1D4;
+    border: 2px solid #8C8D90;
     cursor: not-allowed;
 }
 
 .switch_style {
-    position: absolute;
-    width: 16px;
-    height: 16px;
     background-color: transparent;
+    height: 16px;
+    position: absolute;
     top: 3px;
+    width: 16px;
 }
 
 .switch_style.left {
-    left: 5px;
+    left: 6px;
 }
 
 .switch_style.right {
-    right: 6px;
+    right: 7px;
 }
 
 .switch_style.left img, .switch_style.right img {
@@ -674,14 +834,14 @@ modal_button_list {
 }
 
 .switch_slider {
+    background-color: #D0D1D4;
+    height: 28px;
+    left: -2px;
     position: absolute;
     top: -6px;
-    left: -2px;
-    width: 28px;
-    height: 28px;
-    z-index: 1;
-    background-color: #D0D1D4;
     transition: left 125ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 28px;
+    z-index: 1;
 }
 
 .normal_switch .switch_slider {
@@ -700,6 +860,74 @@ modal_button_list {
 }
 
 .switch.on .switch_slider {
-    left: 27px;
+    left: 28px;
 }
 
+
+/* TextField文本框 */
+.text_field_container {
+    display: flex;
+    margin: 6px;
+}
+
+text-field {
+    display: block;
+    flex: 1;
+    position: relative;
+}
+
+.disabled_text_field {
+    cursor: not-allowed;
+}
+
+.input {
+    background-color: #313233;
+    border: 2px solid #1E1E1F;
+    box-shadow: inset 0 4px #242425;
+    box-sizing: border-box; /* 包括内边距和边框 */
+    caret-color: #6CC349;
+    color: #FFFFFF;
+    cursor: text;
+    font-family: "NotoSans Bold", sans-serif;
+    height: max(100%, 40px);
+    outline: none;
+    overflow-y: hidden;
+    padding: 10px 10px 11px 10px;
+    resize: none;
+    width: 100%;
+}
+
+.disabled_text_field .input {
+    background-color: #D0D1D4;
+    border: 2px solid #8C8D90;
+    box-shadow: inset 0 4px #B1B2B5;
+    color: #48494A;
+    pointer-events: none;
+}
+
+.input::selection {
+    background: rgba(108, 195, 73, 0.5);
+}
+
+.hint {
+    color: #B1B2B5;
+    font-size: 14px;
+    height: 23px;
+    left: 10px;
+    pointer-events: none; /* 允许点击穿透 */
+    position: absolute;
+    top: 11px;
+    transition: opacity 0.2s ease;
+}
+
+.disabled_text_field .hint {
+    color: #48494A;
+}
+
+.text_field_container custom-button {
+    align-self: center;
+}
+
+.input_btn {
+    width: 120px;
+}

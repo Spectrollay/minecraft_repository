@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2020-2024. Spectrollay
+  ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -29,10 +29,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
     <link href="/minecraft_repository/stylesheet/editions.css" rel="stylesheet">
+    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <link href="/minecraft_repository/images/Logo.jpg" rel="icon">
     <title>携带版 - 星月Minecraft版本库</title>
 </head>
 
@@ -43,6 +43,17 @@
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
     </div>
 </div>
 <header>
@@ -50,851 +61,852 @@
         <img alt="" class="menu_icon" id="menu_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop();">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Logo.jpg"/><span
-            class="header_title">Repository</span>
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<scroll-container>
-    <main class="main_scroll_container" id="main">
-        <div id="main_top"></div>
-        <div class="block_spacing"></div>
-        <div class="block">
-            <div class="main">
-                <div class="title1">
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%88" onclick="playSound1();"
-                       target="_blank">Pocket Edition</a>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="scroll_container" id="main">
+            <div id="main_top"></div>
+            <div class="block_spacing"></div>
+            <div class="block">
+                <div class="main">
+                    <div class="title1">
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%88"
+                           target="_blank">Pocket Edition</a>
+                    </div>
+                    <div class="description1">携带版</div>
                 </div>
-                <div class="description1">携带版</div>
-            </div>
-            <div class="main version_block" id="1.1">
-                <div class="title2">1.1 - 探索更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%881.1.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
+                <div class="main version_block" id="1.1">
+                    <div class="title2">1.1 - 探索更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%881.1.0"
+                           target="_blank">中文Minecraft Wiki</a>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/1.1/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/GlMoSW');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134gdcf');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 1.1</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
                         </div>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-VcLN3.html');"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1eo8QYz7Gw1bv3pCwgXGwNQ?pwd=tkaj');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="1.0">
-                <div class="title2">1.0 - 末影更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%881.0.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/1.0/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/lKkkCL');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134gbzg');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 1.0</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/1.1/');"
+                                    text-generation="download_channel6"></button>
                         </div>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://www.123pan.com/s/qILA-5cLN3.html');"
-                                text-generation="download_channel3"></button>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1depcCPb-ISmp5DFDqNmoUA?pwd=ezj4');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.16">
-                <div class="title2">0.16 - Boss更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.16.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.16/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/AvMRsB');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpji');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.16</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/19g2lEFbqnHSUOy-BuKgfxg?pwd=e2ha');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.15">
-                <div class="title2">0.15 - 友好更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.15.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.15/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/bAXMiY');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fphg');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.15</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/GlMoSW');"
+                                    text-generation="download_channel1"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1Qg_7btK0vUk5JhkCQh4ooA?pwd=6m4m');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.14">
-                <div class="title2">0.14 - 主世界更新</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.14.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.14/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/4avWIg');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpfe');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.14</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134gdcf');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 1.1</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://www.123pan.com/s/qILA-VcLN3.html');"
+                                    text-generation="download_channel3"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1WTBcaymV1pB8ZD22fLMzWA?pwd=hvtd');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.13">
-                <div class="title2">0.13</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.13.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.13/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/vgk9iE');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpcb');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.13</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1eo8QYz7Gw1bv3pCwgXGwNQ?pwd=tkaj');"
+                                    text-generation="download_channel5"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1h3qm_Mnzidy6Ju3rQu4t4Q?pwd=3n9q');"
-                                text-generation="download_channel5"></button>
                     </div>
                 </div>
-            </div>
-            <div class="main version_block" id="0.12">
-                <div class="title2">0.12</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.12.2" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
+                <div class="main version_block" id="1.0">
+                    <div class="title2">1.0 - 末影更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%881.0.0"
+                           target="_blank">中文Minecraft Wiki</a>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.12/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/qXkxs3');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fpaj');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.12</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1_Ig7YTkzMIib_42CXECKNA?pwd=ezq9');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.11">
-                <div class="title2">0.11</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.11.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.11/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/MKMOHx');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp9i');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.11</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/1.0/');"
+                                    text-generation="download_channel6"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1jcyhM2pChDtKgT6GPJ4OGQ?pwd=ng4r');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.10">
-                <div class="title2">0.10</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.10.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.10/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/wxkBhK');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp6f');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.10</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1Obe5VGnHEEC5ezJj43Nfbg?pwd=rrr4');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.9">
-                <div class="title2">0.9</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.9.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.9/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/9xMBTd');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp4d');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.9</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/lKkkCL');"
+                                    text-generation="download_channel1"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1N8gW7u42UvPMFFlRs_TbAw?pwd=a3a8');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.8">
-                <div class="title2">0.8</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.8.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.8/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/zyq6HM');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp3c');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.8</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134gbzg');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 1.0</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://www.123pan.com/s/qILA-5cLN3.html');"
+                                    text-generation="download_channel3"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1x67QXMQ3Gi6VNpPyDCaetA?pwd=jh8n');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.7">
-                <div class="title2">0.7</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.7.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.7/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/dmV8CV');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fp2b');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.7</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1depcCPb-ISmp5DFDqNmoUA?pwd=ezj4');"
+                                    text-generation="download_channel5"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/17WbdUsuZFBPjtLQoyrmlZw?pwd=w3vb');"
-                                text-generation="download_channel5"></button>
                     </div>
                 </div>
-            </div>
-            <div class="main version_block" id="0.6">
-                <div class="title2">0.6</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.6.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
+                <div class="main version_block" id="0.16">
+                    <div class="title2">0.16 - Boss更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.16.0"
+                           target="_blank">中文Minecraft Wiki</a>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.6/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/PD56hm');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fozi');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.6</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1BIFPsanmDhuFpL62Nq-MBw?pwd=4hir');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.5">
-                <div class="title2">0.5</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.5.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.5/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/1DGzuv');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134foxg');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.5</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.16/');"
+                                    text-generation="download_channel6"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1vYQP00tXOWsQ5ghBaECTmQ?pwd=vcqh');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.4">
-                <div class="title2">0.4</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.4.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.4/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/xvDkIV');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fowf');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.4</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1aKmzhIWWJ-qDIaWvMW_AZQ?pwd=kqde');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.3">
-                <div class="title2">0.3</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.3.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.3/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/Xx7oul');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fotc');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.3</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/AvMRsB');"
+                                    text-generation="download_channel1"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1tARDI2dh4pN_xNurzznF6w?pwd=mbd3');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.2">
-                <div class="title2">0.2</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.2.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.2/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/6YDAfN');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fora');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.2</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fpji');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.16</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1dkjCRvmGS_TUaHFDbhWuxQ?pwd=czb7');"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main version_block" id="0.1">
-                <div class="title2">0.1</div>
-                <div class="description2">更新日志:
-                    <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.1.0" onclick="playSound1();"
-                       target="_blank">中文Minecraft Wiki</a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">官方原版</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android/0.1/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">网盘下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://pan.huang1111.cn/s/xVmEUV');"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <div class="btn_with_tooltip_cont">
-                            <button class="btn normal_btn btn_with_tooltip small_btn"
-                                    onclick="playSound(this);delayedOpenLink('https://www.lanzouj.com/b0134fopi');"
-                                    text-generation="download_channel2"></button>
-                            <div class="btn_tooltip">密码: 0.1</div>
-                            <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/19g2lEFbqnHSUOy-BuKgfxg?pwd=e2ha');"
+                                    text-generation="download_channel5"></button>
                         </div>
-                        <button class="btn red_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
                     </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn normal_btn small_btn"
-                                onclick="playSound(this);openLink('https://pan.baidu.com/s/1LvdOgSedhJmEnAxC1Q4SKA?pwd=r3z3');"
-                                text-generation="download_channel5"></button>
+                </div>
+                <div class="main version_block" id="0.15">
+                    <div class="title2">0.15 - 友好更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.15.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.15/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/bAXMiY');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fphg');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.15</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1Qg_7btK0vUk5JhkCQh4ooA?pwd=6m4m');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.14">
+                    <div class="title2">0.14 - 主世界更新</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.14.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.14/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/4avWIg');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fpfe');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.14</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1WTBcaymV1pB8ZD22fLMzWA?pwd=hvtd');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.13">
+                    <div class="title2">0.13</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.13.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.13/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/vgk9iE');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fpcb');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.13</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1h3qm_Mnzidy6Ju3rQu4t4Q?pwd=3n9q');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.12">
+                    <div class="title2">0.12</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.12.2"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.12/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/qXkxs3');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fpaj');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.12</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1_Ig7YTkzMIib_42CXECKNA?pwd=ezq9');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.11">
+                    <div class="title2">0.11</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.11.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.11/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/MKMOHx');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fp9i');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.11</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1jcyhM2pChDtKgT6GPJ4OGQ?pwd=ng4r');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.10">
+                    <div class="title2">0.10</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.10.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.10/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/wxkBhK');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fp6f');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.10</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1Obe5VGnHEEC5ezJj43Nfbg?pwd=rrr4');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.9">
+                    <div class="title2">0.9</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.9.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.9/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/9xMBTd');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fp4d');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.9</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1N8gW7u42UvPMFFlRs_TbAw?pwd=a3a8');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.8">
+                    <div class="title2">0.8</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.8.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.8/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/zyq6HM');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fp3c');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.8</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1x67QXMQ3Gi6VNpPyDCaetA?pwd=jh8n');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.7">
+                    <div class="title2">0.7</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.7.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.7/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/dmV8CV');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fp2b');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.7</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/17WbdUsuZFBPjtLQoyrmlZw?pwd=w3vb');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.6">
+                    <div class="title2">0.6</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.6.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.6/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/PD56hm');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fozi');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.6</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1BIFPsanmDhuFpL62Nq-MBw?pwd=4hir');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.5">
+                    <div class="title2">0.5</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.5.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.5/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/1DGzuv');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134foxg');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.5</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1vYQP00tXOWsQ5ghBaECTmQ?pwd=vcqh');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.4">
+                    <div class="title2">0.4</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.4.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.4/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/xvDkIV');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fowf');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.4</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1aKmzhIWWJ-qDIaWvMW_AZQ?pwd=kqde');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.3">
+                    <div class="title2">0.3</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.3.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.3/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/Xx7oul');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fotc');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.3</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1tARDI2dh4pN_xNurzznF6w?pwd=mbd3');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.2">
+                    <div class="title2">0.2</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.2.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.2/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/6YDAfN');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fora');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.2</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1dkjCRvmGS_TUaHFDbhWuxQ?pwd=czb7');"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main version_block" id="0.1">
+                    <div class="title2">0.1</div>
+                    <div class="description2">更新日志:
+                        <a href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.1.0"
+                           target="_blank">中文Minecraft Wiki</a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">官方原版</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android/0.1/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">网盘下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/xVmEUV');"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <div class="btn_with_tooltip_cont">
+                                <button class="btn normal_btn btn_with_tooltip small_btn"
+                                        onclick="playSoundType(this);delayedOpenLink('https://www.lanzouj.com/b0134fopi');"
+                                        text-generation="download_channel2"></button>
+                                <div class="btn_tooltip">密码: 0.1</div>
+                                <img alt="Key" class="tip_icon" src="/minecraft_repository/images/Key.png"/>
+                            </div>
+                            <button class="btn red_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn normal_btn small_btn"
+                                    onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1LvdOgSedhJmEnAxC1Q4SKA?pwd=r3z3');"
+                                    text-generation="download_channel5"></button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="page_info"></div>
-    </main>
-</scroll-container>
-<custom-scrollbar>
-    <custom-scrollbar-track></custom-scrollbar-track>
-    <custom-scrollbar-thumb></custom-scrollbar-thumb>
-</custom-scrollbar>
+            <div id="page_info"></div>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
 
 <!--侧边栏-->
 <div class="sidebar" id="sidebar">
-    <scroll-container id="sidebar_scroll_container">
-        <div class="sidebar_area main_scroll_container">
-            <div class="sidebar_content">
+    <scroll-view>
+        <scroll-container class="sidebar_scroll_container">
+            <div class="sidebar_content scroll_container">
                 <div class="sidebar_header">
-                    <button class="btn sidebar_btn" id="back_to_main" onclick="mainPage();"></button>
+                    <custom-button data="sidebar|normal|||false||" js="mainPage();" text="返回首页"></custom-button>
                 </div>
                 <div class="sidebar_list">
                     <div class="sidebar_item">携带版</div>
@@ -921,17 +933,16 @@
                     <div class="sidebar_detail_title" id="sidebar_bottom_title"></div>
                     <div class="sidebar_detail" id="sidebar_bottom_detail1"></div>
                     <div class="sidebar_detail">
-                        <custom-button data="sidebar|normal||sidebar_bottom_btn|false||" js="clickedSidebarBottomBtn();"
-                                       text=""></custom-button>
+                        <custom-button data="sidebar|normal|||false||" js="clickedSidebarBottomBtn();" text="官方网站"></custom-button>
                     </div>
                 </div>
             </div>
-        </div>
-    </scroll-container>
-    <custom-scrollbar>
-        <custom-scrollbar-track></custom-scrollbar-track>
-        <custom-scrollbar-thumb></custom-scrollbar-thumb>
-    </custom-scrollbar>
+        </scroll-container>
+        <custom-scrollbar class="sidebar_custom_scrollbar">
+            <custom-scrollbar-track></custom-scrollbar-track>
+            <custom-scrollbar-thumb></custom-scrollbar-thumb>
+        </custom-scrollbar>
+    </scroll-view>
 </div>
 
 <!--遮罩-->
@@ -940,55 +951,12 @@
 
 </body>
 
-<script>
-    const custom_elements_js = document.createElement('script');
-    const public_script = document.createElement('script');
-    const public_define = document.createElement('script');
-
-    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    public_define.src = '/minecraft_repository/javascript/public_define.js';
-
-    document.head.appendChild(custom_elements_js);
-    document.head.appendChild(public_script);
-    document.head.appendChild(public_define);
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
-    const loading_mask = document.getElementById('loading_mask');
-
-    function hide_mask() {
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
-    }
-
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
-
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
-    });
-</script>
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
 <script src="/minecraft_repository/javascript/editions.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
 
 <!--<style>-->
 <!--    -->

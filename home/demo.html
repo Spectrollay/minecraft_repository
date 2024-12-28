@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2020-2024. Spectrollay
+  ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -29,10 +29,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
     <link href="/minecraft_repository/stylesheet/editions.css" rel="stylesheet">
+    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
     <!--    <style>-->
     <!--        -->
     <!--    </style>-->
-    <link href="/minecraft_repository/images/Logo.jpg" rel="icon">
     <title>演示版 - 星月Minecraft版本库</title>
 </head>
 
@@ -43,6 +43,17 @@
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
     </div>
 </div>
 <header>
@@ -50,105 +61,106 @@
         <img alt="" class="menu_icon" id="menu_icon" src=""/>
     </div>
     <div class="header_logo" onclick="scrollToTop()">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Logo.jpg"/><span
-            class="header_title">Repository</span>
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<scroll-container>
-    <main class="main_scroll_container" id="main">
-        <div id="main_top"></div>
-        <div class="block_spacing"></div>
-        <div class="block">
-            <div class="main">
-                <div class="title1">
-                    <a href="https://zh.minecraft.wiki/w/%E6%BC%94%E7%A4%BA%E6%A8%A1%E5%BC%8F" onclick="playSound1();"
-                       target="_blank">Minecraft Demo</a>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="scroll_container" id="main">
+            <div id="main_top"></div>
+            <div class="block_spacing"></div>
+            <div class="block">
+                <div class="main">
+                    <div class="title1">
+                        <a href="https://zh.minecraft.wiki/w/%E6%BC%94%E7%A4%BA%E6%A8%A1%E5%BC%8F"
+                           target="_blank">Minecraft Demo</a>
+                    </div>
+                    <div class="description1">演示版</div>
                 </div>
-                <div class="description1">演示版</div>
+                <div class="main" id="0.2">
+                    <div class="title2">0.2</div>
+                    <div class="description2">更新日志:
+                        <a class="wiki" href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.2.0"
+                           target="_blank"></a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android-Demo/0.2/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel2"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main" id="0.1">
+                    <div class="title2">0.1</div>
+                    <div class="description2">更新日志:
+                        <a class="wiki" href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.1.0"
+                           target="_blank"></a>
+                    </div>
+                    <div class="download_group">
+                        <div class="btn_group">
+                            <div class="description3">下载</div>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn normal_btn large_btn"
+                                    onclick="playSoundType(this);openLink('https://mcarc.github.io/Android-Demo/0.1/');"
+                                    text-generation="download_channel6"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel1"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel2"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel3"></button>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel4"></button>
+                            <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
+                                    text-generation="download_channel5"></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="main" id="0.2">
-                <div class="title2">0.2</div>
-                <div class="description2">更新日志:
-                    <a class="wiki" href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.2.0"
-                       onclick="playSound1();" target="_blank"></a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Demo/0.2/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn large_btn" onclick="playSound(this);"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel2"></button>
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="main" id="0.1">
-                <div class="title2">0.1</div>
-                <div class="description2">更新日志:
-                    <a class="wiki" href="https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.1.0"
-                       onclick="playSound1();" target="_blank"></a>
-                </div>
-                <div class="download_group">
-                    <div class="btn_group">
-                        <div class="description3">下载</div>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn normal_btn large_btn"
-                                onclick="playSound(this);openLink('https://mcarc.github.io/Android-Demo/0.1/');"
-                                text-generation="download_channel6"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn large_btn" onclick="playSound(this);"
-                                text-generation="download_channel1"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel2"></button>
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel3"></button>
-                    </div>
-                    <div class="btn_group">
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel4"></button>
-                        <button class="btn disabled_btn small_btn" onclick="playSound(this);"
-                                text-generation="download_channel5"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="page_info"></div>
-    </main>
-</scroll-container>
-<custom-scrollbar>
-    <custom-scrollbar-track></custom-scrollbar-track>
-    <custom-scrollbar-thumb></custom-scrollbar-thumb>
-</custom-scrollbar>
+            <div id="page_info"></div>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
 
 <!--侧边栏-->
 <div class="sidebar" id="sidebar">
-    <scroll-container id="sidebar_scroll_container">
-        <div class="sidebar_area main_scroll_container">
-            <div class="sidebar_content">
+    <scroll-view>
+        <scroll-container class="sidebar_scroll_container">
+            <div class="sidebar_content scroll_container">
                 <div class="sidebar_header">
-                    <button class="btn sidebar_btn" id="back_to_main" onclick="mainPage();"></button>
+                    <custom-button data="sidebar|normal|||false||" js="mainPage();" text="返回首页"></custom-button>
                 </div>
                 <div class="sidebar_list">
                     <div class="sidebar_item">演示版</div>
@@ -159,17 +171,16 @@
                     <div class="sidebar_detail_title" id="sidebar_bottom_title"></div>
                     <div class="sidebar_detail" id="sidebar_bottom_detail1"></div>
                     <div class="sidebar_detail">
-                        <custom-button data="sidebar|normal||sidebar_bottom_btn|false||" js="clickedSidebarBottomBtn();"
-                                       text=""></custom-button>
+                        <custom-button data="sidebar|normal|||false||" js="clickedSidebarBottomBtn();" text="官方网站"></custom-button>
                     </div>
                 </div>
             </div>
-        </div>
-    </scroll-container>
-    <custom-scrollbar>
-        <custom-scrollbar-track></custom-scrollbar-track>
-        <custom-scrollbar-thumb></custom-scrollbar-thumb>
-    </custom-scrollbar>
+        </scroll-container>
+        <custom-scrollbar class="sidebar_custom_scrollbar">
+            <custom-scrollbar-track></custom-scrollbar-track>
+            <custom-scrollbar-thumb></custom-scrollbar-thumb>
+        </custom-scrollbar>
+    </scroll-view>
 </div>
 
 <!--遮罩-->
@@ -178,55 +189,12 @@
 
 </body>
 
-<script>
-    const custom_elements_js = document.createElement('script');
-    const public_script = document.createElement('script');
-    const public_define = document.createElement('script');
-
-    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    public_define.src = '/minecraft_repository/javascript/public_define.js';
-
-    document.head.appendChild(custom_elements_js);
-    document.head.appendChild(public_script);
-    document.head.appendChild(public_define);
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
-    const loading_mask = document.getElementById('loading_mask');
-
-    function hide_mask() {
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
-    }
-
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
-
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
-    });
-</script>
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
 <script src="/minecraft_repository/javascript/editions.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
 
 <!--<script>-->
 <!--    -->

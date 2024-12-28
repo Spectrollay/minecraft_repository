@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2020-2024. Spectrollay
+  ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,17 @@
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
     </div>
 </div>
 <header>
@@ -54,164 +65,244 @@
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<scroll-container>
-    <main class="main_scroll_container" id="main">
-        <div class="main_title">
-            <div class="main_title_span">设置</div>
-        </div>
-        <!--  TODO: 移除时一并移除相应样式  -->
-        <div class="main preview_block">
-            <div class="preview_title">抢先体验设置页面!</div>
-            <div class="preview_detail">我们正在开发版本库的设置页面.</div>
-            <div class="preview_detail">你认为我们有什么可以改进的地方吗?</div>
-            <div class="preview_detail">请注意: 开发仍在进行中,可能会缺失部分功能.</div>
-            <div class="btn_group">
-                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
-                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="scroll_container" id="main">
+            <div class="main_title">
+                <div class="main_title_span">设置</div>
             </div>
-        </div>
-        <div class="main_block setting_block" id="quit_test">
-            <div class="setting_content">退出测试</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="leaveTest();" text="离开"></custom-button>
+            <!--  TODO: 移除时一并移除相应样式  -->
+            <div class="main preview_block">
+                <div class="preview_title">抢先体验设置页面!</div>
+                <div class="preview_detail">我们正在开发版本库的设置页面.</div>
+                <div class="preview_detail">你认为我们有什么可以改进的地方吗?</div>
+                <div class="preview_detail">请注意: 开发仍在进行中,可能会缺失部分功能.</div>
+                <div class="btn_group">
+                    <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
+                    <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+                </div>
             </div>
-        </div>
-        <div class="setting_title">外观</div>
-        <div class="main_block setting_block">
-            主题
-        </div>
-        <div class="main_block setting_block">
-            暗黑模式
-        </div>
-        <div class="main_block setting_block">
-            新的UI设计
-        </div>
-        <div class="main_block setting_block">
-            实验性新UI
-        </div>
-        <div class="main_block setting_block">
-            UI标度
-        </div>
-        <div class="setting_title">行为</div>
-        <div class="main_block setting_block">
-            加载指示器
-        </div>
-        <div class="main_block setting_block">
-            滚动条
-        </div>
-        <div class="setting_title">通知</div>
-        <div class="main_block setting_block">
-            Banner通知
-        </div>
-        <div class="main_block setting_block">
-            Modal通知
-        </div>
-        <div class="main_block setting_block">
-            Pop通知
-        </div>
-        <div class="setting_title">声音</div>
-        <div class="main_block setting_block">
-            启用音效
-        </div>
-        <div class="main_block setting_block">
-            音效音量
-        </div>
-        <div class="setting_title">其他</div>
-        <div class="main_block setting_block">
-            <div class="setting_content">语言</div>
-            <div class="setting_control_right">
+            <div class="main_block setting_block" id="quit_test">
+                <div class="setting_title_content">退出测试</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|red|||false||" js="leaveTest();" text="离开"></custom-button>
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">实验性内容</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="flagsPage();" text="查看"></custom-button>
+            <div class="setting_title">无障碍</div>
+            <div class="main_block setting_block exp_accessibility">
+                <div class="setting_title_content">使用文本转语音<span class="tag yellow_tag exp_tag">实验性</span></div>
+                <div class="setting_control_right">
+                    <custom-switch active="off" id="use_tts" status="disabled"></custom-switch>
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">环境指南</div>
-            <div class="setting_control_right">
+            <div class="main_block setting_block exp_accessibility">
+                <div class="setting_title_content">文本转语音音量</div>
             </div>
-        </div>
-        <div class="setting_title">高级</div>
-        <div class="main_block setting_block">
-            <div class="setting_content">清除存储数据</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="showModal('clear_storage_warning');" text="清除"></custom-button>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">高对比度UI</div>
+                <div class="setting_control_right">
+                    <custom-switch active="off" id="high_contrast_ui" status="disabled"></custom-switch>
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">重载容器环境</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="showModal('reload_page_warning');" text="重载"></custom-button>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">通知持续时间</div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">加载调试程序</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|red|||false||" js="jumpToPage('/minecraft_repository/default/error_no-access.html');" text="调试"></custom-button>
+            <div class="setting_title">外观</div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">主题</div>
+                <div class="setting_control_right">
+                    <div class="dropdown_container">
+                        <custom-dropdown data-option='["Vanilla", "Lite", "OreUI"]' data-selected="3" id="theme_selection" status="disabled" unselected-text=""></custom-dropdown>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="setting_title">关于</div>
-        <div class="main_block setting_block">
-            <div class="setting_content">星月Minecraft版本库</div>
-            <div class="setting_control_right setting_control_right_large">
-                <div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div class="setting_block_title flex">
+                        <div class="setting_title_content">暗黑模式</div>
+                        <div class="setting_control_right">
+                            <custom-switch active="off" id="dark_mode" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div class="setting_block_description">OreUI主题下无法启用</div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">新的UI设计</div>
+                <div class="setting_control_right">
+                    <custom-switch active="on" id="new_ui" status="disabled"></custom-switch>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">实验性新UI</div>
+                <div class="setting_control_right">
+                    <custom-switch active="off" id="exp_new_ui" status="enabled"></custom-switch>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">UI标度</div>
+            </div>
+            <div class="setting_title">行为</div>
+            <div class="main_block setting_block" id="use_all_tip">
+                <div class="setting_block_content">
+                    <div class="setting_block_title flex">
+                        <div class="setting_title_content">完整提示列表</div>
+                        <div class="setting_control_right">
+                            <custom-switch active="off" id="all_tip" status="enabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div class="setting_block_description">在开发仓库可以查看完整的主页提示</div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">访问受限弹窗</div>
+                <div class="setting_control_right">
+                    <custom-switch active="on" id="limited_access_modal" status="disabled"></custom-switch>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">加载指示器</div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">滚动条</div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">页面过渡动画</div>
+            </div>
+            <div class="setting_title">通知</div>
+            <div class="main_block setting_block">
+                Banner通知
+            </div>
+            <div class="main_block setting_block">
+                Modal通知
+            </div>
+            <div class="main_block setting_block">
+                Pop通知
+            </div>
+            <div class="setting_title">声音</div>
+            <div class="main_block setting_block">
+                启用音效
+            </div>
+            <div class="main_block setting_block">
+                音效音量
+            </div>
+            <div class="setting_title">其他</div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">语言</div>
+                <div class="setting_control_right">
+                    <div class="dropdown_container">
+                        <custom-dropdown data-option='["简体中文", "English"]' data-selected="1" id="language_selection" status="disabled" unselected-text=""></custom-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div class="setting_block_title flex">
+                        <div class="setting_title_content">实验性内容</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|normal|||false||" js="flagsPage();" text="查看"></custom-button>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div class="setting_block_title flex">
+                        <div class="setting_title_content">新的实验性内容页面</div>
+                        <div class="setting_control_right">
+                            <custom-switch active="off" id="new_flags_page" status="enabled"></custom-switch>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_block setting_block exp_envi_guide">
+                <div class="setting_title_content">环境指南<span class="tag yellow_tag exp_tag">实验性</span></div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|normal|||false||" js="enviPage();" text="阅读"></custom-button>
+                </div>
+            </div>
+            <div class="setting_title">高级</div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">清除存储数据</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|red|||false||" js="showModal('clear_storage_warning');" text="清除"></custom-button>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">重载容器环境</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|red|||false||" js="showModal('reload_page_warning');" text="重载"></custom-button>
+                </div>
+            </div>
+            <div class="main_block setting_block debug_mode">
+                <div class="setting_title_content">加载调试程序</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|red|||false||" js="jumpToPage('/minecraft_repository/advanced/debug.html');" text="调试"></custom-button>
+                </div>
+            </div>
+            <div class="main_block setting_block clear_all">
+                <div class="setting_title_content red_stroke">重置全部内容</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|red|||false||" js="showModal('clear_all_warning');" text="重置"></custom-button>
+                </div>
+            </div>
+            <div class="setting_title">关于</div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">星月Minecraft版本库</div>
+                <div class="setting_control_right setting_control_right_large">
                     <custom-button data="setting|normal|||false||" js="repoPage();" text="仓库"></custom-button>
                 </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">版本: <span id="setting_version"></span></div>
-            <div class="setting_control_right setting_control_right_large">
-                <div>
+            <div class="main_block setting_block" id="version_block">
+                <div class="setting_title_content">版本: <span id="setting_version"></span></div>
+                <div class="setting_control_right setting_control_right_large">
                     <custom-button data="setting|normal|||false||" js="showModal('version_info_modal');" text="详情"></custom-button>
                 </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">开发者: Spectrollay</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="openLink('https://github.com/Spectrollay');" text="瞅一瞅"></custom-button>
+            <div class="main_block setting_block" id="developer_block">
+                <div class="setting_title_content">开发者: Spectrollay</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|normal|||false||" js="openLink('https://github.com/Spectrollay');" text="瞅一瞅"></custom-button>
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">其他项目</div>
-            <div class="setting_control_down">
+            <div class="main_block setting_block">
+                <div class="setting_title_content">其他项目</div>
+                <div class="setting_control_down">
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">用户协议</div>
-            <div class="setting_control_right">
+            <div class="main_block setting_block">
+                <div class="setting_title_content">用户协议</div>
+                <div class="setting_control_right">
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">开源协议</div>
-            <div class="setting_control_right">
+            <div class="main_block setting_block">
+                <div class="setting_title_content">开源协议</div>
+                <div class="setting_control_right">
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">联系我们</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="jumpToPage('/minecraft_repository/default/error_not-found.html');" text="打开"></custom-button>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">联系我们</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|normal|||false||" js="jumpToPage('/minecraft_repository/default/error_not-found.html');" text="打开"></custom-button>
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">捐赠支持</div>
-            <div class="setting_control_right">
-                <custom-button data="setting|normal|||false||" js="showModal('donate_modal');" text="支持"></custom-button>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">捐赠支持</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|normal|||false||" js="showModal('donate_modal');" text="支持"></custom-button>
+                </div>
             </div>
-        </div>
-        <div class="main_block setting_block">
-            <div class="setting_content">特别鸣谢</div>
-            <div class="setting_control_right"></div>
-        </div>
-    </main>
-</scroll-container>
-<custom-scrollbar>
-    <custom-scrollbar-track></custom-scrollbar-track>
-    <custom-scrollbar-thumb></custom-scrollbar-thumb>
-</custom-scrollbar>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">特别鸣谢</div>
+                <div class="setting_control_right">
+                    <custom-button data="setting|normal|||false||" js="showModal('acknowledgments_modal');" text="查看"></custom-button>
+                </div>
+            </div>
+            <div id="the_end"></div>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
 
 
 <!--遮罩-->
@@ -223,7 +314,7 @@
 <modal_area id="version_info_modal">
     <modal>
         <modal_title_area>
-            <modal_title>版本信息</modal_title>
+            <modal_title>详情</modal_title>
             <modal_close_btn class="close_btn" onclick="hideModal(this);">
                 <img alt="" class="modal_close_btn_img" src=""/>
             </modal_close_btn>
@@ -233,7 +324,10 @@
         </modal_content>
         <modal_button_area>
             <modal_button_group>
-                <custom-button data="modal|green|||false||" js="hideModal(this);" text="好的"></custom-button>
+                <modal_button_list>
+                    <custom-button data="modal|green|||false||" js="hideModal(this);" text="好的"></custom-button>
+                    <custom-button data="modal|normal|||false||" js="copyText(document.getElementById('project_hash').innerText);hideModal(this);" text="复制校验码"></custom-button>
+                </modal_button_list>
             </modal_button_group>
         </modal_button_area>
     </modal>
@@ -244,19 +338,16 @@
 <modal_area id="clear_storage_warning">
     <modal>
         <modal_title_area>
-            <modal_title style="color: #C02D2D">清除存储数据</modal_title>
-            <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                <img alt="" class="modal_close_btn_img" src=""/>
-            </modal_close_btn>
+            <modal_title class="red_stroke">清除存储数据</modal_title>
         </modal_title_area>
         <modal_content>
-            <p>清除存储数据为危险功能!<br>这会导致你本地存储的本站数据全部丢失!<br>非必要请不要运行此功能!</p>
+            <p>清除存储数据为危险功能!<br>这会导致本站的本地存储数据(云控信息/个性化内容/保存的数据等)全部清空且永远无法恢复!<br>非必要请不要运行此功能!</p>
         </modal_content>
         <modal_button_area>
             <modal_button_group>
                 <modal_button_list>
                     <custom-button data="modal|normal|||false||" js="hideModal(this);" text="取消"></custom-button>
-                    <custom-button data="modal|red|||false||" js="hideModal(this);clearStorage();mainPage();" text="我知道我在做什么!"></custom-button>
+                    <custom-button data="modal|red|||false||" js="hideModal(this);clearStorage();" text="我知道我在做什么!"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
@@ -269,9 +360,6 @@
     <modal>
         <modal_title_area>
             <modal_title>重载容器环境</modal_title>
-            <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                <img alt="" class="modal_close_btn_img" src=""/>
-            </modal_close_btn>
         </modal_title_area>
         <modal_content>
             <p>建议在每次更新版本后运行此功能.<br>这可能可以解决网站的加载异常问题.<br>此功能不会影响你的本地数据.</p>
@@ -281,6 +369,33 @@
                 <modal_button_list>
                     <custom-button data="modal|normal|||false||" js="hideModal(this);" text="取消"></custom-button>
                     <custom-button data="modal|normal|||false||" js="hideModal(this);reloadPage();" text="继续"></custom-button>
+                </modal_button_list>
+            </modal_button_group>
+        </modal_button_area>
+    </modal>
+</modal_area>
+
+<!--重置警告弹窗-->
+<div class="overlay" id="overlay_clear_all_warning"></div>
+<modal_area id="clear_all_warning">
+    <modal>
+        <modal_title_area>
+            <modal_title class="red_stroke">重置全部内容</modal_title>
+        </modal_title_area>
+        <modal_content>
+            <p>重置全部内容为极度危险功能!<br>这会导致本域名(spectrollay.github.io)下所有站点的本地存储数据全部清除且永远无法恢复!<br>请不要运行此功能除非你已了解该功能的确切用法并知晓这可能会造成的后果!</p>
+        </modal_content>
+        <modal_textfield_area>
+            <modal_textfield_title>请输入"我知道我在做什么"以继续</modal_textfield_title>
+            <div class="text_field_container do_not_save" id="check_input">
+                <text-field hint="在此输入.." single-line="true" status="enabled" type="all"></text-field>
+            </div>
+        </modal_textfield_area>
+        <modal_button_area>
+            <modal_button_group>
+                <modal_button_list>
+                    <custom-button data="modal|green|||false||" js="hideModal(this);document.getElementById('check_input').querySelector('text-field').resetValue();" text="取消"></custom-button>
+                    <custom-button data="modal|disabled||check_continue|false||" js="" text="重置"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
@@ -302,7 +417,29 @@
         <modal_button_area>
             <modal_button_group>
                 <modal_button_list>
-                    <custom-button data="modal|normal|||false||" js="hideModal(this);jumpToPage('/minecraft_repository/donate.html');" text="打赏"></custom-button>
+                    <custom-button data="modal|normal|||false||" js="hideModal(this);jumpToPage('/minecraft_repository/about/donate.html');" text="打赏"></custom-button>
+                </modal_button_list>
+            </modal_button_group>
+        </modal_button_area>
+    </modal>
+</modal_area>
+
+<!--特别鸣谢弹窗-->
+<div class="overlay" id="overlay_acknowledgments_modal"></div>
+<modal_area id="acknowledgments_modal">
+    <modal>
+        <modal_title_area>
+            <modal_title>特别鸣谢</modal_title>
+            <modal_close_btn class="close_btn" onclick="hideModal(this);">
+                <img alt="" class="modal_close_btn_img" src=""/>
+            </modal_close_btn>
+        </modal_title_area>
+        <modal_content id="acknowledgments">
+        </modal_content>
+        <modal_button_area>
+            <modal_button_group>
+                <modal_button_list>
+                    <custom-button data="modal|normal|||false||" js="hideModal(this);" text="关闭"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
@@ -311,79 +448,77 @@
 
 </body>
 
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
 <script>
-    const custom_elements_js = document.createElement('script');
-    const public_script = document.createElement('script');
-    const public_define = document.createElement('script');
-
-    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    public_define.src = '/minecraft_repository/javascript/public_define.js';
-
-    document.head.appendChild(custom_elements_js);
-    document.head.appendChild(public_script);
-    document.head.appendChild(public_define);
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
     rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-
     if (rootPath.includes('_test')) {
         document.getElementById('quit_test').style.display = "flex";
+        document.getElementById('use_all_tip').style.display = "flex";
     }
 
-    const loading_mask = document.getElementById('loading_mask');
-
-    function hide_mask() {
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
+    // 新的实验性内容页面  TODO: 在旧的实验性内容页面被移除时时删除
+    const newFlagsPageElement = document.getElementsByClassName('new_flags_page');
+    if (!rootPath.includes('_test')) {
+        newFlagsPageElement[0].style.display = 'none';
     }
 
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
+    switchValues = JSON.parse(localStorage.getItem('(/minecraft_repository/)switch_value')) || {};
 
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
-    });
+    // 环境指南页面  TODO: 在移除环境指南页面实验性内容时移除相关代码
+    let expEnviGuideState = switchValues['experimental_envi_guide'] || 'off';
+    let envi_guide_elements = document.querySelectorAll('.exp_envi_guide');
+
+    if (expEnviGuideState === 'on') {
+        envi_guide_elements.forEach(envi_guide_element => {
+            envi_guide_element.style.display = 'flex';
+        })
+    } else {
+        envi_guide_elements.forEach(envi_guide_element => {
+            envi_guide_element.style.display = 'none';
+        })
+    }
+
+    // 实验性无障碍  TODO: 在移除实验性无障碍时移除相关代码
+    let expAccessibilityState = switchValues['experimental_accessibility'] || 'on';
+    let accessibility_elements = document.querySelectorAll('.exp_accessibility');
+
+    if (expAccessibilityState === 'on') {
+        accessibility_elements.forEach(accessibility_element => {
+            accessibility_element.style.display = 'flex';
+        })
+    } else {
+        accessibility_elements.forEach(accessibility_element => {
+            accessibility_element.style.display = 'none';
+        })
+    }
 </script>
-<link href="/minecraft_repository/stylesheet/advanced.css" rel="stylesheet">
-<script src="/minecraft_repository/javascript/advanced.js"></script>
 
 <style>
     /* TODO: 在移除预览提示块时移除该样式 */
     .preview_block {
-        border-top: 2px solid #5A5B5C;
         border-bottom: 2px solid #333334;
+        border-top: 2px solid #5A5B5C;
     }
 
-    #quit_test {
+    /* TODO: 在移除环境指南页面实验性内容时移除该样式 */
+    .exp_envi_guide {
+        display: none;
+    }
+
+    #quit_test, #show_all_tip {
         display: none;
     }
 
     table, th, tr, td {
-        width: auto;
-        height: auto;
         border: none;
+        height: auto;
         text-align: left;
+        width: auto;
+    }
+
+    table {
+        margin: 10px 0;
     }
 
     tr {
@@ -394,10 +529,26 @@
         width: 120px;
     }
 
+    .left_td {
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .right_td {
+        padding-left: 10px;
+    }
+
     #setting_version_detail {
+        justify-items: center;
+    }
+
+    .switch_content {
         display: flex;
-        align-items: center;
         justify-content: center;
+    }
+
+    .debug_mode, .clear_all {
+        display: none;
     }
 </style>
 

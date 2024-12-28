@@ -1,0 +1,325 @@
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="/minecraft_repository/images/Tool.png" rel="icon">
+    <!--    <style>-->
+
+    <!--    </style>-->
+    <title>实验性内容</title>
+</head>
+
+<body>
+<div class="loading_mask" id="loading_mask">
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
+    </div>
+</div>
+<header>
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="" class="back_icon" id="back_icon" src=""/>
+    </div>
+    <div class="header_logo" onclick="scrollToTop();">
+        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Tool.png"/>
+        <span class="header_title">Experiments</span>
+    </div>
+    <div class="header_item header_item_right" id="debug" onclick="playSoundType(this);debugPage();">
+        <img alt="" class="debug_icon" src="/minecraft_repository/images/Debug.png"/>
+    </div>
+</header>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="scroll_container" id="main">
+            <div id="main_top"></div>
+            <div class="main_title">
+                <div class="main_title_span">实验性内容</div>
+            </div>
+            <div class="banner_area">
+                <div class="banner important_banner" style="margin-bottom: 0">本页面的OreUI设计将在未来的版本中被拆分到OreUI仓库中进行测试</div>
+            </div>
+            <div class="banner_area">
+                <div class="banner information_banner" id="experiment_banner"></div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>功能</div>
+                    <br>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">设置页面</div>
+                            <custom-switch active="on" id="experimental_settings" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">环境指南页面</div>
+                            <custom-switch active="off" id="experimental_envi_guide" status="enabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">惰性加载机制</div>
+                            <custom-switch active="on" id="experimental_lazy_load" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">响应式设计</div>
+                            <custom-switch active="on" id="experimental_responsive_design" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">网页文本转语音</div>
+                            <custom-switch active="on" id="experimental_accessibility" status="enabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">服务响应优化</div>
+                            <custom-switch active="off" id="experimental_service_response_optimization" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">返回重载优化</div>
+                            <custom-switch active="off" id="experimental_back_reload_optimization" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <divider></divider>
+                    <div>
+                        <div class="setting_block_title flex">
+                            <div class="setting_title_content">全新的动画设计</div>
+                            <custom-switch active="on" id="new_animation_design" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>Dropdown</div>
+                    <br>
+                    <div>Normal Dropdown</div>
+                    <div class="dropdown_container">
+                        <custom-dropdown data-option='["Option 1", "Option 2", "Option 3"]' data-selected="2" id="exp_dropdown_1" status="enabled" unselected-text=""></custom-dropdown>
+                    </div>
+                    <div>Customized Dropdown</div>
+                    <div class="dropdown_container">
+                        <custom-dropdown data-option='["Peaceful", "Easy", "Normal", "Hard"]' data-selected="1" id="exp_dropdown_2" status="enabled" unselected-text=""></custom-dropdown>
+                    </div>
+                    <div>Unselected Dropdown</div>
+                    <div class="dropdown_container">
+                        <custom-dropdown data-option='["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"]' data-selected="0" id="exp_dropdown_3" status="enabled" unselected-text=""></custom-dropdown>
+                    </div>
+                    <div>Disabled Dropdown</div>
+                    <div class="dropdown_container">
+                        <custom-dropdown data-option='["Option 1", "Option 2", "Option 3"]' data-selected="0" id="exp_dropdown_4" status="disabled" unselected-text="Not Selectable"></custom-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>Expandable List</div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>Pop Dialog</div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>Radio Group</div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>Slider</div>
+                    <br>
+                    <div>Range Slider with Initial Value</div>
+                    <custom-slider data-show-segments="false" data-slider='{"minValue":0,"maxValue":100,"segments":null,"initialValue":55.55}' id="range_slider_1" status="enabled" type="range"></custom-slider>
+                    <br>
+                    <div>Range Slider with Customized Interval</div>
+                    <custom-slider data-slider='{"minValue":20,"maxValue":60,"segments":null,"initialValue":null}' id="range_slider_2" status="enabled" type="range"></custom-slider>
+                    <br>
+                    <div>Disabled Range Slider</div>
+                    <custom-slider data-slider='{"minValue":0,"maxValue":100,"segments":null,"initialValue":80.00}' id="disabled_range_slider_1" status="disabled" type="range"></custom-slider>
+                    <br>
+                    <div>Set Slider with Initial Value</div>
+                    <custom-slider data-slider='{"minValue":40,"maxValue":60,"segments":5,"initialValue":48}' id="set_slider_1" status="enabled" type="set"></custom-slider>
+                    <br>
+                    <div>Set Slider with Customized Interval</div>
+                    <custom-slider data-custom-segments="true" data-segment-values='["A", "B", "C", "D", "E"]' data-show-segments="true" data-slider='{"minValue":0,"maxValue":100,"segments":4,"initialValue":25}' id="set_slider_2" status="enabled" type="set"></custom-slider>
+                    <br>
+                    <div>Disabled Set Slider</div>
+                    <custom-slider data-show-segments="true" data-slider='{"minValue":0,"maxValue":100,"segments":5,"initialValue":60}' id="disabled_set_slider_1" status="disabled" type="set"></custom-slider>
+                    <br>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>Switch</div>
+                    <br>
+                    <div>
+                        <div>
+                            <div>Normal Switch 1</div>
+                            <custom-switch active="off" id="exp_switch_1" status="enabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Normal Switch 2</div>
+                            <custom-switch active="on" id="exp_switch_2" status="enabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Disabled Switch 1</div>
+                            <custom-switch active="off" id="exp_switch_3" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Disabled Switch 2</div>
+                            <custom-switch active="on" id="exp_switch_4" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_block setting_block">
+                <div class="setting_block_content">
+                    <div>TextField</div>
+                    <br>
+                    <div>Normal TextField</div>
+                    <div class="text_field_container" id="exp_text_field_0">
+                        <text-field hint="input anything here.." single-line="false" status="enabled" type="all"></text-field>
+                    </div>
+                    <div>Normal TextField Single Line</div>
+                    <div class="text_field_container" id="exp_text_field_1">
+                        <text-field hint="input anything here.." single-line="true" status="enabled" type="all"></text-field>
+                    </div>
+                    <div>Disabled TextField</div>
+                    <div class="text_field_container" id="exp_text_field_2">
+                        <text-field hint="can't input here" single-line="false" status="disabled" type="all"></text-field>
+                    </div>
+                    <div>TextField with Button</div>
+                    <div class="text_field_container" id="exp_text_field_3">
+                        <text-field hint="input anything here.." single-line="false" status="enabled" type="all"></text-field>
+                        <custom-button data="input|normal|||false||" js="document.getElementById('exp_text_field_3').querySelector('text-field').resetValue();" text="reset"></custom-button>
+                    </div>
+                    <div>Number TextField</div>
+                    <div class="text_field_container" id="exp_text_field_4">
+                        <text-field hint="input numbers here.." single-line="false" status="enabled" type="number"></text-field>
+                        <custom-button data="input|normal|||false||" js="document.getElementById('exp_text_field_4').querySelector('text-field').resetValue();" text="reset"></custom-button>
+                    </div>
+                    <div>Letter TextField</div>
+                    <div class="text_field_container" id="exp_text_field_5">
+                        <text-field hint="input letters here.." single-line="false" status="enabled" type="letter"></text-field>
+                        <custom-button data="input|normal|||false||" js="document.getElementById('exp_text_field_5').querySelector('text-field').resetValue();" text="reset"></custom-button>
+                    </div>
+                    <div>Operator TextField</div>
+                    <div class="text_field_container" id="exp_text_field_6">
+                        <text-field hint="input operators here.." single-line="false" status="enabled" type="operator"></text-field>
+                        <custom-button data="input|normal|||false||" js="document.getElementById('exp_text_field_6').querySelector('text-field').resetValue();" text="reset"></custom-button>
+                    </div>
+                </div>
+            </div>
+            <div id="page_info"></div>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
+
+<!--遮罩-->
+<!--除了顶栏-->
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+</body>
+
+<script>
+    const public_script = document.createElement('script');
+    public_script.src = '/minecraft_repository/javascript/public_script.js';
+    document.head.appendChild(public_script);
+
+    function hide_mask() {
+        const loading_mask = document.getElementById('loading_mask');
+        // 延时600ms后隐藏蒙版
+        loading_mask.style.opacity = '0';
+        setTimeout(function () {
+            loading_mask.style.display = 'none';
+        }, 600);
+    }
+
+    // 加载超过8秒时
+    let count = 8;
+    const secondInterval = setInterval(function () {
+        count--;
+        if (count <= 0) {
+            clearInterval(secondInterval);
+            hide_mask();
+        }
+    }, 1000);
+
+    // 页面加载完成时
+    window.addEventListener('load', function () {
+        hide_mask();
+    });
+</script>
+
+<!--<style>-->
+<!--    -->
+<!--</style>-->
+
+</html>

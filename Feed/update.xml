@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Copyright © 2020-2024 Spectrollay. All rights reserved. -->
+<!-- Copyright © 2020 Spectrollay. All rights reserved. -->
 <rss version="2.0">
     <channel>
         <title>星月Minecraft版本库 - 开发日志</title>
         <link>https://spectrollay.github.io/minecraft_repository/updatelog/</link>
         <description>星月Minecraft版本库是一个开放共享的资源站,专注于收录Minecraft发布过的所有版本.</description>
         <language>zh-cn</language>
+        <item>
+            <title>版本库已更新 4.6.5.82.Beta</title>
+            <link>https://spectrollay.github.io/minecraft_repository/</link>
+            <description>更新内容详见:
+                <a href="https://spectrollay.github.io/minecraft_repository/updatelog/">开发日志</a>
+            </description>
+            <pubDate>Sat, 28 Dec 2024 18:00:00 GMT</pubDate>
+        </item>
         <item>
             <title>版本库已更新 4.6.5.20.Stable</title>
             <link>https://spectrollay.github.io/minecraft_repository/</link>

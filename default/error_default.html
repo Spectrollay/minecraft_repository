@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2020-2024. Spectrollay
+  ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -31,20 +31,20 @@
     <link href="/minecraft_repository/stylesheet/public_style.css" rel="stylesheet">
     <style>
         .title_content {
-            padding-top: 20px;
-            padding-left: 20px;
             border-bottom: 2px solid #FFFFFF;
+            padding-left: 20px;
+            padding-top: 20px;
         }
 
         .display {
-            display: grid;
             align-items: center;
+            display: grid;
             justify-content: center;
         }
 
         .error {
-            font-size: 20px;
             color: #C93D3D;
+            font-size: 20px;
         }
 
         .error-detail {
@@ -59,14 +59,6 @@
 </head>
 
 <body>
-<div class="loading_mask" id="loading_mask">
-    <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
-        <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
-        </div>
-    </div>
-</div>
 <div class="title_content">
     <h3><span class="error">ERROR</span><br></h3>
     <p class="error-detail">It seems the website ran into a problem..</p>
@@ -78,9 +70,10 @@
     <div class="display">
         <h1>Minecraft Kit</h1>
         <div class="error-img"><img alt="Error Image" src="/minecraft_repository/images/Error_default.png"/></div>
-        <p class="main_detail_center">This page is under maintenance..</p>
+        <p class="main_detail_center">Something Went Wrong</p>
+        <p class="main_detail_center" style="font-size: 16px">maybe you'd come back later</p>
         <p class="main_detail_center">
-            <a href="javascript:void(0);" onclick="playSound1();mainPage();">Back to Main Page</a>
+            <a href="javascript:void(0);" onclick="retry();">Retry</a> | <a href="javascript:void(0);" onclick="mainPage();">Main Page</a>
         </p>
     </div>
 </div>
@@ -91,54 +84,7 @@
 
 </body>
 
-<script>
-    const custom_elements_js = document.createElement('script');
-    const public_script = document.createElement('script');
-    const public_define = document.createElement('script');
-
-    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    public_define.src = '/minecraft_repository/javascript/public_define.js';
-
-    document.head.appendChild(custom_elements_js);
-    document.head.appendChild(public_script);
-    document.head.appendChild(public_define);
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
-    const loading_mask = document.getElementById('loading_mask');
-
-    function hide_mask() {
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
-    }
-
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
-
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
-    });
-</script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
 
 <style>
     body {

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2020-2024. Spectrollay
+  ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -41,6 +41,17 @@
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
     </div>
 </div>
 <header>
@@ -52,36 +63,38 @@
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<scroll-container>
-    <main class="main_scroll_container" id="main">
-        <div class="main_title">
-            <div class="main_title_area">
-                <div class="main_title_span">项目环境指南</div>
-                <div class="description1">2024-01-01</div>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="scroll_container" id="main">
+            <div class="main_title">
+                <div class="main_title_area">
+                    <div class="main_title_span">项目环境指南</div>
+                    <div class="description1">2024-01-01</div>
+                </div>
             </div>
-        </div>
-        <!--  TODO: 移除时一并移除相应样式  -->
-        <div class="main preview_block">
-            <div class="preview_title" id="preview_title"></div>
-            <div class="preview_detail" id="preview_detail1"></div>
-            <div class="preview_detail" id="preview_detail2"></div>
-            <div class="btn_group">
-                <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
-                <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+            <!--  TODO: 移除时一并移除相应样式  -->
+            <div class="main preview_block">
+                <div class="preview_title" id="preview_title"></div>
+                <div class="preview_detail" id="preview_detail1"></div>
+                <div class="preview_detail" id="preview_detail2"></div>
+                <div class="btn_group">
+                    <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
+                    <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
+                </div>
             </div>
-        </div>
-        <div class="main_block description">
-            <p>欢迎来到项目环境指南页面!</p>
-            <p>页面内容待完成...</p>
-            <p>敬请期待.</p>
-        </div>
-        <div id="page_info"></div>
-    </main>
-</scroll-container>
-<custom-scrollbar>
-    <custom-scrollbar-track></custom-scrollbar-track>
-    <custom-scrollbar-thumb></custom-scrollbar-thumb>
-</custom-scrollbar>
+            <div class="main_block description">
+                <p>欢迎来到项目环境指南页面!</p>
+                <p>页面内容待完成...</p>
+                <p>敬请期待.</p>
+            </div>
+            <div id="page_info"></div>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
 
 <!--遮罩-->
 <!--除了顶栏-->
@@ -89,60 +102,17 @@
 
 </body>
 
-<script>
-    const custom_elements_js = document.createElement('script');
-    const public_script = document.createElement('script');
-    const public_define = document.createElement('script');
-
-    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    public_define.src = '/minecraft_repository/javascript/public_define.js';
-
-    document.head.appendChild(custom_elements_js);
-    document.head.appendChild(public_script);
-    document.head.appendChild(public_define);
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
-    const loading_mask = document.getElementById('loading_mask');
-
-    function hide_mask() {
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
-    }
-
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
-
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
-    });
-</script>
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
 
 <style>
     /* TODO: 在移除预览提示块时移除该样式 */
     .preview_block {
-        border-top: 2px solid #5A5B5C;
         border-bottom: 2px solid #333334;
+        border-top: 2px solid #5A5B5C;
     }
 </style>
 

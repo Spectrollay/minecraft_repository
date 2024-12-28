@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2020-2024. Spectrollay
+  ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,17 @@
         <div class="spinner">
             <div class="spinner"><span class="spinner_text">载入中</span></div>
         </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
     </div>
 </div>
 <header>
@@ -54,134 +65,140 @@
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
-<scroll-container>
-    <main class="main_scroll_container" id="main">
-        <div>
-            <div class="block">
-                <div class="main">
-                    <div class="title1">消息中心</div>
-                </div>
-                <div class="main message">
-                    <article_block id="update_plan_202412">
-                        <article_title>更多的版本下载选项!</article_title>
-                        <article_date>发布: 2024-12-08</article_date>
-                        <article_detail>
-                            <p>好久不见! 距离上个正式版本发布已经过去半年有余, 4.6.5版本的开发也已经接近尾声, 新版本很快能够和大家见面!</p>
-                            <p>当然了, 发布这则消息不仅仅是为了申明我们没有在偷懒, 更是为了隆重宣布我们对于即将到来版本的更新规划! 这其中包含了众多玩家期待的新内容!</p>
-                            <p>先来说说4.6.5版本, 除去已经推送到开发仓库的更新外, 还有一小部分的新内容与优化修复在进行中. 当我们完成了这些预定的更新后将会很快发布正式版.</p>
-                            <p>接着是4.6.6版本, 这是一次计划中的小型更新, 预计于4.6.5版本发布后的一个月内发布, 计划对版本库主页进行升级, 加入联系我们页面以及账号系统和星币系统, 优化部分页面的体验. OreUI仓库也计划在版本发布前后正式上线.</p>
-                            <p>在4.6.6版本后, 有一次大更新, 这也是OreUI设计真正意义上的完全体 - 4.6.10版本! 关于这次大更新的具体内容, 开发日志页面已经列出了一小部分已经在开发中的特性, 是的, 这只是一小部分, 更多的特性将在开发途中逐步放出! 这次更新涉及到对几乎所有页面的大量更改, 因此发布时间待定.</p>
-                            <p>这些差不多就是目前已经规划好的更新内容了, 感谢你的支持!</p>
-                            <p>什么, 你说标题去哪了? 是的, 没错, 这才是本次更新规划最重磅的一笔! 更多的资源!</p>
-                            <p>我们从版本库V1起, 就加入了基岩版/教育版以及试玩版在Android平台的资源, V2又加入了基岩版Windows平台的资源 (试玩版以及基岩版Windows平台的资源在后续更新中被移除). 这些资源, 说多也不多, 说少也不少, 但是呢, 总感觉缺点意思.</p>
-                            <p>所以, 我们决定满足大家的需求, 扩充一下现有的资源库, 加入更多可选版本的下载! 这里列出了一些可能会加入的版本资源: 基岩版Windows端 / 基岩版iOS端 / 基岩版服务端(Windows&Linux) / 演示版 / Java版部分第三方启动器 / Java版数据镜像... 这项更新将会从4.6.6版本开始逐步加入现有的数据生态, 敬请期待!</p>
-                            <p>当然, 由于历史遗留原因, 我们未能收集到部分上述资源的某些版本, 我们将在即将到来的更新中加入版本档案注明缺失的版本. 如果你发现了任何我们没有收录的版本或者我们提供的内容存在错误, 欢迎联系我们, 版本库的完善需要你的帮助, 对此我们表示由衷感谢!</p>
-                        </article_detail>
-                    </article_block>
-                </div>
-                <div class="main message">
-                    <article_block id="mechanism_update_notice">
-                        <article_title>关于版本机制的变更说明</article_title>
-                        <article_date>发布: 2024-07-27</article_date>
-                        <article_detail>
-                            <p>随着4.6.5.20版本的发布(这大概率是今年的最后一个版本), 一项新的版本机制已实装至版本库. 为了防止从旧版本升级上来的用户产生困惑以及更好地服务其他依靠本仓库开发的三方开发者, 我们撰写了本变更说明.</p>
-                            <line></line>
-                            <p>面向普通用户</p>
-                            <p>本版本库主要分为发布仓库和测试仓库两大分支. 发布仓库主要用于发布较为稳定的更新, 测试仓库主要用于发布仍在测试中的更新. 在早先的版本中, 你可以同时不受限制地访问发布仓库和测试仓库, 但是从本版本起, 你将只能使用其中的一个仓库.</p>
-                            <p>发布仓库是默认的仓库, 在正常情况下, 你从外部发现的宣传链接应该是指向发布仓库的. 在使用发布仓库后, 你有几率在版本库主页发现邀测弹窗, 这会让你选择是否加入测试仓库进行测试. 当你选择加入测试时会自动重定向至测试仓库. 当然你也可以直接通过邀测链接加入测试仓库, 这两者是等价的. 不过需要注意的是, 加入测试仓库后除非你选择退出测试否则无法访问发布仓库.</p>
-                            <p>测试仓库是不公开的仓库, 仅可以通过邀测弹窗或邀测链接访问. 测试仓库可能并不稳定, 因此如果你没有一定的自主学习和解决问题的能力不建议加入测试. 加入测试仓库后可以参与反馈激励计划(发布仓库无效), 详情请见下一条消息通知. 想要访问发布仓库你需要前往设置页面找到退出测试选项选择离开, 这会带你返回发布仓库.</p>
-                            <line></line>
-                            <p>面向三方开发者</p>
-                            <p>从本版本起, 我们的版本号将遵循版本号规范发布, 具体内容如下:</p>
-                            <p>版本库的版本号有4位, 其中前2位为主版本号, 第3位为次版本号, 第4位为修订号. 以4.6.5.20为例, 4.6为主版本号, 5为次版本号, 20为修订号. 此外, 版本还具有类型/名称等属性, 这里涉及的更改并不多, 不做过多赘述.</p>
-                            <p>主版本号的第1位通常在服务器发生更改时变动, 第2位通常在发布大量新功能/进行大量的改进/产生了向下不兼容的更改时变动. 当这两位版本号发生变动时你需要对仓库中的代码进行重新适配. 次版本号(第3位)通常在加入向下兼容的新内容时变动, 在主版本号变动时会置0或置1. 修订号(第4位)通常在发生向下兼容的问题修正时变动, 次版本号变动时不一定重置. 次版本号和修订号的变动通常可以直接合并, 在没有对相应部分进行更改的情况下不需要进行过多适配.</p>
-                            <p>此外, 发版模式也有所更改. 我们将使用新的优选更新模式取代原先的累积更新模式. 现在发布仓库和测试仓库不再是更新内容不同的分支而是同一更新内容处于不同时间线上的分支了. 测试仓库现在只会更新Preview / Insider_(Preview/Alpha/Beta) / Canary / Alpha这几个版本类型了, 发布仓库现在会更新Beta / Pre / RC / Release / SP这几个版本类型了.</p>
-                            <p>具体发版流程: 新的内容会先在开发仓库进行更新和测试, 等测试周期结束且无问题后才会更新至发布仓库. 开发仓库仍会保持原有的更新频率, 但是不会再更新正式版本了. 开发仓库中的版本在发布后会进行评估, 合格的版本将会优选至发布仓库中进行更新. 这两个版本仅在发布日期和版本类型上存在区别, 其他内容完全一致. 举个例子: 测试仓库发布了1.0.0.1.Preview, 1.0.0.2.Preview, 1.0.0.3.Preview, 1.0.0.4.Preview4个版本, 在分别经过了评估周期后1.0.0.3.Preview被评定为合格版本, 优选至发布仓库成为1.0.0.3.Beta.</p>
-                            <p>这会带来两个好处, 一是不需要再同时维护两套代码了, 现在开发只需要维护发布仓库即可了, 节省了一些不必要的工作量; 二是大大缩短了发布仓库的更新周期, 使得新特性不必再等到下一次正式版本更新才能进版, 可以在一定程度上优化用户的使用体验.</p>
-                            <p>作为三方开发者, 你也应该遵守上面的规范. 此外, 你还需要在正式版本更新的半年内适配对应的版本, 及时对更改做出跟进.</p>
-                        </article_detail>
-                    </article_block>
-                </div>
-                <div class="main message">
-                    <article_block id="feedback_rewards">
-                        <article_title>版本库反馈有奖活动上线!</article_title>
-                        <article_date>发布: 2024-06-03<vertical-line></vertical-line>编辑: 2024-07-27</article_date>
-                        <article_detail>
-                            <p>为了版本库更好的发展,我们隆重地推出反馈激励计划!</p>
-                            <p>从即日起,在反馈渠道内向我们提出发现的问题或好的想法,满足条件即可以获得积分.积分可用于兑换奖励.</p>
-                            <p>反馈仓库: 版本库测试仓库(需加入内部测试)</p>
-                            <p>为了版本库更好的发展, 我们隆重地推出反馈激励计划!</p>
-                            <p>从即日起, 在反馈渠道内向我们提出发现的问题或好的想法, 满足条件即可以获得星币. 星币可用于兑换奖励.</p>
-                            <p>反馈仓库: 版本库测试仓库(需加入<a href="https://spectrollay.github.io/minecraft_repository_test" onclick="playSound1();">内部测试</a>)</p>
-                            <p>反馈渠道: 测试仓库GitHub Issues</p>
-                            <p>满足条件: 满足反馈格式. 对于发现的问题, 要会对版本库造成一定危害, 且首次被发现并提出; 对于好的想法, 要独到, 会对版本库起到一定的促进作用, 且首次提出.</p>
-                            <p>我们期待你的反馈!</p>
-                            <line></line>
-                            <p>附: 关于星币的说明</p>
-                            <p>星币是一种仅适用于星月Minecraft版本库的虚拟货币, 用于兑换可选的奖励. 星币可以和人民币以及<a href="https://www.yhchat.com/" onclick="playSound1();">云湖</a>金币在一定范围内相互转化. 其转化标准为10星币=1人民币=20云湖金币.</p>
-                            <p>星币可兑换的奖励包括但不仅限于: 正版Minecraft, 部分视频和音乐平台的会员. 具体可兑换目录需要加入群聊向管理员咨询.</p>
-                            <p>你可以通过以下方式获取星币: 从其他货币兑换, 通过版本库活动赚取, 参与版本库开发以及通过群内不定期抽奖获得.</p>
-                        </article_detail>
-                    </article_block>
-                </div>
-                <div class="main message">
-                    <article_block id="mc_15_y">
-                        <article_title>Minecraft 15 周年庆典!</article_title>
-                        <article_date>发布: 2024-05-17</article_date>
-                        <article_detail>
-                            <p>1. 周年庆大促</p>
-                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Sale.png"/></div>
-                            <p>在5月15日至6月22日期间, 快来获取 Minecraft / Minecraft Dungeons / Minecraft Legends 等内容, 折扣高达50%. 你想要建造一件艺术品, 与朋友并肩作战, 拯救主世界, 还是三者兼而有之?</p>
-                            <p><a href="https://www.minecraft.net/" onclick="playSound1();" target="_blank">前往官方网站购买</a></p>
-                            <p>2. Minecraft 15天</p>
-                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/DressingRoom.png"/></div>
-                            <p>获取持续发放15天的免费角色道具, 庆祝 Minecraft 15周年纪念! 在5月15日至29日期间, 每日均可在 Minecraft 基岩版更衣室领取礼物.</p>
-                            <p>3. TikTok 15天</p>
-                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/TikTok.jpg" style="height: 220px; width: unset"/></div>
-                            <p><a href="https://www.minecraft.net/en-us/redeem" onclick="playSound1();" target="_blank">在这里</a>收集你的独家 TikTok 15天 Minecraft 角色创建器物品!</p>
-                            <p>请在6月1日前完成任务并兑换</p>
-                            <p>4. Twitch 15天</p>
-                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Twitch.jpg" style="height: 220px; width: unset"/></div>
-                            <p><a href="https://www.minecraft.net/en-us/redeem" onclick="playSound1();" target="_blank">在这里</a>收集你的独家 Twitch 15天 Minecraft 观看时长任务的紫心披风和支持主播的故障面具!</p>
-                            <p>请在6月1日前完成任务并兑换</p>
-                            <p>5. 15周年纪念披风</p>
-                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Cape.png"/></div>
-                            <p><a href="https://www.minecraft.net/zh-hans/15th-anniversary" onclick="playSound1();" target="_blank">点击前往官网领取</a>, 位于活动页面底部</p>
-                            <p>6. 15周年庆典地图</p>
-                            <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/15YearJourney.jpg"/></div>
-                            <p>前往基岩版商城领取地图15年之旅, 回顾Minecraft的15周年</p>
-                        </article_detail>
-                    </article_block>
-                </div>
-                <div class="main message">
-                    <article_block id="repo_v4_r">
-                        <article_title>版本库V4正式发布!</article_title>
-                        <article_date>发布: 2024-02-09</article_date>
-                        <article_detail>
-                            <p>2023年的10月初, 我们发布了版本库V4的首个预览版. 这是自2021年12月底V3.1.7版本更新之后很长一段时间内的首次更新. 一方面, 是发现很久没更新了, 里面的东西很多都过时了, 另一方面, 是相关联的项目有了具体的推进, 想着顺带对版本库一同进行重构. 于是, 版本库V4就提上日程了.</p>
-                            <p>不同于版本库V1-V3采用的默认HTML样式及后面改善的Minecraft Feedback网站样式, V4采用了全新的OreUI样式(虽然直到现在仍在开发中), 大大提高了界面的美观程度, 当然在另一方面这也带来了大量的设计成本和调试成本, 因此开发进程并不是那么顺利.</p>
-                            <p>经过了4个多月的开发, 迭代了55个开发版本, 直到现在, 版本库V4才达到了我们认为可以公开发布的标准. 因此, 我们于2024年的春节当天, 一个辞旧迎新的好日子, 公开发布了它, 作为早已停止维护的版本库V3的接替. 至此, 版本库V3完成了它的使命正式下线.</p>
-                            <p>诚然, 如版本库首页所言, 我们深知这个版本库还很不尽人意, 界面简陋, 功能稀少, 甚至可能还有一堆的问题. 相较于版本库V3缺少了些许内容. 因此我们仍在不断地完善改进它, 希望能给每一个使用版本库的你, 带来更好的体验. 版本库V4的发布, 不代表开发的告一段落, 而是一个新的开始.</p>
-                            <p>那么, 新的一年, 让我们一起好好加油吧. 在这里也祝大家龙年大吉!</p>
-                        </article_detail>
-                    </article_block>
-                </div>
-                <div class="main">
-                    <div class="folding_button_group">
-                        <div class="folding_button_list">
-                            <custom-button class="folding_custom_btn" data="folding|green|small|showMoreBtn|false||" js="showMore();" text="显示更多"></custom-button>
-                            <custom-button class="folding_custom_btn" data="folding|normal|small|showLessBtn|false||" js="showLess();" text="显示更少"></custom-button>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="scroll_container" id="main">
+            <div>
+                <div class="block">
+                    <div class="main">
+                        <div class="title1">消息中心</div>
+                    </div>
+                    <div class="main message">
+                        <article_block id="update_plan_202412">
+                            <article_title>更多的版本下载选项!</article_title>
+                            <article_date>发布: 2024-12-08</article_date>
+                            <article_detail>
+                                <p>好久不见! 距离上个正式版本发布已经过去半年有余, 4.6.5版本的开发也已经接近尾声, 新版本很快能够和大家见面!</p>
+                                <p>当然了, 发布这则消息不仅仅是为了申明我们没有在偷懒, 更是为了隆重宣布我们对于即将到来版本的更新规划! 这其中包含了众多玩家期待的新内容!</p>
+                                <p>先来说说4.6.5版本, 除去已经推送到开发仓库的更新外, 还有一小部分的新内容与优化修复在进行中. 当我们完成了这些预定的更新后将会很快发布正式版.</p>
+                                <p>接着是4.6.6版本, 这是一次计划中的小型更新, 预计于4.6.5版本发布后的一个月内发布, 计划对版本库主页进行升级, 加入联系我们页面以及账号系统和星币系统, 优化部分页面的体验. OreUI仓库也计划在版本发布前后正式上线.</p>
+                                <p>在4.6.6版本后, 有一次大更新, 这也是OreUI设计真正意义上的完全体 - 4.6.10版本! 关于这次大更新的具体内容, 开发日志页面已经列出了一小部分已经在开发中的特性, 是的, 这只是一小部分, 更多的特性将在开发途中逐步放出! 这次更新涉及到对几乎所有页面的大量更改, 因此发布时间待定.</p>
+                                <p>这些差不多就是目前已经规划好的更新内容了, 感谢你的支持!</p>
+                                <p>什么, 你说标题去哪了? 是的, 没错, 这才是本次更新规划最重磅的一笔! 更多的资源!</p>
+                                <p>我们从版本库V1起, 就加入了基岩版/教育版以及试玩版在Android平台的资源, V2又加入了基岩版Windows平台的资源 (试玩版以及基岩版Windows平台的资源在后续更新中被移除). 这些资源, 说多也不多, 说少也不少, 但是呢, 总感觉缺点意思.</p>
+                                <p>所以, 我们决定满足大家的需求, 扩充一下现有的资源库, 加入更多可选版本的下载! 这里列出了一些可能会加入的版本资源: 基岩版Windows端 / 基岩版iOS端 / 基岩版服务端(Windows&Linux) / 演示版 / Java版部分第三方启动器 / Java版数据镜像... 这项更新将会从4.6.6版本开始逐步加入现有的数据生态, 敬请期待!</p>
+                                <p>当然, 由于历史遗留原因, 我们未能收集到部分上述资源的某些版本, 我们将在即将到来的更新中加入版本档案注明缺失的版本. 如果你发现了任何我们没有收录的版本或者我们提供的内容存在错误, 欢迎联系我们, 版本库的完善需要你的帮助, 对此我们表示由衷感谢!</p>
+                            </article_detail>
+                        </article_block>
+                    </div>
+                    <div class="main message">
+                        <article_block id="mechanism_update_notice">
+                            <article_title>关于版本机制的变更说明</article_title>
+                            <article_date>发布: 2024-07-27</article_date>
+                            <article_detail>
+                                <p>随着4.6.5.20版本的发布(这大概率是今年的最后一个版本), 一项新的版本机制已实装至版本库. 为了防止从旧版本升级上来的用户产生困惑以及更好地服务其他依靠本仓库开发的三方开发者, 我们撰写了本变更说明.</p>
+                                <line></line>
+                                <p>面向普通用户</p>
+                                <p>本版本库主要分为发布仓库和测试仓库两大分支. 发布仓库主要用于发布较为稳定的更新, 测试仓库主要用于发布仍在测试中的更新. 在早先的版本中, 你可以同时不受限制地访问发布仓库和测试仓库, 但是从本版本起, 你将只能使用其中的一个仓库.</p>
+                                <p>发布仓库是默认的仓库, 在正常情况下, 你从外部发现的宣传链接应该是指向发布仓库的. 在使用发布仓库后, 你有几率在版本库主页发现邀测弹窗, 这会让你选择是否加入测试仓库进行测试. 当你选择加入测试时会自动重定向至测试仓库. 当然你也可以直接通过邀测链接加入测试仓库, 这两者是等价的. 不过需要注意的是, 加入测试仓库后除非你选择退出测试否则无法访问发布仓库.</p>
+                                <p>测试仓库是不公开的仓库, 仅可以通过邀测弹窗或邀测链接访问. 测试仓库可能并不稳定, 因此如果你没有一定的自主学习和解决问题的能力不建议加入测试. 加入测试仓库后可以参与反馈激励计划(发布仓库无效), 详情请见下一条消息通知. 想要访问发布仓库你需要前往设置页面找到退出测试选项选择离开, 这会带你返回发布仓库.</p>
+                                <line></line>
+                                <p>面向三方开发者</p>
+                                <p>从本版本起, 我们的版本号将遵循版本号规范发布, 具体内容如下:</p>
+                                <p>版本库的版本号有4位, 其中前2位为主版本号, 第3位为次版本号, 第4位为修订号. 以4.6.5.20为例, 4.6为主版本号, 5为次版本号, 20为修订号. 此外, 版本还具有类型/名称等属性, 这里涉及的更改并不多, 不做过多赘述.</p>
+                                <p>主版本号的第1位通常在服务器发生更改时变动, 第2位通常在发布大量新功能/进行大量的改进/产生了向下不兼容的更改时变动. 当这两位版本号发生变动时你需要对仓库中的代码进行重新适配. 次版本号(第3位)通常在加入向下兼容的新内容时变动, 在主版本号变动时会置0或置1. 修订号(第4位)通常在发生向下兼容的问题修正时变动, 次版本号变动时不一定重置. 次版本号和修订号的变动通常可以直接合并, 在没有对相应部分进行更改的情况下不需要进行过多适配.</p>
+                                <p>此外, 发版模式也有所更改. 我们将使用新的优选更新模式取代原先的累积更新模式. 现在发布仓库和测试仓库不再是更新内容不同的分支而是同一更新内容处于不同时间线上的分支了. 测试仓库现在只会更新Preview / Insider_(Preview/Alpha/Beta) / Canary / Alpha这几个版本类型了, 发布仓库现在会更新Beta / Pre / RC / Release / SP这几个版本类型了.</p>
+                                <p>具体发版流程: 新的内容会先在开发仓库进行更新和测试, 等测试周期结束且无问题后才会更新至发布仓库. 开发仓库仍会保持原有的更新频率, 但是不会再更新正式版本了. 开发仓库中的版本在发布后会进行评估, 合格的版本将会优选至发布仓库中进行更新. 这两个版本仅在发布日期和版本类型上存在区别, 其他内容完全一致. 举个例子: 测试仓库发布了1.0.0.1.Preview, 1.0.0.2.Preview, 1.0.0.3.Preview, 1.0.0.4.Preview4个版本, 在分别经过了评估周期后1.0.0.3.Preview被评定为合格版本, 优选至发布仓库成为1.0.0.3.Beta.</p>
+                                <p>这会带来两个好处, 一是不需要再同时维护两套代码了, 现在开发只需要维护发布仓库即可了, 节省了一些不必要的工作量; 二是大大缩短了发布仓库的更新周期, 使得新特性不必再等到下一次正式版本更新才能进版, 可以在一定程度上优化用户的使用体验.</p>
+                                <p>作为三方开发者, 你也应该遵守上面的规范. 此外, 你还需要在正式版本更新的半年内适配对应的版本, 及时对更改做出跟进.</p>
+                            </article_detail>
+                        </article_block>
+                    </div>
+                    <div class="main message">
+                        <article_block id="feedback_rewards">
+                            <article_title>版本库反馈有奖活动上线!</article_title>
+                            <article_date>
+                                发布: 2024-06-03
+                                <vertical-line></vertical-line>
+                                编辑: 2024-07-27
+                            </article_date>
+                            <article_detail>
+                                <p>为了版本库更好的发展,我们隆重地推出反馈激励计划!</p>
+                                <p>从即日起,在反馈渠道内向我们提出发现的问题或好的想法,满足条件即可以获得积分.积分可用于兑换奖励.</p>
+                                <p>反馈仓库: 版本库测试仓库(需加入内部测试)</p>
+                                <p>为了版本库更好的发展, 我们隆重地推出反馈激励计划!</p>
+                                <p>从即日起, 在反馈渠道内向我们提出发现的问题或好的想法, 满足条件即可以获得星币. 星币可用于兑换奖励.</p>
+                                <p>反馈仓库: 版本库测试仓库(需加入<a href="https://spectrollay.github.io/minecraft_repository_test">内部测试</a>)</p>
+                                <p>反馈渠道: 测试仓库GitHub Issues</p>
+                                <p>满足条件: 满足反馈格式. 对于发现的问题, 要会对版本库造成一定危害, 且首次被发现并提出; 对于好的想法, 要独到, 会对版本库起到一定的促进作用, 且首次提出.</p>
+                                <p>我们期待你的反馈!</p>
+                                <line></line>
+                                <p>附: 关于星币的说明</p>
+                                <p>星币是一种仅适用于星月Minecraft版本库的虚拟货币, 用于兑换可选的奖励. 星币可以和人民币以及<a href="https://www.yhchat.com/">云湖</a>金币在一定范围内相互转化. 其转化标准为10星币=1人民币=20云湖金币.</p>
+                                <p>星币可兑换的奖励包括但不仅限于: 正版Minecraft, 部分视频和音乐平台的会员. 具体可兑换目录需要加入群聊向管理员咨询.</p>
+                                <p>你可以通过以下方式获取星币: 从其他货币兑换, 通过版本库活动赚取, 参与版本库开发以及通过群内不定期抽奖获得.</p>
+                            </article_detail>
+                        </article_block>
+                    </div>
+                    <div class="main message">
+                        <article_block id="mc_15_y">
+                            <article_title>Minecraft 15 周年庆典!</article_title>
+                            <article_date>发布: 2024-05-17</article_date>
+                            <article_detail>
+                                <p>1. 周年庆大促</p>
+                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Sale.png"/></div>
+                                <p>在5月15日至6月22日期间, 快来获取 Minecraft / Minecraft Dungeons / Minecraft Legends 等内容, 折扣高达50%. 你想要建造一件艺术品, 与朋友并肩作战, 拯救主世界, 还是三者兼而有之?</p>
+                                <p><a href="https://www.minecraft.net/" target="_blank">前往官方网站购买</a></p>
+                                <p>2. Minecraft 15天</p>
+                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/DressingRoom.png"/></div>
+                                <p>获取持续发放15天的免费角色道具, 庆祝 Minecraft 15周年纪念! 在5月15日至29日期间, 每日均可在 Minecraft 基岩版更衣室领取礼物.</p>
+                                <p>3. TikTok 15天</p>
+                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/TikTok.jpg" style="height: 220px; width: unset"/></div>
+                                <p><a href="https://www.minecraft.net/en-us/redeem" target="_blank">在这里</a>收集你的独家 TikTok 15天 Minecraft 角色创建器物品!</p>
+                                <p>请在6月1日前完成任务并兑换</p>
+                                <p>4. Twitch 15天</p>
+                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Twitch.jpg" style="height: 220px; width: unset"/></div>
+                                <p><a href="https://www.minecraft.net/en-us/redeem" target="_blank">在这里</a>收集你的独家 Twitch 15天 Minecraft 观看时长任务的紫心披风和支持主播的故障面具!</p>
+                                <p>请在6月1日前完成任务并兑换</p>
+                                <p>5. 15周年纪念披风</p>
+                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Cape.png"/></div>
+                                <p><a href="https://www.minecraft.net/zh-hans/15th-anniversary" target="_blank">点击前往官网领取</a>, 位于活动页面底部</p>
+                                <p>6. 15周年庆典地图</p>
+                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/15YearJourney.jpg"/></div>
+                                <p>前往基岩版商城领取地图15年之旅, 回顾Minecraft的15周年</p>
+                            </article_detail>
+                        </article_block>
+                    </div>
+                    <div class="main message">
+                        <article_block id="repo_v4_r">
+                            <article_title>版本库V4正式发布!</article_title>
+                            <article_date>发布: 2024-02-09</article_date>
+                            <article_detail>
+                                <p>2023年的10月初, 我们发布了版本库V4的首个预览版. 这是自2021年12月底V3.1.7版本更新之后很长一段时间内的首次更新. 一方面, 是发现很久没更新了, 里面的东西很多都过时了, 另一方面, 是相关联的项目有了具体的推进, 想着顺带对版本库一同进行重构. 于是, 版本库V4就提上日程了.</p>
+                                <p>不同于版本库V1-V3采用的默认HTML样式及后面改善的Minecraft Feedback网站样式, V4采用了全新的OreUI样式(虽然直到现在仍在开发中), 大大提高了界面的美观程度, 当然在另一方面这也带来了大量的设计成本和调试成本, 因此开发进程并不是那么顺利.</p>
+                                <p>经过了4个多月的开发, 迭代了55个开发版本, 直到现在, 版本库V4才达到了我们认为可以公开发布的标准. 因此, 我们于2024年的春节当天, 一个辞旧迎新的好日子, 公开发布了它, 作为早已停止维护的版本库V3的接替. 至此, 版本库V3完成了它的使命正式下线.</p>
+                                <p>诚然, 如版本库首页所言, 我们深知这个版本库还很不尽人意, 界面简陋, 功能稀少, 甚至可能还有一堆的问题. 相较于版本库V3缺少了些许内容. 因此我们仍在不断地完善改进它, 希望能给每一个使用版本库的你, 带来更好的体验. 版本库V4的发布, 不代表开发的告一段落, 而是一个新的开始.</p>
+                                <p>那么, 新的一年, 让我们一起好好加油吧. 在这里也祝大家龙年大吉!</p>
+                            </article_detail>
+                        </article_block>
+                    </div>
+                    <div class="main">
+                        <div class="folding_button_group">
+                            <div class="folding_button_list">
+                                <custom-button class="folding_custom_btn" data="folding|green|small|showMoreBtn|false||" js="showMore();" text="显示更多"></custom-button>
+                                <custom-button class="folding_custom_btn" data="folding|normal|small|showLessBtn|false||" js="showLess();" text="显示更少"></custom-button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-</scroll-container>
-<custom-scrollbar>
-    <custom-scrollbar-track></custom-scrollbar-track>
-    <custom-scrollbar-thumb></custom-scrollbar-thumb>
-</custom-scrollbar>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
 
 <!--遮罩-->
 <!--除了顶栏-->
@@ -189,58 +206,13 @@
 
 </body>
 
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
 <script>
-    const custom_elements_js = document.createElement('script');
-    const public_script = document.createElement('script');
-    const public_define = document.createElement('script');
-
-    custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    public_define.src = '/minecraft_repository/javascript/public_define.js';
-
-    document.head.appendChild(custom_elements_js);
-    document.head.appendChild(public_script);
-    document.head.appendChild(public_define);
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
-    const loading_mask = document.getElementById('loading_mask');
-
     // 惰性加载
     const lazyImages = document.querySelectorAll('img');
     lazyImages.forEach(img => {
         img.setAttribute('loading', 'lazy');
-    });
-
-    function hide_mask() {
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
-    }
-
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
-
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
     });
 </script>
 
@@ -250,13 +222,19 @@
     }
 
     .message {
+        display: flex;
+        justify-content: center;
         padding: 0;
     }
 
     article_date {
-        display: flex;
         align-items: center;
+        display: flex;
         justify-content: center;
+    }
+
+    article_block {
+        width: 100%;
     }
 
     article_detail p {
@@ -266,8 +244,8 @@
     article_detail {
         background-color: #313233;
         margin: 0;
-        padding: 10px 20px;
         min-height: 60px;
+        padding: 10px 20px;
     }
 
     .article_image {

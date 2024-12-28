@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020-2024. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,4 +21,27 @@
  */
 
 // 实验性
-console.log("实验性内容");
+
+const exp_css = document.createElement('link');
+exp_css.rel = 'stylesheet';
+exp_css.href = '/minecraft_repository/experiments/index.css';
+
+document.head.appendChild(exp_css);
+
+
+// 新的实验性页面
+let newFlagsPageSwitch = document.getElementById('new_flags_page');
+let newFlagsPageState;
+let switchValues;
+
+function flagsPage() {
+    switchValues = JSON.parse(localStorage.getItem('(/minecraft_repository/)switch_value')) || {};
+    newFlagsPageState = switchValues['new_flags_page'] || newFlagsPageSwitch.getAttribute('active'); // 默认禁用
+    if (newFlagsPageState === 'on') {
+        ifNavigating("jump", "/minecraft_repository/flags/");
+    } else {
+        ifNavigating("jump", "/minecraft_repository/experiments/");
+    }
+}
+
+

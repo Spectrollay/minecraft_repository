@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020-2024. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -73,9 +73,9 @@
     color: inherit;
 }
 
-/* 禁用长按菜单 */
 * {
-    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent; /* 禁用高亮 */
+    touch-action: manipulation; /* 禁用长按菜单 */
 }
 
 .flex {
@@ -85,12 +85,13 @@
 .wrap_flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* 总体样式 */
 body {
-    font-family: "NotoSans Bold", sans-serif;
     background: #48494A;
+    font-family: "NotoSans Bold", sans-serif;
     margin: 0;
     min-width: 330px;
     overflow-x: hidden;
@@ -99,25 +100,25 @@ body {
 
 /* 顶部标题栏 */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
     align-items: center;
-    min-width: 330px;
-    height: 40px;
     background-color: #E6E8EB;
     border-bottom: 4px solid #B1B2B5;
+    display: flex;
+    height: 40px;
+    left: 0;
+    min-width: 330px;
+    position: fixed;
+    right: 0;
+    top: 0;
     z-index: 9;
 }
 
 /* 顶栏元素 */
 .header_item, .header_logo {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     height: 100%;
+    justify-content: center;
 }
 
 .header_item {
@@ -134,23 +135,23 @@ header {
 
 /* 顶栏左侧按钮 */
 .header_item_left {
-    width: 42px;
-    box-shadow: inset -2px 0 #FFFFFF;
     border-right: 2px solid #A1A3A5;
+    box-shadow: inset -2px 0 #FFFFFF;
+    width: 42px;
 }
 
 /* 顶栏右侧按钮 */
 .header_item_right {
-    width: 42px;
-    box-shadow: inset 2px 0 #A1A3A5;
     border-left: 2px solid #FFFFFF;
+    box-shadow: inset 2px 0 #A1A3A5;
+    width: 42px;
 }
 
 .header_right_blank {
-    width: 44px;
-    box-shadow: unset;
     border: 0;
+    box-shadow: unset;
     cursor: default;
+    width: 44px;
 }
 
 .header_right_blank:hover, .header_right_blank:active {
@@ -158,8 +159,7 @@ header {
 }
 
 /* 顶栏按钮图标 */
-
-.back_icon, .menu_icon, .repo_icon, .debug_icon, .settings_icon, .feedback_icon {
+.back_icon, .menu_icon, .repo_icon, .debug_icon, .settings_icon, .feedback_icon, .run_icon {
     height: 32px;
 }
 
@@ -167,15 +167,15 @@ header {
     padding: 4px 6px 4px 4px;
 }
 
-.repo_icon, .debug_icon, .settings_icon, .feedback_icon {
+.repo_icon, .debug_icon, .settings_icon, .feedback_icon, .run_icon {
     padding: 4px 4px 4px 6px;
 }
 
 /* 标题区域 */
 .title_icon {
     height: 26px;
-    width: 26px;
     padding-right: 8px;
+    width: 26px;
 }
 
 /* 标题图标 */
@@ -185,14 +185,14 @@ header {
 
 /* 标题文字 */
 .header_title {
-    height: 38px;
     font-family: "Minecraft Ten", sans-serif;
     font-size: 30px;
+    height: 38px;
 }
 
 .repository_logo_area {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
 }
 
@@ -201,64 +201,73 @@ header {
 }
 
 /* 主体框架 */
+scroll-view {
+    display: flex;
+}
+
 scroll-container {
     display: grid;
-    position: fixed;
+    height: calc(100% - 44px);
     overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    position: fixed;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    height: calc(100% - 44px);
     top: 44px;
     width: 100%;
 }
 
-main {
-    width: 100vw;
-    min-width: 330px;
-    color: #FFFFFF;
+.scroll_container {
+    overscroll-behavior: contain;
 }
 
-/* 主体框架滚动条 */
+main {
+    color: #FFFFFF;
+    min-width: 330px;
+    width: 100vw;
+}
+
+/* 主要滚动条 */
 custom-scrollbar {
     display: block;
-    position: absolute;
-    top: 44px;
-    right: 0;
-    width: 22px;
     opacity: 1;
-    transition: opacity 1s;
     overflow-y: hidden;
+    position: absolute;
+    right: 0;
+    top: 44px;
+    transition: opacity 1s;
+    width: 22px;
 }
 
 custom-scrollbar-track {
-    display: block;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 6px;
-    height: calc(100% - 16px);
     background-color: #58585A;
+    display: block;
+    height: calc(100% - 16px);
     overflow-y: hidden;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 6px;
 }
 
 custom-scrollbar-thumb {
-    display: block;
-    position: absolute;
-    right: 3px;
-    width: 12px;
-    min-height: 20px;
     background-color: #E6E8EB;
     border: 2px solid #000000;
     box-shadow: inset 0 -4px #58585A, inset 0 -7px #F9FAFA, inset 3px 3px #F9FAFA, inset -3px 0 #F9FAFA;
     cursor: pointer;
+    display: block;
+    min-height: 20px;
     overflow-y: hidden;
+    position: absolute;
+    right: 3px;
+    width: 12px;
 }
 
-/* Tab Bar组件 */
+/* TabBar标签栏组件 */
 .tab_bar_area {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
     min-width: 330px;
     z-index: 9;
@@ -266,10 +275,10 @@ custom-scrollbar-thumb {
 
 .tab_bar_area.main_tab_bar {
     height: 52px;
-    position: fixed;
-    top: 56px;
     left: 0;
+    position: fixed;
     right: 0;
+    top: 56px;
 }
 
 .tab_bar_with_banner.main_tab_bar {
@@ -277,26 +286,26 @@ custom-scrollbar-thumb {
 }
 
 .tab_bar {
-    position: relative;
-    width: calc(100% - 40px);
-    margin: 10px 0;
     display: flex;
     justify-content: space-between;
+    margin: 10px 0;
+    position: relative;
+    width: calc(100% - 40px);
 }
 
 .tab_bar_btn {
-    font-family: "NotoSans Bold", sans-serif;
-    flex: 1;
-    height: 40px;
-    justify-self: center;
-    color: white;
     background-color: #48494A;
-    transition: background-color 0.3s;
-    padding-bottom: 6px;
     border: 2px solid #1E1E1F;
     box-shadow: inset 0 -4px #313233, inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -7px rgba(255, 255, 255, 0.1);
-    position: relative;
+    color: white;
     cursor: pointer;
+    flex: 1;
+    font-family: "NotoSans Bold", sans-serif;
+    height: 40px;
+    justify-self: center;
+    padding-bottom: 6px;
+    position: relative;
+    transition: background-color 0.3s;
 }
 
 .tab_bar_btn:hover {
@@ -305,32 +314,32 @@ custom-scrollbar-thumb {
 }
 
 .tab_bar_btn:active {
-    margin-top: 4px;
-    height: 36px;
-    padding-bottom: 2px;
     background-color: #313233;
     box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
+    height: 36px;
+    margin-top: 4px;
+    padding-bottom: 2px;
 }
 
 .tab_bar_btn::after {
-    content: "";
-    position: absolute;
-    width: 20%;
-    height: 3px;
     background-color: white;
     bottom: 0;
+    content: "";
+    height: 3px;
     left: 50%;
+    position: absolute;
     transform: translateX(-50%) scaleX(0);
     transition: transform 0.3s;
+    width: 20%;
 }
 
 .tab_bar_btn.active {
-    margin-top: 4px;
-    height: 36px;
-    padding-bottom: 2px;
     background-color: #313233;
     box-shadow: inset 3px 3px rgba(255, 255, 255, 0.2), inset -3px -3px rgba(255, 255, 255, 0.1);
     cursor: default;
+    height: 36px;
+    margin-top: 4px;
+    padding-bottom: 2px;
 }
 
 .tab_bar_btn:hover::after,
@@ -349,8 +358,8 @@ custom-scrollbar-thumb {
 }
 
 .tab_content {
-    display: none;
     color: #FFFFFF;
+    display: none;
     min-height: 60px;
 }
 
@@ -368,16 +377,16 @@ custom-scrollbar-thumb {
 
 /* 主体块 */
 .main {
-    height: auto;
-    min-height: 66px;
-    display: grid;
-    text-align: center;
     align-items: center;
-    padding: 8px 0;
-    border-top: 2px solid #5A5B5C;
     border-bottom: 2px solid #333334;
     border-left: 2px solid #333334;
     border-right: 2px solid #333334;
+    border-top: 2px solid #5A5B5C;
+    display: grid;
+    height: auto;
+    min-height: 66px;
+    padding: 8px 0;
+    text-align: center;
 }
 
 #holiday_tip1, #holiday_tip2 {
@@ -399,29 +408,29 @@ custom-scrollbar-thumb {
 
 /* 预览提示 */
 .preview_block {
-    font-family: "NotoSans Bold", sans-serif;
-    border-top: 4px solid #5A5B5C;
     border-bottom: 4px solid #333334;
     border-left: 0;
     border-right: 0;
+    border-top: 4px solid #5A5B5C;
+    font-family: "NotoSans Bold", sans-serif;
 }
 
 .preview_title {
-    font-size: 18px;
     font-family: "NotoSans Bold", sans-serif;
+    font-size: 18px;
     margin: 4px 0;
 }
 
 .preview_detail {
-    font-size: 16px;
     font-family: "NotoSans Bold", sans-serif;
+    font-size: 16px;
     margin: 4px 0;
 }
 
 /* 加载中图标 */
 .loading_icon {
-    padding: 10px;
     height: 32px;
+    padding: 10px;
     width: 32px;
 }
 
@@ -436,18 +445,18 @@ custom-scrollbar-thumb {
 }
 
 .title1 {
-    font-size: 26px;
     font-family: "Minecraft Seven", sans-serif;
+    font-size: 26px;
 }
 
 .title2 {
-    font-size: 23px;
     font-family: "Minecraft Seven", sans-serif;
+    font-size: 23px;
 }
 
 .title3 {
-    font-size: 20px;
     font-family: "Minecraft Seven", sans-serif;
+    font-size: 20px;
 }
 
 .description {
@@ -463,41 +472,41 @@ custom-scrollbar-thumb {
 }
 
 .description1 {
-    font-size: 18px;
     font-family: "NotoSans Bold", sans-serif;
+    font-size: 18px;
     margin: 4px 0;
     text-align: center;
 }
 
 .description2 {
-    font-size: 16px;
     font-family: "NotoSans Bold", sans-serif;
+    font-size: 16px;
     margin: 8px;
 }
 
 .description3 {
-    font-size: 14px;
     font-family: "NotoSans Bold", sans-serif;
-    width: 80px;
+    font-size: 14px;
     margin-top: 4px;
+    width: 80px;
 }
 
 a {
+    box-shadow: inset 0 -2px 0 0 #FFFFFF;
     color: inherit;
     position: relative;
     text-decoration: none;
-    box-shadow: inset 0 -2px 0 0 #FFFFFF;
 }
 
 .main_title {
-    font-family: "NotoSans Bold", sans-serif;
+    align-items: center;
     border-bottom: 2px solid #333334;
     border-left: 0;
     border-right: 0;
-    min-height: 70px;
     display: flex;
-    align-items: center;
+    font-family: "NotoSans Bold", sans-serif;
     justify-content: center;
+    min-height: 70px;
 }
 
 .main_title_area {
@@ -509,27 +518,27 @@ a {
 }
 
 .main_block {
-    font-family: "NotoSans Bold", sans-serif;
-    border-top: 2px solid #5A5B5C;
     border-bottom: 2px solid #333334;
     border-left: 0;
     border-right: 0;
+    border-top: 2px solid #5A5B5C;
+    font-family: "NotoSans Bold", sans-serif;
+    min-height: 60px;
     padding: 0 16px;
-    min-height: 80px;
 }
 
 /* 主体块 */
 .block {
-    margin: 0 20px;
-    border-top: 2px solid #5A5B5C;
     border-bottom: 2px solid #333334;
     border-left: 2px solid #333334;
     border-right: 2px solid #333334;
+    border-top: 2px solid #5A5B5C;
+    margin: 0 20px;
 }
 
 .main_content_center {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
     min-height: 240px;
 }
@@ -542,18 +551,25 @@ a {
 .version_logo, .version_artwork {
     align-self: center;
     justify-self: center;
-    width: 272px;
     margin: 5px 12px;
+    width: 272px;
 }
 
 .btn_group {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
 }
 
 .notice_img {
     width: 280px;
+}
+
+.guidance_image {
+    display: flex;
+    margin: 20px 10px;
+    max-width: 600px;
+    justify-self: center;
 }
 
 /* 块间隙 */
@@ -563,25 +579,25 @@ a {
 
 /* Banner区域 */
 .banner_area {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
 }
 
 /* Banner主体 */
 .banner {
-    font-family: "NotoSans Bold", sans-serif;
-    margin: 10px 20px;
-    padding: 4px;
-    display: flex;
-    text-align: center;
     align-items: center;
-    justify-content: center;
-    width: calc(100% - 40px);
-    min-height: 30px;
-    word-wrap: break-word;
-    hyphens: auto;
     color: #FFFFFF;
+    display: flex;
+    font-family: "NotoSans Bold", sans-serif;
+    hyphens: auto;
+    justify-content: center;
+    margin: 10px 20px;
+    min-height: 30px;
+    padding: 4px;
+    text-align: center;
+    width: calc(100% - 40px);
+    word-wrap: break-word;
 }
 
 .top_banner {
@@ -590,8 +606,8 @@ a {
 
 .banner_with_tab_bar {
     position: fixed;
-    width: 100%;
     top: 44px;
+    width: 100%;
 }
 
 .neutral_banner {
@@ -603,9 +619,9 @@ a {
 }
 
 .important_banner {
-    font-weight: bolder;
-    color: #000000;
     background-color: #FFE866;
+    color: #000000;
+    font-weight: bolder;
 }
 
 .important_banner a {
@@ -614,14 +630,14 @@ a {
 
 /* Badge */
 .badge_area {
-    display: flex;
     align-items: center;
+    display: flex;
 }
 
 .badge {
-    width: 6px;
     height: 6px;
     margin-right: 6px;
+    width: 6px;
 }
 
 .green_badge {
@@ -644,14 +660,14 @@ a {
 .tag {
     align-self: center;
     color: #000000;
+    font-size: 12px;
     margin: 4px;
     padding: 0 2px;
-    font-size: 12px;
 }
 
 .black_tag {
-    color: #FFFFFF;
     background-color: #1E1E1F;
+    color: #FFFFFF;
 }
 
 .green_tag {
@@ -672,16 +688,16 @@ a {
 
 /* 表格属性 */
 .table_area {
-    width: 100%;
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 table {
-    width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
+    width: 100%;
 }
 
 table, th, td {
@@ -697,38 +713,75 @@ td {
 }
 
 .table {
-    display: flex;
     align-self: center;
-    justify-self: center;
-    word-wrap: break-word;
+    display: flex;
     hyphens: auto;
+    justify-self: center;
     max-width: 600px;
+    word-wrap: break-word;
 }
 
 .table-big {
-    display: flex;
     align-self: center;
-    justify-self: center;
-    word-wrap: break-word;
+    display: flex;
     hyphens: auto;
+    justify-self: center;
     max-width: 1000px;
+    word-wrap: break-word;
 }
 
 .table td {
     min-width: 100px;
 }
 
+/* 友链样式 */
+reciprocal-link-block {
+    cursor: pointer;
+    display: block;
+    border: 2px solid #58585A;
+    margin: 6px;
+    min-height: 80px;
+    width: 270px;
+}
+
+reciprocal-link-block:hover, reciprocal-link-block:active {
+    border: 2px solid #6D6D6E;
+    background-color: #58585A;
+}
+
+.reciprocal_link_title {
+    display: flex;
+    justify-content: center;
+    margin: 10px 4px;
+}
+
+.reciprocal_link_title_img {
+    align-self: center;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.reciprocal_link_title_text {
+    align-self: center;
+    font-size: 17px;
+}
+
+.reciprocal_link_description {
+    margin: 10px;
+    color: #D0D1D4;
+}
+
 /* 表格底部信息区域 */
 .info_area {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
     text-align: left;
 }
 
 .info_area div {
-    width: 100%;
     max-width: 1000px;
+    width: 100%;
 }
 
 .info_text {
@@ -761,52 +814,51 @@ td {
 
 /* 侧边栏 */
 .sidebar {
-    height: calc(100% - 44px);
-    width: 0;
-    position: fixed;
-    z-index: 2;
-    top: 44px;
-    left: 0;
-    font-family: "NotoSans Bold", sans-serif;
     background-color: #313233;
+    font-family: "NotoSans Bold", sans-serif;
+    height: calc(100% - 44px);
+    left: -160px; /* 初始隐藏到屏幕左侧 */
     overflow-x: hidden;
     overflow-y: hidden;
-    transition: 0.6s;
+    position: fixed;
+    top: 44px;
+    transition: left 0.6s;
+    width: 160px;
+    z-index: 2;
 }
 
-#sidebar_scroll_container {
-    top: 44px;
+.sidebar_scroll_container {
     height: calc(100% - 44px);
-    width: 0;
-    transition: width 0.6s;
+    top: 44px;
+    width: 160px;
 }
 
 .sidebar custom-scrollbar {
-    top: 0;
     height: 100%;
+    top: 0;
     width: 18px;
 }
 
 .sidebar custom-scrollbar-track {
-    top: 0;
-    right: 6px;
-    width: 6px;
-    height: 100%;
     background-color: transparent;
+    height: 100%;
+    right: 6px;
+    top: 0;
+    width: 6px;
 }
 
 .sidebar custom-scrollbar-thumb {
-    right: 4px;
-    width: 10px;
     background-color: rgba(255, 255, 255, 0.4);
     border: 0;
     box-shadow: unset;
     cursor: default;
+    right: 4px;
+    width: 10px;
 }
 
 .sidebar a {
-    text-decoration: none;
     box-shadow: unset;
+    text-decoration: none;
 }
 
 .sidebar_content {
@@ -814,106 +866,86 @@ td {
 }
 
 .sidebar_list {
-    width: 100%;
     border-bottom: 2px solid #000000;
+    width: 100%;
 }
 
 .sidebar_item {
-    color: #FFFFFF;
-    width: 150px;
-    display: flex;
     align-items: center;
-    padding-left: 10px;
+    color: #FFFFFF;
+    display: flex;
     height: 40px;
+    padding-left: 10px;
+    width: 150px;
 }
 
 .sidebar_detail_title {
     font-family: "Minecraft Ten", sans-serif;
     font-size: 20px;
-    margin: 6px 0;
     height: 30px;
+    margin: 6px 0;
 }
 
 .sidebar_detail_title, .sidebar_detail {
+    align-items: center;
     color: #FFFFFF;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .sidebar_detail {
+    font-size: 14px;
     height: 24px;
     margin-bottom: 24px;
-    font-size: 14px;
 }
 
 .sidebar_info {
-    width: 160px;
     border-top: 2px solid #454647;
+    width: 160px;
 }
 
 .sidebar_item:hover, .sidebar_item:active {
     background-color: #67686A;
 }
 
-.sidebar_btn {
-    height: 40px;
-    width: 140px;
-    margin: 6px;
-    background-color: #48494A;
-    color: #FFFFFF;
-    border: 2px solid #131313;
-    box-shadow: inset -1px -1px #1E1E1F, inset 1px 1px #1E1E1F, inset -2px -2px #313233, inset 2px 2px #6D6D6E;
-    padding-bottom: 2px;
-}
-
-.sidebar_btn:hover, .sidebar_btn:active {
-    height: 40px;
-    margin: 6px;
-    background-color: #67686A;
-    border: 2px solid #FFFFFF;
-    box-shadow: unset;
-    padding-bottom: 2px;
-}
-
 /* 全屏遮罩 */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 10;
+    bottom: 0;
     display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 11;
 }
 
 /* 除了顶栏 */
 .overlay_main {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
+    bottom: 0;
     display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
 }
 
-/* Expandable Card */
+/* 可展开卡片 */
 .expandable_card {
-    text-align: center;
     align-items: center;
-    overflow: hidden;
-    display: flex;
-    position: relative;
-    height: 56px;
-    border-top: 2px solid #5A5B5C;
     border-bottom: 2px solid #333334;
     border-left: 2px solid #333334;
     border-right: 2px solid #333334;
+    border-top: 2px solid #5A5B5C;
     color: #FFFFFF;
     cursor: pointer;
+    display: flex;
+    height: 56px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
 }
 
 .expandable_card:hover {
@@ -921,40 +953,40 @@ td {
 }
 
 .expandable_card:active {
-    border: 2px solid #333334;
     background-color: #3D3E3F;
+    border: 2px solid #333334;
 }
 
 .expandable_card_text_area {
+    align-items: center;
+    display: flex;
+    height: 56px;
+    justify-content: center;
+    left: 50%;
     position: absolute;
     top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    height: 56px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .expandable_card_text {
-    font-size: 23px;
     font-family: "Minecraft Seven", sans-serif;
+    font-size: 24px;
 }
 
 .expandable_card_text_title {
 }
 
 .expandable_card_image_area {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    height: 56px;
-    width: 56px;
-    display: flex;
     align-items: center;
+    display: flex;
+    height: 56px;
     justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
 }
 
 .expandable_card_image {
@@ -972,7 +1004,9 @@ td {
 }
 
 .expandable_card_down_content, .plan_block_content {
-    margin: 10px 20px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
 }
 
 /*自适应折叠组件*/
@@ -986,8 +1020,8 @@ td {
 }
 
 .folding_button_list {
-    display: flex;
     align-items: center;
+    display: flex;
 }
 
 .folding_btn {

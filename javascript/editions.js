@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020-2024. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ function showDisclaimerModal(url) {
     const modal = document.getElementById("disclaimer_modal");
     overlay.style.display = "block";
     modal.style.display = "block";
-    console.log("显示免责声明弹窗");
+    logManager.log("显示免责声明弹窗");
     if (url === undefined) {
         openurl = null;
     } else {
@@ -40,38 +40,38 @@ function showDisclaimerModal(url) {
 function hideDisclaimerModal(button, state, url) {
     const overlay = document.getElementById("overlay_disclaimer_modal");
     const modal = document.getElementById("disclaimer_modal");
-    playSound(button);
+    playSoundType(button);
     overlay.style.display = "none";
     modal.style.display = "none";
     if (state === -1) {
-        console.log("选择了不同意");
+        logManager.log("选择了不同意");
     } else if (state === 1) {
-        console.log("选择了同意并继续");
+        logManager.log("选择了同意并继续");
     }
-    console.log("关闭免责声明弹窗");
+    logManager.log("关闭免责声明弹窗");
     if (url !== null) {
-        console.log("获取到跳转链接:" + url);
+        logManager.log("获取到跳转链接:" + url);
         if (state === 1) {
-            window.open(url);
+            if (url.includes('huang1111')) { // TODO 在移除全部相关链接后删除判定
+                ifNavigating("open", "/minecraft_repository/default/error_not-found.html");
+            } else {
+                ifNavigating("open", url);
+            }
         } else {
-            setTimeout(function () {
-                window.location.href = url;
-            }, 600);
+            ifNavigating("jump", url);
         }
-        console.log("跳转成功");
+        logManager.log("跳转成功");
     } else {
-        console.log("无跳转链接");
+        logManager.log("无跳转链接", 'warn');
     }
 }
 
 function howToBuyGame(button, state, url) {
-    playSound(button);
+    playSoundType(button);
     if (state === 0) {
-        console.log("选择了了解正版购买");
+        logManager.log("选择了了解正版购买");
     }
-    console.log("获取到跳转链接: " + url);
-    setTimeout(function () {
-        window.location.href = url;
-    }, 600);
-    console.log("跳转成功");
+    logManager.log("获取到跳转链接: " + url);
+    ifNavigating("jump", url);
+    logManager.log("跳转成功");
 }

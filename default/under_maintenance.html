@@ -1,0 +1,104 @@
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
+    <style>
+        .no_access-img {
+            padding-top: 32px;
+        }
+    </style>
+    <title>UNDER MAINTENANCE</title>
+</head>
+
+<body>
+<div class="loading_mask" id="loading_mask">
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">载入中</span></div>
+        </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+            </div>
+        </noscript>
+    </div>
+</div>
+<header>
+    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+        <img alt="" class="back_icon" id="back_icon" src=""/>
+    </div>
+    <div class="header_logo"><span class="header_title">Minecraft Kit</span></div>
+    <div class="header_item header_item_right header_right_blank"></div>
+</header>
+<scroll-view>
+    <scroll-container class="main_scroll_container">
+        <main class="main_content_center scroll_container" id="main">
+            <div class="display">
+                <p class="under_maintenance-img"><img alt="Under Maintenance Image" class="notice_img" src="/minecraft_repository/images/Wait.png"/></p>
+                <p class="main_detail_center">网站维护中</p>
+                <p class="main_detail_center" style="font-size: 16px">请稍后重试</p>
+                <p class="main_detail_center">
+                    <custom-button data="default|green|small||false||" js="retry();" text="重试"></custom-button>
+                    <custom-button data="default|normal|small||false||" js="mainPage();" text="首页"></custom-button>
+                </p>
+            </div>
+        </main>
+    </scroll-container>
+    <custom-scrollbar class="main_custom_scrollbar">
+        <custom-scrollbar-track></custom-scrollbar-track>
+        <custom-scrollbar-thumb></custom-scrollbar-thumb>
+    </custom-scrollbar>
+</scroll-view>
+
+<!--遮罩-->
+<!--除了顶栏-->
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+</body>
+
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
+
+<style>
+    main {
+        color: #FFFFFF;
+    }
+</style>
+
+</html>
