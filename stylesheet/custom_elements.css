@@ -596,7 +596,6 @@ modal_content {
     max-height: calc(min(450px, calc(90vh - 150px)));
     min-height: 60px;
     overflow-y: auto;
-    overscroll-behavior: contain;
     padding: 10px 10px 10px 10px;
     scrollbar-width: none;
 }

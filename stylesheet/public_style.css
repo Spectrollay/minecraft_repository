@@ -75,6 +75,7 @@
 
 * {
     -webkit-tap-highlight-color: transparent; /* 禁用高亮 */
+    overscroll-behavior: contain; /* 禁用过度滚动 */
     touch-action: manipulation; /* 禁用长按菜单 */
 }
 
@@ -210,16 +211,11 @@ scroll-container {
     height: calc(100% - 44px);
     overflow-x: hidden;
     overflow-y: auto;
-    overscroll-behavior: contain;
     position: fixed;
     scroll-behavior: smooth;
     scrollbar-width: none;
     top: 44px;
     width: 100%;
-}
-
-.scroll_container {
-    overscroll-behavior: contain;
 }
 
 main {
