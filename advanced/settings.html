@@ -203,8 +203,8 @@
                             <custom-button data="setting|normal|||false||" js="flagsPage();" text="查看"></custom-button>
                         </div>
                     </div>
-                    <divider></divider>
-                    <div class="setting_block_title flex">
+                    <divider class="new_flags_page"></divider>
+                    <div class="setting_block_title flex new_flags_page">
                         <div class="setting_title_content">新的实验性内容页面</div>
                         <div class="setting_control_right">
                             <custom-switch active="off" id="new_flags_page" status="enabled"></custom-switch>
@@ -460,7 +460,9 @@
     // 新的实验性内容页面  TODO: 在旧的实验性内容页面被移除时时删除
     const newFlagsPageElement = document.getElementsByClassName('new_flags_page');
     if (!rootPath.includes('_test')) {
-        newFlagsPageElement[0].style.display = 'none';
+        for (let i = 0; i < newFlagsPageElement.length; i++) {
+            newFlagsPageElement[i].style.display = 'none';
+        }
     }
 
     switchValues = JSON.parse(localStorage.getItem('(/minecraft_repository/)switch_value')) || {};
