@@ -42,9 +42,11 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 
 // 禁止拖动元素
-const cantDraggableElements = document.querySelectorAll("img, a");
-cantDraggableElements.forEach(function (cantDraggableElement) {
-    cantDraggableElement.draggable = false;
+window.addEventListener('load', function() {
+    const cantDraggableElements = document.querySelectorAll("img, a");
+    cantDraggableElements.forEach(function (cantDraggableElement) {
+        cantDraggableElement.draggable = false;
+    });
 });
 
 // 节流函数,防止事件频繁触发
@@ -871,7 +873,7 @@ function toggleSidebar() { // 切换侧边栏状态
     const sidebar = document.getElementById("sidebar");
     if (sidebarOpen) {
         playSound('close');
-        sidebar.style.left = "-160px"; // 隐藏到屏幕左侧
+        sidebar.style.left = - sidebar.offsetWidth + "px"; // 隐藏到屏幕左侧
         logManager.log("侧边栏执行收起操作");
     } else {
         playSound('open');

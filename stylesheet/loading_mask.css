@@ -60,8 +60,10 @@
 }
 
 .spinner_text_error {
-    color: red;
+    color: #C02D2D;
     font-size: 20px;
     font-weight: bold;
     padding: 10px 0;
+    paint-order: stroke;
+    -webkit-text-stroke: 0.1em #FFFFFF;
 }

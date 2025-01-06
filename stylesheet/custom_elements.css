@@ -32,19 +32,17 @@ article_title {
     color: #FFFFFF;
     display: block;
     font-family: "Minecraft Seven", sans-serif;
-    font-size: 23px;
+    font-size: 21px;
     height: auto;
-    margin: 15px 0;
-    width: 100%;
+    margin: 15px;
 }
 
 article_date, article_subtitle {
     display: block;
     font-family: "Minecraft Seven", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     height: auto;
-    margin: 10px 0;
-    width: 100%;
+    margin: 10px;
 }
 
 article_detail {

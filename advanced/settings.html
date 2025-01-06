@@ -50,7 +50,7 @@
             </style>
             <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
             <div class="spinner">
-                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前浏览器已禁用JavaScript.<br>请在启用相关功能后访问本站.</span></div>
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
@@ -89,13 +89,13 @@
                 </div>
             </div>
             <div class="setting_title">无障碍</div>
-            <div class="main_block setting_block exp_accessibility">
-                <div class="setting_title_content">使用文本转语音<span class="tag yellow_tag exp_tag">实验性</span></div>
+            <div class="main_block setting_block">
+                <div class="setting_title_content">使用文本转语音</div>
                 <div class="setting_control_right">
                     <custom-switch active="off" id="use_tts" status="disabled"></custom-switch>
                 </div>
             </div>
-            <div class="main_block setting_block exp_accessibility">
+            <div class="main_block setting_block">
                 <div class="setting_title_content">文本转语音音量</div>
             </div>
             <div class="main_block setting_block">
@@ -480,29 +480,9 @@
             envi_guide_element.style.display = 'none';
         })
     }
-
-    // 实验性无障碍  TODO: 在移除实验性无障碍时移除相关代码
-    let expAccessibilityState = switchValues['experimental_accessibility'] || 'on';
-    let accessibility_elements = document.querySelectorAll('.exp_accessibility');
-
-    if (expAccessibilityState === 'on') {
-        accessibility_elements.forEach(accessibility_element => {
-            accessibility_element.style.display = 'flex';
-        })
-    } else {
-        accessibility_elements.forEach(accessibility_element => {
-            accessibility_element.style.display = 'none';
-        })
-    }
 </script>
 
 <style>
-    /* TODO: 在移除预览提示块时移除该样式 */
-    .preview_block {
-        border-bottom: 2px solid #333334;
-        border-top: 2px solid #5A5B5C;
-    }
-
     /* TODO: 在移除环境指南页面实验性内容时移除该样式 */
     .exp_envi_guide {
         display: none;
@@ -538,6 +518,10 @@
 
     .right_td {
         padding-left: 10px;
+    }
+
+    #use_all_tip {
+        display: none;
     }
 
     #setting_version_detail {

@@ -84,15 +84,21 @@
 }
 
 .wrap_flex {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 /* 总体样式 */
+html {
+    height: 100%;
+}
+
 body {
     background: #48494A;
     font-family: "NotoSans Bold", sans-serif;
+    height: 100%;
     margin: 0;
     min-width: 330px;
     overflow-x: hidden;
@@ -174,9 +180,9 @@ header {
 
 /* 标题区域 */
 .title_icon {
-    height: 26px;
-    padding-right: 8px;
-    width: 26px;
+    height: 30px;
+    padding: 0 8px;
+    width: 30px;
 }
 
 /* 标题图标 */
@@ -195,6 +201,7 @@ header {
     align-items: center;
     display: flex;
     justify-content: center;
+    margin: 16px;
 }
 
 .repository_logo_img {
@@ -378,8 +385,10 @@ custom-scrollbar-thumb {
     border-left: 2px solid #333334;
     border-right: 2px solid #333334;
     border-top: 2px solid #5A5B5C;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     height: auto;
+    justify-content: center;
     min-height: 66px;
     padding: 8px 0;
     text-align: center;
@@ -404,10 +413,10 @@ custom-scrollbar-thumb {
 
 /* 预览提示 */
 .preview_block {
-    border-bottom: 4px solid #333334;
+    border-bottom: 2px solid #333334;
     border-left: 0;
     border-right: 0;
-    border-top: 4px solid #5A5B5C;
+    border-top: 2px solid #5A5B5C;
     font-family: "NotoSans Bold", sans-serif;
 }
 
@@ -590,7 +599,7 @@ a {
     justify-content: center;
     margin: 10px 20px;
     min-height: 30px;
-    padding: 4px;
+    padding: 10px;
     text-align: center;
     width: calc(100% - 40px);
     word-wrap: break-word;

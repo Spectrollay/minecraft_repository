@@ -21,7 +21,7 @@
  */
 
 switchValues = JSON.parse(localStorage.getItem('(/minecraft_repository/)switch_value')) || {};
-expAccessibilityState = switchValues['experimental_accessibility'] || 'on';
+expTtsState = switchValues['experimental_tts'] || 'on';
 
 // 焦点事件
 // 选择多个元素
@@ -127,7 +127,7 @@ window.addEventListener('load', () => {
     updateFocusableElements(); // 初始化元素焦点
 });
 
-if (expAccessibilityState === 'on') {
+if (expTtsState === 'on') {
 
     // TTS文本转语音
     let enable_tts;
