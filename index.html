@@ -591,7 +591,7 @@
     if (repositoryAttribute) {
         if (repositoryAttribute.includes('test=true')) {
             if (!rootPath.includes('_test')) {
-                ifNavigating("jump", window.location.origin + "/minecraft_repository_test");
+                ifNavigating("direct", window.location.origin + "/minecraft_repository_test");
             }
         } else if (repositoryAttribute.includes('test=false')) {
             if (rootPath.includes('_test')) {
@@ -602,7 +602,7 @@
     }
 
     window.addEventListener('load', function () {
-        if (localStorage.getItem('(/minecraft_repository/)never_show_maintenance_modal_again_20241212') !== 'true') {
+        if (localStorage.getItem('(/minecraft_repository/)never_show_maintenance_modal_again_20241212') !== 'true') { // TODO 维护公告,在完成维护后移除
             showModal('maintenance_notice');
         }
     });

@@ -71,13 +71,13 @@ function showScroll(customScrollbar, scrollTimeout) {
 
 // 更新滚动条滑块位置和尺寸
 function updateThumb(thumb, container, content, customScrollbar) {
-    const scrollHeight = content.scrollHeight;
-    const containerHeight = container.getBoundingClientRect().height;
+    const scrollHeight = content.scrollHeight; // 滚动区域的总高度
+    const containerHeight = container.getBoundingClientRect().height; // 滚动区域的显示高度
     if (content.classList.contains('main_with_tab_bar')) customScrollbar.style.top = '100px'; // 这里需要给标签栏预留高度
-    const thumbHeight = Math.max((containerHeight / scrollHeight) * containerHeight, 20); // 最小高度20px,防止滚动条过小
-    const maxScrollTop = scrollHeight - containerHeight; // 滚动条能到达的最大位置
-    const currentScrollTop = Math.round(container.scrollTop); // 当前的滚动条位置
-    let thumbPosition = (currentScrollTop / maxScrollTop) * (containerHeight - (thumbHeight + 4)); // 4为滚动条滑块的Border总高度,计算时应去除
+    const thumbHeight = Math.max((containerHeight / scrollHeight) * containerHeight, 20); // 滑块的高度,最小高度20px,防止滚动条过小
+    const maxScrollTop = scrollHeight - containerHeight; // 滑块能到达的最大位置
+    const currentScrollTop = Math.round(container.scrollTop); // 当前的滑块位置
+    let thumbPosition = (currentScrollTop / maxScrollTop) * (containerHeight - (thumbHeight + 4)); // 4为滑块的Border总高度,计算时应去除
     if (content.classList.contains('sidebar_content')) thumbPosition = (currentScrollTop / maxScrollTop) * (containerHeight - thumbHeight); // 次要滚动条的样式与主要滚动条样式不同
 
     thumb.style.height = `${thumbHeight}px`;
@@ -224,7 +224,9 @@ function ifNavigating(way, url) {
         return; // 防止重复点击
     }
     isNavigating = true; // 设置状态,正在跳转
-    if (way === 'open') {
+    if (way === 'direct') {
+        window.location.href = url;
+    } else if (way === 'open') {
         setTimeout(function () {
             window.open(url);
             setTimeout(function () {
@@ -867,6 +869,7 @@ function selectTab(tabNumber) {
     }
 }
 
+// 侧边栏
 let sidebarOpen = false;
 
 function toggleSidebar() { // 切换侧边栏状态

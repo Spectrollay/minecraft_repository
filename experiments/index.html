@@ -288,35 +288,11 @@
 
 </body>
 
-<script>
-    const public_script = document.createElement('script');
-    public_script.src = '/minecraft_repository/javascript/public_script.js';
-    document.head.appendChild(public_script);
-
-    function hide_mask() {
-        const loading_mask = document.getElementById('loading_mask');
-        // 延时600ms后隐藏蒙版
-        loading_mask.style.opacity = '0';
-        setTimeout(function () {
-            loading_mask.style.display = 'none';
-        }, 600);
-    }
-
-    // 加载超过8秒时
-    let count = 8;
-    const secondInterval = setInterval(function () {
-        count--;
-        if (count <= 0) {
-            clearInterval(secondInterval);
-            hide_mask();
-        }
-    }, 1000);
-
-    // 页面加载完成时
-    window.addEventListener('load', function () {
-        hide_mask();
-    });
-</script>
+<script src="/minecraft_repository/javascript/loading.js"></script>
+<script src="/minecraft_repository/javascript/public_script.js"></script>
+<!--<script>-->
+<!--    -->
+<!--</script>-->
 
 <!--<style>-->
 <!--    -->
