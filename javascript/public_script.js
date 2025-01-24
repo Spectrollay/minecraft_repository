@@ -41,14 +41,6 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     document.body.classList.add('no-dark-mode'); // 覆盖夜间模式下的样式
 }
 
-// 禁止拖动元素
-window.addEventListener('load', function() {
-    const cantDraggableElements = document.querySelectorAll("img, a");
-    cantDraggableElements.forEach(function (cantDraggableElement) {
-        cantDraggableElement.draggable = false;
-    });
-});
-
 // 节流函数,防止事件频繁触发
 function throttle(func, delay) {
     let lastCall = 0;
@@ -159,6 +151,14 @@ function bindScrollEvents(container, content, customScrollbar, customThumb) {
         scrollTimeout = handleScroll(customScrollbar, customThumb, container, content, scrollTimeout);
     }, 1); // 使用节流函数优化性能
 
+    // 自定义滚动条精确滚动
+    customScrollbar.addEventListener('wheel', (e) => {
+        let delta = e.deltaY > 0 ? 10 : -10;
+        container.scrollTop += delta;
+        throttledScroll();
+        e.preventDefault();
+    });
+
     container.addEventListener('scroll', throttledScroll);
     window.addEventListener('resize', throttledScroll);
     document.addEventListener('mousemove', throttledScroll);
@@ -209,6 +209,11 @@ function watchHeightChange() { // 检查高度变化 NOTE 在有容器高度平�
     }
     requestAnimationFrame(watchHeightChange); // 在下一帧再次检查
 }
+
+// 点击顶栏回到顶部
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.header_logo').addEventListener('click', scrollToTop);
+});
 
 // 自动清除存储
 let firstVisit = localStorage.getItem('(/minecraft_repository/)firstVisit');
@@ -319,21 +324,6 @@ window.addEventListener("load", function () {
     let loadTime = endTime - startTime;
     logManager.log("页面加载耗时: " + loadTime + "ms");
 });
-
-// 为链接添加点击音效
-function addClickSoundToLinks() {
-    const links = document.querySelectorAll('a:not(.sidebar_item)'); // 选择所有类名不为sidebar_item的链接
-    links.forEach(link => {
-        const originalOnClick = link.getAttribute('onclick');
-        if (originalOnClick) { // 如果存在原始的点击事件则先调用原有的再添加
-            link.setAttribute('onclick', `playSound('click');${originalOnClick}`);
-        } else {
-            link.setAttribute('onclick', "playSound('click');");
-        }
-    });
-}
-
-window.addEventListener('load', () => setTimeout(addClickSoundToLinks, 100)); // 页面加载完成后延时执行
 
 // 页面加载时缓存音效文件
 const cacheName = 'audio-cache';
@@ -713,14 +703,14 @@ function toRepo() {
 }
 
 // 重试按钮事件
-function retry(defaultUrl = "/minecraft_repository/") {
+function retry() {
     const params = new URLSearchParams(window.location.search);
     const source = params.get('source');
 
     if (source) {
         ifNavigating("jump", decodeURIComponent(source));
     } else {
-        ifNavigating("jump", defaultUrl);
+        ifNavigating("jump", rootPath);
     }
 }
 
@@ -803,14 +793,8 @@ function toTop() {
 
 // 复制文本
 function copyText(text) {
-    let textToCopy = text;
-    let tempTextarea = document.createElement("textarea");
-    tempTextarea.value = textToCopy;
-    document.body.appendChild(tempTextarea);
-    tempTextarea.select();
-    tempTextarea.setSelectionRange(0, 999999); // 兼容移动设备
-    navigator.clipboard.writeText(tempTextarea.value).then(() => {
-        logManager.log("复制成功: ", tempTextarea.value);
+    navigator.clipboard.writeText(text).then(() => {
+        logManager.log("复制成功: " + text);
     }).catch(error => {
         logManager.log("复制失败: " + error, 'error');
     });

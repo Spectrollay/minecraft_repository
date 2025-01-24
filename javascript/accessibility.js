@@ -40,6 +40,7 @@ const inclusionSelectors = [
     '#banner_tip',
     'modal_close_btn',
     '.edition_block',
+    'reciprocal-link-block',
     '.btn:not(.disabled_btn)',
     '.tab_bar_btn',
     '.expandable_card',
