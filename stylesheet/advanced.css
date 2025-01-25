@@ -35,7 +35,6 @@ main {
 .setting_block {
     align-items: center;
     display: flex;
-    justify-content: center;
     padding: 10px 16px;
 }
 
