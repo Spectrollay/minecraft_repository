@@ -14,7 +14,7 @@
   "experiments\\index.html": "2d69136765094e0fab295bd0fb4203eb",
   "experiments\\index.js": "3c32726c5ae7b57a04ca366e6c13f2d4",
   "Feed\\main.xml": "430fd9c837d82b532a57526e4473a401",
-  "Feed\\update.xml": "66597e3a1b49c234a73fa8088384a7a9",
+  "Feed\\update.xml": "b3c394c2ca0496cb4faa9db4f7425c1d",
   "flags\\index.html": "6017e2904140984633c4a38488bf6d22",
   "fonts\\Minecraft-Five-Bold.otf": "17ba4c2007cf79329c4b84e8dbc6fd34",
   "fonts\\Minecraft-Five.otf": "070d5f6822481c45102b7c8e71619fe1",
@@ -154,7 +154,7 @@
   "javascript\\custom_elements.js": "776d7e3581948fa197a93cc42dad0d5b",
   "javascript\\editions.js": "2b57a159d3eeb155f5ebce829d37c3dc",
   "javascript\\loading.js": "1c4967377c06931f576163fb44098c41",
-  "javascript\\public_define.js": "4c768d09a6656e4d0c4cdb33d70fafd3",
+  "javascript\\public_define.js": "472e721a907323b8e72d09ac85ace647",
   "javascript\\public_script.js": "cb49e9eada7403d919176fb5a229ce60",
   "notifications\\index.html": "b5e7e8d1c2cdf3bc04375cdde83a4b3b",
   "README-en_US.md": "23164b718737db3f4419b02902a9c32d",
@@ -174,6 +174,6 @@
   "stylesheet\\loading_mask.css": "d459d4df41ec441782b557ef6b4c42a6",
   "stylesheet\\public_style.css": "3be9b9336aaa7941d2ce8d277626a0cf",
   "Template\\index.html": "7a14760b1c7f465cb8e0e04bcd0c8726",
-  "updatelog\\index.html": "c287ac9f5011abaf9e98ec12836237a4",
+  "updatelog\\index.html": "dc323c781faedd54f1f498f7edb2bb16",
   "Verification\\.pl\\fuck_csdn.txt": "1fa2bf8c04ffcaf2a134736add6150c6"
 }

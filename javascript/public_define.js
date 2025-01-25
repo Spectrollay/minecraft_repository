@@ -25,12 +25,12 @@
 const main_version_name = "4";
 const primary_version_name = main_version_name + ".6"; // 例 4.0
 const secondary_version_name = primary_version_name + ".5"; // 例 4.0.0
-const version_name_short = secondary_version_name + ".91"; // 例 4.0.0.1  NOTE 小版本
+const version_name_short = secondary_version_name + ".94"; // 例 4.0.0.1  NOTE 小版本
 const version_type = "Pre"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Stable/Release/SP
-const version_type_count = version_type + "4"; // 例 Build1  NOTE 小版本,可为空
+const version_type_count = version_type + "5"; // 例 Build1  NOTE 小版本,可为空
 const version_name = version_name_short + "." + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + "-" + version_type_count; // 例 4.0.0-Build1
-const update_count = "20250125" + ".01"; // NOTE 小版本,有提交就变
+const update_count = "20250125" + ".02"; // NOTE 小版本,有提交就变
 const publish_version_name = primary_version_name + "." + update_count; // 例 4.20240101.01
 const server_version = "4.0";
 let commit = "#"; // 例 #2024010101 , 仅留 # 则从 update_count 提取  NOTE 有不更改版本的提交就变
