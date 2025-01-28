@@ -550,33 +550,6 @@
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 
 <!--提示弹窗-->
-<div class="overlay" id="overlay_maintenance_notice" style="z-index: 51"></div>
-<modal_area id="maintenance_notice" style="z-index: 52" tabindex="-1">
-    <modal>
-        <modal_title_area>
-            <modal_title>服务调整维护的重要通知</modal_title>
-            <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                <img alt="" class="modal_close_btn_img" src=""/>
-            </modal_close_btn>
-        </modal_title_area>
-        <modal_content>
-            <p>由于业务调整, 我们将于2024年12月24日起逐步开始整理维护并进入停服维护状态.</p>
-            <p>在整理维护期间你将无法从版本库数据库下载大部分数据, 在停服维护期间你将无法访问版本库或订阅版本库RSS链接. 请你及时将需要的文件下载至本地存储以备不时之需.</p>
-            <p>作为维护期间的临时解决措施, 我们将在群聊和频道中发布临时下载链接以解决下载需求, 请有需要的用户加入我们的群聊或频道获取.</p>
-            <p>感谢各位用户一路以来的支持与陪伴, 同时也谢谢你的理解与配合, 我们来年再会.</p>
-        </modal_content>
-        <modal_button_area>
-            <modal_button_group>
-                <modal_button_list>
-                    <custom-button data="modal|red|||false||" js="localStorage.setItem('(/minecraft_repository/)never_show_maintenance_modal_again_20241212', 'true');hideModal(this);" text="不再显示"></custom-button>
-                    <custom-button data="modal|green|||false||" js="hideModal(this);" text="我知道了"></custom-button>
-                </modal_button_list>
-            </modal_button_group>
-        </modal_button_area>
-    </modal>
-</modal_area>
-
-<!--提示弹窗-->
 <div class="overlay" id="overlay_alert_modal" tabindex="-1"></div>
 <modal_area id="alert_modal" tabindex="-1"></modal_area>
 
@@ -600,12 +573,6 @@
         }
     } else {
     }
-
-    window.addEventListener('load', function () {
-        if (localStorage.getItem('(/minecraft_repository/)never_show_maintenance_modal_again_20241212') !== 'true') { // TODO 维护公告,在完成维护后移除
-            showModal('maintenance_notice');
-        }
-    });
 </script>
 
 <style>
