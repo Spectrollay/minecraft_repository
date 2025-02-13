@@ -31,7 +31,7 @@ const maintenanceModal = `
                 </modal_close_btn>
             </modal_title_area>
             <modal_content>
-                <p>我们正在对版本库的数据库进行更新维护, 版本库的部分资源将无法下载. 如果你想要下载的资源无法获取, 你可以加入我们的 <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> / <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a> 官方频道或 <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> / <a href=",https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> / <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a> 聊天群组获取, 这里会发布需求量较大的临时资源链接. 如果频道或群组中还是没有你想要的资源, 可以向管理员询问该资源的临时下载方式. 感谢你的理解与配合, 也祝你新年快乐!</p>
+                <p>我们正在对版本库的数据库进行更新维护, 版本库的部分资源将无法下载. 如果你想要下载的资源无法获取, 你可以加入我们的 <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> / <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a> 官方频道或 <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> / <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> / <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a> 聊天群组获取, 这里会发布需求量较大的临时资源链接. 如果频道或群组中还是没有你想要的资源, 可以向管理员询问该资源的临时下载方式. 感谢你的理解与配合, 也祝你新年快乐!</p>
             </modal_content>
             <modal_button_area>
                 <modal_button_group>
