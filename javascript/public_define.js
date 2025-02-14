@@ -38,8 +38,6 @@ if (commit === "#") {
     commit = "#" + update_count.replace(/\./g, "");
 }
 
-const data = "/data";
-
 async function getProjectHash() {
     try {
         const response = await fetch('/minecraft_repository/Verification/project-hash.json');
@@ -99,7 +97,7 @@ logManager.log("发布版本: " + publish_version_name);
 // 网站状态
 let status;
 if (window.location.origin.includes('https')) {
-    status = data + '/minecraft_repository/status.xml';
+    status = '/data/minecraft_repository/status.xml';
 } else {
     status = '/minecraft_repository_test/status.xml';
 }
