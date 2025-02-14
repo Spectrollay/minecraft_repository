@@ -38,14 +38,14 @@ if (commit === "#") {
     commit = "#" + update_count.replace(/\./g, "");
 }
 
-const data = "https://spectrollay.github.io/data";
+const data = "/data";
 
 async function getProjectHash() {
     try {
         const response = await fetch('/minecraft_repository/Verification/project-hash.json');
         if (response.ok) {
-            const data = await response.json();
-            return data.projectHash;
+            const hash = await response.json();
+            return hash.projectHash;
         } else {
             logManager.log("获取项目哈希值时出错: " + response.status, 'error');
             return null;
