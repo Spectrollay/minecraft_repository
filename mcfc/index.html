@@ -1,0 +1,687 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <base href="../"><!-- 项目根路径 -->
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/book.png" rel="icon">
+    <style>
+        .block_main {
+            flex-direction: column;
+        }
+
+        .title_block {
+            flex-direction: column;
+        }
+
+        .title_info {
+            align-items: center;
+            display: flex;
+            font-family: "Minecraft Seven", sans-serif;
+            font-size: 18px;
+            height: auto;
+            margin: 10px;
+            justify-content: center;
+        }
+
+        vertical-line {
+            height: 20px;
+        }
+
+        .input_area, .output_area {
+            align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+            margin: 2px 10px;
+            width: 336px;
+        }
+
+        .text_field_container {
+            display: unset;
+        }
+
+        text-field, textarea {
+            width: 324px;
+        }
+
+        .input_btn {
+            width: 150px;
+        }
+
+        .output_code {
+            border: 1px rgba(255, 255, 255, 0.6) solid;
+            margin: 6px;
+            padding: 10px;
+        }
+
+        .output_code:hover {
+            background-color: #58585A;
+        }
+
+        .hint_text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .output_tip {
+            margin: 4px 2px;
+        }
+
+        .support_tip {
+            margin: 10px 20px;
+        }
+
+        @media screen and (max-width: 759px) {
+            .support_tip {
+                max-width: 336px;
+            }
+        }
+
+        .use_guidance {
+            margin: 10px;
+        }
+
+        .guidance_text {
+            margin: 6px;
+            max-width: 700px;
+            text-align: justify;
+        }
+
+        .guidance_text div {
+            margin: 6px 0;
+        }
+
+        .clickable_no_link {
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            width: 20px;
+        }
+
+        #render_area {
+            cursor: pointer;
+        }
+
+        .zoom_mask {
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #FFFFFF;
+            display: flex;
+            height: calc(100% - 44px);
+            justify-content: center;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            top: 44px;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .zoom_container {
+            cursor: grab;
+            position: relative;
+            transform: scale(2);
+            /*transition: transform 0.1s ease; !* 可能在拖动的时候导致闪屏 *!*/
+            width: 48%;
+        }
+
+        .zoom_container #render_area {
+            background-color: #48494A;
+            cursor: grab;
+        }
+
+        .zoom_close_btn, .zoom_theme_btn {
+            align-items: center;
+            background-color: #48494A;
+            border: 1px rgba(255, 255, 255, 0.6) solid;
+            cursor: pointer;
+            display: flex;
+            height: 34px;
+            justify-content: center;
+            position: absolute;
+            width: 34px;
+            z-index: 6;
+        }
+
+        .zoom_close_btn {
+            right: 20px;
+            top: 20px;
+        }
+
+        .zoom_theme_btn {
+            right: 66px;
+            top: 20px;
+        }
+
+        .zoom_close_btn:hover, .zoom_theme_btn:hover {
+            background-color: #58585A;
+            cursor: pointer;
+        }
+
+        .close_btn_img {
+            height: 22px;
+            width: 22px;
+        }
+
+        .palette_btn_img {
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+    <title>MC格式化代码渲染器 - Minecraft Kit</title>
+</head>
+
+<div class="loading_mask" id="loading_mask">
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
+        </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
+            </div>
+        </noscript>
+    </div>
+</div>
+
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_left">
+            <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+                <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+            </div>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/book.png"/>
+        </div>
+        <div class="header_right">
+            <div class="header_item header_item_right" id="reload" onclick="playSoundType(this);reloadPage();">
+                <img alt="" class="header_right_icon" src="./images/Refresh.png"/>
+            </div>
+            <div class="header_item header_item_right" id="feedback" onclick="playSoundType(this);contact();">
+                <img alt="" class="header_right_icon" src="./images/Feedback.png"/>
+            </div>
+        </div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view">
+            <scroll-container class="primary_scroll_container">
+                <main class="scroll_container" id="main">
+                    <div class="block_spacing"></div>
+                    <div class="block">
+                        <div class="block_main title_block">
+                            <div class="title1">MC格式化代码渲染器<img alt="" class="share_img_title" onclick="playSound('click');copyText(window.location.href, 'link');" src="./images/ExternalLink_white.png"></div>
+                        </div>
+                    </div>
+                    <div class="block_spacing"></div>
+                    <div class="block">
+                        <div class="block_main">
+                            <div class="wrap_flex">
+                                <div class="input_area">
+                                    <div class="title3">输入</div>
+                                    <div class="text_field_container do_not_save" id="formatting_code_input">
+                                        <text-field hint="在此输入包含§的格式化代码.." single-line="false" status="enabled" type="all"></text-field>
+                                        <div class="flex">
+                                            <custom-button data="input|green|||false||" js="renderFormattingCode();" text="渲染"></custom-button>
+                                            <custom-button data="input|normal|||false||" js="resetRender();" text="重置"></custom-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="output_area">
+                                    <div class="title3">输出</div>
+                                    <div class="output_code selectable" id="render_area" onclick="initFullscreenZoom();playSound('click');">
+                                        <span class="hint_text">点击渲染按钮在此进行预览.</span>
+                                    </div>
+                                    <div class="output_tip">发现问题? 点击右上角联系我们图标进行反馈!</div>
+                                </div>
+                            </div>
+                            <div class="support_tip">如果你认为这个项目做得不错或对你有所帮助, 不妨<a href="https://github.com/Spectrollay/minecraft_formatting_code_online" target="_blank">为项目点个星标</a>支持一下~ 十分感谢!</div>
+                        </div>
+                        <div class="block_main wrap_flex">
+                            <div>
+                                <div class="title3">使用指南</div>
+                                <div class="use_guidance">
+                                    <div>欢迎使用MC格式化代码渲染器!</div>
+                                    <div class="guidance_text">
+                                        <div>在开始使用之前, 你需要了解<a href="https://zh.minecraft.wiki/w/%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81" target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>Minecraft格式化代码</a>的基本用法.</div>
+                                        <div>你需要在页面上方的输入框内输入包含<a class="clickable_no_link" onclick="copyText(this.text, 'text');">§</a>(点击复制字符)的格式化代码, 完成输入后, 点击输入框下方的渲染按钮, 即可在输出框内渲染出对应的文本. 点击输出框可以使输出内容全屏显示并自由缩放. 如果你需要快速清除输入框和输出框, 请点击输入框下方的重置按钮.</div>
+                                        <div>以下为本站使用的代码规范:</div>
+                                        <div>§0: <span class="mcfc">§0 #000000</span></div>
+                                        <div>§1: <span class="mcfc">§1 #0000AA</span></div>
+                                        <div>§2: <span class="mcfc">§2 #00AA00</span></div>
+                                        <div>§3: <span class="mcfc">§3 #00AAAA</span></div>
+                                        <div>§4: <span class="mcfc">§4 #AA0000</span></div>
+                                        <div>§5: <span class="mcfc">§5 #AA00AA</span></div>
+                                        <div>§6: <span class="mcfc">§6 #FFAA00</span></div>
+                                        <div>§7: <span class="mcfc">§7 #AAAAAA</span></div>
+                                        <div>§8: <span class="mcfc">§8 #555555</span></div>
+                                        <div>§9: <span class="mcfc">§9 #5555FF</span></div>
+                                        <div>§a: <span class="mcfc">§a #55FF55</span></div>
+                                        <div>§b: <span class="mcfc">§b #55FFFF</span></div>
+                                        <div>§c: <span class="mcfc">§c #FF5555</span></div>
+                                        <div>§d: <span class="mcfc">§d #FF55FF</span></div>
+                                        <div>§e: <span class="mcfc">§e #FFFF55</span></div>
+                                        <div>§f: <span class="mcfc">§f #FFFFFF</span></div>
+                                        <div>§g: <span class="mcfc">§g #DDD605</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§h: <span class="mcfc">§h #E3D4D1</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§i: <span class="mcfc">§i #CECACA</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§j: <span class="mcfc">§j #443A3B</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§k: <span class="mcfc">§k 这是一段乱码文本</span><span class="hint_text"> - 乱码</span></div>
+                                        <div>§l: <span class="mcfc">§l 粗体文本</span></div>
+                                        <div>§m: <span class="mcfc">§m #971607</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§M: <span class="mcfc">§M 删除线</span><span class="hint_text"> - 兼容Java版样式</span></div>
+                                        <div>§n: <span class="mcfc">§n #B4684D</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§N: <span class="mcfc">§N 下划线</span><span class="hint_text"> - 兼容Java版样式</span></div>
+                                        <div>§o: <span class="mcfc">§o 斜体文本</span></div>
+                                        <div>§p: <span class="mcfc">§p #DEB12D</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§q: <span class="mcfc">§q #47A036</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§r: <span class="mcfc">§r 默认文本</span></div>
+                                        <div>§s: <span class="mcfc">§s #2CBAA8</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§t: <span class="mcfc">§t #21497B</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§u: <span class="mcfc">§u #9A5CC6</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>§v: <span class="mcfc">§v #EB7114</span><span class="hint_text"> - 使用基岩版样式</span></div>
+                                        <div>在渲染规则上, 本站除了渲染文本外部有额外的文字描边外其余与基岩版基本保持一致. 文字描边的渲染基于当前字体颜色, 删除线与下划线的渲染基于默认字体颜色. 当字体颜色为浅色时这三者均渲染为深色, 当字体颜色为深色时这三者均渲染为浅色.</div>
+                                        <div>恭喜你! 你已经了解了基本的使用方法, 快来探索更多的进阶功能吧!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page_info"><br></div>
+                        <div class="page_info_title">项目信息</div>
+                        <div class="page_info" id="version_info">
+                            <img alt="" class="data_loading_img_small" src="./images/Loading_white.gif"/>
+                        </div>
+                        <div class="page_info_title">关于我们</div>
+                        <div class="page_info">开发者: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>维护者: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>聊天群组: <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> | <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> | <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a></div>
+                        <div class="page_info_title">用❤️制作</div>
+                        <div class="page_info"><br></div>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+    </display-body>
+</dispaly-area>
+
+<div class="zoom_mask" style="display: none;">
+    <div class="zoom_close_btn">
+        <img alt="" class="close_btn_img" src="./images/cross_white.png"/>
+    </div>
+    <div class="zoom_theme_btn">
+        <img alt="" class="palette_btn_img" src="./images/Palette.png"/>
+    </div>
+    <div class="zoom_container"></div>
+</div>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
+
+</body>
+
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
+<script>
+    const mcfc_site_version = "2.0"; // NOTE 版本号
+    const mcfc_update_count = "2025-05-05-01"; // NOTE 发布编号
+    const mcfc_server_version = "4.0";
+    const mcfc_version_info = "<span>项目版本: " + mcfc_site_version + "<br>服务端版本: " + mcfc_server_version + "<br>最后更新: " + mcfc_update_count + "</span>";
+
+    const version_area = document.getElementById('version_info');
+    if (version_area) {
+        version_area.innerHTML = mcfc_version_info;
+    }
+
+    function renderFormattingCode() {
+        const input = document.getElementById('formatting_code_input').querySelector('text-field').getValue();
+        const renderArea = document.getElementById('render_area');
+        const span = document.createElement('span');
+
+        renderArea.innerHTML = '';
+        if (!/\S/.test(input)) {
+            const hint = document.createElement('span');
+            hint.className = 'hint_text';
+            hint.textContent = '请输入格式化代码后再渲染!';
+            renderArea.appendChild(hint);
+            return;
+        }
+
+        span.className = 'mcfc';
+        span.dataset.rawText = input;
+        span.textContent = input;
+
+        renderArea.innerHTML = '';
+        renderArea.appendChild(span);
+
+        renderAllMinecraftText();
+    }
+
+    function resetRender() {
+        const renderArea = document.getElementById('render_area');
+        const hint = document.createElement('span');
+
+        document.getElementById('formatting_code_input').querySelector('text-field').resetValue();
+
+        renderArea.innerHTML = '';
+        hint.className = 'hint_text';
+        hint.textContent = '点击渲染按钮在此进行预览.';
+        renderArea.appendChild(hint);
+    }
+
+    // 初始化全屏放大遮罩功能
+    function initFullscreenZoom() {
+        const zoomMask = document.querySelector('.zoom_mask');
+        const zoomContainer = zoomMask.querySelector('.zoom_container');
+        const closeBtn = zoomMask.querySelector('.zoom_close_btn');
+        const themeBtn = zoomMask.querySelector('.zoom_theme_btn');
+        const state = { // 初始化状态
+            scale: 2,
+            initialX: 0,
+            initialY: 0,
+            isDragging: false
+        };
+
+        if (!zoomMask || !zoomContainer) return;
+
+        const clonedRenderArea = cloneAndInsertRenderArea(zoomContainer); // 克隆原始渲染区域并插入遮罩容器中
+        updateTransform(zoomContainer, state); // 再次初始化渲染区域
+
+        // 绑定交互
+        setupMouseDrag(zoomContainer, state);
+        setupTouchHandlers(zoomMask, zoomContainer, state);
+        setupWheelZoom(zoomMask, zoomContainer, state);
+        setupThemeToggle(themeBtn, clonedRenderArea);
+        setupCloseButton(closeBtn, zoomMask);
+        setupFocusTrap(zoomMask);
+
+        // 显示全屏放大遮罩
+        zoomMask.style.display = 'flex';
+        zoomMask.focus();
+    }
+
+    // 克隆原始渲染区域并插入到全屏放大遮罩容器中
+    function cloneAndInsertRenderArea(container) {
+        const renderArea = document.getElementById('render_area');
+        const clone = renderArea.cloneNode(true);
+        clone.classList.remove('selectable');
+        clone.removeAttribute('onclick');
+        clone.removeAttribute('id');
+        container.innerHTML = '';
+        container.appendChild(clone);
+        return clone;
+    }
+
+    // 设置鼠标拖动缩放区域功能
+    function setupMouseDrag(container, state) {
+        container.addEventListener('mousedown', e => {
+            state.isDragging = true;
+            state.startX = e.clientX - state.initialX;
+            state.startY = e.clientY - state.initialY;
+            container.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', e => {
+            if (!state.isDragging) return;
+            e.preventDefault();
+            state.initialX = e.clientX - state.startX;
+            state.initialY = e.clientY - state.startY;
+            updateTransform(container, state);
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (state.isDragging) {
+                state.isDragging = false;
+                container.style.cursor = 'grab';
+            }
+        });
+    }
+
+    // 设置触摸拖动与双指缩放功能
+    function setupTouchHandlers(mask, container, state) {
+        let lastTouchDistance = null; // 上一次双指间的距离
+        let wasPinching = false; // 标记是否为双指缩放
+
+        let dragStartTouchX = 0; // 单指拖动开始时手指的X坐标
+        let dragStartTouchY = 0; // 单指拖动开始时手指的Y坐标
+        let dragStartElementX = 0; // 单指拖动开始时元素的X偏移
+        let dragStartElementY = 0; // 单指拖动开始时元素的Y偏移
+
+        // 开始触摸
+        mask.addEventListener('touchstart', e => {
+            if (e.touches.length === 2) {
+                // 初始化双指缩放
+                state.isDragging = false;
+                wasPinching = true;
+                lastTouchDistance = getTouchDistance(e.touches);
+            } else if (e.touches.length === 1) {
+            }
+        });
+
+        // 触摸移动
+        mask.addEventListener('touchmove', e => {
+            e.preventDefault();
+
+            if (e.touches.length === 2) {
+                // 双指缩放
+                if (!wasPinching) {
+                    lastTouchDistance = getTouchDistance(e.touches);
+                    state.isDragging = false;
+                }
+                wasPinching = true;
+                container.style.cursor = 'default';
+
+                const newDistance = getTouchDistance(e.touches);
+                if (lastTouchDistance) {
+                    const deltaScale = newDistance / lastTouchDistance;
+                    const currentScale = state.scale || 1;
+                    state.scale = Math.min(Math.max(0.5, currentScale * deltaScale), 5); // 限制缩放范围
+                    updateTransform(container, state);
+                    lastTouchDistance = newDistance; // 更新为本次距离,供下次计算
+                } else {
+                    lastTouchDistance = newDistance;
+                }
+
+            } else if (e.touches.length === 1) {
+                // 单指拖动
+                if (wasPinching || !state.isDragging) {
+                    const touch = e.touches[0];
+                    dragStartTouchX = touch.clientX;
+                    dragStartTouchY = touch.clientY;
+                    dragStartElementX = state.initialX || 0; // 使用元素当前的X偏移
+                    dragStartElementY = state.initialY || 0; // 使用元素当前的Y偏移
+
+                    state.isDragging = true; // 正式进入拖动状态
+                    wasPinching = false; // 清除缩放标记
+                    container.style.cursor = 'grabbing';
+                }
+
+                // 如果正在拖动,则执行相对位移逻辑
+                if (state.isDragging) {
+                    const touch = e.touches[0];
+                    const currentTouchX = touch.clientX;
+                    const currentTouchY = touch.clientY;
+
+                    // 计算手指从拖动开始时的位移
+                    const deltaX = currentTouchX - dragStartTouchX;
+                    const deltaY = currentTouchY - dragStartTouchY;
+
+                    // 元素的新位置
+                    state.initialX = dragStartElementX + deltaX;
+                    state.initialY = dragStartElementY + deltaY;
+
+                    updateTransform(container, state);
+                }
+            }
+        });
+
+        // 触摸结束/取消
+        mask.addEventListener('touchend', e => {
+            const touchesRemaining = e.touches.length;
+
+            if (wasPinching) {
+                if (touchesRemaining < 2) {
+                    wasPinching = false;
+                    lastTouchDistance = null;
+
+                    if (touchesRemaining === 1) {
+                        const touch = e.touches[0];
+                        dragStartTouchX = touch.clientX;
+                        dragStartTouchY = touch.clientY;
+                        dragStartElementX = state.initialX || 0;
+                        dragStartElementY = state.initialY || 0;
+                        state.isDragging = false;
+                        container.style.cursor = 'grab';
+                    }
+                }
+            }
+
+            if (state.isDragging && touchesRemaining === 0) {
+                state.isDragging = false;
+                container.style.cursor = 'grab';
+            }
+
+            if (touchesRemaining === 0) {
+                state.isDragging = false;
+                wasPinching = false;
+                lastTouchDistance = null;
+                container.style.cursor = 'grab';
+            }
+        });
+
+        mask.addEventListener('touchcancel', () => {
+            state.isDragging = false;
+            wasPinching = false;
+            lastTouchDistance = null;
+            container.style.cursor = 'grab';
+        });
+    }
+
+    // 设置滚轮缩放功能
+    function setupWheelZoom(mask, container, state) {
+        mask.addEventListener('wheel', e => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            state.scale = Math.min(Math.max(0.5, state.scale + delta), 5);
+            updateTransform(container, state);
+        });
+    }
+
+    // 主题列表
+    const THEMES = Object.freeze([
+        {name: 'gray', background: '#48494a', color: '#FFFFFF', hint: 'rgba(255, 255, 255, 0.8)'},
+        {name: 'black', background: '#000000', color: '#FFFFFF', hint: 'rgba(255, 255, 255, 0.8)'},
+        {name: 'white', background: '#FFFFFF', color: '#000000', hint: 'rgba(0, 0, 0, 0.8)'},
+    ]);
+
+    // 设置主题切换功能
+    function setupThemeToggle(button, renderArea) {
+        let currentThemeIndex = 0;
+
+        function applyTheme(theme) {
+            renderArea.style.backgroundColor = theme.background;
+            renderArea.style.color = theme.color;
+
+            const hint = renderArea.querySelector('.hint_text');
+            if (hint) hint.style.color = theme.hint;
+        }
+
+        // 初始主题
+        applyTheme(THEMES[currentThemeIndex]);
+
+        // 切换下一个主题
+        button.onclick = () => {
+            currentThemeIndex = (currentThemeIndex + 1) % THEMES.length;
+            applyTheme(THEMES[currentThemeIndex]);
+            renderAllMinecraftText();  // 重新渲染格式化代码
+            playSound('click');
+        };
+    }
+
+    // 设置关闭按钮功能
+    function setupCloseButton(button, mask) {
+        button.onclick = () => {
+            playSound('click');
+            mask.style.display = 'none';
+        };
+    }
+
+    // 设置焦点陷阱
+    function setupFocusTrap(mask) {
+        mask.removeEventListener('keydown', handleTabNavigation); // 移除旧的事件监听器
+        mask.addEventListener('keydown', handleTabNavigation); // 添加新的事件监听器
+
+        const {firstTabStop} = chooseElementsTabindex(mask); // 在遮罩显示时重新获取最新的可聚焦列表
+        if (firstTabStop) {
+            firstTabStop.focus(); // 聚焦遮罩内的第一个可聚焦元素
+        } else {
+        }
+    }
+
+    // 更新容器变换
+    function updateTransform(container, state) {
+        container.style.transform = `translate(${state.initialX}px, ${state.initialY}px) scale(${state.scale})`;
+    }
+
+    // 获取双指间距离
+    function getTouchDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+</script>
+
+</html>

@@ -1,0 +1,375 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <base href="../"><!-- 项目根路径 -->
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="https://github.com/Spectrollay/mclang_cn/releases.atom" rel="alternate" title="中文译名修正项目版本发布订阅" type="application/rss+xml">
+    <link href="https://github.com/Spectrollay/mclang_cn/commits.atom" rel="alternate" title="中文译名修正项目代码推送订阅" type="application/rss+xml">
+    <link href="./images/logo/mclang_cn_fix.png" rel="icon">
+    <style>
+        .keyart {
+            width: 300px;
+        }
+
+        .introduction_badge_area {
+            margin: 6px;
+        }
+
+        .introduction_badge_area a {
+            box-shadow: unset;
+        }
+
+        .description2 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrap_flex {
+            align-items: start;
+        }
+
+        .align_center {
+            align-items: center;
+        }
+
+        .detail_block {
+            margin: 12px;
+            width: 320px;
+        }
+
+        .detail_block.text {
+            text-align: justify;
+        }
+
+        .main_block_cont {
+            margin: 10px 0;
+            min-height: 100px;
+        }
+
+        .info_list {
+            align-items: center;
+            display: grid;
+            grid-template-columns: 130px 1fr;
+        }
+
+        .info_list .label {
+            margin: 6px 0;
+            text-align: right;
+            white-space: nowrap;
+        }
+    </style>
+    <title>中文译名修正项目 - Minecraft Kit</title>
+</head>
+
+<div class="loading_mask" id="loading_mask">
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
+        </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
+            </div>
+        </noscript>
+    </div>
+</div>
+
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_left">
+            <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+                <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+            </div>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/logo/mclang_cn_fix.png"/>
+        </div>
+        <div class="header_right">
+            <div class="header_item header_item_right" id="reload" onclick="playSoundType(this);reloadPage();">
+                <img alt="" class="header_right_icon" src="./images/Refresh.png"/>
+            </div>
+            <div class="header_item header_item_right" id="feedback" onclick="playSoundType(this);contact();">
+                <img alt="" class="header_right_icon" src="./images/Feedback.png"/>
+            </div>
+        </div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view">
+            <scroll-container class="primary_scroll_container">
+                <main class="scroll_container" id="main">
+                    <div class="main_title">
+                        <div class="main_title_area">
+                            <div class="title1">中文译名修正项目<img alt="" class="share_img_title" onclick="playSound('click');copyText(window.location.href, 'link');" src="./images/ExternalLink_white.png"></div>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont">
+                            <div class="title3">项目介绍</div>
+                            <div class="description2">
+                                <div>
+                                    <div class="wrap_flex align_center">
+                                        <div class="detail_block">
+                                            <img alt="Newest KeyArt" class="keyart" src="../mclang_cn/KeyArt.png"/>
+                                        </div>
+                                        <div class="detail_block">
+                                            <h3>和基岩版的无脑翻译说再见!</h3>
+                                            <div style="margin: 12px 0">
+                                                <b>适用于所有基于基岩引擎开发的游戏版本!<br>独家适配隐藏内容和不同平台的独有内容!<br>快速适配最新的绝大多数正式版和开发版!</b>
+                                            </div>
+                                        </div>
+                                        <div class="detail_block">
+                                            <div class="introduction_badge_area">
+                                                <a href="https://github.com/Spectrollay/mclang_cn/stargazers">
+                                                    <img alt="星标数" src="https://img.shields.io/github/stars/Spectrollay/mclang_cn?color=eac54f&style=for-the-badge&label=星标数">
+                                                </a>
+                                                <a href="https://github.com/Spectrollay/mclang_cn/releases">
+                                                    <img alt="总下载" src="https://img.shields.io/github/downloads/Spectrollay/mclang_cn/total?style=for-the-badge&label=总下载">
+                                                </a>
+                                            </div>
+                                            <div class="introduction_badge_area">
+                                                <a href="https://github.com/Spectrollay/mclang_cn/commits/main">
+                                                    <img alt="最近提交" src="https://img.shields.io/github/last-commit/Spectrollay/mclang_cn?style=for-the-badge&label=最近提交">
+                                                </a>
+                                            </div>
+                                            <link-block class="wiki_link_block" onclick="playSound('click');openLink('https://zh.minecraft.wiki');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/small_icon/wiki.ico">Minecraft Wiki
+                                                </div>
+                                            </link-block>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont">
+                            <div class="title3">发布下载</div>
+                            <div class="description2">
+                                <div>
+                                    <b>由于历史遗留原因,仅提供1.20及以后的版本.</b>
+                                    <div class="wrap_flex">
+                                        <div class="detail_block">
+                                            <div>Github</div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('https://github.com/Spectrollay/mclang_cn');" text="项目主页"></custom-button>
+                                            </div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('https://github.com/Spectrollay/mclang_cn/releases');" text="发布地址"></custom-button>
+                                            </div>
+                                        </div>
+                                        <div class="detail_block">
+                                            <div>Gitee</div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('https://gitee.com/Spectrollay/mclang_cn');" text="项目主页"></custom-button>
+                                            </div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('https://gitee.com/Spectrollay/mclang_cn/releases');" text="发布地址"></custom-button>
+                                            </div>
+                                        </div>
+                                        <div class="detail_block">
+                                            <div>发布</div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('https://pan.huang1111.cn/s/E74A7Fb');" text="网盘链接"></custom-button>
+                                            </div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('https://www.cubezone.cc/resources/47/');" text="方块社区"></custom-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wrap_flex">
+                                        <div class="detail_block">
+                                            <div>应用包</div>
+                                            <link-block class="home_link_block" onclick="playSound('click');openLink('./');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/Starmoon_icon.png">星月Minecraft版本库
+                                                </div>
+                                            </link-block>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont">
+                            <div class="title3">参与开发</div>
+                            <div class="description2">
+                                <div>
+                                    <div class="wrap_flex align_center">
+                                        <div class="detail_block text">
+                                            <div>中文译名修正项目目前仅是个人项目, 因此难免会存在部分内容过于主观, 校正不到位或是更新不及时等问题. 如果你有能力和想法, 欢迎参与编辑与维护这个项目.</div>
+                                            <link-block class="contribute_link_block" onclick="playSound('click');openLink('https://github.com/Spectrollay/mclang_cn/fork');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/Github.png">参与开发
+                                                </div>
+                                            </link-block>
+                                        </div>
+                                        <div class="detail_block">
+                                            <div class="info_list">
+                                                <div class="label">项目开发:</div>
+                                                <div><a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a></div>
+                                                <div class="label">项目维护:</div>
+                                                <div><a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a></div>
+                                                <div class="label">项目依赖:</div>
+                                                <div><a href="https://zh.minecraft.wiki/w/Minecraft_Wiki:%E8%AF%91%E5%90%8D%E6%A0%87%E5%87%86%E5%8C%96" target="_blank">中文译名标准化</a></div>
+                                                <div class="label">界面设计:</div>
+                                                <div class="btn_group">
+                                                    <custom-button data="default|green|small||false||" js="openLink('https://github.com/Spectrollay/OreUI');" text="OreUI"></custom-button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail_block">
+                                            <div>聊天群组:
+                                                <div class="wrap_flex">
+                                                    <link-block class="contact_link_block" onclick="playSound('click');openLink('https://t.me/Spectrollay_MCW');">
+                                                        <div class="link_title">
+                                                            <img alt="" class="link_title_img" src="./images/logo/small_icon/telegram.ico">Telegram
+                                                        </div>
+                                                    </link-block>
+                                                    <link-block class="contact_link_block" onclick="playSound('click');openLink('https://qm.qq.com/q/AqLmKLH9mM');">
+                                                        <div class="link_title">
+                                                            <img alt="" class="link_title_img" src="./images/logo/small_icon/qq.ico">QQ
+                                                        </div>
+                                                    </link-block>
+                                                    <link-block class="contact_link_block" onclick="playSound('click');openLink('https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802');">
+                                                        <div class="link_title">
+                                                            <img alt="" class="link_title_img" src="./images/logo/small_icon/yunhu.ico">云湖
+                                                        </div>
+                                                    </link-block>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont">
+                            <div class="title3">反馈支持</div>
+                            <div class="description2">
+                                <div>
+                                    <div class="wrap_flex">
+                                        <div class="detail_block text">
+                                            <div>中文译名修正项目始于2020年, 如今已基本成熟. 但语言翻译终有信达雅三大难事, 因此译名不可能做到尽善尽美. 如果你发现译名存在问题或认为有更好的想法欢迎加入群聊或点击下方的反馈链接向开发者反馈, 让我们一起做得更好.</div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="toRepo();" text="提出反馈"></custom-button>
+                                            </div>
+                                        </div>
+                                        <div class="detail_block text">
+                                            <div>如果你认为这个项目对你有所帮助, 且已经实现了经济独立, 可以考虑通过捐赠来支持我们. 这可以在很大程度上用于提升环境配置及开发积极性.</div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="openLink('./about/donate.html');" text="捐赠我们"></custom-button>
+                                            </div>
+                                        </div>
+                                        <div class="detail_block text">
+                                            <div>你还可以分享本项目, 让更多的人知道并使用它, 这也是对我们的强有力支持.</div>
+                                            <div class="btn_group">
+                                                <custom-button data="default|normal|large||false||" js="copyText('https://spectrollay.github.io/mclang_cn/', 'link');" text="复制链接"></custom-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page_info"><br></div>
+                        <div class="page_info_title">项目信息</div>
+                        <div class="page_info" id="version_info">
+                            <img alt="" class="data_loading_img_small" src="./images/Loading_white.gif"/>
+                        </div>
+                        <div class="page_info_title">关于我们</div>
+                        <div class="page_info">开发者: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>维护者: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>聊天群组: <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> | <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> | <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a></div>
+                        <div class="page_info_title">用❤️制作</div>
+                        <div class="page_info"><br></div>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+    </display-body>
+</dispaly-area>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
+<div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
+
+</body>
+
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
+<script>
+    const mclang_site_version = "2.1.1"; // NOTE 版本号
+    const mclang_update_count = "2025-06-02-01"; // NOTE 发布编号
+    const mclang_server_version = "4.0";
+    const mclang_version_info = "<span>项目版本: " + mclang_site_version + "<br>服务端版本: " + mclang_server_version + "<br>最后更新: " + mclang_update_count + "</span>";
+
+    const version_area = document.getElementById('version_info');
+    if (version_area) {
+        version_area.innerHTML = mclang_version_info;
+    }
+
+    function toRepo() {
+        setTimeout(function () {
+            ifNavigating("open", "https://github.com/Spectrollay/mclang_cn/issues/new");
+        }, 600);
+    }
+</script>
+
+</html>

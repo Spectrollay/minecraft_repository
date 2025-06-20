@@ -13,6 +13,6 @@ This project uses [OreUI](https://github.com/Spectrollay/OreUI) technology
 Join groups:
 [![Telegram](https://img.shields.io/badge/Telegram-Chat-blue)](https://t.me/Spectrollay_MCW)   [![QQ-Group](https://img.shields.io/badge/QQ-Chat-blue)](https://qm.qq.com/q/AqLmKLH9mM)   [![YH-Group](https://img.shields.io/badge/YunHu-Chat-blue)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)
 
-Project address:
+Project address: https://spectrollay.github.io/minecraft_repository/
 
-- (GitHub) https://spectrollay.github.io/minecraft_repository/
+This project is open source under [MIT License](LICENSE)

@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V1.2
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,23 +28,71 @@
 <html lang="zh">
 
 <head>
+    <base href="../"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/images/Messages.png" rel="icon">
-    <!--    <style>-->
-    <!--        -->
-    <!--    </style>-->
-    <title>消息中心</title>
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/Messages.png" rel="icon">
+    <style>
+        .block {
+            margin: 20px;
+        }
+
+        .message {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        article_date {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        article_block {
+            width: 100%;
+        }
+
+        article_detail p {
+            text-indent: 2em;
+        }
+
+        article_detail {
+            background-color: #313233;
+            margin: 0;
+            min-height: 60px;
+            padding: 10px 20px;
+        }
+
+        .article_image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .article_image img {
+            width: calc(min(80%, 450px));
+        }
+
+        vertical-line {
+            height: 20px;
+        }
+    </style>
+    <title>消息中心 - 星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -48,30 +100,45 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
+
+<body class="old">
 <header>
     <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="Back" class="back_icon" id="back_icon" src=""/>
+        <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
     </div>
     <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Messages.png"/>
-        <span class="header_title">MESSAGES</span>
+        <img alt="" class="title_icon" src="./images/Messages.png"/>
+        <div class="header_title">Messages</div>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
 <scroll-view>
-    <scroll-container class="main_scroll_container">
+    <scroll-container class="old primary_scroll_container">
         <main class="scroll_container" id="main">
             <div>
                 <div class="block">
                     <div class="main">
                         <div class="title1">消息中心</div>
+                    </div>
+                    <div class="main message">
+                        <article_block id="release_4.6.6">
+                            <article_title>V4.6.6稳定版现已发布</article_title>
+                            <article_date>发布: 2025-06-20</article_date>
+                            <article_detail>
+                                <p>伴随着夏日到来的脚步, 我们的新版本也已蓄势待发. 虽然本次更新比最初的预期要晚了两个月发布, 但我们也完成了比原计划多得多的更新内容. 要查看详细的更新日志, 请前往开发日志页面, 浏览4.6.6选项卡下的累计更新内容.</p>
+                                <p>在本次更新中, 我们带来了全新的响应式设计 (在内部被称为OreUI V2), 目前这项新设计已经覆盖了基岩版下载页面和大部分的提示页面. 我们仍在致力于将其扩展至整个版本库站点, 更多的特性仍在开发中,敬请期待!</p>
+                                <p>另一项值得一道的改动就是基岩版iOS平台的资源下载. 是的, 我们在经过了三个月的内测后, 终于正式将这项新内容公开发布了! 除此之外, 我们还将在未来添加其他更多的版本. 新的内容将逐渐与大家见面.</p>
+                                <p>在用户体验方面, 我们修复了自V4版本以来的百余项错误, 更新了无障碍功能和用户交互体验, 重新设计了动画, 优化了加载流程, 大幅度提升了加载速度与加载体验. 我们致力于为用户提供更好的使用体验, 因此这些改动仍在进行中, 敬请关注未来的版本更新!</p>
+                                <p>请注意: 本次更新为稳定版更新. 与正式版不同, 稳定版是开发进程中的优选版本 (在内部被称为大更新中的小更新), 代表了开发过程中的一个阶段, 因此不是所有的更改都已完成开发和测试.</p>
+                            </article_detail>
+                        </article_block>
                     </div>
                     <div class="main message">
                         <article_block id="update_plan_202412">
@@ -92,29 +159,6 @@
                         </article_block>
                     </div>
                     <div class="main message">
-                        <article_block id="mechanism_update_notice">
-                            <article_title>关于版本机制的变更说明</article_title>
-                            <article_date>发布: 2024-07-27</article_date>
-                            <article_detail>
-                                <p>随着4.6.5.20版本的发布(这大概率是今年的最后一个版本), 一项新的版本机制已实装至版本库. 为了防止从旧版本升级上来的用户产生困惑以及更好地服务其他依靠本仓库开发的三方开发者, 我们撰写了本变更说明.</p>
-                                <line></line>
-                                <p>面向普通用户</p>
-                                <p>本版本库主要分为发布仓库和测试仓库两大分支. 发布仓库主要用于发布较为稳定的更新, 测试仓库主要用于发布仍在测试中的更新. 在早先的版本中, 你可以同时不受限制地访问发布仓库和测试仓库, 但是从本版本起, 你将只能使用其中的一个仓库.</p>
-                                <p>发布仓库是默认的仓库, 在正常情况下, 你从外部发现的宣传链接应该是指向发布仓库的. 在使用发布仓库后, 你有几率在版本库主页发现邀测弹窗, 这会让你选择是否加入测试仓库进行测试. 当你选择加入测试时会自动重定向至测试仓库. 当然你也可以直接通过邀测链接加入测试仓库, 这两者是等价的. 不过需要注意的是, 加入测试仓库后除非你选择退出测试否则无法访问发布仓库.</p>
-                                <p>测试仓库是不公开的仓库, 仅可以通过邀测弹窗或邀测链接访问. 测试仓库可能并不稳定, 因此如果你没有一定的自主学习和解决问题的能力不建议加入测试. 加入测试仓库后可以参与反馈激励计划(发布仓库无效), 详情请见下一条消息通知. 想要访问发布仓库你需要前往设置页面找到退出测试选项选择离开, 这会带你返回发布仓库.</p>
-                                <line></line>
-                                <p>面向三方开发者</p>
-                                <p>从本版本起, 我们的版本号将遵循版本号规范发布, 具体内容如下:</p>
-                                <p>版本库的版本号有4位, 其中前2位为主版本号, 第3位为次版本号, 第4位为修订号. 以4.6.5.20为例, 4.6为主版本号, 5为次版本号, 20为修订号. 此外, 版本还具有类型/名称等属性, 这里涉及的更改并不多, 不做过多赘述.</p>
-                                <p>主版本号的第1位通常在服务器发生更改时变动, 第2位通常在发布大量新功能/进行大量的改进/产生了向下不兼容的更改时变动. 当这两位版本号发生变动时你需要对仓库中的代码进行重新适配. 次版本号(第3位)通常在加入向下兼容的新内容时变动, 在主版本号变动时会置0或置1. 修订号(第4位)通常在发生向下兼容的问题修正时变动, 次版本号变动时不一定重置. 次版本号和修订号的变动通常可以直接合并, 在没有对相应部分进行更改的情况下不需要进行过多适配.</p>
-                                <p>此外, 发版模式也有所更改. 我们将使用新的优选更新模式取代原先的累积更新模式. 现在发布仓库和测试仓库不再是更新内容不同的分支而是同一更新内容处于不同时间线上的分支了. 测试仓库现在只会更新Preview / Insider_(Preview/Alpha/Beta) / Canary / Alpha这几个版本类型了, 发布仓库现在会更新Beta / Pre / RC / Release / SP这几个版本类型了.</p>
-                                <p>具体发版流程: 新的内容会先在开发仓库进行更新和测试, 等测试周期结束且无问题后才会更新至发布仓库. 开发仓库仍会保持原有的更新频率, 但是不会再更新正式版本了. 开发仓库中的版本在发布后会进行评估, 合格的版本将会优选至发布仓库中进行更新. 这两个版本仅在发布日期和版本类型上存在区别, 其他内容完全一致. 举个例子: 测试仓库发布了1.0.0.1.Preview, 1.0.0.2.Preview, 1.0.0.3.Preview, 1.0.0.4.Preview4个版本, 在分别经过了评估周期后1.0.0.3.Preview被评定为合格版本, 优选至发布仓库成为1.0.0.3.Beta.</p>
-                                <p>这会带来两个好处, 一是不需要再同时维护两套代码了, 现在开发只需要维护发布仓库即可了, 节省了一些不必要的工作量; 二是大大缩短了发布仓库的更新周期, 使得新特性不必再等到下一次正式版本更新才能进版, 可以在一定程度上优化用户的使用体验.</p>
-                                <p>作为三方开发者, 你也应该遵守上面的规范. 此外, 你还需要在正式版本更新的半年内适配对应的版本, 及时对更改做出跟进.</p>
-                            </article_detail>
-                        </article_block>
-                    </div>
-                    <div class="main message">
                         <article_block id="feedback_rewards">
                             <article_title>版本库反馈有奖活动上线!</article_title>
                             <article_date>
@@ -126,9 +170,6 @@
                                 <p>为了版本库更好的发展,我们隆重地推出反馈激励计划!</p>
                                 <p>从即日起,在反馈渠道内向我们提出发现的问题或好的想法,满足条件即可以获得积分.积分可用于兑换奖励.</p>
                                 <p>反馈仓库: 版本库测试仓库(需加入内部测试)</p>
-                                <p>为了版本库更好的发展, 我们隆重地推出反馈激励计划!</p>
-                                <p>从即日起, 在反馈渠道内向我们提出发现的问题或好的想法, 满足条件即可以获得星币. 星币可用于兑换奖励.</p>
-                                <p>反馈仓库: 版本库测试仓库(需加入<a href="https://spectrollay.github.io/minecraft_repository_test">内部测试</a>)</p>
                                 <p>反馈渠道: 测试仓库GitHub Issues</p>
                                 <p>满足条件: 满足反馈格式. 对于发现的问题, 要会对版本库造成一定危害, 且首次被发现并提出; 对于好的想法, 要独到, 会对版本库起到一定的促进作用, 且首次提出.</p>
                                 <p>我们期待你的反馈!</p>
@@ -146,25 +187,25 @@
                             <article_date>发布: 2024-05-17</article_date>
                             <article_detail>
                                 <p>1. 周年庆大促</p>
-                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Sale.png"/></div>
+                                <div class="article_image"><img alt="" src="./images/event/Anniversary15/Sale.png"/></div>
                                 <p>在5月15日至6月22日期间, 快来获取 Minecraft / Minecraft Dungeons / Minecraft Legends 等内容, 折扣高达50%. 你想要建造一件艺术品, 与朋友并肩作战, 拯救主世界, 还是三者兼而有之?</p>
                                 <p><a href="https://www.minecraft.net/" target="_blank">前往官方网站购买</a></p>
                                 <p>2. Minecraft 15天</p>
-                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/DressingRoom.png"/></div>
+                                <div class="article_image"><img alt="" src="./images/event/Anniversary15/DressingRoom.png"/></div>
                                 <p>获取持续发放15天的免费角色道具, 庆祝 Minecraft 15周年纪念! 在5月15日至29日期间, 每日均可在 Minecraft 基岩版更衣室领取礼物.</p>
                                 <p>3. TikTok 15天</p>
-                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/TikTok.jpg" style="height: 220px; width: unset"/></div>
+                                <div class="article_image"><img alt="" src="./images/event/Anniversary15/TikTok.jpg" style="height: 220px; width: unset"/></div>
                                 <p><a href="https://www.minecraft.net/en-us/redeem" target="_blank">在这里</a>收集你的独家 TikTok 15天 Minecraft 角色创建器物品!</p>
                                 <p>请在6月1日前完成任务并兑换</p>
                                 <p>4. Twitch 15天</p>
-                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Twitch.jpg" style="height: 220px; width: unset"/></div>
+                                <div class="article_image"><img alt="" src="./images/event/Anniversary15/Twitch.jpg" style="height: 220px; width: unset"/></div>
                                 <p><a href="https://www.minecraft.net/en-us/redeem" target="_blank">在这里</a>收集你的独家 Twitch 15天 Minecraft 观看时长任务的紫心披风和支持主播的故障面具!</p>
                                 <p>请在6月1日前完成任务并兑换</p>
                                 <p>5. 15周年纪念披风</p>
-                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/Cape.png"/></div>
+                                <div class="article_image"><img alt="" src="./images/event/Anniversary15/Cape.png"/></div>
                                 <p><a href="https://www.minecraft.net/zh-hans/15th-anniversary" target="_blank">点击前往官网领取</a>, 位于活动页面底部</p>
                                 <p>6. 15周年庆典地图</p>
-                                <div class="article_image"><img alt="" src="/minecraft_repository/images/event/Anniversary15/15YearJourney.jpg"/></div>
+                                <div class="article_image"><img alt="" src="./images/event/Anniversary15/15YearJourney.jpg"/></div>
                                 <p>前往基岩版商城领取地图15年之旅, 回顾Minecraft的15周年</p>
                             </article_detail>
                         </article_block>
@@ -194,72 +235,32 @@
             </div>
         </main>
     </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
+    <custom-scrollbar class="primary_custom_scrollbar">
         <custom-scrollbar-track></custom-scrollbar-track>
         <custom-scrollbar-thumb></custom-scrollbar-thumb>
     </custom-scrollbar>
 </scroll-view>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./library/lazyLoadImage.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
 <script>
     // 惰性加载
-    const lazyImages = document.querySelectorAll('img');
-    lazyImages.forEach(img => {
-        img.setAttribute('loading', 'lazy');
-    });
+    const lazyImage = new LazyLoadImage('img');
+    lazyImage.init();
 </script>
-
-<style>
-    .block {
-        margin: 20px;
-    }
-
-    .message {
-        display: flex;
-        justify-content: center;
-        padding: 0;
-    }
-
-    article_date {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-
-    article_block {
-        width: 100%;
-    }
-
-    article_detail p {
-        text-indent: 2em;
-    }
-
-    article_detail {
-        background-color: #313233;
-        margin: 0;
-        min-height: 60px;
-        padding: 10px 20px;
-    }
-
-    .article_image {
-        display: flex;
-        justify-content: center;
-    }
-
-    .article_image img {
-        width: calc(min(80%, 450px));
-    }
-
-    vertical-line {
-        height: 20px;
-    }
-</style>
 
 </html>

@@ -1,0 +1,629 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <base href="./"><!-- 项目根路径 -->
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Minecraft, MC, 我的世界, 版本库, 全版本, 下载站" name="keywords"/>
+    <meta content="一个开放共享的全版本Minecraft下载站." name="description"/>
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link as="font" crossorigin="anonymous" href="./fonts/NotoSans-Bold.ttf" rel="preload" type="font/ttf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Ten.otf" rel="preload" type="font/otf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Seven.otf" rel="preload" type="font/otf">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./Feed/main.xml" rel="alternate" title="星月Minecraft版本库主要订阅" type="application/rss+xml">
+    <link href="https://spectrollay.github.io/data/minecraft_repository/messages.xml" rel="alternate" title="星月Minecraft版本库通知订阅" type="application/rss+xml">
+    <link href="./Feed/update.xml" rel="alternate" title="星月Minecraft版本库更新订阅" type="application/rss+xml">
+    <link href="https://spectrollay.github.io/data/minecraft_repository/database.xml" rel="alternate" title="星月Minecraft版本库数据库订阅" type="application/rss+xml">
+    <link href="./images/logo/Starmoon_icon.png" rel="icon">
+    <style>
+        .main_title {
+            border-top: 2px solid #5A5B5C;
+        }
+
+        .main_page_alert {
+            text-align: left;
+        }
+
+        .edition_block {
+            width: 200px;
+        }
+
+        .guide_title {
+            font-size: 18px;
+        }
+    </style>
+    <script defer>
+        const audios = {};
+
+        function registerAudio(name, path) {
+            const audio = new Audio(path);
+            audio.preload = 'auto';
+            audio.load();
+            audios[name] = audio;
+        }
+
+        registerAudio('click', './sounds/click.ogg');
+        registerAudio('button', './sounds/button.ogg');
+    </script>
+    <title>星月Minecraft版本库</title>
+</head>
+
+<div class="loading_mask" id="loading_mask">
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
+        </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
+            </div>
+        </noscript>
+    </div>
+</div>
+
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_left">
+            <div class="header_item header_item_left with_menu" id="back" onclick="clickedBack();">
+                <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+            </div>
+            <div class="header_item header_item_left" id="menu" onclick="clickedMenu();">
+                <img alt="" class="header_left_icon" id="menu_icon" src="./images/Menu.png"/>
+            </div>
+            <div class="header_item header_item_left" id="reload" onclick="playSoundType(this);reloadPage();">
+                <img alt="" class="header_left_icon" src="./images/Refresh.png"/>
+            </div>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/logo/Starmoon_logo.png"/>
+        </div>
+        <div class="header_right">
+            <div class="header_item header_item_right" id="notification" onclick="playSoundType(this);toMessage();">
+                <img alt="" class="header_right_icon" src="./images/Bell.png"/>
+            </div>
+            <div class="header_item header_item_right" id="settings" onclick="playSoundType(this);settingsPage();">
+                <img alt="" class="header_right_icon" src="./images/Settings.png"/>
+            </div>
+        </div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view with_sidebar">
+            <scroll-container class="primary_scroll_container">
+                <main class="scroll_container" id="main">
+                    <div class="banner_area" id="holiday_tip1">
+                        <div class="banner important_banner" style="margin-bottom: 0"></div>
+                    </div>
+                    <div class="banner_area" id="holiday_tip2">
+                        <div class="banner important_banner" style="margin-bottom: 0"></div>
+                    </div>
+                    <div class="banner_area">
+                        <div class="banner neutral_banner" id="banner_tip"></div>
+                    </div>
+                    <div class="main_title">
+                        <div class="main-header">
+                            <div class="header_notice_title">
+                                <div class="repository_logo_area"><img alt="" id="starmoon_title_short" src=""/><img alt="" id="starmoon_title_long" src=""></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main preview_block">
+                        <div class="preview_title">响应式设计预览</div>
+                        <div class="preview_detail">欢迎加入预览!我们想听听你对此的想法!</div>
+                        <div class="preview_detail">请注意: 新设计仍未完工,可能会缺失部分功能.</div>
+                        <div class="btn_group">
+                            <custom-button data="default|green|small||false||" js="contact();" text="<img alt='' class='link_img' src='images/ExternalLink_white.png'/>提出反馈"></custom-button>
+                            <custom-button data="default|normal|small||false||" js="jumpToPage('./');localStorage.removeItem(`(${rootPath}/)new_home_test`);" text="返回旧设计"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="body_text repository_description" id="repository_description">
+                            <p><span style="font-size: 20px;">※ 星月Minecraft版本库 ※</span><br>一个开放共享的全版本Minecraft下载站</p>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="latest_news">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">最新动态</div>
+                            <div class="wrap_flex">
+                                <div class="body_feed_list">
+                                    <div class="body_feed">
+                                        <span class="feed_time">[2024-06-20]</span>
+                                        <span class="feed_content"><a href="javascript:void(0);" onclick="jumpToPage('./notifications/#release_4.6.6');">V4.6.6稳定版现已发布</a></span>
+                                    </div>
+                                    <div class="body_feed">
+                                        <span class="feed_time">[2024-12-08]</span>
+                                        <span class="feed_content"><a href="javascript:void(0);" onclick="jumpToPage('./notifications/#update_plan_202412');">更多的版本下载选项!还有更多!版本库V4.6.10更新规划</a></span>
+                                    </div>
+                                    <div class="body_feed">
+                                        <span class="feed_time">[2024-06-03]</span>
+                                        <span class="feed_content"><a href="javascript:void(0);" onclick="jumpToPage('./notifications/#feedback_rewards');">版本库反馈有奖活动上线!</a></span>
+                                    </div>
+                                </div>
+                                <div class="link_block_group">
+                                    <div class="link_block_group_title">查看全部动态</div>
+                                    <div class="wrap_flex">
+                                        <link-block class="feed_link_block" onclick="playSound('click');toMessage();">
+                                            <div class="link_title">
+                                                <img alt="" class="link_title_img" src="./images/Messages.png">消息中心
+                                            </div>
+                                        </link-block>
+                                        <link-block class="feed_link_block" onclick="playSound('click');toUpdatelog();">
+                                            <div class="link_title">
+                                                <img alt="" class="link_title_img" src="./images/News.png">开发日志
+                                            </div>
+                                        </link-block>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="support_genuine">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">支持正版</div>
+                            <div class="wrap_flex">
+                                <div>
+                                    <div class="body_text buy_genuine">如有游玩需求请积极支持正版!</div>
+                                    <div class="body_text">你可以通过以下方式购买正版:<br>
+                                        <span class="buy_genuine">
+                                            <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Google Play</a> |
+                                            <a href="https://apps.apple.com/app/minecraft/id479516143" target="_blank">App Store</a> |
+                                            <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank">PC 捆绑包</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="body_text">
+                                        <div class="link_block_group_title">不知道如何购买正版?</div>
+                                        <link-block class="how_to_buy_link_block" onclick="playSound('click');jumpToPage('./guidance/how_to_buy.html');">
+                                            <div class="link_title">
+                                                <img alt="" class="link_title_img" src="./images/logo/Minecraft_Launcher_icon.png">正版购买指南
+                                            </div>
+                                        </link-block>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="how_to_use">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">使用说明</div>
+                            <div class="link_block_group">
+                                <img alt="Coming Soon Image" class="coming_soon-img" src="./images/Building.png"/>
+                                <div>即将到来</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="choose_version">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">选择版本</div>
+                            <div class="wrap_flex">
+                                <div class="choose_version_guide">
+                                    <div class="guide_title">版本</div>
+                                    <div>[Placeholder]</div>
+                                </div>
+                                <div class="choose_version_guide">
+                                    <div class="guide_title">平台</div>
+                                    <div>[Placeholder]</div>
+                                </div>
+                                <div class="choose_version_guide">
+                                    <div class="guide_title">架构</div>
+                                    <div>[Placeholder]</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="download_and_install">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">下载安装</div>
+                            <div class="download_platform">
+                                <div class="wrap_flex">
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./download/bedrock/');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Bedrock_Edition_icon.png">基岩版
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Java_Edition_icon.png">Java版
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Minecraft_Education_icon.png">教育版
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Bedrock_Dedicated_Server_icon.png">服务端
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Minecraft_Trial_icon.png">试玩版
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/MCSM_icon.png">Minecraft: 故事模式
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/MCEarth_icon.png">Minecraft Earth
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Minecraft_Dungeons_icon.png">Minecraft Dungeons
+                                        </div>
+                                    </link-block>
+                                    <link-block class="edition_block" onclick="playSound('click');jumpToPage('./default/coming_soon.html');">
+                                        <div class="link_text">
+                                            <img alt="" class="link_title_img" src="./images/logo/Minecraft_Legends_icon.png">Minecraft Legends
+                                        </div>
+                                    </link-block>
+                                </div>
+                            </div>
+                            <div style="margin: 10px 0;">
+                                <a href="https://github.com/Spectrollay/minecraft_repository/issues/new" target="_blank">
+                                    <img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>我有想要的版本/我想添加新版本
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="start_game">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">开始游戏</div>
+                            <div class="wrap_flex">
+                                <link-block class="launch_link_block" onclick="playSound('click');launchApplication('minecraft://');">
+                                    <div class="link_title">
+                                        <img alt="" class="link_title_img" src="./images/logo/Bedrock_Edition_icon.png">正式版
+                                    </div>
+                                </link-block>
+                                <link-block class="launch_link_block" onclick="playSound('click');launchApplication('minecraft-preview://');">
+                                    <div class="link_title">
+                                        <img alt="" class="link_title_img" src="./images/logo/Bedrock_Edition_preview_icon.png">预览版
+                                    </div>
+                                </link-block>
+                                <link-block class="launch_link_block" onclick="playSound('click');launchApplication('minecraftedu://');">
+                                    <div class="link_title">
+                                        <img alt="" class="link_title_img" src="./images/logo/Minecraft_Education_icon.png">教育版
+                                    </div>
+                                </link-block>
+                            </div>
+                            <div style="margin: 10px 0;">暂不支持一键启动其他版本</div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="terms_of_use">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">使用条款</div>
+                            <div style="margin: 8px">
+                                <img alt="Coming Soon Image" class="coming_soon-img" src="./images/Building.png"/>
+                                <div>即将到来</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="disclaimer">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">免责声明</div>
+                            <div style="margin: 8px">
+                                <img alt="Coming Soon Image" class="coming_soon-img" src="./images/Building.png"/>
+                                <div>即将到来</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="about_us">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">关于我们</div>
+                            <div class="wrap_flex">
+                                <div class="about_us_block">
+                                    <div class="body_text">开发: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a></div>
+                                    <div class="body_text">维护: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a></div>
+                                    <div class="body_text">
+                                        <div class="btn_group">界面设计:
+                                            <custom-button data="default|green|small||false||" js="openLink('https://github.com/Spectrollay/OreUI');" text="OreUI"></custom-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="body_text">
+                                        <div class="link_block_group_title">聊天群组</div>
+                                        <div class="wrap_flex">
+                                            <link-block class="contact_link_block" onclick="playSound('click');openLink('https://t.me/Spectrollay_MCW');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/small_icon/telegram.ico">Telegram
+                                                </div>
+                                            </link-block>
+                                            <link-block class="contact_link_block" onclick="playSound('click');openLink('https://qm.qq.com/q/AqLmKLH9mM');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/small_icon/qq.ico">QQ
+                                                </div>
+                                            </link-block>
+                                            <link-block class="contact_link_block" onclick="playSound('click');openLink('https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/small_icon/yunhu.ico">云湖
+                                                </div>
+                                            </link-block>
+                                        </div>
+                                    </div>
+                                    <div class="body_text">
+                                        <div class="link_block_group_title">官方频道</div>
+                                        <div class="wrap_flex">
+                                            <link-block class="contact_link_block" onclick="playSound('click');openLink('https://t.me/spectrollay_minecraft_repository');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/small_icon/telegram.ico">Telegram
+                                                </div>
+                                            </link-block>
+                                            <link-block class="contact_link_block" onclick="playSound('click');openLink('https://pd.qq.com/s/h8a7gt2u4');">
+                                                <div class="link_title">
+                                                    <img alt="" class="link_title_img" src="./images/logo/small_icon/qq.ico">QQ
+                                                </div>
+                                            </link-block>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="support_us">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">支持我们</div>
+                            <div class="wrap_flex">
+                                <div>
+                                    <div class="body_text about_text" id="support_message">
+                                        <div class="data_loading_area">
+                                            <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                            <div class="data_loading_text">区块加载中</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="body_text">
+                                        <div class="link_block_group_title">助力我们发展</div>
+                                        <link-block class="support_us_link_block" onclick="playSound('click');jumpToPage('./about/support.html');">
+                                            <div class="link_title">
+                                                <img alt="" class="link_title_img" src="./images/Support.png">支持我们
+                                            </div>
+                                        </link-block>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="special_thanks">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">特别鸣谢</div>
+                            <div style="margin: 8px">
+                                <img alt="Coming Soon Image" class="coming_soon-img" src="./images/Building.png"/>
+                                <div>即将到来</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block" id="reciprocal_link">
+                        <div class="main_block_cont">
+                            <div class="title3 body_title">友情链接</div>
+                            <div class="wrap_flex" id="reciprocal_link_list">
+                                <div class="data_loading_area">
+                                    <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                    <div class="data_loading_text">区块加载中</div>
+                                </div>
+                            </div>
+                            <div style="margin: 10px 0;">
+                                <a href="https://wj.qq.com/s2/15430190/90c5/" target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>交换友链 (验证码: spec6)</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="page_info">
+                        <div class="data_loading_area">
+                            <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                            <div class="data_loading_text">区块加载中</div>
+                        </div>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+        <!--侧边栏-->
+        <div class="new sidebar" id="sidebar">
+            <scroll-view>
+                <scroll-container class="secondary_scroll_container">
+                    <div class="sidebar_content scroll_container">
+                        <div class="sidebar_header">
+                            <div class="sidebar_detail_title">首页</div>
+                        </div>
+                        <div class="sidebar_list">
+                            <a class="sidebar_item" href="javascript:void(0);">
+                                <article_list>介绍</article_list>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#latest_news">
+                                <article_list_level2>最新动态</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#support_genuine">
+                                <article_list_level2>支持正版</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#how_to_use">
+                                <article_list_level2>使用说明</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="javascript:void(0);">
+                                <article_list>引导</article_list>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#choose_version">
+                                <article_list_level2>选择版本</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#choose_version">
+                                <article_list_level3>版本</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#choose_version">
+                                <article_list_level3>平台</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#choose_version">
+                                <article_list_level3>架构</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level2>下载安装</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>基岩版</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>Java版</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>教育版</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>服务端</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>试玩版</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>故事模式</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>Earth</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>Dungeons</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#download_and_install">
+                                <article_list_level3>Legends</article_list_level3>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#start_game">
+                                <article_list_level2>开始游戏</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="javascript:void(0);">
+                                <article_list>须知</article_list>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#terms_of_use">
+                                <article_list_level2>使用条款</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#disclaimer">
+                                <article_list_level2>免责声明</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#about_us">
+                                <article_list_level2>关于我们</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="javascript:void(0);">
+                                <article_list>其他</article_list>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#support_us">
+                                <article_list_level2>支持我们</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#special_thanks">
+                                <article_list_level2>特别鸣谢</article_list_level2>
+                            </a>
+                            <a class="sidebar_item" href="./index_new.html#reciprocal_link">
+                                <article_list_level2>友情链接</article_list_level2>
+                            </a>
+                        </div>
+                        <div class="sidebar_info">
+                            <div class="sidebar_detail_title" id="sidebar_bottom_title">
+                                <img alt="" class="data_loading_img_small" src="./images/Loading_white.gif"/>
+                            </div>
+                            <div class="sidebar_detail" id="sidebar_bottom_detail1">
+                                <img alt="" class="data_loading_img_small" src="./images/Loading_white.gif"/>
+                            </div>
+                            <div class="sidebar_detail">
+                                <custom-button data="sidebar|normal|||false||" js="clickedSidebarBottomBtn();" text="官方网站"></custom-button>
+                            </div>
+                        </div>
+                    </div>
+                </scroll-container>
+                <custom-scrollbar class="secondary_custom_scrollbar">
+                    <custom-scrollbar-track></custom-scrollbar-track>
+                    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+                </custom-scrollbar>
+            </scroll-view>
+        </div>
+    </display-body>
+</dispaly-area>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
+<div class="new overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
+
+<!-- 提示弹窗 -->
+<div class="overlay" id="overlay_alert_modal"></div>
+<modal_area id="alert_modal" style="display: none;"></modal_area>
+
+</body>
+
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./library/lazyLoadImage.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/data_driven.js"></script>
+<script src="javascript/mcfc.js"></script>
+<script>
+    rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
+
+    // 惰性加载
+    const lazyImage = new LazyLoadImage('img');
+    lazyImage.init();
+
+    const repositoryAttribute = localStorage.getItem('minecraft_repository_attribute');
+    if (repositoryAttribute) {
+        if (repositoryAttribute.includes('test=true')) {
+            if (!rootPath.includes('_test')) {
+                ifNavigating("jump", window.location.origin + "/minecraft_repository" + "_test");
+            }
+        } else if (repositoryAttribute.includes('test=false')) {
+            if (rootPath.includes('_test')) {
+                localStorage.setItem('minecraft_repository_attribute', 'test=true');
+            }
+        }
+    } else {
+    }
+</script>
+
+</html>

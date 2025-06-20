@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V1.10
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,25 +28,31 @@
 <html lang="zh">
 
 <head>
+    <base href="../"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/logo/Minecraft_Repository_icon.jpg" rel="icon">
     <style>
-        .main_block_cont {
-            margin: 6px 0;
+        .how_to_buy_guide {
+            max-width: 800px;
         }
     </style>
     <title>正版购买指南 - 星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -50,161 +60,175 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
-<header>
-    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src=""/>
-    </div>
-    <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
-    </div>
-    <div class="header_item header_item_right header_right_blank"></div>
-</header>
-<scroll-view>
-    <scroll-container class="main_scroll_container">
-        <main class="scroll_container" id="main">
-            <div class="main_title">
-                <div class="main_title_area">
-                    <div class="main_title_span">正版购买指南</div>
-                    <div class="description1">2024-01-01</div>
-                </div>
-            </div>
-            <div class="banner_area">
-                <div class="banner information_banner">
-                    <a href="https://zh.minecraft.wiki/w/Tutorial:%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B4%AD%E4%B9%B0" target="_blank">Minecraft Wiki 教程</a>
-                </div>
-            </div>
-            <div class="main main_block">
-                <div class="main_block_cont">
-                    <div class="title3">Java版购买指南</div>
-                    <div class="description">
-                        <p>Java版是Minecraft的最初版本,发布于Windows, macOS和Linux. 这些平台共享一个Minecraft版本, 因此你只需要购买一次即可在三个平台上畅玩.
-                            本购买指南共分为两部分, 官方网站购买和微软商店购买, 你可以自由的选择你想要的方式进行购买, 订单会在两个平台间同步.</p>
-                        <p>一. 官方网站购买</p>
-                        <p>
-                            1. 访问<a href="https://www.minecraft.net/zh-hans" target="_blank">官网</a>, 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/website.png"/>
-                        </p>
-                        <p>
-                            2. 点击右上角<a href="https://www.minecraft.net/zh-hans/login" target="_blank">登录</a>, 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/login1.png"/>
-                            进入登录页面.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/login2.png"/>
-                            这里需要使用微软账号登录, 如果你没有微软账号, 可以点击注册按钮根据引导免费注册, 如果已有微软账号, 请点击登录.
-                            Mojang账号已不再能够登录, 如果你的Mojang账号没有迁移, 请点击按钮下方的链接了解详情.
-                        </p>
-                        <p>
-                            3. 登录成功后点击网页顶栏[游戏], 选择[Minecraft], 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/buy_pre.png"/>
-                            点击后会自动跳转至<a href="https://www.minecraft.net/zh-hans/about-minecraft" target="_blank">该界面</a>.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/buy1.png"/>
-                            点击[获取Minecraft], 进入<a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank">购买页面</a>, 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/buy2.png"/>
-                        </p>
-                        <p>
-                            4. 在一般情况下, 推荐选择Minecraft(PC捆绑包), 包含Java版/基岩版/启动器, 售价¥89.00, 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/buy3.png"/>
-                            当然, 如果你想要豪华版, 请选择Deluxe Collection, 售价¥119.00<br>
-                            选择完成后,点击[结账]支付, 如图所示, 在支付完成后即可下载游玩.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/buy4.png"/>
-                        </p>
-                        <p>二. 微软商店购买</p>
-                        <p>
-                            在你的电脑中找到[Microsoft Store], 点击启动, 启动完成后在顶部搜索栏中搜索[Minecraft], 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/microsoft_store/search.png"/>
-                            在搜索结果中找到[Minecraft: Java & Bedrock Edition for PC], 点击进入, 在<a href="https://www.microsoft.com/store/productId/9NXP44L49SHJ" target="_blank">应用详情页</a>内选择购买, 如图所示.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/microsoft_store/detail.png"/>
-                            在进行身份验证和支付后, 即可下载游玩.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="main main_block">
-                <div class="main_block_cont">
-                    <div class="title3">基岩版购买指南</div>
-                    <div class="description">
-                        <p>
-                            基岩版是多平台版本Minecraft, 分为Android, iOS/iPadOS, Fire OS, Windows 10 Mobile, Windows, Gear VR, Oculus Rift, Fire TV, Xbox One, Windows Mixed Reality, Nintendo Switch, PlayStation 4和ChromeOS多个子版本.
-                            这些版本在各个平台上独立销售, 因此你需要先确定你的游戏平台再选择购买对应的版本. 基岩版在Windows平台上已与Java版捆绑销售, 具体购买方式见上, 这里不再赘述.
-                            本购买指南主要介绍Android和iOS/iPadOS的购买方式.
-                        </p>
-                        <p>一. Android购买</p>
-                        <p>前提条件: 有相应的Android设备(内置Google全家桶)且可以访问Google, 若条件不满足请自行解决, 本处不提供解决方案.</p>
-                        <p>
-                            1. <a href="https://accounts.google.com/" target="_blank">注册或登录</a>Google账号.
-                            如果你已有Google账号, 请填写账号密码登录, 否则请根据引导免费注册.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/google_play_store/login.png"/>
-                        </p>
-                        <p>
-                            2. 在Google Play Store内搜索[Minecraft], 进入<a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">应用详情页</a>
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/google_play_store/detail.png"/>
-                        </p>
-                        <p>
-                            3. 使用官方自带的支付方式进行支付, 如果你没有相应的支付方式, 可以选择代购礼品卡充值进自己的账号内再使用账号余额支付, 支付完成后即可下载游玩.
-                        </p>
-                        <p>二. iOS/iPadOS购买</p>
-                        <p>
-                            前提条件: 有相应的iOS设备, 非国区Apple账号, 国际信用卡或非国区PayPal账号, 若条件不满足请自行解决, 本处不提供解决方案.
-                        </p>
-                        <p>
-                            1. <a href="https://appleid.apple.com/" target="_blank">注册或登录</a>Apple账号.
-                            如果你已有Apple账号, 请点击登录, 否则请根据引导免费注册.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/app_store/login.png"/>
-                        </p>
-                        <p>
-                            2. 在App Store内搜索[Minecraft], 进入<a href="https://apps.apple.com/us/app/minecraft/id479516143" target="_blank">应用详情页</a>
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/app_store/detail.png"/>
-                        </p>
-                        <p>
-                            3. 使用官方自带的支付方式进行支付, 支付完成即可下载游玩.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="main main_block">
-                <div class="main_block_cont">
-                    <div class="title3">其他版本购买指南</div>
-                    <div class="description">
-                        <p>
-                            <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank">官网购买页面</a>中提供了其他平台的下载方式, 如图所示, 你可以选择你想要的版本进行购买, 这些链接会跳转到对应平台的购买方式上.
-                            <img alt="" class="guidance_image" src="/minecraft_repository/images/guide/how_to_buy/website/buy5.png"/>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div id="page_info"></div>
-        </main>
-    </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
-        <custom-scrollbar-track></custom-scrollbar-track>
-        <custom-scrollbar-thumb></custom-scrollbar-thumb>
-    </custom-scrollbar>
-</scroll-view>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+            <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/logo/Minecraft_Repository_icon.jpg"/>
+            <div class="header_title">Repository</div>
+        </div>
+        <div class="header_item header_item_right header_right_blank"></div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view">
+            <scroll-container class="old primary_scroll_container">
+                <main class="scroll_container" id="main">
+                    <div class="main_title">
+                        <div class="main_title_area">
+                            <div class="main_title_span">正版购买指南</div>
+                            <div class="description1">2025-01-01</div>
+                        </div>
+                    </div>
+                    <div class="banner_area">
+                        <div class="banner information_banner">
+                            <a href="https://zh.minecraft.wiki/w/Tutorial:%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B4%AD%E4%B9%B0" target="_blank">Minecraft Wiki 教程</a>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont how_to_buy_guide">
+                            <div class="title3">Java版购买指南</div>
+                            <div class="description">
+                                <p>Java版是Minecraft的最初版本,发布于Windows, macOS和Linux. 这些平台共享一个Minecraft版本, 因此你只需要购买一次即可在三个平台上畅玩.
+                                    本购买指南共分为两部分, 官方网站购买和微软商店购买, 你可以自由的选择你想要的方式进行购买, 订单会在两个平台间同步.</p>
+                                <p>一. 官方网站购买</p>
+                                <p>
+                                    1. 访问<a href="https://www.minecraft.net/zh-hans" target="_blank">官网</a>, 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/website.png"/>
+                                </p>
+                                <p>
+                                    2. 点击右上角<a href="https://www.minecraft.net/zh-hans/login" target="_blank">登录</a>, 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/login1.png"/>
+                                    进入登录页面.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/login2.png"/>
+                                    这里需要使用微软账号登录, 如果你没有微软账号, 可以点击注册按钮根据引导免费注册, 如果已有微软账号, 请点击登录.
+                                    Mojang账号已不再能够登录, 如果你的Mojang账号没有迁移, 请点击按钮下方的链接了解详情.
+                                </p>
+                                <p>
+                                    3. 登录成功后点击网页顶栏[游戏], 选择[Minecraft], 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/buy_pre.png"/>
+                                    点击后会自动跳转至<a href="https://www.minecraft.net/zh-hans/about-minecraft" target="_blank">该界面</a>.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/buy1.png"/>
+                                    点击[立即购买], 进入<a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank">购买页面</a>, 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/buy2.png"/>
+                                </p>
+                                <p>
+                                    4. 在一般情况下, 推荐选择Minecraft(PC捆绑包), 包含Java版/基岩版/启动器, 售价¥89.00, 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/buy3.png"/>
+                                    当然, 如果你想要豪华版, 请选择Deluxe Collection, 售价¥119.00<br>
+                                    选择完成后,点击[结账]支付, 如图所示, 在支付完成后即可下载游玩.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/buy4.png"/>
+                                </p>
+                                <p>二. 微软商店购买</p>
+                                <p>
+                                    在你的电脑中找到[Microsoft Store], 点击启动, 启动完成后在顶部搜索栏中搜索[Minecraft], 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/microsoft_store/search.png"/>
+                                    在搜索结果中找到[Minecraft: Java & Bedrock Edition for PC], 点击进入, 在<a href="https://www.microsoft.com/store/productId/9NXP44L49SHJ" target="_blank">应用详情页</a>内选择购买, 如图所示.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/microsoft_store/detail.png"/>
+                                    在进行身份验证和支付后, 即可下载游玩.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont how_to_buy_guide">
+                            <div class="title3">基岩版购买指南</div>
+                            <div class="description">
+                                <p>
+                                    基岩版是多平台版本Minecraft, 分为Android, iOS/iPadOS, Fire OS, Windows 10 Mobile, Windows, Gear VR, Oculus Rift, Fire TV, Xbox One, Windows Mixed Reality, Nintendo Switch, PlayStation 4和ChromeOS多个子版本.
+                                    这些版本在各个平台上独立销售, 因此你需要先确定你的游戏平台再选择购买对应的版本. 基岩版在Windows平台上已与Java版捆绑销售, 具体购买方式见上, 这里不再赘述.
+                                    本购买指南主要介绍Android和iOS/iPadOS的购买方式.
+                                </p>
+                                <p>一. Android购买</p>
+                                <p>前提条件: 有相应的Android设备(内置Google全家桶)且可以访问Google, 若条件不满足请自行解决, 本处不提供解决方案.</p>
+                                <p>
+                                    1. <a href="https://accounts.google.com/" target="_blank">注册或登录</a>Google账号.
+                                    如果你已有Google账号, 请填写账号密码登录, 否则请根据引导免费注册.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/google_play_store/login.png"/>
+                                </p>
+                                <p>
+                                    2. 在Google Play Store内搜索[Minecraft], 进入<a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">应用详情页</a>
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/google_play_store/detail.png"/>
+                                </p>
+                                <p>
+                                    3. 使用官方自带的支付方式进行支付, 如果你没有相应的支付方式, 可以选择代购礼品卡充值进自己的账号内再使用账号余额支付, 支付完成后即可下载游玩.
+                                </p>
+                                <p>二. iOS/iPadOS购买</p>
+                                <p>
+                                    前提条件: 有相应的iOS设备, 非国区Apple账号, 国际信用卡或非国区PayPal账号, 若条件不满足请自行解决, 本处不提供解决方案.
+                                </p>
+                                <p>
+                                    1. <a href="https://appleid.apple.com/" target="_blank">注册或登录</a>Apple账号.
+                                    如果你已有Apple账号, 请点击登录, 否则请根据引导免费注册.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/app_store/login.png"/>
+                                </p>
+                                <p>
+                                    2. 在App Store内搜索[Minecraft], 进入<a href="https://apps.apple.com/us/app/minecraft/id479516143" target="_blank">应用详情页</a>
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/app_store/detail.png"/>
+                                </p>
+                                <p>
+                                    3. 使用官方自带的支付方式进行支付, 支付完成即可下载游玩.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main main_block">
+                        <div class="main_block_cont how_to_buy_guide">
+                            <div class="title3">其他版本购买指南</div>
+                            <div class="description">
+                                <p>
+                                    <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank">官网购买页面</a>中提供了其他平台的下载方式, 如图所示, 你可以选择你想要的版本进行购买, 这些链接会跳转到对应平台的购买方式上.
+                                    <img alt="" class="guidance_image" src="./images/guide/how_to_buy/website/buy5.png"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="page_info">
+                        <div class="data_loading_area">
+                            <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                            <div class="data_loading_text">区块加载中</div>
+                        </div>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+    </display-body>
+</dispaly-area>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./library/lazyLoadImage.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
 <script>
     // 惰性加载
-    const lazyImages = document.querySelectorAll('img');
-    lazyImages.forEach(img => {
-        img.setAttribute('loading', 'lazy');
-    });
+    const lazyImage = new LazyLoadImage('img');
+    lazyImage.init();
 </script>
-
-<!--<style>-->
-<!--    -->
-<!--</style>-->
 
 </html>

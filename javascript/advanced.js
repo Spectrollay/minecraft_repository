@@ -20,25 +20,34 @@
  * SOFTWARE.
  */
 
-const advanced_css = document.createElement('link');
-advanced_css.rel = 'stylesheet';
-advanced_css.href = '/minecraft_repository/stylesheet/advanced.css';
-
-document.head.appendChild(advanced_css);
+rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
 
 // 点击Debug图标事件
 function debugPage() {
-    ifNavigating("jump", "/minecraft_repository/advanced/debug.html");
+    ifNavigating("jump", rootPath + "/advanced/debug.html");
 }
 
 // 点击环境指南按钮
 function enviPage() {
-    ifNavigating("jump", "/minecraft_repository/guidance/environment_guidance.html");
+    ifNavigating("jump", rootPath + "/guidance/environment_guidance.html");
+}
+
+// 捐赠专享
+const limitedSwitch = document.getElementById('limited_access_modal');
+
+if (limitedSwitch) {
+    limitedSwitch.beforeToggle = function () {
+        return localStorage.getItem("donate") === "true";
+    };
+
+    limitedSwitch.addEventListener('switch-toggle-blocked', function () {
+        showModal('donor_only_modal');
+    });
 }
 
 // 清除存储
 function clearStorage() {
-    const keyPatterns = ["(/minecraft_repository/)", "minecraft_repository_attribute"];
+    const keyPatterns = [`(${rootPath}/)`, "minecraft_repository_attribute"];
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (keyPatterns.some(pattern => key.includes(pattern))) {
@@ -60,7 +69,7 @@ function resetAll() {
 }
 
 // 重载页面
-function reloadPage() {
+function clearAndReload() {
     sessionStorage.clear();
     location.reload();
     logManager.log("重载容器环境成功");
@@ -126,7 +135,7 @@ if (versionBlock) {
                     item.style.display = 'flex';
                 })
             }
-            mainHandleScroll();
+            mainHandleScroll(); // 联动自定义网页滚动条
         });
     });
 }
@@ -135,14 +144,14 @@ if (developerBlock) {
     developerBlock.addEventListener("click", (event) => {
         handleClick(event, "showTheEnd", "发现了彩蛋!", () => {
             document.getElementById('the_end').style.display = "flex";
-            mainHandleScroll();
+            mainHandleScroll(); // 联动自定义网页滚动条
         });
     });
 }
 
 const checkInput = document.querySelector('#check_input text-field');
 
-function checkInputValue() {
+function checkContinue() {
     const inputValue = checkInput.getValue().trim(); // 获取并去除输入值的空格
     const requiredValue = "我知道我在做什么"; // 预期的文本
     const checkContinueBtn = document.getElementById('check_continue');
@@ -163,5 +172,5 @@ function checkInputValue() {
 }
 
 if (checkInput) {
-    checkInput.addEventListener('input', checkInputValue);
+    checkInput.addEventListener('input', checkContinue);
 }

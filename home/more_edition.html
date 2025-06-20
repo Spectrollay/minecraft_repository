@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V1.1
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,24 +28,30 @@
 <html lang="zh">
 
 <head>
+    <base href="../"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/stylesheet/editions.css" rel="stylesheet">
-    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
-    <!--    <style>-->
-    <!--        -->
-    <!--    </style>-->
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./stylesheet/editions.css" rel="stylesheet">
+    <link href="./images/logo/Minecraft_Repository_icon.jpg" rel="icon">
+    <!--<style>-->
+    <!--    -->
+    <!--</style>-->
     <title>更多版本 - 星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -49,26 +59,28 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
+
+<body class="old">
 <header>
     <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src=""/>
+        <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
     </div>
-    <div class="header_logo" onclick="scrollToTop()">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
+    <div class="header_logo">
+        <img alt="" class="title_icon" src="./images/logo/Minecraft_Repository_icon.jpg"/>
+        <div class="header_title">Repository</div>
     </div>
     <div class="header_item header_item_right header_right_blank"></div>
 </header>
 <scroll-view>
-    <scroll-container class="main_scroll_container">
+    <scroll-container class="old primary_scroll_container">
         <main class="scroll_container" id="main">
-            <div id="main_top"></div>
             <div class="block_spacing"></div>
             <div class="block">
                 <div class="main">
@@ -83,23 +95,23 @@
                         <div class="btn_group">
                             <button class="btn normal_btn large_btn"
                                     onclick="playSoundType(this);openLink('https://www.mcappx.com/index.html');"
-                                    text-generation="download_channel6"></button>
+                                    text-generation="download_channel6_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel1"></button>
+                                    text-generation="download_channel1_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel2"></button>
+                                    text-generation="download_channel2_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel3"></button>
+                                    text-generation="download_channel3_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel4"></button>
+                                    text-generation="download_channel4_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel5"></button>
+                                    text-generation="download_channel5_old"></button>
                         </div>
                     </div>
                 </div>
@@ -120,23 +132,23 @@
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel6"></button>
+                                    text-generation="download_channel6_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel1"></button>
+                                    text-generation="download_channel1_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel2"></button>
+                                    text-generation="download_channel2_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel3"></button>
+                                    text-generation="download_channel3_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel4"></button>
+                                    text-generation="download_channel4_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel5"></button>
+                                    text-generation="download_channel5_old"></button>
                         </div>
                     </div>
                 </div>
@@ -157,23 +169,23 @@
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel6"></button>
+                                    text-generation="download_channel6_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel1"></button>
+                                    text-generation="download_channel1_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel2"></button>
+                                    text-generation="download_channel2_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel3"></button>
+                                    text-generation="download_channel3_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel4"></button>
+                                    text-generation="download_channel4_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel5"></button>
+                                    text-generation="download_channel5_old"></button>
                         </div>
                     </div>
                 </div>
@@ -194,26 +206,26 @@
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn large_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel6"></button>
+                                    text-generation="download_channel6_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn normal_btn large_btn"
                                     onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/6RbOsN');"
-                                    text-generation="download_channel1"></button>
+                                    text-generation="download_channel1_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel2"></button>
+                                    text-generation="download_channel2_old"></button>
                             <button class="btn normal_btn small_btn"
                                     onclick="playSoundType(this);openLink('https://www.123pan.com/s/qILA-2D5N3.html');"
-                                    text-generation="download_channel3"></button>
+                                    text-generation="download_channel3_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel4"></button>
+                                    text-generation="download_channel4_old"></button>
                             <button class="btn normal_btn small_btn"
                                     onclick="playSoundType(this);openLink('https://pan.baidu.com/s/1VNoC5WiQNZXrLQbSkJ39Bw?pwd=eiy6');"
-                                    text-generation="download_channel5"></button>
+                                    text-generation="download_channel5_old"></button>
                         </div>
                     </div>
                 </div>
@@ -238,21 +250,21 @@
                         <div class="btn_group">
                             <button class="btn normal_btn large_btn"
                                     onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/5wqMil');"
-                                    text-generation="download_channel1"></button>
+                                    text-generation="download_channel1_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn normal_btn small_btn"
                                     onclick="playSoundType(this);openLink('https://wwte.lanzouj.com/irm7Wqxcg4b');"
-                                    text-generation="download_channel2"></button>
+                                    text-generation="download_channel2_old"></button>
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel3"></button>
+                                    text-generation="download_channel3_old"></button>
                         </div>
                         <div class="btn_group">
                             <button class="btn disabled_btn small_btn" onclick="playSoundType(this);"
-                                    text-generation="download_channel4"></button>
+                                    text-generation="download_channel4_old"></button>
                             <button class="btn normal_btn small_btn"
                                     onclick="playSoundType(this);openLink('https://pan.baidu.com/s/14BpTu2M6mJKbNU53stdaQA?pwd=1dm5');"
-                                    text-generation="download_channel5"></button>
+                                    text-generation="download_channel5_old"></button>
                         </div>
                     </div>
                 </div>
@@ -270,20 +282,20 @@
                         <div class="btn_group">
                             <button class="btn normal_btn small_btn"
                                     onclick="playSoundType(this);openLink('https://pan.huang1111.cn/s/EX6Xhb?path=%2F');"
-                                    text-generation="download_channel1"></button>
+                                    text-generation="download_channel1_old"></button>
                             <button class="btn normal_btn small_btn"
                                     onclick="playSoundType(this);openLink('https://www.123pan.com/s/qILA-5VLN3.html');"
-                                    text-generation="download_channel3"></button>
+                                    text-generation="download_channel3_old"></button>
                         </div>
                     </div>
                     <div class="description2">
                         版本库里的安装包都不合你的口味?想自定义一些比较独到的功能?那你就来对地方了!<br>
                         加入 <a href="https://t.me/Spectrollay_MCW" target="_blank"><img
-                            alt="link" class="link_img" src=""/>Telegram</a> /
-                        <a href=",https://qm.qq.com/q/AqLmKLH9mM"
-                           target="_blank"><img alt="link" class="link_img" src=""/>QQ</a> /
+                            alt="link" class="link_img" src="./images/ExternalLink_white.png"/>Telegram</a> /
+                        <a href="https://qm.qq.com/q/AqLmKLH9mM"
+                           target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>QQ</a> /
                         <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802"
-                           target="_blank"><img alt="link" class="link_img" src=""/>云湖</a> 群聊,向开发者提出自己的需求.
+                           target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>云湖</a> 群聊,向开发者提出自己的需求.
                         <br>在得到开发者肯定答复且条件允许的情况下,7个工作日内会更新至上述网盘.<br>
                         请注意: 在提出需求前请先前往网盘确认是否已经存在相应的定制信息,否则不予答复.
                     </div>
@@ -298,24 +310,29 @@
                     <div class="description2">啊哦,已经到底了!<br>这里没有其他东西啦!</div>
                     <div class="description2">
                         <a href="https://github.com/Spectrollay/minecraft_repository/issues/new" target="_blank">
-                            <img alt="link" class="link_img" src=""/>我有想要的内容/我想添加新内容
+                            <img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>我有想要的内容/我想添加新内容
                         </a>
                     </div>
                 </div>
             </div>
-            <div id="page_info"></div>
+            <div id="page_info">
+                <div class="data_loading_area">
+                    <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                    <div class="data_loading_text">区块加载中</div>
+                </div>
+            </div>
         </main>
     </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
+    <custom-scrollbar class="primary_custom_scrollbar">
         <custom-scrollbar-track></custom-scrollbar-track>
         <custom-scrollbar-thumb></custom-scrollbar-thumb>
     </custom-scrollbar>
 </scroll-view>
 
 <!--侧边栏-->
-<div class="sidebar" id="sidebar">
+<div class="old sidebar" id="sidebar">
     <scroll-view>
-        <scroll-container class="sidebar_scroll_container">
+        <scroll-container class="old secondary_scroll_container">
             <div class="sidebar_content scroll_container">
                 <div class="sidebar_header">
                     <custom-button data="sidebar|normal|||false||" js="mainPage();" text="返回首页"></custom-button>
@@ -332,28 +349,31 @@
                 </div>
             </div>
         </scroll-container>
-        <custom-scrollbar class="sidebar_custom_scrollbar">
+        <custom-scrollbar class="secondary_custom_scrollbar">
             <custom-scrollbar-track></custom-scrollbar-track>
             <custom-scrollbar-thumb></custom-scrollbar-thumb>
         </custom-scrollbar>
     </scroll-view>
 </div>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
-<script src="/minecraft_repository/javascript/editions.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
+<script src="./javascript/editions.js"></script>
 <!--<script>-->
 
 <!--</script>-->
-
-<!--<style>-->
-<!--    -->
-<!--</style>-->
 
 </html>

@@ -35,6 +35,7 @@ main {
 .setting_block {
     align-items: center;
     display: flex;
+    justify-content: center;
     padding: 10px 16px;
 }
 
@@ -49,11 +50,14 @@ main {
 
 .setting_block_content {
     margin: 6px 0;
+    max-width: 1000px;
     width: 100%;
 }
 
 .setting_title_content {
+    align-items: center;
     align-self: center;
+    display: flex;
     flex: 1;
 }
 
@@ -77,6 +81,6 @@ main {
 
 .red_stroke {
     color: #C02D2D;
-    paint-order: stroke;
-    -webkit-text-stroke: 0.1em #FFFFFF;
+    paint-order: stroke; /* 先描边后填充 */
+    -webkit-text-stroke: 0.05em #FFFFFF; /* 文字描边 */
 }

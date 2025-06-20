@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,24 +28,47 @@
 <html lang="zh">
 
 <head>
+    <base href="./"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="3;url=/minecraft_repository/" http-equiv="refresh">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="3;url=./" http-equiv="refresh">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
-<!--<style>-->
-<!--    -->
-<!--</style>-->
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/logo/Starmoon_icon.png" rel="icon">
+    <style>
+        main {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 10px 0;
+        }
+
+        .redirect_title, .redirect_message {
+            color: #FFFFFF;
+        }
+
+        .message {
+            margin: 10px 0;
+        }
+    </style>
     <title>星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -49,46 +76,59 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
-<header>
-    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="Back" class="back_icon" id="back_icon" src=""/>
-    </div>
-    <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
-    </div>
-    <div class="header_item header_item_right header_right_blank"></div>
-</header>
-<scroll-view>
-    <scroll-container class="main_scroll_container">
-        <main class="main_content_center scroll_container" id="main">
-            <div>
-                <h2 class="redirect_title">页面已迁移至新地址</h2>
-                <h4 class="message redirect_message"><span id="second">3</span>秒后将自动重定向</h4>
-                <h4 class="message redirect_message">没有成功重定向?<a onclick="jumpToPage('./');">点此前往</a></h4>
-            </div>
-        </main>
-    </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
-        <custom-scrollbar-track></custom-scrollbar-track>
-        <custom-scrollbar-thumb></custom-scrollbar-thumb>
-    </custom-scrollbar>
-</scroll-view>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+            <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/logo/Starmoon_logo.png"/>
+        </div>
+        <div class="header_item header_item_right header_right_blank"></div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view">
+            <scroll-container class="old primary_scroll_container">
+                <main class="main_content_center scroll_container" id="main">
+                    <div>
+                        <h2 class="redirect_title">页面已迁移至新地址</h2>
+                        <h4 class="message redirect_message"><span id="second">3</span>秒后将自动重定向</h4>
+                        <h4 class="message redirect_message">没有成功重定向?<a onclick="jumpToPage('./');">点此前往</a></h4>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+    </display-body>
+</dispaly-area>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="javascript/mcfc.js"></script>
 <script>
     // 页面加载完成时
     window.addEventListener('load', function () {
@@ -106,26 +146,5 @@
         }
     });
 </script>
-
-<style>
-    main {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-
-    h2 {
-        margin: 10px 0;
-    }
-
-    .redirect_title, .redirect_message {
-        color: #FFFFFF;
-    }
-
-    .message {
-        margin: 10px 0;
-    }
-</style>
 
 </html>

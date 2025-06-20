@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,24 +28,46 @@
 <html lang="zh">
 
 <head>
+    <base href="../"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link as="font" crossorigin="anonymous" href="./fonts/NotoSans-Bold.ttf" rel="preload" type="font/ttf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Ten.otf" rel="preload" type="font/otf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Seven.otf" rel="preload" type="font/otf">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
     <style>
-        .no_access-img {
-            padding-top: 32px;
+        .display {
+            margin: 10px;
         }
     </style>
-    <title>NO ACCESS</title>
+    <script defer>
+        const audios = {};
+
+        function registerAudio(name, path) {
+            const audio = new Audio(path);
+            audio.preload = 'auto';
+            audio.load();
+            audios[name] = audio;
+        }
+
+        registerAudio('click', './sounds/click.ogg');
+        registerAudio('button', './sounds/button.ogg');
+    </script>
+    <title>无访问权限 - Minecraft Kit</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -49,49 +75,58 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
-<header>
-    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src=""/>
-    </div>
-    <div class="header_logo"><span class="header_title">Minecraft Kit</span></div>
-    <div class="header_item header_item_right header_right_blank"></div>
-</header>
-<scroll-view>
-    <scroll-container class="main_scroll_container">
-        <main class="main_content_center scroll_container" id="main">
-            <div class="display">
-                <p class="no_access-img"><img alt="No Access Image" class="notice_img" src="/minecraft_repository/images/AccessDenied.png"/></p>
-                <p class="main_detail_center">无访问权限</p>
-            </div>
-        </main>
-    </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
-        <custom-scrollbar-track></custom-scrollbar-track>
-        <custom-scrollbar-thumb></custom-scrollbar-thumb>
-    </custom-scrollbar>
-</scroll-view>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+            <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+        </div>
+        <div class="header_logo"><div class="header_title">Minecraft Kit</div></div>
+        <div class="header_item header_item_right header_right_blank"></div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view">
+            <scroll-container class="primary_scroll_container">
+                <main class="main_content_center scroll_container" id="main">
+                    <div class="display">
+                        <div class="no_access-img"><img alt="No Access Image" class="notice_img" src="./images/AccessDenied.png"/></div>
+                        <p class="main_detail_center">无访问权限</p>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+    </display-body>
+</dispaly-area>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
 <!--<script>-->
 <!--    -->
 <!--</script>-->
-
-<!--<style>-->
-<!--    -->
-<!--</style>-->
 
 </html>

@@ -28,16 +28,3 @@
     background-color: #3D3E3F;
     border: 2px solid #3D3E3F;
 }
-
-.sidebar_list {
-    border-top: 2px solid #454647;
-}
-
-.sidebar_header {
-    border-bottom: 2px solid #000000;
-    display: flex;
-    font-size: 14px;
-    justify-content: center;
-    min-width: 148px;
-    width: 100%;
-}

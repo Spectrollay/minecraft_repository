@@ -20,18 +20,20 @@
  * SOFTWARE.
  */
 
+rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
+
 const maintenanceModal = `
-    <div class="overlay" id="overlay_maintenance_notice" style="z-index: 51"></div>
-    <modal_area id="maintenance_notice" style="z-index: 52" tabindex="-1">
+    <div class="overlay" id="overlay_maintenance_notice" style="z-index: 51;"></div>
+    <modal_area id="maintenance_notice" style="z-index: 52;">
         <modal>
             <modal_title_area>
                 <modal_title>数据库调整维护通知</modal_title>
                 <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                    <img alt="" class="modal_close_btn_img" src=""/>
+                    <img alt="" class="modal_close_btn_img" src="${rootPath}/images/cross_white.png"/>
                 </modal_close_btn>
             </modal_title_area>
             <modal_content>
-                <p>我们正在对版本库的数据库进行更新维护, 版本库的部分资源将无法下载. 如果你想要下载的资源无法获取, 你可以加入我们的 <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> / <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a> 官方频道或 <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> / <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> / <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a> 聊天群组获取, 这里会发布需求量较大的临时资源链接. 如果频道或群组中还是没有你想要的资源, 可以向管理员询问该资源的临时下载方式. 感谢你的理解与配合, 也祝你新年快乐!</p>
+                <p>我们正在对版本库的数据库进行更新维护, 版本库的部分资源将无法下载. 如果你想要下载的资源无法获取, 你可以加入我们的 <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> | <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a> 官方频道或 <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> | <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> | <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a> 聊天群组获取, 这里会发布需求量较大的临时资源链接. 如果频道或群组中还是没有你想要的资源, 可以向管理员询问该资源的临时下载方式. 感谢你的理解与配合, 也祝你新年快乐!</p>
             </modal_content>
             <modal_button_area>
                 <modal_button_group>
@@ -56,59 +58,3 @@ window.addEventListener('load', () => setTimeout(function () {
         logManager.log("显示数据库维护弹窗");
     }
 }, 20)); // 页面加载完成后延时显示弹窗
-
-let openurl;
-
-// 免责申明弹窗
-function showDisclaimerModal(url) {
-    const overlay = document.getElementById("overlay_disclaimer_modal");
-    const modal = document.getElementById("disclaimer_modal");
-    overlay.style.display = "block";
-    modal.style.display = "block";
-    logManager.log("显示免责声明弹窗");
-    if (url === undefined) {
-        openurl = null;
-    } else {
-        openurl = url;
-    }
-    modal.focus();
-}
-
-function hideDisclaimerModal(button, state, url) {
-    const overlay = document.getElementById("overlay_disclaimer_modal");
-    const modal = document.getElementById("disclaimer_modal");
-    playSoundType(button);
-    overlay.style.display = "none";
-    modal.style.display = "none";
-    if (state === -1) {
-        logManager.log("选择了不同意");
-    } else if (state === 1) {
-        logManager.log("选择了同意并继续");
-    }
-    logManager.log("关闭免责声明弹窗");
-    if (url !== null) {
-        logManager.log("获取到跳转链接:" + url);
-        if (state === 1) {
-            if (url.includes('huang1111')) { // TODO 在移除全部相关链接后删除判定
-                ifNavigating("open", "/minecraft_repository/default/error_not-found.html");
-            } else {
-                ifNavigating("open", url);
-            }
-        } else {
-            ifNavigating("jump", url);
-        }
-        logManager.log("跳转成功");
-    } else {
-        logManager.log("无跳转链接", 'warn');
-    }
-}
-
-function howToBuyGame(button, state, url) {
-    playSoundType(button);
-    if (state === 0) {
-        logManager.log("选择了了解正版购买");
-    }
-    logManager.log("获取到跳转链接: " + url);
-    ifNavigating("jump", url);
-    logManager.log("跳转成功");
-}

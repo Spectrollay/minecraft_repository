@@ -22,16 +22,18 @@
 
 function hide_mask() {
     const loading_mask = document.getElementById('loading_mask');
-    // 延时600ms后隐藏蒙版
-    loading_mask.style.opacity = '0';
-    setTimeout(function () {
-        loading_mask.style.display = 'none';
-    }, 600);
+    // 1.2s后隐藏遮罩
+    setTimeout(() => {
+        loading_mask.style.opacity = '0';
+        setTimeout(() => {
+            loading_mask.style.display = 'none';
+        }, 800);
+    }, 1200);
 }
 
-// 加载超过8秒时
-let count = 8;
-const secondInterval = setInterval(function () {
+// 6秒后强制隐藏遮罩
+let count = 6;
+const secondInterval = setInterval(() => {
     count--;
     if (count <= 0) {
         clearInterval(secondInterval);
@@ -39,7 +41,7 @@ const secondInterval = setInterval(function () {
     }
 }, 1000);
 
-// 页面加载完成时
-window.addEventListener('load', function () {
+// DOM加载完成时尝试隐藏遮罩
+document.addEventListener('DOMContentLoaded', () => {
     hide_mask();
 });

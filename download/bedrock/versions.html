@@ -1,0 +1,272 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/logo/Bedrock_Edition_icon.png" rel="icon">
+    <style>
+        .version_info {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .description_info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+        }
+
+        .description_info_img {
+            height: 30px;
+            margin: 8px 4px;
+        }
+
+        .drop_artwork_area {
+            align-items: center;
+            display: flex;
+            height: 152px;
+            justify-content: center;
+            overflow: hidden;
+            width: 280px;
+        }
+    </style>
+    <title>平台 - 版本 - 基岩版 - 星月Minecraft版本库</title>
+</head>
+
+<div class="loading_mask" id="loading_mask">
+    <div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
+        <div class="spinner">
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
+        </div>
+        <noscript>
+            <style>
+                #spinner_img, .spinner_text {
+                    display: none;
+                }
+            </style>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
+            <div class="spinner">
+                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
+            </div>
+        </noscript>
+    </div>
+</div>
+
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_left">
+            <div class="header_item header_item_left with_menu" id="back" onclick="clickedBack();">
+                <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+            </div>
+            <div class="header_item header_item_left" id="menu" onclick="clickedMenu();">
+                <img alt="" class="header_left_icon" id="menu_icon" src="./images/Menu.png"/>
+            </div>
+            <div class="header_item header_item_left" id="home" onclick="playSoundType(this);mainPage();">
+                <img alt="" class="header_left_icon" src="./images/Home.png"/>
+            </div>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/logo/Bedrock_Edition_icon.png"/>
+            <img alt="" class="title_icon platform_icon" src=""/>
+        </div>
+        <div class="header_right">
+            <div class="header_item header_item_right" id="reload" onclick="playSoundType(this);reloadPage();">
+                <img alt="" class="header_right_icon" src="./images/Refresh.png"/>
+            </div>
+            <div class="header_item header_item_right" id="feedback" onclick="playSoundType(this);contact();">
+                <img alt="" class="header_right_icon" src="./images/Feedback.png"/>
+            </div>
+        </div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view with_sidebar">
+            <scroll-container class="primary_scroll_container">
+                <main class="scroll_container" id="main">
+                    <div class="block_spacing"></div>
+                    <div class="block">
+                        <div class="block_main version_main_title">
+                            <div class="wrap_flex">
+                                <div class="title1" id="main_title">基岩版<img alt="" class="share_img_title" onclick="playSound('click');copyText(window.location.href, 'link');" src="./images/ExternalLink_white.png"></div>
+                            </div>
+                        </div>
+                        <div class="btn_group action_bar">
+                            <custom-button data="default|normal|extra_small||false||" js="jumpToPage('./download/bedrock/index.html');" text="<img alt='' class='button_img left' src='./images/list.png'>返回索引"></custom-button>
+                            <custom-button class="prev_version" data="default|disabled|extra_small||false||" js="false" text="<img alt='' class='button_img left' src='./images/arrowLeft.png'>上个版本"></custom-button>
+                            <custom-button class="next_version" data="default|disabled|extra_small||false||" js="false" text="下个版本<img alt='' class='button_img right' src='./images/arrowRight.png'>"></custom-button>
+                        </div>
+                        <div class="block_main version_main_title">
+                            <div class="wrap_flex">
+                                <div class="title1" id="update_name"></div>
+                            </div>
+                        </div>
+                        <div class="mclang_cn_fix" id="mclang_cn_fix">
+                            <div class="block_main wrap_flex">
+                                <div class="data_loading_area">
+                                    <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                    <div class="data_loading_text">区块加载中</div>
+                                </div>
+                            </div>
+                        </div>
+                        <generate-area class="main_gen">
+                            <div class="block_main wrap_flex">
+                                <div class="data_loading_area">
+                                    <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                    <div class="data_loading_text">区块加载中</div>
+                                </div>
+                            </div>
+                        </generate-area>
+                    </div>
+                    <div class="btn_group action_bar">
+                        <custom-button data="default|normal|extra_small||false||" js="jumpToPage('./download/bedrock/index.html');" text="<img alt='' class='button_img left' src='./images/list.png'>返回索引"></custom-button>
+                        <custom-button class="prev_version" data="default|disabled|extra_small||false||" js="false" text="<img alt='' class='button_img left' src='./images/arrowLeft.png'>上个版本"></custom-button>
+                        <custom-button class="next_version" data="default|disabled|extra_small||false||" js="false" text="下个版本<img alt='' class='button_img right' src='./images/arrowRight.png'>"></custom-button>
+                    </div>
+                    <div id="page_info">
+                        <div class="data_loading_area">
+                            <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                            <div class="data_loading_text">区块加载中</div>
+                        </div>
+                    </div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+        <!--侧边栏-->
+        <div class="new sidebar" id="sidebar">
+            <scroll-view>
+                <scroll-container class="secondary_scroll_container">
+                    <div class="sidebar_content scroll_container">
+                        <div class="sidebar_header">
+                            <div class="sidebar_detail_title" id="sidebar_title">基岩版</div>
+                        </div>
+                        <div class="sidebar_list">
+                            <a class="sidebar_item" id="ctr_sidebar">
+                                <article_list>中文译名修正</article_list>
+                            </a>
+                            <generate-area class="sidebar_gen">
+                                <div class="data_loading_area">
+                                    <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                    <div class="data_loading_text">区块加载中</div>
+                                </div>
+                            </generate-area>
+                        </div>
+                        <div class="sidebar_info">
+                            <div class="sidebar_detail_title" id="sidebar_bottom_title">
+                                <img alt="" class="data_loading_img_small" src="./images/Loading_white.gif"/>
+                            </div>
+                            <div class="sidebar_detail" id="sidebar_bottom_detail1">
+                                <img alt="" class="data_loading_img_small" src="./images/Loading_white.gif"/>
+                            </div>
+                            <div class="sidebar_detail">
+                                <custom-button data="sidebar|normal|||false||" js="clickedSidebarBottomBtn();" text="官方网站"></custom-button>
+                            </div>
+                        </div>
+                    </div>
+                </scroll-container>
+                <custom-scrollbar class="secondary_custom_scrollbar">
+                    <custom-scrollbar-track></custom-scrollbar-track>
+                    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+                </custom-scrollbar>
+            </scroll-view>
+        </div>
+    </display-body>
+</dispaly-area>
+
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
+<div class="new overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
+
+<!-- 免责申明弹窗 -->
+<div class="overlay normal_overlay" id="overlay_disclaimer_modal"></div>
+<modal_area class="normal_modal" id="disclaimer_modal" style="display: none;">
+    <modal>
+        <modal_title_area>
+            <modal_title>温馨提示</modal_title>
+            <modal_close_btn class="close_btn" onclick="hideModal(this);">
+                <img alt="" class="modal_close_btn_img" src="./images/cross_white.png"/>
+            </modal_close_btn>
+        </modal_title_area>
+        <modal_content>
+            <p class="red_stroke" style="font-size: 18px;">有能力请支持正版</p>
+            <p style="margin-top: 0;">正版是指通过正规渠道获取的版本<br>购买正版是对开发商的尊重与支持<br>在尽可能的情况下你应该购买正版</p>
+        </modal_content>
+        <modal_button_area>
+            <modal_button_group>
+                <modal_button_list>
+                    <custom-button data="modal|normal|||false||" js="howToBuyGame(this,0,'./guidance/how_to_buy.html');" text="正版购买指南"></custom-button>
+                </modal_button_list>
+                <modal_button_list>
+                    <custom-button data="modal|green||modal_agree_btn|false||" js="hideDisclaimerModal(this,1);" text="我知道了"></custom-button>
+                    <custom-button data="modal|red|||false||" js="hideDisclaimerModal(this,-1);" text="我不同意"></custom-button>
+                </modal_button_list>
+            </modal_button_group>
+        </modal_button_area>
+    </modal>
+</modal_area>
+
+</body>
+
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./library/lazyLoadImage.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/download_index_version.js"></script>
+<script src="./javascript/mcfc.js"></script>
+<script>
+    document.getElementById("ctr_sidebar").href = window.location.origin + window.location.pathname + window.location.search + "#mclang_cn_fix";
+
+    // 惰性加载
+    const lazyImage = new LazyLoadImage('img');
+    lazyImage.init();
+</script>
+
+</html>

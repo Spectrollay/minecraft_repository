@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V1.3
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,23 +28,78 @@
 <html lang="zh">
 
 <head>
+    <base href="../"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
-    <!--    <style>-->
-    <!--        -->
-    <!--    </style>-->
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link as="font" crossorigin="anonymous" href="./fonts/NotoSans-Bold.ttf" rel="preload" type="font/ttf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Ten.otf" rel="preload" type="font/otf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Seven.otf" rel="preload" type="font/otf">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/logo/Minecraft_Repository_icon.jpg" rel="icon">
+    <style>
+        scroll-container {
+            height: calc(100% - 100px);
+            top: 100px;
+        }
+
+        .block {
+            margin: 20px;
+        }
+
+        .plan_block_main {
+            padding: 0;
+        }
+
+        .plan_block {
+            align-items: center;
+            display: flex;
+            font-family: "Minecraft Seven", sans-serif;
+            font-size: 24px;
+            height: 56px;
+            justify-content: center;
+        }
+
+        article_list_title.exp_title {
+            background-color: rgba(255, 232, 102, 0.05);
+            border-left: 6px solid #FFE866;
+        }
+
+        article_list_title.bug_title {
+            background-color: rgba(244, 109, 109, 0.05);
+            border-left: 6px solid #F46D6D;
+        }
+
+        .previous_version {
+        }
+    </style>
+    <script defer>
+        const audios = {};
+
+        function registerAudio(name, path) {
+            const audio = new Audio(path);
+            audio.preload = 'auto';
+            audio.load();
+            audios[name] = audio;
+        }
+
+        registerAudio('click', './sounds/click.ogg');
+        registerAudio('button', './sounds/button.ogg');
+    </script>
     <title>开发日志 - 星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -48,28 +107,30 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
+
+<body class="old">
 <header>
     <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src=""/>
+        <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
     </div>
     <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
+        <img alt="" class="title_icon" src="./images/logo/Minecraft_Repository_icon.jpg"/>
+        <div class="header_title">Repository</div>
     </div>
-    <div class="header_item header_item_right" id="feedback" onclick="playSoundType(this);toRepo();">
-        <img alt="" class="feedback_icon" src="/minecraft_repository/images/Feedback.png"/>
+    <div class="header_item header_item_right" id="feedback" onclick="playSoundType(this);contact();">
+        <img alt="" class="header_right_icon" src="./images/Feedback.png"/>
     </div>
 </header>
 <scroll-view>
-    <scroll-container class="main_scroll_container">
+    <scroll-container class="tab primary_scroll_container">
         <main class="scroll_container main_with_tab_bar" id="main">
-            <div id="main_top"></div>
             <div class="tab_bar_area main_tab_bar">
                 <div class="tab_bar">
                     <button class="tab_bar_btn no_active" id="tab1" onclick="playSoundType(this);selectTab(1);toTop();">更新计划</button>
@@ -127,16 +188,16 @@
                                 <article_block>
                                     <article_detail>
                                         <article_list>
-                                            <div class="tag_area"><span class="tag yellow_tag">63%</span><span>设置页面</span></div>
+                                            <div class="tag_area"><span class="tag yellow_tag">65%</span><span>设置页面</span></div>
                                         </article_list>
                                         <article_list>
-                                            <div class="tag_area"><span class="tag yellow_tag">32%</span><span>优化下载块的样式与下载体验</span></div>
+                                            <div class="tag_area"><span class="tag green_tag">92%</span><span>优化下载块的样式与下载体验</span></div>
                                         </article_list>
                                         <article_list>
-                                            <div class="tag_area"><span class="tag green_tag">85%</span><span>惰性加载机制</span></div>
+                                            <div class="tag_area"><span class="tag yellow_tag">58%</span><span>响应式页面布局</span></div>
                                         </article_list>
                                         <article_list>
-                                            <div class="tag_area"><span class="tag red_tag">23%</span><span>响应式页面布局</span></div>
+                                            <div class="tag_area"><span class="tag red_tag">16%</span><span>更多的版本下载选项</span></div>
                                         </article_list>
                                     </article_detail>
                                 </article_block>
@@ -150,10 +211,7 @@
                                 <article_block>
                                     <article_detail>
                                         <article_list>快速启动游戏</article_list>
-                                        <article_list>更多的版本下载选项</article_list>
-                                        <article_list>聚合反馈方式至新的页面</article_list>
                                         <article_list>通过预加载与缓存优化响应</article_list>
-                                        <article_list>使用独立域名</article_list>
                                         <article_list>降低项目在国内的访问延迟</article_list>
                                         <article_list>全新的页面切换动画</article_list>
                                     </article_detail>
@@ -240,8 +298,831 @@
                         <!--    </div>-->
                         <!--</div>-->
 
-                        <div class="expandable_card_area" id="4.6.5">
+                        <div class="expandable_card_area" id="4.6.6">
                             <div class="expandable_card expanded" onclick="playSound('click');">
+                                <div class="expandable_card_text_area">
+                                    <div class="expandable_card_text">
+                                        <div class="expandable_card_text_title">4.6.6 Stable</div>
+                                    </div>
+                                </div>
+                                <div class="expandable_card_image_area"><img alt="" class="expandable_card_image" src=""/>
+                                </div>
+                            </div>
+                            <div class="expandable_card_down_area">
+                                <div class="expandable_card_down">
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250620.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.55</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    早上好! 我们兴奋地在此宣布, V4.6.6版本的开发计划现已悉数实现! 因此, 是时候该发布一个稳定版本来为此画上一个圆满的句号了! 本次更新进行了一些改进并修复了一些已知问题. 想要查看V4.6.6的更新说明? 请前往版本库首页的消息推送.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>为Checkbox复选框和Switch开关加入了条件钩子</article_list>
+                                                    <article_list>为部分设置项加入了描述</article_list>
+                                                    <article_list>优化了部分样式的条件与显示</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>访问受限弹窗设置项现在会按照预期工作了</article_list>
+                                                    <article_list>修复了Tag标签的一些显示问题</article_list>
+                                                    <article_list>修复了标题栏文字可能出现的错误偏移问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250603.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.54</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    我们推送了一个新的版本, 以下为更新详情, 请查阅.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>更改了数据的获取方式</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了点击设置图标会播放两次点击音效的问题</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>技术性</article_list_title>
+                                                    <article_list>更新了页面架构</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250602.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.54</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    V4.6.6的开发即将进入尾声. 本次更新带来了一些新的动画设计并对页面加载进行了进一步优化, 欢迎向我们反馈你的体验.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title class="exp_title">实验性</article_list_title>
+                                                    <article_list>全新的动画设计</article_list>
+                                                    <article_list_level2>为数据驱动内容加入了加载状态指示器</article_list_level2>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>中文译名修正项目</article_list_title>
+                                                    <article_list>网页更新V2.1.1</article_list>
+                                                    <article_list>更新了部分元素组件</article_list>
+                                                    <article_list>更新了下载方式</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>更新了加载提示</article_list>
+                                                    <article_list>对部分代码进行了优化</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250602.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.53</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些改进并修复了一些已知问题. 欢迎向我们汇报你的想法或反馈.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title class="exp_title">实验性</article_list_title>
+                                                    <article_list>全新的动画设计</article_list>
+                                                    <article_list_level2>为图片加入了加载状态指示器</article_list_level2>
+                                                    <article_list>服务响应优化</article_list>
+                                                    <article_list_level2>修复了一些图标加载异常缓慢的问题</article_list_level2>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>加入了支持我们页面</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>惰性加载机制现在不属于实验性功能了</article_list>
+                                                    <article_list>现在复制文本后会弹出Pop弹窗指示了</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250526.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.52</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    下午好! 我们有一大堆的新内容和改动需要你的测试! 在本版本中我们对响应式设计/全新的动画设计和服务响应优化这三大实验性内容进行了完善和改进, 更新了中文译名修正项目页面,加入了Pop弹窗并对自定义滚动条进行了大幅度的优化改进! 当然这只是部分更新内容, 完整的更新日志请浏览下方文章. 像往常一样, 我们很乐意听到你对于新内容与更改的想法, 同样的, 不要忘记向我们反馈你发现的任何问题和漏洞.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title class="exp_title">实验性</article_list_title>
+                                                    <article_list>响应式设计</article_list>
+                                                    <article_list_level2>进行了一些改进</article_list_level2>
+                                                    <article_list>全新的动画设计</article_list>
+                                                    <article_list_level2>优化了加载遮罩的显示</article_list_level2>
+                                                    <article_list>服务响应优化</article_list>
+                                                    <article_list_level2>进一步提升了加载速度与加载体验</article_list_level2>
+                                                    <article_list_level2>包含了自4.6.6.29以来的所有加载优化改动</article_list_level2>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>中文译名修正项目</article_list_title>
+                                                    <article_list>网页更新V2.1.0</article_list>
+                                                    <article_list>将UI版本从V1.10迁移至V2</article_list>
+                                                    <article_list>改进了部分界面元素的显示</article_list>
+                                                    <article_list>修复了一系列已知问题</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>加入了Pop弹窗自定义组件</article_list>
+                                                    <article_list_level2>无法获取元素焦点,点击会穿透到下方元素</article_list_level2>
+                                                    <article_list_level2>可自定义显示时间和显示样式</article_list_level2>
+                                                    <article_list_level2>可至多同时显示5条弹窗,按照时间先后顺序自底向顶排列</article_list_level2>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>文本转语音现在不属于实验性功能了</article_list>
+                                                    <article_list>将自定义滚动条移入自定义组件</article_list>
+                                                    <article_list>优化了自定义滚动条</article_list>
+                                                    <article_list_level2>优化了定时器的绑定与解除</article_list_level2>
+                                                    <article_list_level2>优化了调用链中元素的传递</article_list_level2>
+                                                    <article_list_level2>优化了元素尺寸变化的判定</article_list_level2>
+                                                    <article_list_level2>优化了对不同指针事件的判定</article_list_level2>
+                                                    <article_list_level2>优化了对边界值和元素溢出的判定</article_list_level2>
+                                                    <article_list_level2>将滚动条的最小高度由20px调整至35px</article_list_level2>
+                                                    <article_list_level2>现在主要滚动条会以点击位置作为滚动中点</article_list_level2>
+                                                    <article_list_level2>移除了一些重复的函数调用和元素查询</article_list_level2>
+                                                    <article_list>优化了格式化代码渲染器页面部分信息的显示</article_list>
+                                                    <article_list>更新了部分提示文本</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250525.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.51</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>捐赠列表现在是数据驱动内容了</article_list>
+                                                    <article_list>优化了捐赠列表的显示样式</article_list>
+                                                    <article_list>优化了一些函数判定</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修正了一些语法问题</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>技术性</article_list_title>
+                                                    <article_list>数据驱动内容现在有了统一的函数管理</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250523.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.50</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些加载问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250523.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.50</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些技术性更改并修复了一些已知问题. 我们正在对页面加载流程进行优化, 你可能会遇到各种不稳定因素. 发现问题或有好的建议? 欢迎向我们反馈!
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>更新了部分页面的图标</article_list>
+                                                    <article_list>将设置页面使用的UI版本从V1.5迁移至V2</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些V2页面被错误地标记为了V1页面的问题</article_list>
+                                                    <article_list>修复了部分页面可能会溢出屏幕的问题</article_list>
+                                                    <article_list>修复了一些在加载过程中可能会出现的错误问题</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>技术性</article_list_title>
+                                                    <article_list>优化了页面样式和脚本的加载逻辑</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250521.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.49</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    我想你可能已经迫不及待地想要尝试响应式设计了! 我们也是! 因此本次更新带来了基岩版下载页面的响应式设计体验! 请注意, 我们仍在对页面进行设计和改进, 因此你可能会有不同的体验. 对新设计有什么想法? 欢迎告诉我们!
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>加入了响应式设计的基岩版下载页面</article_list>
+                                                    <article_list_level2>对原有的下载体验进行了大量优化和改进</article_list_level2>
+                                                    <article_list_level2>现在点击下载默认访问的是新设计页面了</article_list_level2>
+                                                    <article_list_level2>可以通过页面顶部预览提示返回旧设计</article_list_level2>
+                                                    <article_list>加入了全屏灰白蒙版</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>友链现在是数据驱动内容了</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些数据错误</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250512.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.48</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些数据错误</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250512.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.48</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    在本版本中我们对加载过程进行了优化, 大幅度提升了下载页面的加载速度, 并修复了一些在加载过程中可能出现的问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>优化了部分图片的显示</article_list>
+                                                    <article_list>优化了弹窗的应用方式</article_list>
+                                                    <article_list>优化了正版提示弹窗的显示</article_list>
+                                                    <article_list>优化了下载页面的排版与显示</article_list>
+                                                    <article_list>大幅度提升了下载页面的加载速度</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些在加载过程中可能出现的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250507.06</article_title>
+                                            <article_subtitle>(V) 4.6.6.46</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新对代码进行了优化并改进了一些元素排版.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>网页顶部标题旁的分享按钮现在可以被Tab键选中了</article_list>
+                                                    <article_list>优化了部分代码样式</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250507.05</article_title>
+                                            <article_subtitle>(V) 4.6.6.46</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新对无障碍组件进行了一些优化并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>优化了无障碍组件的判定</article_list>
+                                                    <article_list>格式化代码渲染器页面现在适配了无障碍设计</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了格式化代码渲染器页面内存溢出的问题</article_list>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250507.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.46</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了自定义TextField文本框的交互问题</article_list>
+                                                    <article_list>修复了自定义组件的一些判定问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250507.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.46</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>为格式化代码渲染器的全屏预览加入了切换主题功能</article_list>
+                                                    <article_list>优化了无障碍组件的判定与交互</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了无障碍组件在交互过程中的一些崩溃问题</article_list>
+                                                    <article_list>修复了无障碍组件在部分情况下获取元素异常的问题</article_list>
+                                                    <article_list>修复了格式化代码渲染器页面的各种渲染错误和交互问题</article_list>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250506.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.45</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    格式化代码组件现已正式加入! 此外本次更新还包含了一些改进与修复. 欢迎向我们提出你的发现或想法!
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>加入了格式化代码组件</article_list>
+                                                    <article_list>加入了格式化代码渲染器</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250505.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.42</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    劳动节假期即将结束, 我想你应该十分需要<span class="mcfc">§k这是一个占位符</span>! 什么? 你听不清我在说什么? 嘘! 那是个秘密..
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>技术性</article_list_title>
+                                                    <article_list>加入了格式化代码(§)相关组件(仅开发者版本)</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250504.04</article_title>
+                                            <article_subtitle>(V) 4.6.6.40</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了加载遮罩显示错位的问题</article_list>
+                                                    <article_list>再次修复了滚动条在页面初次加载时可能发生错误的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250504.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.40</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了加载遮罩在部分情况下会不正确缩放的问题</article_list>
+                                                    <article_list>修复了滚动条在页面初次加载时可能发生错误的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250504.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.40</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新对部分页面的排版和显示进行了改进并修复了一些问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>对部分页面的排版和显示进行了改进</article_list>
+                                                    <article_list>优化了部分数据格式</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250503.03</article_title>
+                                            <article_subtitle>(V) 4.6.6.38</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一个已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了最后提交信息为空的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250503.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.38</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一个已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了捐赠我们页面表格不居中的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250503.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.38</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新对响应式设计进行了改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>为联系我们页面和捐赠我们页面加入了图标</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>优化了部分函数的实现</article_list>
+                                                    <article_list>将一些判定函数移至全局函数中</article_list>
+                                                    <article_list>更新了联系我们页面的布局和内容</article_list>
+                                                    <article_list>优化了捐赠我们页面的布局并加入了捐赠专享相关内容</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250502.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.37</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新对响应式设计进行了改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>响应式设计游戏下载索引页面新增快速下载板块(仅开发者版本)</article_list>
+                                                    <article_list>优化了响应式设计下游戏下载页面的显示样式(仅开发者版本)</article_list>
+                                                    <article_list>优化了响应式设计下版本库主页的显示样式(仅开发者版本)</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>更新了一些判定条件</article_list>
+                                                    <article_list>优化了部分元素排版</article_list>
+                                                    <article_list>移除了一些未被使用的内容</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了部分情况下菜单图标和返回图标会消失的问题</article_list>
+                                                    <article_list>修正了一些数据错误</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250501.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.36</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    劳动节快乐! 本次更新进行了一些改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>改进了一些数据格式</article_list>
+                                                    <article_list>优化了一些显示样式</article_list>
+                                                    <article_list>优化了部分文字排版</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些显示问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250403.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.33</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>优化了链接框的高亮样式</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些元素堆叠顺序不正确的问题</article_list>
+                                                    <article_list>修复了部分页面侧边栏指向链接异常的问题</article_list>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250322.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.33</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些改进. Minecraft Live 2025即将到来, 不要错过了哦.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>加入了一些新的提示标语</article_list>
+                                                    <article_list>改进了部分文本提示内容</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250311.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.32</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250221.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.32</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更进行了一些改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>改进了部分判定</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250214.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.32</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新进行了一些改进并修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>优化了部分地址判定</article_list>
+                                                    <article_list>将一些硬编码字段替换为动态编码</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了数据访问失败的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250213.03</article_title>
+                                            <article_subtitle>(V) 4.6.6.31</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了在启用新域名时部分数据不可达的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250213.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.31</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了部分按钮在被点击时会影响页面布局的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250213.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.31</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了404页面在部分情况下加载错误的问题</article_list>
+                                                    <article_list>修复了群组链接不正确的问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250211.02</article_title>
+                                            <article_subtitle>(V) 4.6.6.29</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    本次更新修复了一些已知问题.
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了一些已知问题</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                    <line></line>
+                                    <div class="expandable_card_down_content">
+                                        <article_block>
+                                            <article_title>4.6.20250211.01</article_title>
+                                            <article_subtitle>(V) 4.6.6.29</article_subtitle>
+                                            <article_detail>
+                                                <article_note>
+                                                    元宵快乐! 我们正在努力实现新的响应式设计页面! 但是它还暂未达到我们认为的可以发布的标准, 因此我们决定暂不公开发布. 以下是本次的新内容和更改修复, 欢迎向我们提出你的想法和发现!
+                                                </article_note>
+                                                <article_list_content>
+                                                    <article_list_title class="exp_title">实验性</article_list_title>
+                                                    <article_list>响应式设计</article_list>
+                                                    <article_list_level2>更新了页面框架</article_list_level2>
+                                                    <article_list_level2>将部分页面更新为响应式设计</article_list_level2>
+                                                    <article_list>文本转语音</article_list>
+                                                    <article_list_level2>现在属于独立的实验性功能了</article_list_level2>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>新内容</article_list_title>
+                                                    <article_list>加入了版本库主页的新设计(仅开发者版本)</article_list>
+                                                    <article_list>加入了游戏下载页面的新设计(仅开发者版本)</article_list>
+                                                    <article_list>加入了启动应用功能</article_list>
+                                                    <article_list>加入了联系我们页面</article_list>
+                                                    <article_list>加入了带有图标的按钮样式</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>更改</article_list_title>
+                                                    <article_list>更新了部分图标</article_list>
+                                                    <article_list>更新了部分插图</article_list>
+                                                    <article_list>更新了部分部分元素的样式</article_list>
+                                                    <article_list>更新了免责申明弹窗</article_list>
+                                                    <article_list>现在可以通过将光标置于滚动条上方使用鼠标滚轮精确控制滑动了</article_list>
+                                                    <article_list>现在点击反馈图标会跳转到联系我们页面了</article_list>
+                                                    <article_list>Dropdown下拉菜单现在在展开后可以通过点击外部区域收起了</article_list>
+                                                    <article_list>现在使用插件来实现惰性加载了</article_list>
+                                                    <article_list>改进了侧边栏的使用体验</article_list>
+                                                    <article_list>移除了兼容性提示弹窗</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>修复</article_list_title>
+                                                    <article_list>修复了顶栏元素在部分情况下可能出现的显示问题</article_list>
+                                                    <article_list>修复了当光标位于滚动条上时无法通过鼠标滚轮控制滚动的问题</article_list>
+                                                    <article_list>修复了因采用硬编码链接地址且链接定位方式杂糅导致的各种可能发生的错误</article_list>
+                                                </article_list_content>
+                                                <article_list_content>
+                                                    <article_list_title>技术性</article_list_title>
+                                                    <article_list>现在项目使用统一的变量来指示基准路径了</article_list>
+                                                    <article_list>加入了插件功能</article_list>
+                                                    <article_list>为自定义元素加入了回调事件</article_list>
+                                                </article_list_content>
+                                            </article_detail>
+                                        </article_block>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="expandable_card_area" id="4.6.5">
+                            <div class="expandable_card no_expanded" onclick="playSound('click');">
                                 <div class="expandable_card_text_area">
                                     <div class="expandable_card_text">
                                         <div class="expandable_card_text_title">4.6.5 Release</div>
@@ -326,7 +1207,7 @@
                                                     <article_list>加入了新的交互音效文件</article_list>
                                                     <article_list>为一些高亮文本加入了文字描边</article_list>
                                                     <article_list>为侧边栏的展开收起动画加入了独特的音效</article_list>
-                                                    <article_list>加入了大量新提示</article_list>
+                                                    <article_list>加入了大量的新提示标语</article_list>
                                                     <article_list>加入了节日标语</article_list>
                                                     <article_list>加入了特别鸣谢板块</article_list>
                                                     <article_list>加入了友情链接板块</article_list>
@@ -376,7 +1257,7 @@
                                                     <article_list>现在当升级到不兼容的更新时会自动清除数据了</article_list>
                                                     <article_list>为消息中心页面实现了惰性加载机制</article_list>
                                                     <article_list>为正版购买指南页面实现了惰性加载机制</article_list>
-                                                    <article_list>更新了提示列表,优化了提示加载逻辑</article_list>
+                                                    <article_list>更新了提示标语列表,优化了提示标语加载逻辑</article_list>
                                                     <article_list>更新了部分JS中的寻址判定</article_list>
                                                     <article_list>禁用了指针事件的高亮显示</article_list>
                                                     <article_list>将环境指南页面移入了指南目录</article_list>
@@ -395,7 +1276,7 @@
                                                     <article_list>重新设计了正版购买指南页面</article_list>
                                                     <article_list>为代码文件加入了版权信息</article_list>
                                                     <article_list>更新了部分页面的艺术图</article_list>
-                                                    <article_list>增大了提示文本框的高度</article_list>
+                                                    <article_list>增大了提示标语文本框的高度</article_list>
                                                     <article_list>更新了版本库的名称和Logo</article_list>
                                                     <article_list>增大了顶栏图标的大小</article_list>
                                                     <article_list>现在部分设计相对父元素居中了</article_list>
@@ -572,9 +1453,9 @@
                                                 </article_note>
                                                 <article_list_content>
                                                     <article_list_title>更改</article_list_title>
-                                                    <article_list>增大了提示文本框的高度</article_list>
+                                                    <article_list>增大了提示标语文本框的高度</article_list>
                                                     <article_list>增大了顶栏图标的大小</article_list>
-                                                    <article_list>更改了部分提示文本</article_list>
+                                                    <article_list>更改了部分提示标语的文本</article_list>
                                                     <article_list>更改了一些文本的显示</article_list>
                                                     <article_list>现在脚本无法加载的提示信息会高亮显示了</article_list>
                                                 </article_list_content>
@@ -582,7 +1463,7 @@
                                                     <article_list_title>修复</article_list_title>
                                                     <article_list>修复了文本转语音ID不正确的问题</article_list>
                                                     <article_list>修复了页面加载过程中可能无法获取到部分元素的问题</article_list>
-                                                    <article_list>修复了完整提示列表在正式仓库依旧可见的问题</article_list>
+                                                    <article_list>修复了完整提示标语列表在正式仓库依旧可见的问题</article_list>
                                                 </article_list_content>
                                             </article_detail>
                                         </article_block>
@@ -618,7 +1499,7 @@
                                     <line></line>
                                     <div class="expandable_card_down_content">
                                         <article_block>
-                                            <article_title>4.6.20241228</article_title>
+                                            <article_title>4.6.20241224</article_title>
                                             <article_subtitle>(V) 4.6.5.80</article_subtitle>
                                             <article_detail>
                                                 <article_note>
@@ -683,10 +1564,10 @@
                                                 </article_list_content>
                                                 <article_list_content>
                                                     <article_list_title>更改</article_list_title>
-                                                    <article_list>加入了一些新的提示</article_list>
-                                                    <article_list>调整了部分提示的权重</article_list>
+                                                    <article_list>加入了一些新的提示标语</article_list>
+                                                    <article_list>调整了部分提示标语的权重</article_list>
                                                     <article_list>为一些高亮文本加入了文字描边</article_list>
-                                                    <article_list>现在你可以在设置页面选择启用完整提示列表了</article_list>
+                                                    <article_list>现在你可以在设置页面选择启用完整提示标语列表了</article_list>
                                                 </article_list_content>
                                                 <article_list_content>
                                                     <article_list_title>修复</article_list_title>
@@ -718,7 +1599,7 @@
                                                 </article_list_content>
                                                 <article_list_content>
                                                     <article_list_title>更改</article_list_title>
-                                                    <article_list>加入了一些新的提示</article_list>
+                                                    <article_list>加入了一些新的提示标语</article_list>
                                                     <article_list>优化了资源调用</article_list>
                                                     <article_list>优化了条件钩子</article_list>
                                                     <article_list>优化了正版购买指南页面布局</article_list>
@@ -1147,7 +2028,7 @@
                                                     <article_list>为代码文件加入了版权信息</article_list>
                                                     <article_list>现在以下元素可以通过键盘访问了</article_list>
                                                     <article_list_level2>新增可以通过键盘Tab键选中的元素: 顶栏左右两侧按钮,主页版本跳转可点击区域,主页顶部提示框,可折叠组件,Slider滑块,Switch开关</article_list_level2>
-                                                    <article_list_level2>新增可以通过键盘Enter键交互的元素: 主页顶部提示框(交互切换提示),可折叠组件(交互切换展开收起状态),Slider滑块(待完善),Switch开关(交互切换开关状态)</article_list_level2>
+                                                    <article_list_level2>新增可以通过键盘Enter键交互的元素: 主页顶部提示标语框(交互切换提示标语),可折叠组件(交互切换展开收起状态),Slider滑块(待完善),Switch开关(交互切换开关状态)</article_list_level2>
                                                     <article_list>更新了部分元素的鼠标指针</article_list>
                                                     <article_list_level2>将以下元素的鼠标指针更改为pointer: Checkbox复选框(除禁用样式),Slider滑块(除禁用样式),Switch开关(除禁用样式)</article_list_level2>
                                                     <article_list_level2>将以下元素的鼠标指针更改为not-allowed: Checkbox复选框(仅禁用样式),Slider滑块(仅禁用样式),Switch开关(仅禁用样式)</article_list_level2>
@@ -1174,7 +2055,7 @@
                                                     本次更新主要对Slider滑块进行了重做并修复了一些问题, 欢迎告诉我们你对此的想法.
                                                 </article_note>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>更新了Slider滑块<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>更新了Slider滑块</span></div>
                                                 </article_list>
                                                 <article_list_level2>现在Slider滑块属于自定义元素了</article_list_level2>
                                                 <article_list_level2>优化了Slider滑块的选中提示方式</article_list_level2>
@@ -1184,12 +2065,12 @@
                                                 <article_list_level2>Set Slider滑块现在没有拖动滑动动画了</article_list_level2>
                                                 <article_list_level2>修复了在拖动滑块时仍然能控制页面滑动的问题</article_list_level2>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>Button按钮和Switch开关现在可以自更新了<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>Button按钮和Switch开关现在可以自更新了</span></div>
                                                 </article_list>
                                                 <article_list>合并了一些来自其他仓库的OreUI特性</article_list>
                                                 <article_list>更新了中文译名修正项目页面</article_list>
-                                                <article_list>更新了提示列表,优化了提示加载逻辑</article_list>
-                                                <article_list>更新了测试方式及测试提示</article_list>
+                                                <article_list>更新了提示标语列表,优化了提示标语加载逻辑</article_list>
+                                                <article_list>更新了测试方式及测试提示标语</article_list>
                                                 <article_list>修复了15天之内不再提示功能不会正确生效的问题</article_list>
                                                 <article_list>修复了自定义折叠组件的一些异常问题</article_list>
                                                 <article_list>优化了加载遮罩的加载</article_list>
@@ -1261,7 +2142,7 @@
                                                     为了防止从旧版本升级上来时出现遗留问题, 本次更新后请运行清除存储数据功能.
                                                 </article_note>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>将自适应布局更名为响应式设计<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>将自适应布局更名为响应式设计</span></div>
                                                 </article_list>
                                                 <article_list>更新了一些元素样式</article_list>
                                                 <article_list>更新了部分命名空间</article_list>
@@ -1282,7 +2163,7 @@
                                                     一些新的特性已经开始内部测试了! 但是在足够稳定前我们并不会公开发布它们. 以下为本次的更新内容, 请享用.
                                                 </article_note>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>加入了自适应布局<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>加入了自适应布局</span></div>
                                                 </article_list>
                                                 <article_list>加入了站内下载功能</article_list>
                                             </article_detail>
@@ -1343,7 +2224,7 @@
                                                     我们迎来了一次大更新! 在这个版本中我们对滚动条进行了彻底的重做! 现在滚动条的显示不受平台的限制了! 你可以告诉我们你在这个版本发现的问题或新的想法吗? 我们很乐意听一听.
                                                 </article_note>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>彻底重做了滚动条<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>彻底重做了滚动条</span></div>
                                                 </article_list>
                                                 <article_list_level2>滚动条现在适配所有的浏览器和内核了</article_list_level2>
                                                 <article_list_level2>滚动条滑块现在不再会因为页面过长而过小了</article_list_level2>
@@ -1361,16 +2242,16 @@
                                                 <article_list_level3>现在次要滚动条会在没有触发事件时自动消失了</article_list_level3>
                                                 <article_list_level2>移除了Modal弹窗的滚动条</article_list_level2>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>修复了滚动条在Safari和Firefox上无法显示的问题<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>修复了滚动条在Safari和Firefox上无法显示的问题</span></div>
                                                 </article_list>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>修复了滚动条计算的一些精度问题<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>修复了滚动条计算的一些精度问题</span></div>
                                                 </article_list>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>修复了滚动条的一些性能问题<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>修复了滚动条的一些性能问题</span></div>
                                                 </article_list>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>修复了滚动条有时错位的问题<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>修复了滚动条有时错位的问题</span></div>
                                                 </article_list>
                                                 <article_list>加入了漏洞追踪器页面</article_list>
                                                 <article_list_level2>目前没有任何内容,也无法通过常规手段访问</article_list_level2>
@@ -1405,7 +2286,7 @@
                                                     本次更新后请运行清除存储数据功能, 否则可能出现异常问题.
                                                 </article_note>
                                                 <article_list>
-                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span>更新了滚动条的行为<span></span></div>
+                                                    <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>更新了滚动条的行为</span></div>
                                                 </article_list>
                                                 <article_list_level2>滚动条现在不占用页面宽度了</article_list_level2>
                                                 <article_list_level2>滚动条现在会在页面静止时自动消失了</article_list_level2>
@@ -1417,7 +2298,7 @@
                                                     <div class="tag_area"><span class="tag yellow_tag exp_tag">实验性</span><span>为消息中心页面加入了自适应折叠组件</span></div>
                                                 </article_list>
                                                 <article_list>向版本库加入了官方频道链接</article_list>
-                                                <article_list>加入了一些新的提示</article_list>
+                                                <article_list>加入了一些新的提示标语</article_list>
                                                 <article_list>更新了弹窗样式</article_list>
                                                 <article_list>更新了页面底部信息</article_list>
                                                 <article_list>主仓库现在有极小的概率会出现内部测试邀请弹窗</article_list>
@@ -1727,8 +2608,8 @@
                                                 <article_note>本版本基于4.5.1 (4.5.1.16)开发</article_note>
                                                 <article_list>加入了教育版的站内下载链接</article_list>
                                                 <article_list>更新了基岩版下载页面的样式</article_list>
-                                                <article_list>再次调整了部分节日事件的提示</article_list>
-                                                <article_list>移除了下载页面的提示</article_list>
+                                                <article_list>再次调整了部分节日事件的提示标语</article_list>
+                                                <article_list>移除了下载页面的提示标语框</article_list>
                                             </article_detail>
                                         </article_block>
                                     </div>
@@ -2172,7 +3053,7 @@
                                                 <article_note>本版本基于4.5.1-Beta6 (4.5.1.9)开发</article_note>
                                                 <article_list>现在实验性内容页面的项目按照首字母排序了</article_list>
                                                 <article_list>将可展开卡片及卡片组移出了实验性内容</article_list>
-                                                <article_list>加入了新的提示</article_list>
+                                                <article_list>加入了新的提示标语</article_list>
                                                 <article_list>重新加入了多级项目</article_list>
                                             </article_detail>
                                         </article_block>
@@ -3113,8 +3994,8 @@
                                             <article_detail>
                                                 <article_list>更新了底层框架</article_list>
                                                 <article_list>更新了几乎所有的页面</article_list>
-                                                <article_list>现在下载按钮是动态加载的了</article_list>
-                                                <article_list>现在侧边栏底部的信息是动态加载的了</article_list>
+                                                <article_list>现在下载按钮是数据驱动内容了</article_list>
+                                                <article_list>现在侧边栏底部的信息是数据驱动内容了</article_list>
                                                 <article_list>修复了一些漏洞</article_list>
                                             </article_detail>
                                         </article_block>
@@ -3350,7 +4231,7 @@
                                             <article_title>4.1-Preview6</article_title>
                                             <article_date>2023-10-08</article_date>
                                             <article_detail>
-                                                <article_list>将项目同步到gitee仓库</article_list>
+                                                <article_list>将项目同步到Gitee仓库</article_list>
                                                 <article_list>修复了音效不能叠加播放的问题</article_list>
                                                 <article_list>修复了部分链接还是没有点击音效的问题</article_list>
                                             </article_detail>
@@ -3731,60 +4612,29 @@
             </div>
         </main>
     </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
+    <custom-scrollbar class="primary_custom_scrollbar">
         <custom-scrollbar-track></custom-scrollbar-track>
         <custom-scrollbar-thumb></custom-scrollbar-thumb>
     </custom-scrollbar>
 </scroll-view>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
+
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/mcfc.js"></script>
 <!--<script>-->
 <!--    -->
 <!--</script>-->
-
-<style>
-    scroll-container {
-        height: calc(100% - 100px);
-        top: 100px;
-    }
-
-    .block {
-        margin: 20px;
-    }
-
-    .plan_block_main {
-        padding: 0;
-    }
-
-    .plan_block {
-        align-items: center;
-        display: flex;
-        font-family: "Minecraft Seven", sans-serif;
-        font-size: 24px;
-        height: 56px;
-        justify-content: center;
-    }
-
-    article_list_title.exp_title {
-        background-color: rgba(255, 232, 102, 0.05);
-        border-left: 6px solid #FFE866;
-    }
-
-    article_list_title.bug_title {
-        background-color: rgba(244, 109, 109, 0.05);
-        border-left: 6px solid #F46D6D;
-    }
-
-    .previous_version {
-
-    }
-</style>
 
 </html>

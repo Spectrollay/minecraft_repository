@@ -20,6 +20,14 @@
  * SOFTWARE.
  */
 
+// 路径检测
+const currentURL = window.location.href;
+const currentPagePath = window.location.pathname;
+let hostPath = window.location.origin;
+const parts = currentPagePath.split('/').filter(Boolean);
+let rootPath = '/' + (parts.length > 0 ? parts[0] : '');
+const slashCount = (currentPagePath.match(/\//g) || []).length;
+
 // 日志管理器
 window.logManager = {
     log: function (message, level = 'info') {
@@ -41,6 +49,16 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     document.body.classList.add('no-dark-mode'); // 覆盖夜间模式下的样式
 }
 
+// 响应式设计动画
+document.addEventListener("DOMContentLoaded", function () {
+    const mainScrollView = document.querySelector('.main_scroll_view.with_sidebar');
+    if (mainScrollView) {
+        window.addEventListener('resize', function () {
+            mainScrollView.classList.add('animate');
+        });
+    }
+});
+
 // 节流函数,防止事件频繁触发
 function throttle(func, delay) {
     let lastCall = 0;
@@ -52,171 +70,13 @@ function throttle(func, delay) {
     };
 }
 
-// 处理滚动条显示的逻辑
-function showScroll(customScrollbar, scrollTimeout) {
-    clearTimeout(scrollTimeout); // 清除之前的隐藏定时器
-    customScrollbar.style.opacity = "1"; // 显示滚动条
-    return setTimeout(() => {
-        customScrollbar.style.opacity = "0"; // 3秒后隐藏滚动条
-    }, 3000);
-}
-
-// 更新滚动条滑块位置和尺寸
-function updateThumb(thumb, container, content, customScrollbar) {
-    const scrollHeight = content.scrollHeight; // 滚动区域的总高度
-    const containerHeight = container.getBoundingClientRect().height; // 滚动区域的显示高度
-    if (content.classList.contains('main_with_tab_bar')) customScrollbar.style.top = '100px'; // 这里需要给标签栏预留高度
-    const thumbHeight = Math.max((containerHeight / scrollHeight) * containerHeight, 20); // 滑块的高度,最小高度20px,防止滚动条过小
-    const maxScrollTop = scrollHeight - containerHeight; // 滑块能到达的最大位置
-    const currentScrollTop = Math.round(container.scrollTop); // 当前的滑块位置
-    let thumbPosition = (currentScrollTop / maxScrollTop) * (containerHeight - (thumbHeight + 4)); // 4为滑块的Border总高度,计算时应去除
-    if (content.classList.contains('sidebar_content')) thumbPosition = (currentScrollTop / maxScrollTop) * (containerHeight - thumbHeight); // 次要滚动条的样式与主要滚动条样式不同
-
-    thumb.style.height = `${thumbHeight}px`;
-    thumb.style.top = `${thumbPosition}px`;
-    customScrollbar.style.height = `${containerHeight}px`;
-    customScrollbar.style.display = (thumbHeight + 0.5) >= containerHeight ? 'none' : 'block'; // 解决计算精度不同导致的问题
-}
-
-// 处理滚动条点击跳转
-function handleScrollbarClick(e, isDragging, customScrollbar, thumb, container, content) {
-    if (isDragging || content.classList.contains('sidebar_content')) return; // 次要滚动条和拖动中的主要滚动条不能点击跳转
-
-    const {top, height: scrollbarHeight} = customScrollbar.getBoundingClientRect();
-    const clickPosition = e.clientY - top;
-    const thumbHeight = thumb.offsetHeight;
-    const containerHeight = container.clientHeight;
-    const maxScrollTop = content.scrollHeight - containerHeight;
-
-    if (clickPosition < thumb.offsetTop || clickPosition > (thumb.offsetTop + thumbHeight)) {
-        container.scrollTop = (clickPosition / (scrollbarHeight - thumbHeight)) * maxScrollTop;
-        updateThumb(thumb, container, content, customScrollbar);
-    }
-}
-
-// 处理滚动事件
-function handleScroll(customScrollbar, customThumb, container, content, scrollTimeout) {
-    if (!customScrollbar || !customThumb) return scrollTimeout;
-
-    scrollTimeout = showScroll(customScrollbar, scrollTimeout);
-    requestAnimationFrame(() => { // 动画优化
-        updateThumb(customThumb, container, content, customScrollbar);
-    });
-
-    return scrollTimeout;
-}
-
-// 处理拖动滚动条的逻辑
-function handlePointerMove(e, dragState, thumb, container, content) {
-    if (!dragState.isDragging || content.classList.contains('sidebar_content')) return; // 次要滚动条不能拖动
-
-    const currentY = e.clientY || e.touches[0].clientY;
-    const deltaY = currentY - dragState.startY;
-    const containerHeight = container.getBoundingClientRect().height; // 根据初始位置和移动距离计算新的滑块位置
-    const thumbHeight = thumb.offsetHeight;
-    const maxThumbTop = containerHeight - thumbHeight;
-    const newTop = Math.min(Math.max(dragState.initialThumbTop + deltaY, 0), maxThumbTop); // 计算滑块的新位置,确保在可滑动范围内
-    const maxScrollTop = content.scrollHeight - containerHeight; // 计算页面内容的滚动位置
-
-    container.scrollTo({
-        top: (newTop / maxThumbTop) * maxScrollTop, behavior: "instant" // 滚动时不产生动画
-    });
-
-    updateThumb(thumb, container, content, container.closest('scroll-view').querySelector('custom-scrollbar'));
-}
-
-function handlePointerDown(e, customThumb, container, content, dragState) {
-    dragState.isDragging = true;
-    dragState.startY = e.clientY || e.touches[0].clientY;
-    dragState.initialThumbTop = customThumb.getBoundingClientRect().top - container.getBoundingClientRect().top;
-    const handlePointerMoveBound = (e) => handlePointerMove(e, dragState, customThumb, container, content);
-
-    document.addEventListener('pointermove', handlePointerMoveBound);
-    document.addEventListener('touchmove', handlePointerMoveBound);
-    const handlePointerUp = () => {
-        dragState.isDragging = false;
-        document.removeEventListener('pointermove', handlePointerMoveBound);
-        document.removeEventListener('touchmove', handlePointerMoveBound);
-    };
-    document.addEventListener('pointerup', handlePointerUp, {once: true});
-    document.addEventListener('touchend', handlePointerUp, {once: true});
-}
-
-// 绑定滚动事件的通用函数,使用节流处理滚动事件
-function bindScrollEvents(container, content, customScrollbar, customThumb) {
-    let scrollTimeout;
-    const dragState = {isDragging: false, startY: 0, initialThumbTop: 0}; // 使用对象管理拖动状态
-
-    const throttledScroll = throttle(() => {
-        scrollTimeout = handleScroll(customScrollbar, customThumb, container, content, scrollTimeout);
-    }, 1); // 使用节流函数优化性能
-
-    // 自定义滚动条精确滚动
-    customScrollbar.addEventListener('wheel', (e) => {
-        let delta = e.deltaY > 0 ? 10 : -10;
-        container.scrollTop += delta;
-        throttledScroll();
-        e.preventDefault();
-    });
-
-    container.addEventListener('scroll', throttledScroll);
-    window.addEventListener('resize', throttledScroll);
-    document.addEventListener('mousemove', throttledScroll);
-    document.addEventListener('touchmove', throttledScroll);
-
-    customThumb.addEventListener('pointerdown', (e) => handlePointerDown(e, customThumb, container, content, dragState));
-    customThumb.addEventListener('touchstart', (e) => handlePointerDown(e, customThumb, container, content, dragState));
-    customScrollbar.addEventListener('click', (e) => handleScrollbarClick(e, dragState.isDragging, customScrollbar, customThumb, container, content));
-    window.addEventListener('load', () => setTimeout(throttledScroll, 10)); // 页面加载完成后延时触发
-}
-
-// 获取并处理所有滚动容器
-function initializeScrollContainers() {
-    const containers = document.querySelectorAll('.main_scroll_container, .sidebar_scroll_container');
-
-    containers.forEach((container) => {
-        const content = container.querySelector('.scroll_container, .sidebar_content');
-        const customScrollbar = content.closest('scroll-view').querySelector('custom-scrollbar');
-        const customThumb = customScrollbar.querySelector('custom-scrollbar-thumb');
-        bindScrollEvents(container, content, customScrollbar, customThumb);
-    });
-}
-
-// 初始化滚动容器
-initializeScrollContainers();
-
-// 使用闭包的简化函数
-function createHandleScroll(customScrollbar, customThumb, container, content) {
-    let scrollTimeout;
-    return function () {
-        scrollTimeout = handleScroll(customScrollbar, customThumb, container, content, scrollTimeout);
-    };
-}
-
-// 自定义高度变化检测
-const mainScrollContainer = document.querySelector('.main_scroll_container');
-const mainHandleScroll = throttle(createHandleScroll( // NOTE 在有涉及到自定义高度变化的地方要调用这个代码
-    document.querySelector('.scroll_container').closest('scroll-view').querySelector('custom-scrollbar'), document.querySelector('.scroll_container').closest('scroll-view').querySelector('custom-scrollbar-thumb'), mainScrollContainer, document.querySelector('.scroll_container')
-), 1);
-
-let lastScrollHeight = mainScrollContainer.scrollHeight;
-
-function watchHeightChange() { // 检查高度变化 NOTE 在有容器高度平滑变化的地方要调用这个代码
-    const currentScrollHeight = mainScrollContainer.scrollHeight;
-    if (lastScrollHeight !== currentScrollHeight) {
-        mainHandleScroll(); // 联动自定义网页滚动条
-        lastScrollHeight = currentScrollHeight;
-    }
-    requestAnimationFrame(watchHeightChange); // 在下一帧再次检查
-}
-
 // 点击顶栏回到顶部
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.header_logo').addEventListener('click', scrollToTop);
 });
 
 // 自动清除存储
-let firstVisit = localStorage.getItem('(/minecraft_repository/)firstVisit');
+let firstVisit = localStorage.getItem(`(${rootPath}/)firstVisit`);
 if (firstVisit < '2024-05-25') { // NOTE 只在涉及到不兼容改变时更新
     clearStorage();
 }
@@ -238,6 +98,13 @@ function ifNavigating(way, url) {
                 isNavigating = false; // 重置状态,允许下一次点击
             }, 100);
         }, 100);
+    } else if (way === 'delayed_open') {
+        setTimeout(function () {
+            window.open(url);
+            setTimeout(function () {
+                isNavigating = false; // 重置状态,允许下一次点击
+            }, 100);
+        }, 1500);
     } else if (way === 'jump') {
         setTimeout(function () {
             window.location.href = url;
@@ -248,36 +115,15 @@ function ifNavigating(way, url) {
     }
 }
 
-// 路径检测
-const currentURL = window.location.href;
-const currentPagePath = window.location.pathname;
-let hostPath = window.location.origin;
-const parts = currentPagePath.split('/').filter(Boolean);
-let rootPath = '/' + (parts.length > 0 ? parts[0] + '/' : '');
-const slashCount = (currentPagePath.match(/\//g) || []).length;
-
-// 创建内联元素
-const public_define = document.createElement('script'); // 公共定义函数
-public_define.src = '/minecraft_repository/javascript/public_define.js';
-const accessibility_js = document.createElement('script'); // 无障碍函数
-accessibility_js.src = '/minecraft_repository/javascript/accessibility.js';
-const exp_js = document.createElement('script'); // 实验性功能函数
-exp_js.src = '/minecraft_repository/experiments/index.js';
-const advanced_js = document.createElement('script'); // 高级功能函数
-advanced_js.src = '/minecraft_repository/javascript/advanced.js';
-const custom_elements_js = document.createElement('script'); // 自定义元素函数
-custom_elements_js.src = '/minecraft_repository/javascript/custom_elements.js';
-const public_style = document.createElement('link'); // 公共样式
-public_style.rel = 'stylesheet';
-public_style.href = '/minecraft_repository/stylesheet/public_style.css';
-
-// 将内联元素添加到头部
-document.head.appendChild(public_define);
-document.head.appendChild(accessibility_js);
-document.head.appendChild(exp_js);
-document.head.appendChild(advanced_js);
-document.head.appendChild(custom_elements_js);
-document.head.appendChild(public_style);
+// 重载页面
+function reloadPage() {
+    let refreshCount = parseInt(localStorage.getItem(`(${rootPath}/)refreshTimes`) || '0');
+    refreshCount++;
+    localStorage.setItem(`(${rootPath}/)refreshTimes`, refreshCount.toString());
+    setTimeout(function () {
+        location.reload();
+    }, 600);
+}
 
 logManager.log("浏览器UA: " + navigator.userAgent)
 logManager.log("完整路径: " + currentURL);
@@ -290,8 +136,8 @@ if (hostPath.includes('file:///')) {
     logManager.log("当前运行在本地文件");
 } else if (hostPath.includes('localhost')) {
     logManager.log("当前运行在本地服务器");
-} else if (hostPath.includes('github.io')) {
-    logManager.log("当前运行在Github");
+} else {
+    logManager.log("当前运行在" + hostPath);
     // 禁用右键菜单
     document.addEventListener('contextmenu', function (event) {
         event.preventDefault();
@@ -300,8 +146,6 @@ if (hostPath.includes('file:///')) {
     document.addEventListener('touchstart', function (event) {
         event.preventDefault();
     });
-} else {
-    logManager.log("当前运行在" + hostPath);
 }
 if (rootPath.includes('_test')) {
     logManager.log("环境为测试环境");
@@ -362,23 +206,23 @@ async function getCachedAudio(filePath) {
     return new Audio(filePath);
 }
 
+// 仓库提示弹窗
 if (rootPath.includes('_test') && !localStorage.getItem('minecraft_repository_attribute')) {
     localStorage.setItem('minecraft_repository_attribute', 'test=true');
 } else if (!rootPath.includes('_test') && !localStorage.getItem('minecraft_repository_attribute')) {
     localStorage.setItem('minecraft_repository_attribute', 'test=false');
 }
 
-// 仓库提示弹窗
-if (currentPagePath === '/minecraft_repository/' || currentPagePath === '/minecraft_repository/index.html') {
+if (currentPagePath === '/minecraft_repository/' || currentPagePath === '/minecraft_repository/index.html' || currentPagePath === '/minecraft_repository/index_new.html') { // TODO 在测试结束后移除
     if (rootPath.includes('_test')) {
-        const neverShowIn15Days = localStorage.getItem('(/minecraft_repository/)neverShowIn15Days');
+        const neverShowIn15Days = localStorage.getItem(`(${rootPath}/)neverShowIn15Days`);
         if (neverShowIn15Days) {
             const lastHideTime = new Date(parseInt(neverShowIn15Days, 10));
             const now = new Date();
             const diff = now - lastHideTime;
             const fifteenDays = 15 * 24 * 60 * 60 * 1000; // 15天
             if (diff > fifteenDays) {
-                localStorage.removeItem('(/minecraft_repository/)neverShowIn15Days');
+                localStorage.removeItem(`(${rootPath}/)neverShowIn15Days`);
             } else {
                 logManager.log("时间未到,不显示测试仓库提示");
             }
@@ -389,7 +233,7 @@ if (currentPagePath === '/minecraft_repository/' || currentPagePath === '/minecr
                     <modal_title_area>
                         <modal_title>测试仓库提示</modal_title>
                         <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                            <img alt="" class="modal_close_btn_img" src=""/>
+                            <img alt="" class="modal_close_btn_img" src="${rootPath}/images/cross_white.png"/>
                         </modal_close_btn>
                     </modal_title_area>
                     <modal_content class="main_page_alert">
@@ -426,7 +270,7 @@ if (currentPagePath === '/minecraft_repository/' || currentPagePath === '/minecr
                     <modal_title_area>
                         <modal_title>内部测试邀请</modal_title>
                         <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                            <img alt="" class="modal_close_btn_img" src=""/>
+                            <img alt="" class="modal_close_btn_img" src="${rootPath}/images/cross_white.png"/>
                         </modal_close_btn>
                     </modal_title_area>
                     <modal_content class="main_page_alert">
@@ -526,19 +370,65 @@ if (currentPagePath === '/minecraft_repository/' || currentPagePath === '/minecr
 
 function joinTest() {
     localStorage.setItem('minecraft_repository_attribute', 'test=true');
-    ifNavigating("jump", hostPath + "/minecraft_repository_test");
+    ifNavigating("jump", hostPath + "/minecraft_repository" + "_test");
 }
 
 function leaveTest() {
     localStorage.setItem('minecraft_repository_attribute', 'test=false');
-    localStorage.removeItem('(/minecraft_repository/)neverShowIn15Days');
+    localStorage.removeItem(`(${rootPath}/)neverShowIn15Days`);
     ifNavigating("jump", hostPath + "/minecraft_repository");
 }
 
+// 检查是否捐赠
+function checkIfDonate(type, para) {
+    const ifDonate = localStorage.getItem('donate') === 'true';
+    console.log(ifDonate);
+    if (ifDonate === true) {
+        if (type === "url") {
+            ifNavigating("open", para)
+        } else if (type === "fun") {
+            try {
+                eval(para);
+            } catch (error) {
+                logManager.log(`执行函数时出错: ${error.message}`, 'error');
+            }
+        }
+    } else {
+        showModal('donor_only_modal');
+    }
+}
+
+// 捐赠专享
+const donorOnlyModal = `
+    <div class="overlay normal_overlay" id="overlay_donor_only_modal"></div>
+    <modal_area class="normal_modal" id="donor_only_modal" style="display: none;">
+        <modal>
+            <modal_title_area>
+                <modal_title><img alt="" class="small_icon" src="./images/Crown.png"/>捐赠专享</modal_title>
+                <modal_close_btn class="close_btn" onclick="hideModal(this);">
+                    <img alt="" class="modal_close_btn_img" src="${rootPath}/images/cross_white.png"/>
+                </modal_close_btn>
+            </modal_title_area>
+            <modal_content>
+                <p>此功能为捐赠用户专享.<br>请前往捐赠页面解锁或了解更多信息.</p>
+            </modal_content>
+            <modal_button_area>
+                <modal_button_group>
+                    <modal_button_list>
+                        <custom-button data="modal|green|||false||" js="hideModal(this);jumpToPage('./about/donate.html');" text="前往捐赠"></custom-button>
+                        <custom-button data="modal|red|||false||" js="hideModal(this);" text="以后再说"></custom-button>
+                    </modal_button_list>
+                </modal_button_group>
+            </modal_button_area>
+        </modal>
+    </modal_area>`;
+
+document.body.insertAdjacentHTML('afterbegin', donorOnlyModal);
+
 // 兼容性检测
 const compatibilityModal = `
-    <div class="overlay" id="overlay_compatibility_modal" tabindex="-1"></div>
-    <modal_area id="compatibility_modal" tabindex="-1">
+    <div class="overlay" id="overlay_compatibility_modal"></div>
+    <modal_area id="compatibility_modal" style="display: none;">
         <modal>
             <modal_title_area>
                 <modal_title>兼容性提示</modal_title>
@@ -559,18 +449,18 @@ const compatibilityModal = `
         </modal>
     </modal_area>`;
 
-document.body.insertAdjacentHTML('afterbegin', compatibilityModal);
+// document.body.insertAdjacentHTML('afterbegin', compatibilityModal);
 
-window.addEventListener('load', () => setTimeout(function () {
-    if (localStorage.getItem('(/minecraft_repository/)neverShowCompatibilityModalAgain') !== '1') {
-        const overlay = document.getElementById("overlay_compatibility_modal");
-        const modal = document.getElementById("compatibility_modal");
-        overlay.style.display = "block";
-        modal.style.display = "block";
-        modal.focus();
-        logManager.log("显示兼容性提示弹窗");
-    }
-}, 20)); // 页面加载完成后延时显示弹窗
+// window.addEventListener('load', () => setTimeout(function () {
+//     if (localStorage.getItem(`(${rootPath}/)neverShowCompatibilityModalAgain`) !== '1') {
+//         const overlay = document.getElementById("overlay_compatibility_modal");
+//         const modal = document.getElementById("compatibility_modal");
+//         overlay.style.display = "block";
+//         modal.style.display = "block";
+//         modal.focus();
+//         logManager.log("显示兼容性提示弹窗");
+//     }
+// }, 20)); // 页面加载完成后延时显示弹窗
 
 function hideCompatibilityModal(button) {
     const overlay = document.getElementById("overlay_compatibility_modal");
@@ -583,15 +473,15 @@ function hideCompatibilityModal(button) {
 
 function neverShowCompatibilityModalAgain(button) {
     hideCompatibilityModal(button);
-    localStorage.setItem('(/minecraft_repository/)neverShowCompatibilityModalAgain', '1');
+    localStorage.setItem(`(${rootPath}/)neverShowCompatibilityModalAgain`, '1');
     logManager.log("关闭兼容性提示弹窗且不再提示");
 }
 
 // 访问受限提示
 const today = new Date().toISOString().split('T')[0];
 const firstVisitTodayModal = `
-    <div class="overlay" id="overlay_first_visit_today_modal" tabindex="-1"></div>
-    <modal_area id="first_visit_today_modal" tabindex="-1">
+    <div class="overlay" id="overlay_first_visit_today_modal"></div>
+    <modal_area id="first_visit_today_modal" style="display: none;">
         <modal>
             <modal_title_area>
                 <modal_title>访问受限</modal_title>
@@ -612,21 +502,47 @@ const firstVisitTodayModal = `
 document.body.insertAdjacentHTML('afterbegin', firstVisitTodayModal);
 
 function checkFirstVisit() {
-    firstVisit = localStorage.getItem('(/minecraft_repository/)firstVisit');
+    firstVisit = localStorage.getItem(`(${rootPath}/)firstVisit`);
     const is404Page = document.title.includes("404 NOT FOUND");
-    const firstVisitAllowedPaths = [`${rootPath}`, `${rootPath}index.html`, `${rootPath}home.html`, `${rootPath}about/donate.html`, `${rootPath}updatelog/`, `${rootPath}updatelog/index.html`];
 
-    // 检查是否是第一次访问且路径不在允许的路径中且不是404页面
-    if (firstVisit !== today && !firstVisitAllowedPaths.includes(window.location.pathname) && !is404Page) {
+    // 精确匹配的文件路径
+    const allowedFiles = [
+        `${rootPath}/`,
+        `${rootPath}/index.html`,
+        `${rootPath}/index_new.html`, // TODO 在完成新主页测试后移除
+        `${rootPath}/home.html`,
+        `${rootPath}/advanced/status.html`
+    ];
+
+    // 包含判断的文件夹路径
+    const allowedFolders = [
+        `${rootPath}/about/`,
+        `${rootPath}/default/`,
+        `${rootPath}/guidance/`,
+        `${rootPath}/mcfc/`,
+        `${rootPath}/mclang_cn/`,
+        `${rootPath}/notifications/`,
+        `${rootPath}/starcoin/`,
+        `${rootPath}/Template/`,
+        `${rootPath}/updatelog/`
+    ];
+
+    const currentPath = window.location.pathname;
+    const isAllowedFile = allowedFiles.includes(currentPath);
+    const isAllowedFolder = allowedFolders.some(folder => currentPath.startsWith(folder));
+    const disableFirstVisitTodayModal = switchValues['limited_access_modal'] === 'off';
+
+    if (firstVisit !== today && !isAllowedFile && !isAllowedFolder && !is404Page && !disableFirstVisitTodayModal) {
         const overlay = document.getElementById("overlay_first_visit_today_modal");
         const modal = document.getElementById("first_visit_today_modal");
         overlay.style.display = "block";
         modal.style.display = "block";
+        modal.focus();
     }
 }
 
-if (window.location.pathname === `${rootPath}` || window.location.pathname === `${rootPath}index.html`) {
-    localStorage.setItem('(/minecraft_repository/)firstVisit', today);
+if (window.location.pathname === `${rootPath}/` || window.location.pathname === `${rootPath}/index.html` || window.location.pathname === `${rootPath}/index_new.html`) { // TODO 在完成新主页测试后移除index_new.html
+    localStorage.setItem(`(${rootPath}/)firstVisit`, today);
 }
 
 function hideFirstVisitTodayModal(button) {
@@ -641,16 +557,62 @@ window.addEventListener('load', () => setTimeout(function () {
     checkFirstVisit();
 }, 20));
 
+// 免责申明弹窗
+function showDisclaimerModal(url) {
+    const overlay = document.getElementById("overlay_disclaimer_modal");
+    const modal = document.getElementById("disclaimer_modal");
+    overlay.style.display = "block";
+    modal.style.display = "block";
+    logManager.log("显示免责声明弹窗");
+    modal.dataset.openurl = url || ""; // 存储URL
+    modal.focus();
+}
+
+function hideDisclaimerModal(button, state) {
+    const overlay = document.getElementById("overlay_disclaimer_modal");
+    const modal = document.getElementById("disclaimer_modal");
+    const url = modal.dataset.openurl || null; // 取出存储的URL
+
+    playSoundType(button);
+    overlay.style.display = "none";
+    modal.style.display = "none";
+
+    if (url) {
+        if (state === 1) {
+            logManager.log("选择了同意并继续");
+            ifNavigating("open", url);
+            logManager.log("跳转成功");
+        } else if (state === -1) {
+            logManager.log("选择了不同意");
+        }
+    } else {
+        logManager.log("未获取到跳转链接", 'warn');
+    }
+
+    logManager.log("关闭免责声明弹窗");
+}
+
+function howToBuyGame(button, state, url) {
+    playSoundType(button);
+    if (state === 0) {
+        logManager.log("选择了正版购买指南");
+    }
+    logManager.log("获取到跳转链接: " + url);
+    ifNavigating("jump", url);
+    logManager.log("跳转成功");
+}
+
 // TODO 用户音量调节
 let userVolume = 1;
 
 const soundPaths = {
-    click: rootPath + 'sounds/click.ogg',
-    button: rootPath + 'sounds/button.ogg',
-    pop: rootPath + 'sounds/pop.ogg',
-    hide: rootPath + 'sounds/hide.ogg',
-    open: rootPath + 'sounds/drawer_open.ogg',
-    close: rootPath + 'sounds/drawer_close.ogg'
+    click: rootPath + '/sounds/click.ogg',
+    button: rootPath + '/sounds/button.ogg',
+    pop: rootPath + '/sounds/pop.ogg',
+    hide: rootPath + '/sounds/hide.ogg',
+    open: rootPath + '/sounds/drawer_open.ogg',
+    close: rootPath + '/sounds/drawer_close.ogg',
+    toast: rootPath + '/sounds/toast.ogg'
 };
 
 function playSound(type) {
@@ -673,10 +635,29 @@ function playSound(type) {
 
 // 按键音效
 function playSoundType(button) {
-    if (button.classList.contains("normal_btn") || button.classList.contains("red_btn") || button.classList.contains("sidebar_btn") || (button.classList.contains("tab_bar_btn") && button.classList.contains("no_active")) || button.classList.contains("close_btn")) {
+    if (button.classList.contains("normal_btn") || button.classList.contains("red_btn") || button.classList.contains("sidebar_btn") || (button.classList.contains("tab_bar_btn") && button.classList.contains("no_active")) || button.classList.contains("close_btn") || button.classList.contains("header_item")) {
         playSound('click');
     } else if (button.classList.contains("green_btn")) {
         playSound('button');
+    }
+}
+
+// 保存图片
+function saveImage(button) {
+    let parent = button.parentElement;
+    while (parent && !parent.classList.contains('image_block')) {
+        parent = parent.parentElement;
+    }
+    if (parent) {
+        const image = parent.querySelector('.image_downloadable');
+        const imageUrl = image.src;
+        const fileName = decodeURIComponent(imageUrl.substring(imageUrl.lastIndexOf('/') + 1));
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = fileName || 'downloaded_image.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 }
 
@@ -687,19 +668,17 @@ function clickedMenu() {
 }
 
 function toUpdatelog() {
-    const updatelogPath = '/minecraft_repository/updatelog/';
+    const updatelogPath = rootPath + '/updatelog/';
     ifNavigating("jump", updatelogPath);
 }
 
 function toMessage() {
-    const messagePath = '/minecraft_repository/notifications/';
+    const messagePath = rootPath + '/notifications/';
     ifNavigating("jump", messagePath);
 }
 
-function toRepo() {
-    setTimeout(function () {
-        ifNavigating("open", "https://github.com/Spectrollay/minecraft_repository/issues/new");
-    }, 600);
+function contact() {
+    ifNavigating("jump", rootPath + "/about/contact.html");
 }
 
 // 重试按钮事件
@@ -736,8 +715,7 @@ function repoPage() {
 
 // 点击设置图标事件
 function settingsPage() {
-    playSound('click');
-    ifNavigating("jump", "/minecraft_repository/advanced/settings.html");
+    ifNavigating("jump", rootPath + "/advanced/settings.html");
 }
 
 // 跳转主页
@@ -752,17 +730,21 @@ function jumpToPage(link) {
 
 // 打开网页
 function openLink(url) {
-    if (url.includes('huang1111') || url.includes('mcarc')) { // TODO 在移除全部相关链接后删除判定
+    if (url.includes('mcarc.github.io')) { // TODO 在移除全部相关链接后删除判定
         ifNavigating("open", "/minecraft_repository/default/error_not-found.html");
     } else {
         ifNavigating("open", url);
     }
 }
 
-function delayedOpenLink(url) {
+function delayedOpenLink(url) { // TODO 在页面完成迭代后移除
     setTimeout(function () {
         ifNavigating("open", url);
     }, 1500);
+}
+
+function launchApplication(deeplink) {
+    window.location.assign(deeplink);
 }
 
 // 点击全屏遮罩事件
@@ -792,10 +774,21 @@ function toTop() {
 }
 
 // 复制文本
-function copyText(text) {
+function copyText(text, type) {
+    let display;
+    if (type === "text") {
+        display = "文本";
+    } else if (type === "link") {
+        display = "链接";
+    } else {
+        display = "内容";
+    }
+
     navigator.clipboard.writeText(text).then(() => {
+        showPop(`复制${display}成功!`, '', 'success');
         logManager.log("复制成功: " + text);
     }).catch(error => {
+        showPop(`复制${display}失败!`, '', 'error');
         logManager.log("复制失败: " + error, 'error');
     });
 }
@@ -853,6 +846,7 @@ function selectTab(tabNumber) {
     }
 }
 
+
 // 侧边栏
 let sidebarOpen = false;
 
@@ -860,7 +854,7 @@ function toggleSidebar() { // 切换侧边栏状态
     const sidebar = document.getElementById("sidebar");
     if (sidebarOpen) {
         playSound('close');
-        sidebar.style.left = - sidebar.offsetWidth + "px"; // 隐藏到屏幕左侧
+        sidebar.style.left = -sidebar.offsetWidth + "px"; // 隐藏到屏幕左侧
         logManager.log("侧边栏执行收起操作");
     } else {
         playSound('open');
@@ -922,7 +916,6 @@ function initializeCards() {
 
             setCardState(expandableCard, expandableContent, cardImage, isExpanded);
             expandableCard.addEventListener('click', () => {
-                requestAnimationFrame(watchHeightChange);
                 isExpanded = expandableCard.classList.contains("expanded");
                 if (isExpanded) {
                     setCardState(expandableCard, expandableContent, cardImage, false);

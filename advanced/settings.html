@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,23 +28,89 @@
 <html lang="zh">
 
 <head>
+    <base href="../"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/images/Settings.png" rel="icon">
-    <!--<style>-->
-    <!--    -->
-    <!--</style>-->
-    <title>设置</title>
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="./stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./images/Settings.png" rel="icon">
+    <style>
+        /* TODO: 在移除环境指南页面实验性内容时移除该样式 */
+        .exp_envi_guide {
+            display: none;
+        }
+
+        #quit_test, #show_all_tip {
+            display: none;
+        }
+
+        .setting_block { /* TODO 旧页面完成迭代后移除 */
+            justify-content: flex-start;
+        }
+
+        .setting_block_content { /* TODO 旧页面完成迭代后移除 */
+            max-width: unset;
+        }
+
+        table, th, tr, td {
+            border: none;
+            height: auto;
+            text-align: left;
+            width: auto;
+        }
+
+        table {
+            margin: 10px 0;
+        }
+
+        tr {
+            height: 25px;
+        }
+
+        td {
+            width: 120px;
+        }
+
+        .left_td {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .right_td {
+            padding-left: 10px;
+        }
+
+        #use_all_tip {
+            display: none;
+        }
+
+        #setting_version_detail {
+            justify-items: center;
+        }
+
+        .switch_content {
+            display: flex;
+            justify-content: center;
+        }
+
+        .debug_mode, .clear_all {
+            display: none;
+        }
+    </style>
+    <title>设置 - 星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -48,269 +118,278 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
-<header>
-    <div class="header_item header_item_left" id="back" onclick="clickedBack();">
-        <img alt="" class="back_icon" id="back_icon" src=""/>
-    </div>
-    <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/Settings.png"/>
-        <span class="header_title">Settings</span>
-    </div>
-    <div class="header_item header_item_right header_right_blank"></div>
-</header>
-<scroll-view>
-    <scroll-container class="main_scroll_container">
-        <main class="scroll_container" id="main">
-            <div class="main_title">
-                <div class="main_title_span">设置</div>
-            </div>
-            <!--  TODO: 移除时一并移除相应样式  -->
-            <div class="main preview_block">
-                <div class="preview_title">抢先体验设置页面!</div>
-                <div class="preview_detail">我们正在开发版本库的设置页面.</div>
-                <div class="preview_detail">你认为我们有什么可以改进的地方吗?</div>
-                <div class="preview_detail">请注意: 开发仍在进行中,可能会缺失部分功能.</div>
-                <div class="btn_group">
-                    <custom-button data="default|normal|small|preview_btn1|false||" js="toUpdatelog();" text=""></custom-button>
-                    <custom-button data="default|green|small|preview_btn2|false||" js="toRepo();" text=""></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block" id="quit_test">
-                <div class="setting_title_content">退出测试</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|red|||false||" js="leaveTest();" text="离开"></custom-button>
-                </div>
-            </div>
-            <div class="setting_title">无障碍</div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">使用文本转语音</div>
-                <div class="setting_control_right">
-                    <custom-switch active="off" id="use_tts" status="disabled"></custom-switch>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">文本转语音音量</div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">高对比度UI</div>
-                <div class="setting_control_right">
-                    <custom-switch active="off" id="high_contrast_ui" status="disabled"></custom-switch>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">通知持续时间</div>
-            </div>
-            <div class="setting_title">外观</div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">主题</div>
-                <div class="setting_control_right">
-                    <div class="dropdown_container">
-                        <custom-dropdown data-option='["Vanilla", "Lite", "OreUI"]' data-selected="3" id="theme_selection" status="disabled" unselected-text=""></custom-dropdown>
-                    </div>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_block_content">
-                    <div class="setting_block_title flex">
-                        <div class="setting_title_content">暗黑模式</div>
-                        <div class="setting_control_right">
-                            <custom-switch active="off" id="dark_mode" status="disabled"></custom-switch>
-                        </div>
-                    </div>
-                    <div class="setting_block_description">OreUI主题下无法启用</div>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">实验性新UI</div>
-                <div class="setting_control_right">
-                    <custom-switch active="off" id="exp_new_ui" status="enabled"></custom-switch>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">UI标度</div>
-            </div>
-            <div class="setting_title">行为</div>
-            <div class="main_block setting_block" id="use_all_tip">
-                <div class="setting_block_content">
-                    <div class="setting_block_title flex">
-                        <div class="setting_title_content">完整提示列表</div>
-                        <div class="setting_control_right">
-                            <custom-switch active="off" id="all_tip" status="enabled"></custom-switch>
-                        </div>
-                    </div>
-                    <div class="setting_block_description">在开发仓库可以查看完整的主页提示</div>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">访问受限弹窗</div>
-                <div class="setting_control_right">
-                    <custom-switch active="on" id="limited_access_modal" status="disabled"></custom-switch>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">加载指示器</div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">滚动条</div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">页面过渡动画</div>
-            </div>
-            <div class="setting_title">通知</div>
-            <div class="main_block setting_block">
-                Banner通知
-            </div>
-            <div class="main_block setting_block">
-                Modal通知
-            </div>
-            <div class="main_block setting_block">
-                Pop通知
-            </div>
-            <div class="setting_title">声音</div>
-            <div class="main_block setting_block">
-                启用音效
-            </div>
-            <div class="main_block setting_block">
-                音效音量
-            </div>
-            <div class="setting_title">其他</div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">语言</div>
-                <div class="setting_control_right">
-                    <div class="dropdown_container">
-                        <custom-dropdown data-option='["简体中文", "English"]' data-selected="1" id="language_selection" status="disabled" unselected-text=""></custom-dropdown>
-                    </div>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_block_content">
-                    <div class="setting_block_title flex">
-                        <div class="setting_title_content">实验性内容</div>
-                        <div class="setting_control_right">
-                            <custom-button data="setting|normal|||false||" js="flagsPage();" text="查看"></custom-button>
-                        </div>
-                    </div>
-                    <divider class="new_flags_page"></divider>
-                    <div class="setting_block_title flex new_flags_page">
-                        <div class="setting_title_content">新的实验性内容页面</div>
-                        <div class="setting_control_right">
-                            <custom-switch active="off" id="new_flags_page" status="enabled"></custom-switch>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="main_block setting_block exp_envi_guide">
-                <div class="setting_title_content">环境指南<span class="tag yellow_tag exp_tag">实验性</span></div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|normal|||false||" js="enviPage();" text="阅读"></custom-button>
-                </div>
-            </div>
-            <div class="setting_title">高级</div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">清除存储数据</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|red|||false||" js="showModal('clear_storage_warning');" text="清除"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">重载容器环境</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|red|||false||" js="showModal('reload_page_warning');" text="重载"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block debug_mode">
-                <div class="setting_title_content">加载调试程序</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|red|||false||" js="jumpToPage('/minecraft_repository/advanced/debug.html');" text="调试"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block clear_all">
-                <div class="setting_title_content red_stroke">重置全部内容</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|red|||false||" js="showModal('clear_all_warning');" text="重置"></custom-button>
-                </div>
-            </div>
-            <div class="setting_title">关于</div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">星月Minecraft版本库</div>
-                <div class="setting_control_right setting_control_right_large">
-                    <custom-button data="setting|normal|||false||" js="repoPage();" text="仓库"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block" id="version_block">
-                <div class="setting_title_content">版本: <span id="setting_version"></span></div>
-                <div class="setting_control_right setting_control_right_large">
-                    <custom-button data="setting|normal|||false||" js="showModal('version_info_modal');" text="详情"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block" id="developer_block">
-                <div class="setting_title_content">开发者: Spectrollay</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|normal|||false||" js="openLink('https://github.com/Spectrollay');" text="瞅一瞅"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">其他项目</div>
-                <div class="setting_control_down">
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">用户协议</div>
-                <div class="setting_control_right">
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">开源协议</div>
-                <div class="setting_control_right">
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">联系我们</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|normal|||false||" js="jumpToPage('/minecraft_repository/default/error_not-found.html');" text="打开"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">捐赠支持</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|normal|||false||" js="showModal('donate_modal');" text="支持"></custom-button>
-                </div>
-            </div>
-            <div class="main_block setting_block">
-                <div class="setting_title_content">特别鸣谢</div>
-                <div class="setting_control_right">
-                    <custom-button data="setting|normal|||false||" js="showModal('acknowledgments_modal');" text="查看"></custom-button>
-                </div>
-            </div>
-            <div id="the_end"></div>
-        </main>
-    </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
-        <custom-scrollbar-track></custom-scrollbar-track>
-        <custom-scrollbar-thumb></custom-scrollbar-thumb>
-    </custom-scrollbar>
-</scroll-view>
 
+<body>
+<dispaly-area>
+    <header>
+        <div class="header_item header_item_left" id="back" onclick="clickedBack();">
+            <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
+        </div>
+        <div class="header_logo">
+            <img alt="" class="title_icon" src="./images/Settings.png"/>
+            <div class="header_title">Settings</div>
+        </div>
+        <div class="header_item header_item_right header_right_blank"></div>
+    </header>
+    <display-body>
+        <scroll-view class="main_scroll_view">
+            <scroll-container class="primary_scroll_container">
+                <main class="scroll_container" id="main">
+                    <div class="main_title">
+                        <div class="main_title_span">设置</div>
+                    </div>
+                    <div class="main_block setting_block" id="quit_test">
+                        <div class="setting_title_content">退出测试</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|red|||false||" js="leaveTest();" text="离开"></custom-button>
+                        </div>
+                    </div>
+                    <div class="setting_title">无障碍</div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">使用文本转语音</div>
+                        <div class="setting_control_right">
+                            <custom-switch active="off" id="use_tts" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">文本转语音音量</div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">高对比度UI</div>
+                        <div class="setting_control_right">
+                            <custom-switch active="off" id="high_contrast_ui" status="disabled"></custom-switch>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">通知持续时间</div>
+                    </div>
+                    <div class="setting_title">外观</div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">主题</div>
+                        <div class="setting_control_right">
+                            <div class="dropdown_container">
+                                <custom-dropdown data-option='["Vanilla", "Lite", "OreUI"]' data-selected="3" id="theme_selection" status="disabled" unselected-text=""></custom-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_block_content">
+                            <div class="setting_block_title flex">
+                                <div class="setting_title_content">暗黑模式</div>
+                                <div class="setting_control_right">
+                                    <custom-switch active="off" id="dark_mode" status="disabled"></custom-switch>
+                                </div>
+                            </div>
+                            <div class="setting_block_description">OreUI主题下无法启用</div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_block_content">
+                            <div class="setting_block_title flex">
+                                <div class="setting_title_content">实验性新UI</div>
+                                <div class="setting_control_right">
+                                    <custom-switch active="off" id="exp_new_ui" status="enabled"></custom-switch>
+                                </div>
+                            </div>
+                            <div class="setting_block_description">决定是否启用仍在实验中的新UI</div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">UI标度</div>
+                    </div>
+                    <div class="setting_title">行为</div>
+                    <div class="main_block setting_block" id="use_all_tip">
+                        <div class="setting_block_content">
+                            <div class="setting_block_title flex">
+                                <div class="setting_title_content">完整提示标语列表</div>
+                                <div class="setting_control_right">
+                                    <custom-switch active="off" id="all_tip" status="enabled"></custom-switch>
+                                </div>
+                            </div>
+                            <div class="setting_block_description">在开发仓库主页可以查看完整的提示标语</div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_block_content">
+                            <div class="setting_block_title flex">
+                                <div class="setting_title_content"><img alt="" class="small_icon" src="./images/Crown.png"/>访问受限弹窗</div>
+                                <div class="setting_control_right">
+                                    <custom-switch active="on" id="limited_access_modal" status="enabled"></custom-switch>
+                                </div>
+                            </div>
+                            <div class="setting_block_description">控制当天的首次访问是否需要从首页开始</div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">加载指示器</div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">滚动条</div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">页面过渡动画</div>
+                    </div>
+                    <div class="setting_title">通知</div>
+                    <div class="main_block setting_block">
+                        Banner通知
+                    </div>
+                    <div class="main_block setting_block">
+                        Modal通知
+                    </div>
+                    <div class="main_block setting_block">
+                        Pop通知
+                    </div>
+                    <div class="setting_title">声音</div>
+                    <div class="main_block setting_block">
+                        启用音效
+                    </div>
+                    <div class="main_block setting_block">
+                        音效音量
+                    </div>
+                    <div class="setting_title">其他</div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">语言</div>
+                        <div class="setting_control_right">
+                            <div class="dropdown_container">
+                                <custom-dropdown data-option='["简体中文", "English"]' data-selected="1" id="language_selection" status="disabled" unselected-text=""></custom-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_block_content">
+                            <div class="setting_block_title flex">
+                                <div class="setting_title_content">实验性内容</div>
+                                <div class="setting_control_right">
+                                    <custom-button data="setting|normal|||false||" js="flagsPage();" text="查看"></custom-button>
+                                </div>
+                            </div>
+                            <divider class="new_flags_page"></divider>
+                            <div class="setting_block_title flex new_flags_page">
+                                <div class="setting_title_content">新的实验性内容页面</div>
+                                <div class="setting_control_right">
+                                    <custom-switch active="off" id="new_flags_page" status="enabled"></custom-switch>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block exp_envi_guide">
+                        <div class="setting_title_content">
+                            <div class="tag_area"><span>环境指南</span><span class="tag yellow_tag exp_tag">实验性</span></div>
+                        </div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|normal|||false||" js="enviPage();" text="阅读"></custom-button>
+                        </div>
+                    </div>
+                    <div class="setting_title">高级</div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">清除存储数据</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|red|||false||" js="showModal('clear_storage_warning');" text="清除"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">重载容器环境</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|red|||false||" js="showModal('reload_page_warning');" text="重载"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block debug_mode">
+                        <div class="setting_title_content">加载调试程序</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|red|||false||" js="jumpToPage('./advanced/debug.html');" text="调试"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block clear_all">
+                        <div class="setting_title_content red_stroke">重置全部内容</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|red|||false||" js="showModal('clear_all_warning');" text="重置"></custom-button>
+                        </div>
+                    </div>
+                    <div class="setting_title">关于</div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">星月Minecraft版本库</div>
+                        <div class="setting_control_right setting_control_right_large">
+                            <custom-button data="setting|normal|||false||" js="repoPage();" text="仓库"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block" id="version_block">
+                        <div class="setting_title_content">版本: <span id="setting_version"></span></div>
+                        <div class="setting_control_right setting_control_right_large">
+                            <custom-button data="setting|normal|||false||" js="showModal('version_info_modal');" text="详情"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block" id="developer_block">
+                        <div class="setting_title_content">开发者: Spectrollay</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|normal|||false||" js="openLink('https://github.com/Spectrollay');" text="瞅一瞅"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">其他项目</div>
+                        <div class="setting_control_down">
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">用户协议</div>
+                        <div class="setting_control_right">
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">开源协议</div>
+                        <div class="setting_control_right">
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">联系我们</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|normal|||false||" js="jumpToPage('./about/contact.html');" text="打开"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">捐赠支持</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|normal|||false||" js="showModal('donate_modal');" text="支持"></custom-button>
+                        </div>
+                    </div>
+                    <div class="main_block setting_block">
+                        <div class="setting_title_content">特别鸣谢</div>
+                        <div class="setting_control_right">
+                            <custom-button data="setting|normal|||false||" js="showModal('acknowledgments_modal');" text="查看"></custom-button>
+                        </div>
+                    </div>
+                    <div id="the_end"></div>
+                </main>
+            </scroll-container>
+            <custom-scrollbar class="primary_custom_scrollbar">
+                <custom-scrollbar-track></custom-scrollbar-track>
+                <custom-scrollbar-thumb></custom-scrollbar-thumb>
+            </custom-scrollbar>
+        </scroll-view>
+    </display-body>
+</dispaly-area>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 
-<!--版本信息弹窗-->
-<div class="overlay" id="overlay_version_info_modal"></div>
-<modal_area id="version_info_modal">
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
+
+<!-- 版本信息弹窗 -->
+<div class="overlay normal_overlay" id="overlay_version_info_modal"></div>
+<modal_area class="normal_modal" id="version_info_modal" style="display: none;">
     <modal>
         <modal_title_area>
             <modal_title>详情</modal_title>
             <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                <img alt="" class="modal_close_btn_img" src=""/>
+                <img alt="" class="modal_close_btn_img" src="./images/cross_white.png"/>
             </modal_close_btn>
         </modal_title_area>
         <modal_content>
@@ -320,16 +399,16 @@
             <modal_button_group>
                 <modal_button_list>
                     <custom-button data="modal|green|||false||" js="hideModal(this);" text="好的"></custom-button>
-                    <custom-button data="modal|normal|||false||" js="copyText(document.getElementById('project_hash').innerText);hideModal(this);" text="复制校验码"></custom-button>
+                    <custom-button data="modal|normal|||false||" js="copyText(document.getElementById('project_hash').innerText, 'text');hideModal(this);" text="复制校验码"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
     </modal>
 </modal_area>
 
-<!--清除数据警告弹窗-->
-<div class="overlay" id="overlay_clear_storage_warning"></div>
-<modal_area id="clear_storage_warning">
+<!-- 清除数据警告弹窗 -->
+<div class="overlay normal_overlay" id="overlay_clear_storage_warning"></div>
+<modal_area class="normal_modal" id="clear_storage_warning" style="display: none;">
     <modal>
         <modal_title_area>
             <modal_title class="red_stroke">清除存储数据</modal_title>
@@ -348,9 +427,9 @@
     </modal>
 </modal_area>
 
-<!--重载页面警告弹窗-->
-<div class="overlay" id="overlay_reload_page_warning"></div>
-<modal_area id="reload_page_warning">
+<!-- 重载页面警告弹窗 -->
+<div class="overlay normal_overlay" id="overlay_reload_page_warning"></div>
+<modal_area class="normal_modal" id="reload_page_warning" style="display: none;">
     <modal>
         <modal_title_area>
             <modal_title>重载容器环境</modal_title>
@@ -362,22 +441,22 @@
             <modal_button_group>
                 <modal_button_list>
                     <custom-button data="modal|normal|||false||" js="hideModal(this);" text="取消"></custom-button>
-                    <custom-button data="modal|normal|||false||" js="hideModal(this);reloadPage();" text="继续"></custom-button>
+                    <custom-button data="modal|normal|||false||" js="hideModal(this);clearAndReload();" text="继续"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
     </modal>
 </modal_area>
 
-<!--重置警告弹窗-->
-<div class="overlay" id="overlay_clear_all_warning"></div>
-<modal_area id="clear_all_warning">
+<!-- 重置警告弹窗 -->
+<div class="overlay normal_overlay" id="overlay_clear_all_warning"></div>
+<modal_area class="normal_modal" id="clear_all_warning" style="display: none;">
     <modal>
         <modal_title_area>
             <modal_title class="red_stroke">重置全部内容</modal_title>
         </modal_title_area>
         <modal_content>
-            <p>重置全部内容为极度危险功能!<br>这会导致本域名(spectrollay.github.io)下所有站点的本地存储数据全部清除且永远无法恢复!<br>请不要运行此功能除非你已了解该功能的确切用法并知晓这可能会造成的后果!</p>
+            <p>重置全部内容为极度危险功能!<br>这会导致本域名(spectrollay.com)下所有站点的本地存储数据全部清除且永远无法恢复!<br>请不要运行此功能除非你已了解该功能的确切用法并知晓这可能会造成的后果!</p>
         </modal_content>
         <modal_textfield_area>
             <modal_textfield_title>请输入"我知道我在做什么"以继续</modal_textfield_title>
@@ -389,21 +468,21 @@
             <modal_button_group>
                 <modal_button_list>
                     <custom-button data="modal|green|||false||" js="hideModal(this);document.getElementById('check_input').querySelector('text-field').resetValue();" text="取消"></custom-button>
-                    <custom-button data="modal|disabled||check_continue|false||" js="" text="重置"></custom-button>
+                    <custom-button data="modal|disabled||check_continue|false||" js="false" text="重置"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
     </modal>
 </modal_area>
 
-<!--捐赠支持弹窗-->
-<div class="overlay" id="overlay_donate_modal"></div>
-<modal_area id="donate_modal">
+<!-- 捐赠支持弹窗 -->
+<div class="overlay normal_overlay" id="overlay_donate_modal"></div>
+<modal_area class="normal_modal" id="donate_modal" style="display: none;">
     <modal>
         <modal_title_area>
             <modal_title>捐赠支持</modal_title>
             <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                <img alt="" class="modal_close_btn_img" src=""/>
+                <img alt="" class="modal_close_btn_img" src="./images/cross_white.png"/>
             </modal_close_btn>
         </modal_title_area>
         <modal_content id="donate_message">
@@ -411,21 +490,21 @@
         <modal_button_area>
             <modal_button_group>
                 <modal_button_list>
-                    <custom-button data="modal|normal|||false||" js="hideModal(this);jumpToPage('/minecraft_repository/about/donate.html');" text="打赏"></custom-button>
+                    <custom-button data="modal|normal|||false||" js="hideModal(this);jumpToPage('./about/donate.html');" text="打赏"></custom-button>
                 </modal_button_list>
             </modal_button_group>
         </modal_button_area>
     </modal>
 </modal_area>
 
-<!--特别鸣谢弹窗-->
-<div class="overlay" id="overlay_acknowledgments_modal"></div>
-<modal_area id="acknowledgments_modal">
+<!-- 特别鸣谢弹窗 -->
+<div class="overlay normal_overlay" id="overlay_acknowledgments_modal"></div>
+<modal_area class="normal_modal" id="acknowledgments_modal" style="display: none;">
     <modal>
         <modal_title_area>
             <modal_title>特别鸣谢</modal_title>
             <modal_close_btn class="close_btn" onclick="hideModal(this);">
-                <img alt="" class="modal_close_btn_img" src=""/>
+                <img alt="" class="modal_close_btn_img" src="./images/cross_white.png"/>
             </modal_close_btn>
         </modal_title_area>
         <modal_content id="acknowledgments">
@@ -442,10 +521,16 @@
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./experiments/index.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/advanced.js"></script>
+<script src="./javascript/mcfc.js"></script>
 <script>
-    rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
+    rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
     if (rootPath.includes('_test')) {
         document.getElementById('quit_test').style.display = "flex";
         document.getElementById('use_all_tip').style.display = "flex";
@@ -459,7 +544,7 @@
         }
     }
 
-    switchValues = JSON.parse(localStorage.getItem('(/minecraft_repository/)switch_value')) || {};
+    switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`)) || {};
 
     // 环境指南页面  TODO: 在移除环境指南页面实验性内容时移除相关代码
     let expEnviGuideState = switchValues['experimental_envi_guide'] || 'off';
@@ -475,61 +560,5 @@
         })
     }
 </script>
-
-<style>
-    /* TODO: 在移除环境指南页面实验性内容时移除该样式 */
-    .exp_envi_guide {
-        display: none;
-    }
-
-    #quit_test, #show_all_tip {
-        display: none;
-    }
-
-    table, th, tr, td {
-        border: none;
-        height: auto;
-        text-align: left;
-        width: auto;
-    }
-
-    table {
-        margin: 10px 0;
-    }
-
-    tr {
-        height: 25px;
-    }
-
-    td {
-        width: 120px;
-    }
-
-    .left_td {
-        text-align: right;
-        padding-right: 10px;
-    }
-
-    .right_td {
-        padding-left: 10px;
-    }
-
-    #use_all_tip {
-        display: none;
-    }
-
-    #setting_version_detail {
-        justify-items: center;
-    }
-
-    .switch_content {
-        display: flex;
-        justify-content: center;
-    }
-
-    .debug_mode, .clear_all {
-        display: none;
-    }
-</style>
 
 </html>

@@ -1,4 +1,8 @@
 <!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V1.1
+ -->
+<!--
   ~ Copyright © 2020. Spectrollay
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,29 +28,100 @@
 <html lang="zh">
 
 <head>
+    <base href="./"><!-- 项目根路径 -->
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Minecraft, MC, 我的世界, 版本库, Minecraft Bedrock Edition, 基岩版, Minecraft Education Edition, 教育版, Minecraft Trial, 试玩版, Minecraft Demo, 演示版, Minecraft Legends, 传奇, Minecraft Dungeons, 地下城, Minecraft Story Mode, 故事模式, Minecraft Earth, 地球" name="keywords"/>
+    <meta content="Minecraft, MC, 我的世界, 版本库, 国际版, Minecraft Bedrock Edition, 基岩版, Minecraft Education Edition, 教育版, Minecraft Trial, 试玩版, Minecraft Demo, 演示版, Minecraft Legends, 传奇, Minecraft Dungeons, 地下城, Minecraft Story Mode, 故事模式, Minecraft Earth, 地球" name="keywords"/>
     <meta content="星月Minecraft版本库是一个开放共享的资源站,专注于收录Minecraft发布过的所有版本." name="description"/>
-    <link href="/minecraft_repository/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/minecraft_repository/Feed/main.xml" rel="alternate" title="星月Minecraft版本库主要订阅" type="application/rss+xml">
+    <meta content="Spectrollay" name="author"/>
+    <link as="image" href="./images/Loading_white.gif" rel="preload">
+    <link as="font" crossorigin="anonymous" href="./fonts/NotoSans-Bold.ttf" rel="preload" type="font/ttf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Ten.otf" rel="preload" type="font/otf">
+    <link as="font" crossorigin="anonymous" href="./fonts/Minecraft-Seven.otf" rel="preload" type="font/otf">
+    <link href="./stylesheet/loading_mask.css" rel="stylesheet">
+    <link href="./stylesheet/public_style.css" rel="stylesheet">
+    <link href="./stylesheet/advanced.css" rel="stylesheet">
+    <link href="./stylesheet/custom_elements.css" rel="stylesheet">
+    <link href="stylesheet/mcfc.css" rel="stylesheet">
+    <link href="./Feed/main.xml" rel="alternate" title="星月Minecraft版本库主要订阅" type="application/rss+xml">
     <link href="https://spectrollay.github.io/data/minecraft_repository/messages.xml" rel="alternate" title="星月Minecraft版本库通知订阅" type="application/rss+xml">
-    <link href="/minecraft_repository/Feed/update.xml" rel="alternate" title="星月Minecraft版本库更新订阅" type="application/rss+xml">
+    <link href="./Feed/update.xml" rel="alternate" title="星月Minecraft版本库更新订阅" type="application/rss+xml">
     <link href="https://spectrollay.github.io/data/minecraft_repository/database.xml" rel="alternate" title="星月Minecraft版本库数据库订阅" type="application/rss+xml">
-    <link href="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg" rel="icon">
-    <!--<style>-->
-    <!--    -->
-    <!--</style>-->
+    <link href="./images/logo/Minecraft_Repository_icon.jpg" rel="icon">
+    <style>
+        /* TODO: 在移除预览提示块时移除该样式 */
+        .preview_block {
+            border-bottom: 4px solid #333334;
+            border-top: 4px solid #5A5B5C;
+        }
+
+        /* TODO: 在开放响应式布局测试时移除该样式 */
+        .responsive_design_test {
+            display: none;
+        }
+
+        .edition_block {
+            cursor: pointer;
+            height: 80px;
+            width: auto;
+        }
+
+        .edition_block:hover {
+            background-color: #58585A;
+        }
+
+        .edition_block:active {
+            background-color: #3D3E3F;
+            border: 2px solid #3D3E3F;
+        }
+
+        .main_page_alert {
+            text-align: left;
+        }
+
+        .notice_table {
+            width: auto;
+        }
+
+        .notice_table, .notice_table th, .notice_table td {
+            border: 0;
+        }
+
+        .notice_table td {
+            height: 25px;
+        }
+
+        .notice_table .left_table {
+            text-align: right;
+        }
+
+        .notice_table .right_table {
+            text-align: left;
+        }
+    </style>
+    <script defer>
+        const audios = {};
+
+        function registerAudio(name, path) {
+            const audio = new Audio(path);
+            audio.preload = 'auto';
+            audio.load();
+            audios[name] = audio;
+        }
+
+        registerAudio('click', './sounds/click.ogg');
+        registerAudio('button', './sounds/button.ogg');
+    </script>
     <title>星月Minecraft版本库</title>
 </head>
 
-<body>
 <div class="loading_mask" id="loading_mask">
     <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/minecraft_repository/images/Loading_white.gif"/></div>
+        <div class="spinner"><img alt="" id="spinner_img" src="./images/Loading_white.gif"/></div>
         <div class="spinner">
-            <div class="spinner"><span class="spinner_text">载入中</span></div>
+            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
         </div>
         <noscript>
             <style>
@@ -54,28 +129,30 @@
                     display: none;
                 }
             </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/minecraft_repository/images/ErrorMessage.png"/></div>
+            <div class="spinner"><img alt="" id="spinner_img_error" src="./images/ErrorMessage.png"/></div>
             <div class="spinner">
                 <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
             </div>
         </noscript>
     </div>
 </div>
+
+<body class="old">
 <header>
-    <div class="header_item header_item_left" id="menu" onclick="clickedMenu();">
-        <img alt="" class="menu_icon" id="menu_icon" src=""/>
+    <div class="old header_item header_item_left" id="menu" onclick="clickedMenu();">
+        <img alt="" class="header_left_icon" id="menu_icon" src="./images/Menu.png"/>
     </div>
     <div class="header_logo">
-        <img alt="Title Icon" class="title_icon" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg"/><span class="header_title">Repository</span>
+        <img alt="" class="title_icon" src="./images/logo/Minecraft_Repository_icon.jpg"/>
+        <div class="header_title">Repository</div>
     </div>
     <div class="header_item header_item_right" id="settings" onclick="playSoundType(this);settingsPage();">
-        <img alt="" class="settings_icon" src="/minecraft_repository/images/Settings.png"/>
+        <img alt="" class="header_right_icon" src="./images/Settings.png"/>
     </div>
 </header>
 <scroll-view>
-    <scroll-container class="main_scroll_container">
+    <scroll-container class="old primary_scroll_container">
         <main class="scroll_container" id="main">
-            <div id="main_top"></div>
             <div class="banner_area" id="holiday_tip1">
                 <div class="banner important_banner" style="margin-bottom: 0"></div>
             </div>
@@ -86,15 +163,14 @@
                 <div class="banner neutral_banner" id="banner_tip"></div>
             </div>
 
-            <!-- TODO 在新主页开放测试时显示此提示 -->
-            <div style="display: none;">
+            <!-- TODO 在响应式开放测试时显示此提示 -->
+            <div class="responsive_design_test">
                 <div class="main preview_block">
                     <div class="preview_title">体验响应式设计</div>
-                    <div class="preview_detail">主页响应式布局现已开启测试,欢迎体验!</div>
+                    <div class="preview_detail">响应式布局现已开启测试,欢迎体验!</div>
                     <div class="preview_detail">不用担心,在测试期间你可以随时返回旧设计.</div>
                     <div class="btn_group">
-                        <custom-button data="default|normal|small||false||" js="jumpToPage('/minecraft_repository/experiments_internal/new_home_page.html');" text="前往新设计"></custom-button>
-                        <custom-button data="default|green|small||false||" js="toRepo();" text="<img class='link_img' src='' alt=''/>提出反馈"></custom-button>
+                        <custom-button data="default|normal|large||false||" js="jumpToPage('./index_new.html');localStorage.setItem(`(${rootPath}/)new_home_test`, 'true');" text="前往新设计"></custom-button>
                     </div>
                 </div>
                 <div class="block_spacing"></div>
@@ -102,7 +178,9 @@
 
             <div class="block" id="header_notice">
                 <div class="main main-header">
-                    <div class="header_notice_title" id="repository_logo"></div>
+                    <div class="header_notice_title">
+                        <div class="repository_logo_area" id="repository_logo"></div>
+                    </div>
                 </div>
                 <div class="main header_notice_body">
                     <div class="description2">
@@ -121,21 +199,21 @@
                             </tr>
                             <tr>
                                 <td class="left_table">
-                                    <div class="description2">[2024-12-08]</div>
+                                    <div class="description2">[2025-06-20]</div>
                                 </td>
                                 <td class="right_table">
                                     <div class="description2">
-                                        <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/notifications/#update_plan_202412');">更多的版本下载选项!</a>
+                                        <a href="javascript:void(0);" onclick="jumpToPage('./notifications/#release_4.6.6');">V4.6.6稳定版现已发布</a>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="left_table">
-                                    <div class="description2">[2024-07-27]</div>
+                                    <div class="description2">[2024-12-08]</div>
                                 </td>
                                 <td class="right_table">
                                     <div class="description2">
-                                        <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/notifications/#mechanism_update_notice');">关于版本机制的变更说明</a>
+                                        <a href="javascript:void(0);" onclick="jumpToPage('./notifications/#update_plan_202412');">更多的版本下载选项!</a>
                                     </div>
                                 </td>
                             </tr>
@@ -145,7 +223,7 @@
                                 </td>
                                 <td class="right_table">
                                     <div class="description2">
-                                        <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/notifications/#feedback_rewards');">版本库反馈有奖活动上线!</a>
+                                        <a href="javascript:void(0);" onclick="jumpToPage('./notifications/#feedback_rewards');">版本库反馈有奖活动上线!</a>
                                     </div>
                                 </td>
                             </tr>
@@ -164,7 +242,7 @@
                             <a href="https://apps.apple.com/app/minecraft/id479516143" target="_blank">App Store</a> /
                             <a href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc" target="_blank">PC 捆绑包</a></p>
                         <p>不知道如何购买正版?<br>
-                            <a href="javascript:void(0);" onclick="jumpToPage('/minecraft_repository/guidance/how_to_buy.html');">正版购买指南</a>
+                            <a href="javascript:void(0);" onclick="jumpToPage('./guidance/how_to_buy.html');">正版购买指南</a>
                         </p>
                     </div>
                 </div>
@@ -361,20 +439,20 @@
                         <p>
                             [1]以上内容根据近年设备架构规律总结, 仅供参考, 可能有部分不符. 你可以使用
                             <a href="https://play.google.com/store/apps/details?id=flar2.devcheck" target="_blank">
-                                <img alt="link" class="link_img" src=""/>DevCheck
+                                <img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>DevCheck
                             </a> 查询你的设备架构以选择合适的版本.
                         </p>
                         <p>关于Apks: </p>
                         <p>本版本库部分安装包使用了
                             <a href="https://developer.android.com/guide/app-bundle/" target="_blank">
-                                <img alt="link" class="link_img" src=""/>Android App Bundle技术
+                                <img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>Android App Bundle技术
                             </a>.
                             使用此技术的安装包后缀名为apks而不是apk. 你可以使用
                             <a href="https://mt2.cn/" target="_blank">
-                                <img alt="link" class="link_img" src=""/>MT管理器
+                                <img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>MT管理器
                             </a> 或
                             <a href="https://github.com/Aefyr/SAI" target="_blank">
-                                <img alt="link" class="link_img" src=""/>Split APKs Installer(SAI)
+                                <img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>Split APKs Installer(SAI)
                             </a> 来安装.</p>
                     </div>
                 </div>
@@ -382,37 +460,37 @@
             <div class="block_spacing"></div>
             <div class="block">
                 <div class="main choose_edition_title">选择版本</div>
-                <div class="main edition_block" id="bedrock_edition" onclick="playSound('click');jumpToPage('/minecraft_repository/home/bedrock_edition.html');">
+                <div class="main edition_block" id="bedrock_edition" onclick="playSound('click');jumpToPage('./download/bedrock/');">
                     <div>
                         <div class="title1">Bedrock Edition</div>
                         <div class="description1">基岩版</div>
                     </div>
                 </div>
-                <div class="main edition_block" id="pocket_edition" onclick="playSound('click');jumpToPage('/minecraft_repository/home/pocket_edition.html');">
+                <div class="main edition_block" id="pocket_edition" onclick="playSound('click');jumpToPage('./home/pocket_edition.html');">
                     <div>
                         <div class="title1">Pocket Edition</div>
                         <div class="description1">携带版</div>
                     </div>
                 </div>
-                <div class="main edition_block" id="education_edition" onclick="playSound('click');jumpToPage('/minecraft_repository/home/education_edition.html');">
+                <div class="main edition_block" id="education_edition" onclick="playSound('click');jumpToPage('./home/education_edition.html');">
                     <div>
                         <div class="title1">Education Edition</div>
                         <div class="description1">教育版</div>
                     </div>
                 </div>
-                <div class="main edition_block" id="trial" onclick="playSound('click');jumpToPage('/minecraft_repository/home/trial.html');">
+                <div class="main edition_block" id="trial" onclick="playSound('click');jumpToPage('./home/trial.html');">
                     <div>
                         <div class="title1">Minecraft Trial</div>
                         <div class="description1">试玩版</div>
                     </div>
                 </div>
-                <div class="main edition_block" id="demo" onclick="playSound('click');jumpToPage('/minecraft_repository/home/demo.html');">
+                <div class="main edition_block" id="demo" onclick="playSound('click');jumpToPage('./home/demo.html');">
                     <div>
                         <div class="title1">Minecraft Demo</div>
                         <div class="description1">演示版</div>
                     </div>
                 </div>
-                <div class="main edition_block" id="more_edition" onclick="playSound('click');jumpToPage('/minecraft_repository/home/more_edition.html');">
+                <div class="main edition_block" id="more_edition" onclick="playSound('click');jumpToPage('./home/more_edition.html');">
                     <div>
                         <div class="title1">更多版本</div>
                         <div class="description1">这里可能会有你想要的</div>
@@ -442,7 +520,7 @@
                         <p>默认网盘提供: <a href="https://pan.huang1111.cn/" target="_blank">@huang1111</a></p>
                         <p>聊天群组:
                             <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> /
-                            <a href=",https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> /
+                            <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> /
                             <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a></p>
                         <p>官方频道:
                             <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> /
@@ -452,106 +530,69 @@
                 <div class="main footer_notice_body">
                     <div class="title3">捐赠支持</div>
                     <div class="description2">
-                        <div id="donate_message"></div>
+                        <div id="donate_message">
+                            <div class="data_loading_area">
+                                <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                <div class="data_loading_text">区块加载中</div>
+                            </div>
+                        </div>
                         <div class="btn_group">
-                            <custom-button data="default|normal|large||false||" js="jumpToPage('/minecraft_repository/about/donate.html');" text="打赏"></custom-button>
+                            <custom-button data="default|normal|large||false||" js="jumpToPage('./about/donate.html');" text="打赏"></custom-button>
                         </div>
                     </div>
                 </div>
                 <div class="main footer_notice_body">
                     <div class="title3">特别鸣谢</div>
                     <div class="description2">
-                        <div id="acknowledgments"></div>
+                        <div id="acknowledgments">
+                            <div class="data_loading_area">
+                                <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                <div class="data_loading_text">区块加载中</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="main footer_notice_body">
                     <div class="title3">友情链接</div>
                     <div class="description2">
-                        <div class="wrap_flex">
-                            <!-- zihao_il的MC版本库 -->
-                            <reciprocal-link-block onclick="playSound('click');openLink('https://bbk.endyun.ltd/download');">
-                                <div class="reciprocal_link_title">
-                                    <img alt="" class="reciprocal_link_title_img" src="https://bbk.endyun.ltd/favicon.ico">
-                                    <span class="reciprocal_link_title_text">zihao_il的MC版本库</span>
-                                </div>
-                                <div class="reciprocal_link_description">Minecraft安卓版全版本下载</div>
-                            </reciprocal-link-block>
-                            <!-- 方块社区 - 我的世界中文论坛 -->
-                            <reciprocal-link-block onclick="playSound('click');openLink('https://www.cubezone.cc/');">
-                                <div class="reciprocal_link_title">
-                                    <img alt="" class="reciprocal_link_title_img" src="https://www.cubezone.cc/data/assets/logo_default/logo.svg">
-                                    <span class="reciprocal_link_title_text">方块社区</span>
-                                </div>
-                                <div class="reciprocal_link_description">一个Minecraft交流与资源社区</div>
-                            </reciprocal-link-block>
-                            <!-- Qrasa的小站 -->
-                            <reciprocal-link-block onclick="playSound('click');openLink('https://blog.qrasa.cn/');">
-                                <div class="reciprocal_link_title">
-                                    <img alt="" class="reciprocal_link_title_img" src="https://qrasa.cn/assets/avatar.png">
-                                    <span class="reciprocal_link_title_text">Qrasa的小站</span>
-                                </div>
-                                <div class="reciprocal_link_description">记录一些活着的日常</div>
-                            </reciprocal-link-block>
-                            <!-- r1a dev -->
-                            <reciprocal-link-block onclick="playSound('click');openLink('https://dev.oneall.eu.org');">
-                                <div class="reciprocal_link_title">
-                                    <img alt="" class="reciprocal_link_title_img" src="https://dev.oneall.eu.org/favicon.webp">
-                                    <span class="reciprocal_link_title_text">r1a dev</span>
-                                </div>
-                                <div class="reciprocal_link_description">r1a的开发记录/博客</div>
-                            </reciprocal-link-block>
-                            <!-- 夜轻Blog -->
-                            <reciprocal-link-block onclick="playSound('click');openLink('https://blog.yeqing.net/');">
-                                <div class="reciprocal_link_title">
-                                    <img alt="" class="reciprocal_link_title_img" src="https://blog.yeqing.net/upload/ea055268c8792945de3b9c8d00e1cd08.jpeg">
-                                    <span class="reciprocal_link_title_text">夜轻Blog</span>
-                                </div>
-                                <div class="reciprocal_link_description">一个人</div>
-                            </reciprocal-link-block>
-                            <!-- B84F2246的小站 -->
-                            <reciprocal-link-block onclick="playSound('click');openLink('https://blog.b84f2246.top/');">
-                                <div class="reciprocal_link_title">
-                                    <img alt="" class="reciprocal_link_title_img" src="https://assets.b84f2246.top/img/avatar.png">
-                                    <span class="reciprocal_link_title_text">B84F2246的小站</span>
-                                </div>
-                                <div class="reciprocal_link_description">TECH OTAKUS SAVE THE WORLD!</div>
-                            </reciprocal-link-block>
-                            <!-- 友链 -->
-                            <!--    <reciprocal-link-block onclick="playSound('click');openLink('about:blank');">-->
-                            <!--        <div class="reciprocal_link_title">-->
-                            <!--            <img alt="" class="reciprocal_link_title_img" src="/minecraft_repository/images/logo/Minecraft_Repository_icon.jpg">-->
-                            <!--            <span class="reciprocal_link_title_text">这是网站名称</span>-->
-                            <!--        </div>-->
-                            <!--        <div class="reciprocal_link_description">这是网站描述</div>-->
-                            <!--    </reciprocal-link-block>-->
+                        <div class="wrap_flex" id="reciprocal_link_list">
+                            <div class="data_loading_area">
+                                <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                                <div class="data_loading_text">区块加载中</div>
+                            </div>
                         </div>
-                        <p><a href="https://wj.qq.com/s2/15430190/90c5/" target="_blank"><img alt="link" class="link_img" src=""/>交换友链 (验证码: spec6)</a></p>
+                        <p><a href="https://wj.qq.com/s2/15430190/90c5/" target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png"/>交换友链 (验证码: spec6)</a></p>
                     </div>
                 </div>
             </div>
-            <div id="page_info"></div>
+            <div id="page_info">
+                <div class="data_loading_area">
+                    <img alt="" class="data_loading_img" src="./images/Loading_white.gif"/>
+                    <div class="data_loading_text">区块加载中</div>
+                </div>
+            </div>
         </main>
     </scroll-container>
-    <custom-scrollbar class="main_custom_scrollbar">
+    <custom-scrollbar class="primary_custom_scrollbar">
         <custom-scrollbar-track></custom-scrollbar-track>
         <custom-scrollbar-thumb></custom-scrollbar-thumb>
     </custom-scrollbar>
 </scroll-view>
 
 <!--侧边栏-->
-<div class="sidebar" id="sidebar">
+<div class="old sidebar" id="sidebar">
     <scroll-view>
-        <scroll-container class="sidebar_scroll_container">
+        <scroll-container class="old secondary_scroll_container">
             <div class="sidebar_content scroll_container">
                 <div class="sidebar_list">
-                    <a class="sidebar_item" href="#header_notice">版本库信息</a>
-                    <a class="sidebar_item" href="#bedrock_edition">基岩版</a>
-                    <a class="sidebar_item" href="#pocket_edition">携带版</a>
-                    <a class="sidebar_item" href="#education_edition">教育版</a>
-                    <a class="sidebar_item" href="#trial">试玩版</a>
-                    <a class="sidebar_item" href="#demo">演示版</a>
-                    <a class="sidebar_item" href="#more_edition">更多版本</a>
-                    <a class="sidebar_item" href="#footer_notice">版本库须知</a>
+                    <a class="sidebar_item" href="./index.html#header_notice">版本库信息</a>
+                    <a class="sidebar_item" href="./index.html#bedrock_edition">基岩版</a>
+                    <a class="sidebar_item" href="./index.html#pocket_edition">携带版</a>
+                    <a class="sidebar_item" href="./index.html#education_edition">教育版</a>
+                    <a class="sidebar_item" href="./index.html#trial">试玩版</a>
+                    <a class="sidebar_item" href="./index.html#demo">演示版</a>
+                    <a class="sidebar_item" href="./index.html#more_edition">更多版本</a>
+                    <a class="sidebar_item" href="./index.html#footer_notice">版本库须知</a>
                 </div>
                 <div class="sidebar_info">
                     <div class="sidebar_detail_title" id="sidebar_bottom_title"></div>
@@ -562,33 +603,57 @@
                 </div>
             </div>
         </scroll-container>
-        <custom-scrollbar class="sidebar_custom_scrollbar">
+        <custom-scrollbar class="secondary_custom_scrollbar">
             <custom-scrollbar-track></custom-scrollbar-track>
             <custom-scrollbar-thumb></custom-scrollbar-thumb>
         </custom-scrollbar>
     </scroll-view>
 </div>
 
-<!--遮罩-->
-<!--除了顶栏-->
+<!-- 遮罩 -->
+<!-- 除了顶栏 -->
 <div class="overlay_main" id="overlay_main" onclick="clickedOverlay();"></div>
 
-<!--提示弹窗-->
-<div class="overlay" id="overlay_alert_modal" tabindex="-1"></div>
-<modal_area id="alert_modal" tabindex="-1"></modal_area>
+<!-- Pop弹窗 -->
+<div class="pop_area" id="pop_area"></div>
+
+<!-- 提示弹窗 -->
+<div class="overlay" id="overlay_alert_modal"></div>
+<modal_area id="alert_modal" style="display: none;"></modal_area>
 
 </body>
 
-<script src="/minecraft_repository/javascript/loading.js"></script>
-<script src="/minecraft_repository/javascript/public_script.js"></script>
+<script src="./javascript/loading.js"></script>
+<script src="./library/accessibility.js"></script>
+<script src="./library/lazyLoadImage.js"></script>
+<script src="./javascript/public_script.js"></script>
+<script src="./javascript/public_define.js"></script>
+<script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/data_driven.js"></script>
+<script src="javascript/mcfc.js"></script>
 <script>
-    rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-    const repositoryAttribute = localStorage.getItem('minecraft_repository_attribute');
+    rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
 
+    // 惰性加载
+    const lazyImage = new LazyLoadImage('img');
+    lazyImage.init();
+
+    // TODO 新主页测试跳转逻辑
+    if (localStorage.getItem(`(${rootPath}/)new_home_test`) === 'true') {
+        ifNavigating("direct", "./index_new.html");
+    }
+
+    switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`)) || {};
+    expNewUiState = switchValues['exp_new_ui'] || false; // 默认禁用
+    if (expNewUiState === 'on') {
+        document.querySelector('.responsive_design_test').style.display = 'block';
+    }
+
+    const repositoryAttribute = localStorage.getItem('minecraft_repository_attribute');
     if (repositoryAttribute) {
         if (repositoryAttribute.includes('test=true')) {
             if (!rootPath.includes('_test')) {
-                ifNavigating("direct", window.location.origin + "/minecraft_repository_test");
+                ifNavigating("direct", window.location.origin + "/minecraft_repository" + "_test");
             }
         } else if (repositoryAttribute.includes('test=false')) {
             if (rootPath.includes('_test')) {
@@ -598,51 +663,5 @@
     } else {
     }
 </script>
-
-<style>
-    /* TODO: 在移除预览提示块时移除该样式 */
-    .preview_block {
-        border-bottom: 4px solid #333334;
-        border-top: 4px solid #5A5B5C;
-    }
-
-    .edition_block {
-        cursor: pointer;
-        height: 80px;
-    }
-
-    .edition_block:hover {
-        background-color: #58585A;
-    }
-
-    .edition_block:active {
-        background-color: #3D3E3F;
-        border: 2px solid #3D3E3F;
-    }
-
-    .main_page_alert {
-        text-align: left;
-    }
-
-    .notice_table {
-        width: auto;
-    }
-
-    .notice_table, .notice_table th, .notice_table td {
-        border: 0;
-    }
-
-    .notice_table td {
-        height: 25px;
-    }
-
-    .notice_table .left_table {
-        text-align: right;
-    }
-
-    .notice_table .right_table {
-        text-align: left;
-    }
-</style>
 
 </html>

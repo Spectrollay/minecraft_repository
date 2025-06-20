@@ -24,26 +24,28 @@
 // TODO 需在每次提交前检查
 const main_version_name = "4";
 const primary_version_name = main_version_name + ".6"; // 例 4.0
-const secondary_version_name = primary_version_name + ".5"; // 例 4.0.0
-const version_name_short = secondary_version_name + ".99"; // 例 4.0.0.1  NOTE 小版本
-const version_type = "Release"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Stable/Release/SP
+const secondary_version_name = primary_version_name + ".6"; // 例 4.0.0
+const version_name_short = secondary_version_name + ".55"; // 例 4.0.0.1  NOTE 小版本
+const version_type = "Stable"; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Stable/Release/SP
 const version_type_count = version_type + ""; // 例 Build1  NOTE 小版本,可为空
 const version_name = version_name_short + "." + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + "-" + version_type_count; // 例 4.0.0-Build1
-const update_count = "20250311" + ".01"; // NOTE 小版本,有提交就变
+const update_count = "20250620" + ".01"; // NOTE 小版本,有提交就变
 const publish_version_name = primary_version_name + "." + update_count; // 例 4.20240101.01
 const server_version = "4.0";
-let commit = "#"; // 例 #2024010101 , 仅留 # 则从 update_count 提取  NOTE 有不更改版本的提交就变
+let commit = "#"; // 例 #2025010101 , 仅留 # 则从 update_count 提取  NOTE 有不更改版本的提交就变
 if (commit === "#") {
     commit = "#" + update_count.replace(/\./g, "");
 }
 
+rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
 hostPath = window.location.origin;
-const data = hostPath + "/data";
+switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`)) || {};
+let data = hostPath + "/data";
 
 async function getProjectHash() {
     try {
-        const response = await fetch('/minecraft_repository/Verification/project-hash.json');
+        const response = await fetch(rootPath + '/Verification/project-hash.json');
         if (response.ok) {
             const hash = await response.json();
             return hash.projectHash;
@@ -99,10 +101,10 @@ logManager.log("发布版本: " + publish_version_name);
 
 // 网站状态
 let status;
-if (window.location.origin.includes('https')) {
-    status = data + '/minecraft_repository/status.xml';
+if (hostPath.includes('https')) {
+    status = data + rootPath + '/status.xml';
 } else {
-    status = '/minecraft_repository_test/status.xml';
+    status = rootPath + '/data/status.xml';
 }
 
 fetch(status)
@@ -130,13 +132,13 @@ fetch(status)
         // 获取状态码
         switch (siteStatus) {
             case "error":
-                location.replace(`/minecraft_repository/default/error_default.html?redirected=true&source=${currentUrl}`);
+                location.replace(`${rootPath}/default/error_default.html?redirected=true&source=${currentUrl}`);
                 return;
             case "warn":
-                location.replace(`/minecraft_repository/default/under_maintenance.html?redirected=true&source=${currentUrl}`);
+                location.replace(`${rootPath}/default/under_maintenance.html?redirected=true&source=${currentUrl}`);
                 return;
             case "404":
-                location.replace("/minecraft_repository/404.html?redirected=true");
+                location.replace(`${rootPath}/404.html?redirected=true`);
                 return;
             case "200":
                 break;
@@ -178,34 +180,45 @@ fetch(status)
         logManager.log("加载状态配置文件时出错: " + error, 'error');
     });
 
+// 灰白蒙版
+(function () {
+    const memorialDays = ['05.12', '07.28', '12.13'];
+
+    const now = new Date();
+    const today = (now.getMonth() + 1).toString().padStart(2, '0') + '.' +
+        now.getDate().toString().padStart(2, '0');
+
+    if (memorialDays.includes(today)) {
+        document.documentElement.classList.add('grayscale');
+    }
+})();
+
 // 字符常量
 const texts = {
-    preview_title: "欢迎观看设计预览!",
-    preview_detail1: "我们想听听你对这个新设计的意见.",
-    preview_detail2: "请注意: 新设计仍未完工,可能会缺失部分功能.",
-    preview_btn1: "开发日志",
-    preview_btn2: "<img class='link_img' src='' alt=''/>提出反馈",
     sidebar_bottom_title: "Minecraft Kit",
     sidebar_bottom_detail1: "© 2020 Spectrollay",
     minecraft_wiki: "中文Minecraft Wiki",
     experiment_banner: "实验性内容页面展示的是一部分未完成开发或正在开发的特性, 这些特性最终可能会在未来版本中正式加入或发生变动甚至被移除.<br>请注意: 本页面的特性尚未完成开发, 使用过程中随时可能出现故障/崩溃或一些预料之外的问题. 向我们发送你的任何意见或反馈发现的任何问题!",
-    download_channel1: "默认云盘",
-    download_channel2: "蓝奏云盘",
-    download_channel3: "123云盘",
-    download_channel4: "天翼云盘",
-    download_channel5: "百度云盘",
-    download_channel6: "<img class='link_img_black' src='' alt=''/>外部链接",
+    download_channel1_old: "默认云盘",
+    download_channel2_old: "蓝奏云盘",
+    download_channel3_old: "123云盘",
+    download_channel4_old: "天翼云盘",
+    download_channel5_old: "百度云盘",
+    download_channel6_old: "<img alt='' class='link_img_black' src='images/ExternalLink.png'/>外部链接",
+    download_channel1: "OneDrive",
+    download_channel2: "百度网盘",
+    download_channel3: "夸克网盘",
+    download_channel4: "123云盘",
+    download_channel5: "蓝奏云",
+    download_channel6: "huang1111网盘",
+    download_channel7: "<img alt='' class='link_img_black' src='images/ExternalLink.png'/>外部链接",
     download_type1: "官方原版",
-    download_type1_out: "<img class='link_img_black' src='' alt=''/>官方原版(外部链接)",
+    download_type1_out: "<img alt='' class='link_img_black' src='images/ExternalLink.png'/>官方原版(外部链接)",
     download_type2: "中文译名修正",
     download_type3: "去验证版",
     download_type4: "多架构版",
     download_type5: "精简版",
 };
-
-rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] + '/' : '');
-hostPath = window.location.origin;
-switchValues = JSON.parse(localStorage.getItem('(/minecraft_repository/)switch_value')) || {};
 
 let isRelease = (version_type === "Beta" || version_type === "Pre" || version_type === "RC" || version_type === "Release" || version_type === "Stable" || version_type === "SP");
 let isFullVersion = (version_type !== "Demo" && version_type !== "Trial" && version_type !== "Lite");
@@ -242,7 +255,7 @@ const commonTips = [
         weight: 12
     },
     {
-        text: "<span>想和大家一起闲聊吹水?<br>快加入<a href='https://t.me/Spectrollay_MCW' target='_blank'>Telegram</a> / <a href=',https://qm.qq.com/q/AqLmKLH9mM' target='_blank'>QQ</a> / <a href='https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802' target='_blank'>云湖</a>群聊!</span>",
+        text: "<span>想和大家一起闲聊吹水?<br>快加入<a href='https://t.me/Spectrollay_MCW' target='_blank'>Telegram</a> / <a href='https://qm.qq.com/q/AqLmKLH9mM' target='_blank'>QQ</a> / <a href='https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802' target='_blank'>云湖</a>群聊!</span>",
         weight: 12
     },
     {
@@ -254,11 +267,11 @@ const commonTips = [
         weight: 12
     },
     {
-        text: "<span>也来看看我们的<a href='https://github.com/Spectrollay/mclang_cn' target='_blank'>中文译名修正项目</a>!</span>",
+        text: "<span>也来看看我们的<a href='https://spectrollay.github.io/mclang_cn/' target='_blank'>中文译名修正项目</a>!</span>",
         weight: 12
     },
     {text: "Made by Spectrollay!", weight: 12},
-    {text: "← 点击框框内部可以切换提示 →", weight: 12},
+    {text: "← 点击框框内部可以切换提示标语 →", weight: 12},
     {text: "↑ 点击标题栏可以快速回到顶部 ↑", weight: 12},
     {text: "本站指向的站外内容可能不受保障!", weight: 12},
     {text: "请直接分享本站而不是转载其中的内容!", weight: 12},
@@ -269,24 +282,27 @@ const fullVersionTips = [
     {text: "你完成你的事情了吗?", weight: 5},
     {text: "你最好已经购买了正版!", weight: 5},
     {text: "我们保留了一些bug,这样你才知道你在使用的是星月Minecraft版本库.", weight: 5},
+    {text: "你知道吗,你知道吗?", weight: 5},
     {text: "你知道吗,版本库的第一个版本仅用了两天时间构建.", weight: 5},
     {text: "你知道吗,这个项目始于2020年.", weight: 5},
     {text: "你知道吗,你可以参与这个项目的开发与维护.", weight: 5},
+    {text: "你知道吗,一万行代码需要三个月的时间来实现,而删掉它们只需要三秒.", weight: 5},
     {text: "我想你应该会喜欢彩蛋的!", weight: 5},
     {text: "现在实现彩蛋自由了!", weight: 5},
-    {text: "加载提示时遇到问题,请点击重试.", weight: 5},
-    {text: "现在你看到了一条提示.", weight: 5},
-    {text: "猜一猜下一条出现的提示是什么?", weight: 5},
-    {text: "猜一猜下一次看到这条提示是什么时候?", weight: 5},
+    {text: "加载提示标语时遇到问题,请点击重试.", weight: 5},
+    {text: "现在你看到了一条提示标语.", weight: 5},
+    {text: "猜一猜下一条出现的提示标语是什么?", weight: 5},
+    {text: "猜一猜下一次看到这条提示标语是什么时候?", weight: 5},
     {text: "是谁把我放在这的?", weight: 5},
     {text: "Herobrine已移除!", weight: 5},
     {text: "创意无极限!", weight: 5},
+    {text: "我们DNA里的氮元素,牙齿里的钙元素,血液里的铁元素,还有苹果派里的碳元素,都源自大爆炸时崩裂的万千恒星.我们都是星辰.", weight: 5},
     {text: "不妨试着点点我?你可能会发现什么.", weight: 5},
     {text: "网页\"星月Minecraft版本库\"没有响应", weight: 5},
     {text: "版本库是这样的,开发者只要更新版本就可以了,而用户要考虑的事情就很多了.", weight: 5},
     {text: "有一个人前来下载MC.", weight: 5},
     {text: "Minecraft, 启动!", weight: 5},
-    {text: "看到这条提示就去启动Minecraft吧!", weight: 5},
+    {text: "看到这条提示标语就去启动Minecraft吧!", weight: 5},
     {text: "也去玩玩Minceraft吧!", weight: 5},
     {text: "也去玩玩饥荒吧!", weight: 5},
     {text: "也去玩玩泰拉瑞亚吧!", weight: 5},
@@ -295,9 +311,10 @@ const fullVersionTips = [
     {text: "不要一直戳人家啦!", weight: 5},
     {text: "今天是一个不错的日子,你说对吗?", weight: 5},
     {text: "你有些事情需要在今天结束的时候考虑一下...", weight: 5},
-    {text: "你看到了这条提示,这使你充满了决心.", weight: 5},
+    {text: "你看到了这条提示标语,这使你充满了决心.", weight: 5},
+    {text: "背上行囊出发吧,去触摸山川湖海的心跳.", weight: 5},
     {text: "什么Bug?哪里有Bug?你不要乱讲,那是特性!", weight: 5},
-    {text: "完全随机的提示!", weight: 5},
+    {text: "完全随机的提示标语!", weight: 5},
     {text: "多抬头看看天空吧!", weight: 5},
     {text: "别怕,有光.", weight: 5},
     {text: "天空即为极限!", weight: 5},
@@ -308,12 +325,15 @@ const fullVersionTips = [
     {text: "劳逸结合!", weight: 5},
     {text: "持续支持中!", weight: 5},
     {text: "独一无二的设计!", weight: 5},
+    {text: "生命是物质能量与信息的统一体.", weight: 5},
+    {text: "客观的规律都是通过一定的科学概念去认识和表达的,而且这些概念本身,就在一定程度上反映着规律的本质.", weight: 5},
     {text: "Technoblade never dies!", weight: 5},
     {text: "Hello world!", weight: 5},
     {text: "95% OreUI!", weight: 5},
     {text: "90% bug free!", weight: 5},
     {text: "Powered by AI!", weight: 5},
     {text: "Are you OK?", weight: 5},
+    {text: "wake up", weight: 5},
     {text: "/give @a hugs 64", weight: 5},
     {text: "sqrt(-1) love you!", weight: 5},
     {text: "P不包含NP!", weight: 5},
@@ -337,16 +357,16 @@ const fullVersionTips = [
     {text: "苦力怕把我的作业炸了!", weight: 5},
     {text: "<br>", weight: 2},
     {text: "← To Be Continued...", weight: 2},
-    {text: "Spectrollay love you!", weight: 2},
+    {text: "\"好久不见\"", weight: 2},
     {text: "别杀怪物,你这个海豚!", weight: 2},
     {text: "你要去码头整点薯条吗?", weight: 2},
     {text: "真的会有人看这些吗?", weight: 2},
     {
-        text: "<span style='background: linear-gradient(to right, #1C0DFF, #3CBBFC, #B02FED, #FF57AC, #FFB515, #FFEA45, #99FF55, #00FFAA); -webkit-background-clip: text; background-clip: text; color: transparent;'>这是一条彩色的提示!</span>",
+        text: "<span style='background: linear-gradient(to right, #1C0DFF, #3CBBFC, #B02FED, #FF57AC, #FFB515, #FFEA45, #99FF55, #00FFAA); -webkit-background-clip: text; background-clip: text; color: transparent;'>这是一条彩色的提示标语!</span>",
         weight: 2
     },
     {
-        text: "<span style='transform: scaleX(-1) scaleY(-1);'>这是一条颠倒的提示!</span>",
+        text: "<span style='transform: scaleX(-1) scaleY(-1);'>这是一条颠倒的提示标语!</span>",
         weight: 2
     },
     {text: "点我抽盲盒!", weight: 2},
@@ -362,8 +382,8 @@ const fullVersionTips = [
     {text: "<br><br><br><br><br><br><br><br><br><br><br><br>", weight: 0.01},
     {text: " - 曲终人散,黄粱一梦.玩家开始了新的梦境,玩家再次做起了梦,更好的梦.玩家就是宇宙.玩家就是爱.<br> - 你就是那个玩家.<br> - 该醒了.", weight: 0.01},
     {text: " - 二十年之后,更令你懊悔的不是你做了什么,而是你没做什么.所以解开帆索,离开安全的港湾,赶着航程中的信风,去探索,去梦想,去发现.", weight: 0.01},
-    {text: "<span style='color: yellow'>解锁隐藏成就: 仓库尽头的提示</span>", weight: 0.001},
-    {text: "这是一条永远不会出现的提示.", weight: 0},
+    {text: "<span style='color: yellow'>解锁隐藏成就: 仓库尽头的提示标语</span>", weight: 0.001},
+    {text: "这是一条永远不会出现的提示标语.", weight: 0},
 ];
 
 const addTips = (newTips, oldTips) => {
@@ -547,68 +567,132 @@ const setElementText = (elementId, text) => {
     }
 }
 
-// 彩蛋标题
+// 彩蛋标题(旧) TODO 旧页面完成迭代后移除
 const repositoryLogo = document.getElementById("repository_logo");
 if (repositoryLogo) {
     const randomValue = Math.floor(Math.random() * 10000); // 0.01%
     if (randomValue < 1) {
-        repositoryLogo.innerHTML = `<div class="repository_logo_area">星月Minceraft版本库</div>`;
-        // repositoryLogo.innerHTML = `<div class="repository_logo_area">星月<img alt="" class="repository_logo_img" src="/minecraft_repository/images/Minceraft.png"/>版本库</div>`;
+        repositoryLogo.innerHTML = `星月Minceraft版本库`;
     } else {
-        repositoryLogo.innerHTML = `<div class="repository_logo_area">星月Minecraft版本库</div>`;
-        // repositoryLogo.innerHTML = `<div class="repository_logo_area">星月<img alt="" class="repository_logo_img" src="/minecraft_repository/images/Minecraft.png"/>版本库</div>`;
+        repositoryLogo.innerHTML = `星月Minecraft版本库`;
     }
 }
 
-// 常用文本赋值
+// 彩蛋标题
+const StarmoonTitleShort = document.getElementById("starmoon_title_short");
+const StarmoonTitleLong = document.getElementById("starmoon_title_long");
+const randomValue = Math.floor(Math.random() * 1000); // 0.1%
+
+if (StarmoonTitleShort && StarmoonTitleLong) {
+    if (randomValue < 1) {
+        StarmoonTitleShort.src = rootPath + '/images/logo/Starmoon_title_ee.png';
+        StarmoonTitleLong.src = rootPath + '/images/logo/Starmoon_title_long_ee.png';
+    } else {
+        StarmoonTitleShort.src = rootPath + '/images/logo/Starmoon_title.png';
+        StarmoonTitleLong.src = rootPath + '/images/logo/Starmoon_title_long.png';
+    }
+}
+
+// 常见内容赋值
+setElementText("sidebar_bottom_title", texts.sidebar_bottom_title);
+setElementText("sidebar_bottom_detail1", texts.sidebar_bottom_detail1);
+setElementText("setting_version", version_name_short);
+setElementText("setting_version_detail", version_info);
+setElementText("experiment_banner", texts.experiment_banner);
+
+const support_message = document.getElementById('support_message');
+if (support_message) {
+    support_message.innerHTML = `
+    <span>在2020年, 我们发布了第一个公开版本, 版本库的故事由此而起. 当时, 我们的想法只是做一个好的游戏分享平台, 这些年过去了, 我们仍在坚持. 但我们也深知, 为爱发电并不能长久, 因此我们一直在积极寻求能够稳定发展的道路. 如果你认为本站对你有所帮助, 不妨通过以下页面了解如何支持我们, 助力我们进一步发展.</span>
+    `;
+}
+
+const donate_message = document.getElementById('donate_message');
+if (donate_message) {
+    donate_message.innerHTML = `
+    <div>
+        <p>我们深知这个版本库还很不尽人意, 界面简陋, 功能稀少, 甚至可能还有一堆的问题. 因此我们一直在不断地完善改进它, 希望能给每一个使用版本库的你, 带来更好的体验.</p>
+        <p>如果你喜欢它, 且已经实现了经济独立, 可以考虑通过捐赠来支持我们. 这可以在很大程度上用于提升环境配置及开发积极性. 否则请你不要打赏, 分享与宣传也是对我们的强有力的支持.</p>
+    </div>`;
+}
+
+const acknowledgments = document.getElementById('acknowledgments');
+if (acknowledgments) {
+    acknowledgments.innerHTML = `
+    <div>
+        <p>这是一个始于2020年的项目, 做它的初衷, 只是为了给我玩的为数不多的游戏一个版本留档, 当时这还只是一个私有项目, 并不对外开放.</p>
+        <p>后来, 渐渐的我发现有许多人, 因为各种各样的原因, 有心购买游戏却无力, 亦或是需要某个特定的版本来完成特定的事, 在网上苦苦寻找却不得. 我想, 既然我有这些资源, 为什么不公开出来供大家一起使用呢? 这便是版本库对外开放的契因.</p>
+        <p>在最早的时候, 版本库只是一个共享文档, 从V1开始, 经历了默认HTML样式到仿Knowledge Base样式再到OreUI样式, 一点点完善一点点进步, 才形成了现在的模样. 这一路的坎坷何谈容易, 其中还不乏因为各种各样的原因导致的数据丢失及被迫停更, 但好在最终都坚持下来了.</p>
+        <p>所以啊, 最应该感谢的是每一个使用版本库支持版本库的你. 正因为有你们的支持与陪伴, 版本库才会坚持做下去, 走向未来. 没有你们, 就不会有版本库的今天.</p>
+    </div>`;
+}
+
+const pageInfo = document.getElementById('page_info');
+if (pageInfo) {
+    pageInfo.innerHTML = `
+    <div>
+        <div class="page_info"><br></div>
+        <div class="page_info_title">INFORMATION</div>
+        <div class="page_info"><span>Version: ${version_name}<br>Server Version: ${server_version}<br>Updated: ${update_count}<br>Commited: ${commit}</span></div>
+        <div class="page_info_title">BASED ON</div>
+        <div class="page_info"><span><a href="https://html.spec.whatwg.org/" target="_blank">HTML5</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">Web API</a> | <a href="https://webkit.org/" target="_blank">WebKit</a> | <a href="https://github.com/Spectrollay/OreUI" target="_blank">OreUI</a></span></div>
+        <div class="page_info_title">ABOUT US</div>
+        <div class="page_info"><span>Developer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Maintainer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Program Group: <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> | <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> | <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a><br>Official Channel: <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> | <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a><span></div>
+        <div class="page_info_title">MADE WITH ❤️ IN CHINA</div>
+        <div class="page_info"><br></div>
+    </div>`;
+}
+
+// 加载占位图
+function replaceLoadingImages() {
+    const loadingImage = rootPath + '/images/Loading_white.gif';
+    const loadingImageBlack = rootPath + '/images/Loading.gif';
+    const loadingImageError = rootPath + '/images/ErrorMessage.png';
+    const blackImageClassList = ['header_left_icon', 'header_right_icon', 'title_icon', 'link_img_black'];
+
+    document.querySelectorAll('img').forEach(img => {
+
+        if (img.dataset.processed === 'true') return; // 避免重复处理
+        img.dataset.processed = 'true'; // 标记为已处理
+
+        const originalSrc = img.getAttribute('data-src') || img.src;
+        const useBlackImage = blackImageClassList.some(className => img.classList.contains(className));
+        const placeholderSrc = useBlackImage ? loadingImageBlack : loadingImage;
+        const originalStyle = img.getAttribute('style') || '';
+
+        // 设置加载中占位图
+        img.src = placeholderSrc;
+
+        const isUpdateLogo = img.classList.contains('update_logo');
+        if (isUpdateLogo) {
+            img.style.height = '100px';
+            img.style.width = '100px';
+        }
+
+        // 还原样式
+        setTimeout(() => {
+            img.onload = () => {
+                if (isUpdateLogo) {
+                    img.setAttribute('style', originalStyle);
+                }
+            };
+
+            img.onerror = () => {
+                img.src = loadingImageError;
+                logManager.log("图片加载失败: " + originalSrc, 'warn');
+            };
+
+            // 还原图片
+            img.src = originalSrc;
+        }, 0);
+    });
+}
+
 window.addEventListener('load', () => setTimeout(function () {
-    setElementText("sidebar_bottom_title", texts.sidebar_bottom_title);
-    setElementText("sidebar_bottom_detail1", texts.sidebar_bottom_detail1);
-    setElementText("preview_title", texts.preview_title);
-    setElementText("preview_detail1", texts.preview_detail1);
-    setElementText("preview_detail2", texts.preview_detail2);
-    setElementText("preview_btn1", texts.preview_btn1);
-    setElementText("preview_btn2", texts.preview_btn2);
-    setElementText("setting_version", version_name_short);
-    setElementText("setting_version_detail", version_info);
-    setElementText("experiment_banner", texts.experiment_banner);
 
-    const donate_message = document.getElementById('donate_message');
-    if (donate_message) {
-        donate_message.innerHTML = `
-        <div>
-            <p>我们深知这个版本库还很不尽人意, 界面简陋, 功能稀少, 甚至可能还有一堆的问题. 因此我们一直在不断地完善改进它, 希望能给每一个使用版本库的你, 带来更好的体验.</p>
-            <p>如果你喜欢它, 且已经实现了经济独立, 可以考虑通过捐赠来支持我们. 这可以在很大程度上用于提升环境配置及开发积极性. 否则请你不要打赏, 分享与宣传也是对我们的强有力的支持.</p>
-        </div>`;
-    }
+    replaceLoadingImages(); // 占位图逻辑
 
-    const acknowledgments = document.getElementById('acknowledgments');
-    if (acknowledgments) {
-        acknowledgments.innerHTML = `
-        <div>
-            <p>这是一个始于2020年的项目, 做它的初衷, 只是为了给我玩的为数不多的游戏一个版本留档, 当时这还只是一个私有项目, 并不对外开放.</p>
-            <p>后来, 渐渐的我发现有许多人, 因为各种各样的原因, 有心购买游戏却无力, 亦或是需要某个特定的版本来完成特定的事, 在网上苦苦寻找却不得. 我想, 既然我有这些资源, 为什么不公开出来供大家一起使用呢? 这便是版本库对外开放的契因.</p>
-            <p>在最早的时候, 版本库只是一个共享文档, 从V1开始, 经历了默认HTML样式到仿Knowledge Base样式再到OreUI样式, 一点点完善一点点进步, 才形成了现在的模样. 这一路的坎坷何谈容易, 其中还不乏因为各种各样的原因导致的数据丢失及被迫停更, 但好在最终都坚持下来了.</p>
-            <p>所以啊, 最应该感谢的是每一个使用版本库支持版本库的你. 正因为有你们的支持与陪伴, 版本库才会坚持做下去, 走向未来. 没有你们, 就不会有版本库的今天.</p>
-        </div>`;
-    }
-
-    const pageInfo = document.getElementById('page_info');
-    if (pageInfo) {
-        pageInfo.innerHTML = `
-        <div>
-            <div class="page_info"><br></div>
-            <div class="page_info_title">INFORMATION</div>
-            <div class="page_info"><span>Version: ${version_name}<br>Server Version: ${server_version}<br>Updated: ${update_count}<br>Commited: ${commit}</span></div>
-            <div class="page_info_title">BASED ON</div>
-            <div class="page_info"><span><a href="https://html.spec.whatwg.org/" target="_blank">HTML5</a> / <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">Web API</a> / <a href="https://webkit.org/" target="_blank">WebKit</a> / <a href="https://github.com/Spectrollay/OreUI" target="_blank">OreUI</a></span></div>
-            <div class="page_info_title">ABOUT US</div>
-            <div class="page_info"><span>Developer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Maintainer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Program Group: <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> / <a href=",https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> / <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a><br>Official Channel: <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> / <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a><span></div>
-            <div class="page_info_title">MADE WITH ❤️ IN CHINA</div>
-            <div class="page_info"><br></div>
-        </div>`;
-    }
-
+    // 更新按钮文本
     const buttons = document.querySelectorAll('.btn, custom-button');
 
     function updateButtonText(button) {
@@ -626,35 +710,6 @@ window.addEventListener('load', () => setTimeout(function () {
     buttons.forEach(button => {
         updateButtonText(button);
     });
-
-    const menu_icon = document.getElementById('menu_icon');
-    const back_icon = document.getElementById('back_icon');
-    if (back_icon) {
-        back_icon.src = '/minecraft_repository/images/arrowLeft.png';
-    }
-    if (menu_icon) {
-        menu_icon.src = '/minecraft_repository/images/menu.png';
-    }
-
-    let linkImg = document.getElementsByClassName('link_img');
-    let linkImgBlack = document.getElementsByClassName('link_img_black');
-    if (linkImg) {
-        for (let i = 0; i < linkImg.length; i++) {
-            linkImg[i].src = '/minecraft_repository/images/ExternalLink_white.png';
-        }
-    }
-    if (linkImgBlack) {
-        for (let i = 0; i < linkImgBlack.length; i++) {
-            linkImgBlack[i].src = '/minecraft_repository/images/ExternalLink.png';
-        }
-    }
-
-    let modal_close_btn_img = document.getElementsByClassName('modal_close_btn_img');
-    if (modal_close_btn_img) {
-        for (let i = 0; i < modal_close_btn_img.length; i++) {
-            modal_close_btn_img[i].src = '/minecraft_repository/images/cross_white.png';
-        }
-    }
 
     // 禁止拖动元素
     let cantDraggableElements = document.querySelectorAll("img, a");
@@ -675,20 +730,40 @@ window.addEventListener('load', () => setTimeout(function () {
 
 }, 10));
 
+const mclang_cn_fix = document.querySelector('#mclang_cn_fix.mclang_cn_fix');
+if (mclang_cn_fix) {
+    mclang_cn_fix.innerHTML = `
+        <div class="block_main wrap_flex">
+            <div>
+                <div class="title2 download_block_title">和基岩版的无脑翻译说再见!</div>
+                <div class="download_block_description" style="text-align: center; width: auto;">适用于所有基于基岩引擎开发的游戏版本!<br>独家适配隐藏内容和不同平台的独有内容!<br>快速适配最新的绝大多数正式版和开发版!</div>
+            </div>
+            <div>
+                <div class="link_block_group_title">访问项目</div>
+                <link-block onclick="playSound('click');openLink('https://spectrollay.github.io/mclang_cn/');">
+                    <div class="link_title">
+                        <img alt="" class="link_title_img" src="${rootPath}/images/logo/mclang_cn_fix.png"/>中文译名修正项目
+                    </div>
+                </link-block>
+            </div>
+        </div>
+    `;
+}
+
 logManager.log("字符常量已成功应用");
 
-// 加载网页时的提示
+// 加载网页时的提示标语
 if (tipElement) {
     tipElement.innerHTML = getRandomTip();
-    logManager.log("提示已选择成功");
+    logManager.log("提示标语已选择成功");
 } else {
-    logManager.log("未发现提示框");
+    logManager.log("未发现提示标语框");
 }
 
 if (tipElement) {
     tipElement.addEventListener("click", (event) => {
         if (event.target.tagName === "A") {
-            logManager.log("检测到点击了链接,不执行切换提示操作");
+            logManager.log("检测到点击了链接,不执行切换提示标语操作");
         } else {
             tipElement.innerHTML = getRandomTip();
             // 禁止拖动元素
@@ -720,7 +795,7 @@ function getRandomTip() {
         }
         tipsByWeight[tip.weight].push(tip);
     }
-    // logManager.log("按权值分组的提示: " + JSON.stringify(tipsByWeight));
+    // logManager.log("按权值分组的提示标语: " + JSON.stringify(tipsByWeight));
 
     // 计算去重权值总和
     const uniqueWeights = Object.keys(tipsByWeight).map(Number).sort((a, b) => b - a); // 权值降序排列
@@ -746,21 +821,21 @@ function getRandomTip() {
         }
     }
 
-    // 在选定权值区间内随机选择提示,并避免与上次选中相同
+    // 在选定权值区间内随机选择提示标语,并避免与上次选中相同
     const availableTips = tipsByWeight[selectedWeight];
     let chosenTip;
-    // logManager.log("在权值 " + selectedWeight + " 区间内可用的提示: " + JSON.stringify(availableTips));
+    // logManager.log("在权值 " + selectedWeight + " 区间内可用的提示标语: " + JSON.stringify(availableTips));
 
     do {
         chosenTip = availableTips[Math.floor(Math.random() * availableTips.length)];
         currentTipIndex = tipsWithWeights.indexOf(chosenTip);
-        // logManager.log("尝试选中提示: " + chosenTip.text + ", 索引: " + currentTipIndex);
-        logManager.log("尝试选中提示索引: " + currentTipIndex);
+        // logManager.log("尝试选中提示标语: " + chosenTip.text + ", 索引: " + currentTipIndex);
+        logManager.log("尝试选中提示标语索引: " + currentTipIndex);
     } while (currentTipIndex === previousTipIndex);
 
     previousTipIndex = currentTipIndex;
-    // logManager.log("最终选中提示: " + chosenTip.text + ", 权值: " + selectedWeight);
-    logManager.log("最终选中提示索引: " + currentTipIndex);
+    // logManager.log("最终选中提示标语: " + chosenTip.text + ", 权值: " + selectedWeight);
+    logManager.log("最终选中提示标语索引: " + currentTipIndex);
 
     return chosenTip.text;
 }
