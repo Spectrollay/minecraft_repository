@@ -73,28 +73,20 @@ let version_info = `
         <tr><td class="left_td">最后提交: </td><td class="right_td">${commit}</td></tr>
         <tr></tr>
         <tr><td colspan='2' style='text-align: center'>校验码</td></tr>
-        <tr><td colspan='2' id="project_hash" style='text-align: center'>未知</td></tr>
+        <tr><td colspan='2' id="project_hash" style='text-align: center'>获取数据中</td></tr>
     </table>
 `;
 
 // 项目校验
 getProjectHash().then(projectHash => {
-    version_info = `
-    <table>
-        <tr><td colspan='2' style='text-align: center'>版本信息</td></tr>
-        <tr><td class="left_td">主要更新: </td><td class="right_td">${primary_version_name}</td></tr>
-        <tr><td class="left_td">次要更新: </td><td class="right_td">${secondary_version_name}</td></tr>
-        <tr><td class="left_td">版本编号: </td><td class="right_td">${version_name_short}</td></tr>
-        <tr><td class="left_td">版本类型: </td><td class="right_td">${version_type}</td></tr>
-        <tr><td class="left_td">版本名称: </td><td class="right_td">${version_name}</td></tr>
-        <tr><td class="left_td">版本别称: </td><td class="right_td">${version_nickname}</td></tr>
-        <tr><td class="left_td">发布编号: </td><td class="right_td">${update_count}</td></tr>
-        <tr><td class="left_td">最后提交: </td><td class="right_td">${commit}</td></tr>
-        <tr></tr>
-        <tr><td colspan='2' style='text-align: center'>校验码</td></tr>
-        <tr><td colspan='2' id="project_hash" style='text-align: center'>${projectHash}</td></tr>
-    </table>
-`;
+    const projectHashElement = document.getElementById('project_hash');
+    if (projectHashElement) {
+        if (projectHash) {
+            projectHashElement.textContent = projectHash;
+        } else {
+            projectHashElement.textContent = '获取数据失败';
+        }
+    }
 });
 
 logManager.log("发布版本: " + publish_version_name);
