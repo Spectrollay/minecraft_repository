@@ -187,16 +187,18 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/mcfc.js"></script>
 <script>
-    const debug_password = "spectrollay_mcarc_debug";
+    const debug_password = 'spectrollay_mcarc_debug';
 
-    if (!sessionStorage.getItem("enableDebug")) {
-        location.replace("./default/error_no-access.html");
+    if (!sessionStorage.getItem('enableDebug')) {
+        location.replace('./default/error_no-access.html');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -204,12 +206,12 @@
     });
 
     function enableDonateDebug() {
-        localStorage.setItem("donate", "true");
+        localStorage.setItem('donate', 'true');
         showPop('调试模式 - 已启用捐赠专享', 3000, 'debug_text');
     }
 
     function disableDonateDebug() {
-        localStorage.removeItem("donate");
+        localStorage.removeItem('donate');
         showPop('调试模式 - 已撤销捐赠专享', 3000, 'debug_text');
     }
 

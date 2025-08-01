@@ -47,6 +47,12 @@
             width: 300px;
         }
 
+        .keyart_block {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
         .introduction_badge_area {
             margin: 6px;
         }
@@ -152,7 +158,7 @@
                             <div class="description2">
                                 <div>
                                     <div class="wrap_flex align_center">
-                                        <div class="detail_block">
+                                        <div class="detail_block keyart_block">
                                             <img alt="Newest KeyArt" class="keyart" src="../mclang_cn/KeyArt.png"/>
                                         </div>
                                         <div class="detail_block">
@@ -349,16 +355,18 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/mcfc.js"></script>
 <script>
-    const mclang_site_version = "2.1.1"; // NOTE 版本号
-    const mclang_update_count = "2025-06-02-01"; // NOTE 发布编号
-    const mclang_server_version = "4.0";
-    const mclang_version_info = "<span>项目版本: " + mclang_site_version + "<br>服务端版本: " + mclang_server_version + "<br>最后更新: " + mclang_update_count + "</span>";
+    const mclang_site_version = '2.1.1'; // NOTE 版本号
+    const mclang_update_count = '2025-06-02-01'; // NOTE 发布编号
+    const mclang_server_version = '4.0';
+    const mclang_version_info = '<span>项目版本: ' + mclang_site_version + '<br>服务端版本: ' + mclang_server_version + '<br>最后更新: ' + mclang_update_count + '</span>';
 
     const version_area = document.getElementById('version_info');
     if (version_area) {
@@ -367,7 +375,7 @@
 
     function toRepo() {
         setTimeout(function () {
-            ifNavigating("open", "https://github.com/Spectrollay/mclang_cn/issues/new");
+            ifNavigating('open', 'https://github.com/Spectrollay/mclang_cn/issues/new/choose');
         }, 600);
     }
 </script>

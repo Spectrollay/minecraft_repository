@@ -50,10 +50,10 @@ document.body.insertAdjacentHTML('afterbegin', maintenanceModal);
 
 window.addEventListener('load', () => setTimeout(function () {
     if (localStorage.getItem('(/minecraft_repository/)never_show_maintenance_modal_again_20250128') !== 'true') { // TODO 维护公告,在完成维护后移除
-        const overlay = document.getElementById("overlay_maintenance_notice");
-        const modal = document.getElementById("maintenance_notice");
-        overlay.style.display = "block";
-        modal.style.display = "block";
+        const overlay = document.getElementById('overlay_maintenance_notice');
+        const modal = document.getElementById('maintenance_notice');
+        overlay.style.display = 'block';
+        modal.style.display = 'block';
         modal.focus();
         logManager.log("显示数据库维护弹窗");
     }

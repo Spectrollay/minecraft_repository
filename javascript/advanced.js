@@ -24,12 +24,12 @@ rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0
 
 // 点击Debug图标事件
 function debugPage() {
-    ifNavigating("jump", rootPath + "/advanced/debug.html");
+    ifNavigating('jump', rootPath + '/advanced/debug.html');
 }
 
 // 点击环境指南按钮
 function enviPage() {
-    ifNavigating("jump", rootPath + "/guidance/environment_guidance.html");
+    ifNavigating('jump', rootPath + '/guidance/environment_guidance.html');
 }
 
 // 捐赠专享
@@ -37,7 +37,7 @@ const limitedSwitch = document.getElementById('limited_access_modal');
 
 if (limitedSwitch) {
     limitedSwitch.beforeToggle = function () {
-        return localStorage.getItem("donate") === "true";
+        return localStorage.getItem('donate') === 'true';
     };
 
     limitedSwitch.addEventListener('switch-toggle-blocked', function () {
@@ -47,7 +47,7 @@ if (limitedSwitch) {
 
 // 清除存储
 function clearStorage() {
-    const keyPatterns = [`(${rootPath}/)`, "minecraft_repository_attribute"];
+    const keyPatterns = [`(${rootPath}/)`, 'minecraft_repository_attribute'];
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (keyPatterns.some(pattern => key.includes(pattern))) {
@@ -75,19 +75,19 @@ function clearAndReload() {
     logManager.log("重载容器环境成功");
 }
 
-const versionBlock = document.getElementById("version_block");
-const developerBlock = document.getElementById("developer_block");
+const versionBlock = document.getElementById('version_block');
+const developerBlock = document.getElementById('developer_block');
 let clickCount = 0;
 let clickTimer;
 
 // 快速连点处理函数
 function handleClick(event, conditionKey, successMessage, callback) {
-    if (sessionStorage.getItem(conditionKey) === "true") {
+    if (sessionStorage.getItem(conditionKey) === 'true') {
         logManager.log("已解锁!");
         return;
     }
 
-    if (!event.target.closest("custom-button")) {
+    if (!event.target.closest('custom-button')) {
         clickCount++;
         logManager.log("连续点击次数: " + clickCount);
 
@@ -100,7 +100,7 @@ function handleClick(event, conditionKey, successMessage, callback) {
         if (clickCount === 6) {
             clearTimeout(clickTimer); // 清除计时器
             clickCount = 0; // 重置计数器
-            sessionStorage.setItem(conditionKey, "true"); // 设置临时存储
+            sessionStorage.setItem(conditionKey, 'true'); // 设置临时存储
 
             logManager.log(successMessage);
             if (callback) callback(); // 执行自定义逻辑
@@ -109,8 +109,8 @@ function handleClick(event, conditionKey, successMessage, callback) {
 }
 
 // 检查是否显示
-if (sessionStorage.getItem("enableDebug") === "true") {
-    const debug = document.querySelectorAll("#debug, .debug_mode, .clear_all");
+if (sessionStorage.getItem('enableDebug') === 'true') {
+    const debug = document.querySelectorAll('#debug, .debug_mode, .clear_all');
     if (debug) {
         debug.forEach(item => {
             item.style.display = 'flex';
@@ -118,18 +118,18 @@ if (sessionStorage.getItem("enableDebug") === "true") {
     }
 }
 
-if (sessionStorage.getItem("showTheEnd") === "true") {
+if (sessionStorage.getItem('showTheEnd') === 'true') {
     const theEnd = document.getElementById('the_end');
     if (theEnd) {
-        theEnd.style.display = "flex";
+        theEnd.style.display = 'flex';
     }
 }
 
 // 添加事件监听
 if (versionBlock) {
-    versionBlock.addEventListener("click", (event) => {
-        handleClick(event, "enableDebug", "解锁调试模式!", () => {
-            const debug = document.querySelectorAll("#debug, .debug_mode, .clear_all");
+    versionBlock.addEventListener('click', (event) => {
+        handleClick(event, 'enableDebug', '解锁调试模式!', () => {
+            const debug = document.querySelectorAll('#debug, .debug_mode, .clear_all');
             if (debug) {
                 debug.forEach(item => {
                     item.style.display = 'flex';
@@ -141,9 +141,9 @@ if (versionBlock) {
 }
 
 if (developerBlock) {
-    developerBlock.addEventListener("click", (event) => {
-        handleClick(event, "showTheEnd", "发现了彩蛋!", () => {
-            document.getElementById('the_end').style.display = "flex";
+    developerBlock.addEventListener('click', (event) => {
+        handleClick(event, 'showTheEnd', '发现了彩蛋!', () => {
+            document.getElementById('the_end').style.display = 'flex';
             mainHandleScroll(); // 联动自定义网页滚动条
         });
     });
@@ -153,7 +153,7 @@ const checkInput = document.querySelector('#check_input text-field');
 
 function checkContinue() {
     const inputValue = checkInput.getValue().trim(); // 获取并去除输入值的空格
-    const requiredValue = "我知道我在做什么"; // 预期的文本
+    const requiredValue = '我知道我在做什么'; // 预期的文本
     const checkContinueBtn = document.getElementById('check_continue');
     const checkContinueFrame = checkContinueBtn.parentElement;
 

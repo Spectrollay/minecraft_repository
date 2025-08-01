@@ -1,7 +1,7 @@
 name: 提出建议
 description: 分享你的看法
 title: "[建议]: "
-labels: ["优化改进(opt & imp)"]
+labels: [ "优化改进(opt & imp)" ]
 
 body:
   - type: markdown

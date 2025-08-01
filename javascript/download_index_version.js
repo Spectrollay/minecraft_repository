@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2020. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,19 +22,25 @@
 
 rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
 hostPath = window.location.origin;
-data = hostPath + "/data";
+data = hostPath + '/data';
 
 const currentUrl = window.location.href;
 const url = new URL(currentUrl);
 
+// TODO 在加入基岩版Windows平台版本时移除
+if (currentUrl.includes('/download/') &&
+    url.searchParams.get('platform') === 'windows') {
+    jumpToPage('./default/coming_soon.html');
+}
+
 // 获取URL参数
 const version = url.searchParams.get('version');
-const platformIcon = document.querySelector(".platform_icon");
-const mainContainer = document.querySelector("generate-area.main_gen");
-const mainTitle = document.getElementById("main_title");
-const sidebarContainer = document.querySelector("generate-area.sidebar_gen");
-const sidebarTitle = document.getElementById("sidebar_title");
-let platform, platformName, edition, ifJump = "false", dataFile, dataPath;
+const platformIcon = document.querySelector('.platform_icon');
+const mainContainer = document.querySelector('generate-area.main_gen');
+const mainTitle = document.getElementById('main_title');
+const sidebarContainer = document.querySelector('generate-area.sidebar_gen');
+const sidebarTitle = document.getElementById('sidebar_title');
+let platform, platformName, edition, ifJump = 'false', dataFile, dataPath;
 
 if (hostPath.includes('https')) {
     dataPath = data + '/minecraft_repository';
@@ -55,11 +61,11 @@ if (url.searchParams.get('platform') === 'android') {
     platform = 'linux';
     platformName = 'Linux';
 } else {
-    ifJump = "true";
+    ifJump = 'true';
 }
 
 if (!version) {
-    ifJump = "true";
+    ifJump = 'true';
 }
 
 if (window.location.pathname.includes('download/bedrock/')) {
@@ -104,7 +110,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
         try {
             const response = await fetch(dataFile);
             let rawJson = await response.text(); // 获取原始文本
-            const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, "").trim(); // 移除注释
+            const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, '').trim(); // 移除注释
             const data = JSON.parse(cleanedJson); // 解析为JSON对象
 
             const majorVersions = data[0].major_versions;
@@ -113,13 +119,13 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
             const majorVersion = majorVersions.find(mv => mv.main_version === version);
             if (!majorVersion) {
                 logManager.log(`主版本 ${version} 未找到`, 'error');
-                ifJump = "true";
+                ifJump = 'true';
             }
 
             const {version_name, prev_version, next_version} = majorVersion;
 
             // 更新按钮状态
-            const updateName = document.getElementById("update_name");
+            const updateName = document.getElementById('update_name');
             const prevButtons = document.querySelectorAll('.prev_version');
             const nextButtons = document.querySelectorAll('.next_version');
             const currentUrl = new URL(window.location.href);
@@ -127,14 +133,15 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
 
             // 更新标题
             updateName.innerHTML = `${version_name}`;
+            sidebarTitle.innerHTML = `${version_name.replace(' - ', '<br>')}`;
 
             // 更新上一个版本按钮
             prevButtons.forEach(prevButton => {
-                if (prev_version && prev_version !== "") {
+                if (prev_version && prev_version !== '') {
                     searchParams.set('version', prev_version);
                     const prevLink = `${currentUrl.origin}${currentUrl.pathname}?${searchParams.toString()}`;
                     prevButton.setAttribute('data', 'default|normal|extra_small||false||');
-                    prevButton.setAttribute('js', `ifNavigating("jump", "${prevLink}");`);
+                    prevButton.setAttribute('js', `ifNavigating('jump', '${prevLink}');`);
                     prevButton.setAttribute('text', `<img alt='' class='button_img left' src='./images/arrowLeft.png'/>${prev_version}`
                     );
                 } else {
@@ -146,11 +153,11 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
 
             // 更新下一个版本按钮
             nextButtons.forEach(nextButton => {
-                if (next_version && next_version !== "") {
+                if (next_version && next_version !== '') {
                     searchParams.set('version', next_version);
                     const nextLink = `${currentUrl.origin}${currentUrl.pathname}?${searchParams.toString()}`;
                     nextButton.setAttribute('data', 'default|normal|extra_small||false||');
-                    nextButton.setAttribute('js', `ifNavigating("jump", "${nextLink}");`);
+                    nextButton.setAttribute('js', `ifNavigating('jump', '${nextLink}');`);
                     nextButton.setAttribute('text', `${next_version}<img alt='' class='button_img right' src='./images/arrowRight.png'/>`
                     );
                 } else {
@@ -174,8 +181,8 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                 const platformData = currentVersion.platforms[platform];
                 const platformLocation = platformData.channels[`channel${versionValue}`];
 
-                const mainBlock = document.createElement("div");
-                const sidebarBlock = document.createElement("div");
+                const mainBlock = document.createElement('div');
+                const sidebarBlock = document.createElement('div');
 
                 // 填充主要内容块
                 mainBlock.innerHTML = `
@@ -184,11 +191,11 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                             <div class="title2 download_block_title">${currentVersion.version_name}</div>
                             ${currentVersion.update_artwork ? `<div class="drop_artwork_area">
                                 <img alt="" class="update_artwork" src="./images/update/artwork/${currentVersion.update_artwork}"/>
-                            </div>` : ""}
+                            </div>` : ''}
                         </div>
                         <div class="wrap_flex">
-                            ${currentVersion.platforms[platform].info === 'false' ? `` : `
-                                <div class="download_block_description">
+                            ${currentVersion.platforms[platform].info === 'false' ? '' : `
+                                <div class="download_block_description update_description">
                                     <div>正式版本: ${currentVersion.platforms[platform].release}</div>
                                     <div>测试版本: ${currentVersion.platforms[platform].build}</div>
                                     <div>${currentVersion.platforms[platform].support}</div>
@@ -204,7 +211,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                     <div class="dropdown_container">
                                         <custom-dropdown data-option='["<div class=\\"wrap_flex\\"><img class=\\"small_icon\\" src=\\"./images/Crown.png\\"/>OneDrive</div>", "百度网盘", "夸克网盘", "123云盘"]' data-selected="2" id="${platform}_${currentVersion.id}" status="enabled" unselected-text="请选择下载渠道"></custom-dropdown>
                                     </div>
-                                ` : ""}
+                                ` : ''}
                                 <div>
                                     ${currentVersion.platforms[platform].style === 'type' ? `
                                         <!-- 按版本类型 -->
@@ -212,7 +219,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                         <div id="${platform}_${currentVersion.id}_${channelKey}">
                                             <div class="btn_group">
                                                 ${channelData.原版 ? `
-                                                    ${channelData.name === "OneDrive" ? `
+                                                    ${channelData.name === 'OneDrive' ? `
                                                         <custom-button data="default|normal|large||false||" js="checkIfDonate('url', '${channelData.原版}');" text="官方原版"></custom-button>
                                                     ` : `
                                                         <custom-button data="default|normal|large||false||" js="ifNavigating('open', '${channelData.原版}');" text="官方原版"></custom-button>
@@ -223,7 +230,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                             </div>
                                             <div class="btn_group">
                                                 ${channelData.中文译名修正 ? `
-                                                    ${channelData.name === "OneDrive" ? `
+                                                    ${channelData.name === 'OneDrive' ? `
                                                         <custom-button data="default|green|small||false||" js="checkIfDonate('url', '${channelData.中文译名修正}');" text="中文译名修正"></custom-button>
                                                     ` : `
                                                         <custom-button data="default|green|small||false||" js="showDisclaimerModal('${channelData.中文译名修正}');" text="中文译名修正"></custom-button>
@@ -232,7 +239,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                                     <custom-button data="default|disabled|small||false||" js="false" text="中文译名修正"></custom-button>
                                                 `}
                                                 ${channelData.去验证版 ? `
-                                                    ${channelData.name === "OneDrive" ? `
+                                                    ${channelData.name === 'OneDrive' ? `
                                                         <custom-button data="default|normal|small||false||" js="checkIfDonate('url', '${channelData.去验证版}');" text="去验证版"></custom-button>
                                                     ` : `
                                                         <custom-button data="default|normal|small||false||" js="showDisclaimerModal('${channelData.去验证版}');" text="去验证版"></custom-button>
@@ -244,7 +251,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                             ${currentVersion.platforms[platform].more_type === 'false' ? `` : `
                                             <div class="btn_group">
                                                 ${channelData.多架构版 ? `
-                                                    ${channelData.name === "OneDrive" ? `
+                                                    ${channelData.name === 'OneDrive' ? `
                                                         <custom-button data="default|normal|small||false||" js="checkIfDonate('url', '${channelData.多架构版}');" text="多架构版"></custom-button>
                                                     ` : `
                                                         <custom-button data="default|normal|small||false||" js="showDisclaimerModal('${channelData.多架构版}');" text="多架构版"></custom-button>
@@ -253,7 +260,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                                     <custom-button data="default|disabled|small||false||" js="false" text="多架构版"></custom-button>
                                                 `}
                                                 ${channelData.精简版 ? `
-                                                    ${channelData.name === "OneDrive" ? `
+                                                    ${channelData.name === 'OneDrive' ? `
                                                         <custom-button data="default|normal|small||false||" js="checkIfDonate('url', '${channelData.精简版}');" text="精简版"></custom-button>
                                                     ` : `
                                                         <custom-button data="default|normal|small||false||" js="showDisclaimerModal('${channelData.精简版}');" text="精简版"></custom-button>
@@ -263,28 +270,28 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                                                 `}
                                             </div>
                                             `}
-                                        </div>`).join("")}
-                                    ` : ""}
+                                        </div>`).join('')}
+                                    ` : ''}
                                     ${currentVersion.platforms[platform].style === 'channel' ? `
                                         <!-- 按下载渠道 -->
                                         ${Object.entries(currentVersion.platforms[platform].channels).map(([channelKey, channelData]) => `
                                         <div class="btn_group">
                                             ${channelData.完整 ? `
-                                                ${channelData.name === "OneDrive" ? `
+                                                ${channelData.name === 'OneDrive' ? `
                                                     <custom-button data="default|green|large||true|捐赠专享|Crown" js="checkIfDonate('url', '${channelData.完整}');" text="${channelData.name}"></custom-button>
                                                 ` : `
                                                     <custom-button data="default|normal|large||false||" js="ifNavigating('open', '${channelData.完整}');" text="${channelData.name}"></custom-button>
                                                 `}
                                             ` : `
-                                                ${channelData.name === "OneDrive" ? `
+                                                ${channelData.name === 'OneDrive' ? `
                                                     <custom-button data="default|disabled|large||true|捐赠专享|Crown" js="false" text="${channelData.name}"></custom-button>
                                                 ` : `
                                                     <custom-button data="default|disabled|large||false||" js="false" text="${channelData.name}"></custom-button>
                                                 `}
                                             `}
                                         </div>
-                                        `).join("")}
-                                    ` : ""}
+                                        `).join('')}
+                                    ` : ''}
                                 </div>
                             </div>
                         </div>
@@ -294,7 +301,7 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
                 // 填充侧边栏块
                 sidebarBlock.innerHTML = `
                     <a class="sidebar_item" href="${window.location.origin}${window.location.pathname}${window.location.search}#${currentVersion.id}">
-                        <article_list>${currentVersion.id}</article_list>
+                        <article_list>${currentVersion.version_name}</article_list>
                     </a>
                 `;
 
@@ -312,17 +319,16 @@ const dropdownData = JSON.parse(localStorage.getItem(`(${rootPath}/)dropdown_val
         }
     }
 
-    if (ifJump === "true") {
-        ifNavigating("direct", "./default/error_not-found.html");
+    if (ifJump === 'true') {
+        ifNavigating('direct', './default/error_not-found.html');
     }
 })();
 
 document.title = `${platformName} - ${version} - ${edition} - 星月Minecraft版本库`;
 platformIcon.src = `${rootPath}/images/logo/${platformName}.png`;
 mainTitle.innerHTML = `${platformName} - ${version} - ${edition}<img alt="" class="share_img_title" onclick="playSound('click');copyText(window.location.href, 'link');" src="./images/ExternalLink_white.png"/>`;
-sidebarTitle.innerHTML = `${version}`;
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
     const checkDropdownsExist = setInterval(() => {
         const dropdowns = document.querySelectorAll('custom-dropdown');
 

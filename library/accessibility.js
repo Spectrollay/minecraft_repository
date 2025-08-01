@@ -40,6 +40,7 @@ const inclusionSelectors = [
     '.clickable_no_link',
     '.header_item:not(.header_right_blank)',
     '#banner_tip',
+    '.image_load_error',
     'modal_close_btn',
     '.edition_block',
     'link-block',

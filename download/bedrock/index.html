@@ -89,6 +89,7 @@
         </div>
         <div class="header_logo">
             <img alt="" class="title_icon" src="./images/logo/Bedrock_Edition_icon.png"/>
+            <div class="header_title">索引</div>
         </div>
         <div class="header_right">
             <div class="header_item header_item_right" id="reload" onclick="playSoundType(this);reloadPage();">
@@ -109,7 +110,9 @@
                             <div class="title1">基岩版 - 版本索引<img alt="" class="share_img_title" onclick="playSound('click');copyText(window.location.href, 'link');" src="./images/ExternalLink_white.png"/></div>
                         </div>
                     </div>
-                    <div class="block_spacing"></div>
+                    <div class="banner_area">
+                        <div class="banner neutral_banner" id="banner_tip"></div>
+                    </div>
                     <div class="block">
                         <div class="block_main preview_block">
                             <div class="preview_title">响应式设计预览</div>
@@ -178,7 +181,7 @@
                                 <article_list>中文译名修正</article_list>
                             </a>
                             <a class="sidebar_item" href="./download/bedrock/#latest_quick_download">
-                                <article_list>最新</article_list>
+                                <article_list>最新版本快速下载</article_list>
                             </a>
                             <generate-area class="sidebar_gen">
                                 <div class="data_loading_area">
@@ -219,11 +222,13 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./library/lazyLoadImage.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/download_index_main.js"></script>
 <script src="./javascript/mcfc.js"></script>
 <script>

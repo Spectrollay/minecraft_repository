@@ -153,10 +153,10 @@
 <scroll-view>
     <scroll-container class="old primary_scroll_container">
         <main class="scroll_container" id="main">
-            <div class="banner_area" id="holiday_tip1">
+            <div class="banner_area" id="event_tip1">
                 <div class="banner important_banner" style="margin-bottom: 0"></div>
             </div>
-            <div class="banner_area" id="holiday_tip2">
+            <div class="banner_area" id="event_tip2">
                 <div class="banner important_banner" style="margin-bottom: 0"></div>
             </div>
             <div class="banner_area">
@@ -505,7 +505,7 @@
                 <div class="main footer_notice_body">
                     <div class="title3">使用条款与免责声明</div>
                     <div class="description2">
-                        <p>星月Minecraft版本库 (以下称作"本站") 收集的安装包仅供正版玩家学习 / 研究或欣赏, 不得传播 / 出售或用于其他任何商业或非商业用途.</p>
+                        <p>星月Minecraft版本库 (以下称作"本站") 提供的安装包资源仅供正版玩家学习 / 研究或欣赏, 不得传播 / 出售或用于其他任何商业或非商业用途.</p>
                         <p>你需要对使用本站的行为负责, 在本站下载的安装包所造成的一切后果请自行承担. 请你在24小时内将下载的安装包删除.</p>
                         <p>本站中的部分链接指向第三方运营的外部网站, 我们不能保证其稳定性和安全性. 在访问这些外部网站时, 你也需要遵循相关的使用条款.</p>
                         <p>使用本站即代表你同意此使用条款及免责申明. 下载本站提供的安装包即代表你同意 <a href="https://www.minecraft.net/terms" target="_blank">Minecraft使用准则</a> .</p>
@@ -624,11 +624,13 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./library/lazyLoadImage.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/data_driven.js"></script>
 <script src="javascript/mcfc.js"></script>
 <script>
@@ -640,7 +642,7 @@
 
     // TODO 新主页测试跳转逻辑
     if (localStorage.getItem(`(${rootPath}/)new_home_test`) === 'true') {
-        ifNavigating("direct", "./index_new.html");
+        ifNavigating('direct', './index_new.html');
     }
 
     switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`)) || {};
@@ -653,7 +655,7 @@
     if (repositoryAttribute) {
         if (repositoryAttribute.includes('test=true')) {
             if (!rootPath.includes('_test')) {
-                ifNavigating("direct", window.location.origin + "/minecraft_repository" + "_test");
+                ifNavigating('direct', window.location.origin + '/minecraft_repository' + '_test');
             }
         } else if (repositoryAttribute.includes('test=false')) {
             if (rootPath.includes('_test')) {

@@ -75,7 +75,6 @@
 
 * {
     -webkit-tap-highlight-color: transparent; /* 禁用高亮 */
-    overscroll-behavior: contain; /* 禁用过度滚动 */
     touch-action: manipulation; /* 禁用长按菜单 */
 }
 
@@ -92,7 +91,9 @@
 
 /* 总体样式 */
 html {
+    font-family: "NotoSans Bold", sans-serif;
     height: 100%;
+    overscroll-behavior: contain;
 }
 
 html.grayscale {
@@ -102,16 +103,35 @@ html.grayscale {
 
 body {
     background-color: #48494A;
-    font-family: "NotoSans Bold", sans-serif;
     height: 100%;
     margin: 0;
     min-width: 330px;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
+    scrollbar-width: none;
     -webkit-user-select: none;
 }
 
 body.old { /* TODO 旧页面完成迭代后移除 */
     height: auto;
+}
+
+/* 开发仓库全局水印 */
+body.test::after {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='20' y='80' text-anchor='start' font-family='sans-serif' font-size='20' fill='%23000000' transform='rotate(-45 20 80)'%3E%E5%BC%80%E5%8F%91%E4%BB%93%E5%BA%93%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='20' y='80' text-anchor='start' font-family='sans-serif' font-size='20' fill='%23000000' transform='rotate(-45 20 80)'%3E%E5%BC%80%E5%8F%91%E4%BB%93%E5%BA%93%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-position: 0 0, 90px 90px;
+    background-size: 180px 180px;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.2;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 dispaly-area {
@@ -126,7 +146,6 @@ header {
     background-color: #E6E8EB;
     border-bottom: 4px solid #B1B2B5;
     display: flex;
-    flex-shrink: 0;
     height: 40px;
     justify-content: space-between;
     min-width: 330px;
@@ -219,7 +238,7 @@ header {
     display: none;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1200px) {
     #menu {
         display: none;
     }
@@ -291,33 +310,29 @@ display-body {
     position: relative;
 }
 
-.main_scroll_view {
+scroll-view {
+    display: flex;
+    height: 100%;
     overflow: hidden;
+    width: 100%;
 }
 
 .main_scroll_view.animate {
     transition: margin-left 0.6s, width 0.6s;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1200px) {
     .main_scroll_view.with_sidebar {
-        margin-left: 182px;
-        width: calc(100% - 182px);
+        margin-left: 240px; /* NOTE 侧边栏的显示宽度 */
+        width: calc(100% - 240px); /* NOTE 要减去侧边栏的显示宽度 */
     }
-}
-
-scroll-view {
-    display: flex;
-    height: 100%;
-    width: 100%;
 }
 
 scroll-container {
     display: grid;
     flex: 1;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
     position: relative;
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -473,7 +488,7 @@ main {
     text-align: center;
 }
 
-#holiday_tip1, #holiday_tip2 {
+#event_tip1, #event_tip2 {
     display: none;
 }
 
@@ -579,7 +594,7 @@ main {
 }
 
 a {
-    box-shadow: inset 0 -2px 0 0 #FFFFFF;
+    box-shadow: inset 0 -2px 0 0 currentColor;
     color: inherit;
     position: relative;
     text-decoration: none;
@@ -652,6 +667,10 @@ a {
     justify-content: center;
 }
 
+.coming_soon-img {
+    height: 80px;
+}
+
 .notice_img {
     width: 280px;
 }
@@ -668,29 +687,6 @@ a {
     height: 20px;
 }
 
-/* Banner区域 */
-.banner_area {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-/* Banner主体 */
-.banner {
-    align-items: center;
-    color: #FFFFFF;
-    display: flex;
-    font-family: "NotoSans Bold", sans-serif;
-    hyphens: auto;
-    justify-content: center;
-    margin: 10px 20px;
-    min-height: 30px;
-    padding: 10px;
-    text-align: center;
-    width: calc(100% - 40px);
-    word-wrap: break-word;
-}
-
 .top_banner {
     margin-bottom: 0;
 }
@@ -701,86 +697,8 @@ a {
     width: 100%;
 }
 
-.neutral_banner {
-    background-color: #1E1E1F;
-}
-
-.information_banner {
-    background-color: #2E6BE5;
-}
-
-.important_banner {
-    background-color: #FFE866;
-    color: #000000;
-    font-weight: bolder;
-}
-
-.important_banner a {
-    box-shadow: inset 0 -2px 0 0 #000000;
-}
-
-/* Badge */
-.badge_area {
-    align-items: center;
-    display: flex;
-}
-
-.badge {
-    height: 6px;
-    margin-right: 6px;
-    width: 6px;
-}
-
-.green_badge {
-    background-color: #6CC349;
-}
-
-.blue_badge {
-    background-color: #8CB3FF;
-}
-
-.yellow_badge {
-    background-color: #FFE866;
-}
-
-.red_badge {
-    background-color: #F46D6D;
-}
-
-/* Tag */
-.tag_area {
-    align-items: center;
-    justify-content: center;
-}
-
-.tag {
-    color: #000000;
-    display: inline-flex;
-    font-size: 12px;
-    margin: 0 4px;
-    padding: 0 2px;
-    text-wrap: nowrap;
-}
-
-.black_tag {
-    background-color: #1E1E1F;
-    color: #FFFFFF;
-}
-
-.green_tag {
-    background-color: #6CC349;
-}
-
-.blue_tag {
-    background-color: #8CB3FF;
-}
-
-.yellow_tag {
-    background-color: #FFE866;
-}
-
-.red_tag {
-    background-color: #F46D6D;
+#banner_tip {
+    cursor: pointer;
 }
 
 .data_loading_area {
@@ -1032,7 +950,6 @@ link-block:hover, link-block:active {
 
 .download_block_title {
     margin: 8px 16px;
-    width: 318px;
 }
 
 .share_img_title {
@@ -1042,21 +959,37 @@ link-block:hover, link-block:active {
     margin-top: 4px; /* 在视觉上居中 */
 }
 
+.version_info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+}
+
 .download_block_description {
     color: rgba(255, 255, 255, 0.8);
     margin: 8px 16px;
     text-align: left;
-    width: min(95%, 400px);
+    width: 95%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 460px) {
     .download_block_description {
-        width: 400px;
+        transition: 0.6s;
+        width: 380px;
     }
 }
 
-@media screen and (min-width: 1100px) {
-    .download_block_description {
+@media screen and (min-width: 1200px) {
+    .download_block_description.release_description {
+        max-width: 510px;
+        transition: none;
+        width: max(380px, 30vw);
+    }
+
+    .download_block_description.update_description {
+        transition: 0.6s;
         width: 500px;
     }
 }
@@ -1186,10 +1119,6 @@ td {
     color: rgba(255, 255, 255, 0.4);
 }
 
-.page_info a {
-    box-shadow: inset 0 -2px 0 0 rgba(255, 255, 255, 0.4);
-}
-
 /* 侧边栏 */
 .sidebar {
     background-color: #313233;
@@ -1197,13 +1126,13 @@ td {
     display: flex;
     font-family: "NotoSans Bold", sans-serif;
     height: 100%;
-    left: -182px; /* 初始隐藏到屏幕左侧 */
+    left: -240px; /* NOTE 侧边栏的显示宽度 */
     overflow-x: hidden;
     overflow-y: hidden;
     position: absolute;
     top: 0;
     transition: left 0.6s, width 0.6s;
-    width: 180px;
+    width: 238px; /* NOTE 侧边栏的宽度 */
     z-index: 10;
 }
 
@@ -1213,26 +1142,26 @@ td {
     top: 44px;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1200px) {
     .sidebar.new {
         left: 0 !important;
     }
 
     .sidebar.old { /* TODO 旧页面完成迭代后移除 */
-        left: -182px;
+        left: -240px; /* NOTE 侧边栏的显示宽度 */
     }
 }
 
 .secondary_scroll_container {
     height: 100%;
     top: 0;
-    width: 180px;
+    width: 100%;
 }
 
 .secondary_scroll_container.old { /* TODO 旧页面完成迭代后移除 */
     height: calc(100% - 44px);
     top: 44px;
-    width: 180px;
+    width: 240px; /* NOTE 侧边栏的显示宽度 */
 }
 
 .sidebar a {
@@ -1255,13 +1184,11 @@ td {
     flex-direction: column;
     font-size: 14px;
     justify-content: center;
-    min-width: 148px;
     width: 100%;
 }
 
 .sidebar_list {
     border-bottom: 2px solid #000000;
-    width: 100%;
 }
 
 .sidebar_item {
@@ -1270,14 +1197,14 @@ td {
     display: flex;
     height: 40px;
     padding-left: 10px;
-    width: 170px;
 }
 
 .sidebar_detail_title {
     font-family: "Minecraft Ten", sans-serif;
     font-size: 20px;
-    height: 30px;
     margin: 6px 0;
+    min-height: 30px;
+    text-align: center;
 }
 
 .sidebar_detail_title, .sidebar_detail {
@@ -1325,7 +1252,7 @@ td {
     z-index: 9;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1200px) {
     .overlay_main.new { /* TODO 旧页面完成迭代后移除 */
         display: none !important;
     }

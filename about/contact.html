@@ -88,7 +88,9 @@
         <div class="header_item header_item_left" id="back" onclick="clickedBack();">
             <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
         </div>
-        <div class="header_logo"><div class="header_title">Minecraft Kit</div></div>
+        <div class="header_logo">
+            <div class="header_title">Minecraft Kit</div>
+        </div>
         <div class="header_item header_item_right header_right_blank"></div>
     </header>
     <display-body>
@@ -106,7 +108,7 @@
                                 <div class="contact_description">当你在使用过程中发现问题或有新的建议时, 你可以通过以下方式向我们反馈. 值得注意的是, 你在聊天群组中同样也可以反馈, 但是通过以下方式提交的反馈将会在评估通过后发放一定的权益.</div>
                                 <div class="body_text">反馈
                                     <div class="wrap_flex">
-                                        <link-block class="contact_link_block" onclick="playSound('click');openLink('https://github.com/Spectrollay/minecraft_repository/issues/new');">
+                                        <link-block class="contact_link_block" onclick="playSound('click');openLink('https://github.com/Spectrollay/minecraft_repository/issues/new/choose');">
                                             <div class="link_title">
                                                 <img alt="" class="link_title_img" src="./images/Github.png">Github
                                             </div>
@@ -201,10 +203,12 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/mcfc.js"></script>
 <!--<script>-->
 <!--    -->

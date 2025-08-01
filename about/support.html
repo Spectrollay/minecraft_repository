@@ -85,7 +85,9 @@
         <div class="header_item header_item_left" id="back" onclick="clickedBack();">
             <img alt="" class="header_left_icon" id="back_icon" src="./images/Back.png"/>
         </div>
-        <div class="header_logo"><div class="header_title">Minecraft Kit</div></div>
+        <div class="header_logo">
+            <div class="header_title">Minecraft Kit</div>
+        </div>
         <div class="header_item header_item_right header_right_blank"></div>
     </header>
     <display-body>
@@ -118,11 +120,11 @@
                                 </div>
                             </div>
                             <div class="wrap_flex">
-                                <div class="support_tip">你可以通过多种方式支持我们:<br>
-                                    1. 版本库目前的年均成本在两百元左右, 用爱发电并不能维持它的长久运营. 如果你已经实现了经济独立, 可以考虑通过捐赠来支持我们. 所有的捐赠都将用于维持运营和提升环境配置.<br>
-                                    2. 你可以通过点击我们分享的网盘链接转存文件或购买付费项目以支持我们. 转存文件是便捷且完全免费的, 你只需要动动手就可以提高我们的曝光度. 付费项目的分成都将用于版本库的常规开销.<br>
-                                    3. 还有一个最简单也最有效的方法, <a class="clickable_no_link" onclick="copyText('https://spectrollay.github.io/minecraft_repository/', 'link');">复制版本库的链接地址</a>并将其分享给可能会需要的人. 推广版本库, 让更多的人知道并使用版本库, 这可以在很大程度上提升我们的开发和维护动力.<br>
-                                    4. 最后, 夹带点私货, 欢迎来<a href="https://h5.lot-ml.com/ProductEn/Shop/84337a7a5311e254" target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png">我的小店</a>看看.
+                                <div class="support_tip">你可以通过多种方式支持我们:
+                                    <div class="tag_area"><span class="tag blue_tag">1.</span>版本库目前的年均成本在两百元左右, 用爱发电并不能维持它的长久运营. 如果你已经实现了经济独立, 可以考虑通过捐赠来支持我们. 所有的捐赠都将用于维持运营和提升环境配置.</div>
+                                    <div class="tag_area"><span class="tag blue_tag">2.</span>你可以通过点击我们分享的网盘链接转存文件或购买付费项目以支持我们. 转存文件是便捷且完全免费的, 你只需要动动手就可以提高我们的曝光度. 付费项目的分成都将用于版本库的常规开销.</div>
+                                    <div class="tag_area"><span class="tag blue_tag">3.</span>还有一个最简单也最有效的方法, <a class="clickable_no_link" onclick="copyText('https://spectrollay.github.io/minecraft_repository/', 'link');">复制版本库的链接地址</a>并将其分享给可能会需要的人. 推广版本库, 让更多的人知道并使用版本库, 这可以在很大程度上提升我们的开发和维护动力.</div>
+                                    <div class="tag_area"><span class="tag blue_tag">4.</span>最后, 夹带点私货, 欢迎来<a href="https://h5.lot-ml.com/ProductEn/Shop/84337a7a5311e254" target="_blank"><img alt="link" class="link_img" src="./images/ExternalLink_white.png">我的小店</a>看看.</div>
                                 </div>
                             </div>
                         </div>
@@ -153,10 +155,12 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/mcfc.js"></script>
 <!--<script>-->
 <!--    -->

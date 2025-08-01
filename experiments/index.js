@@ -31,14 +31,14 @@ let switchValues;
 
 function flagsPage() {
     if (!rootPath.includes('_test')) {
-        ifNavigating("jump", rootPath + "/flags/");
+        ifNavigating('jump', rootPath + '/flags/');
     } else {
         switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`)) || {};
         newFlagsPageState = switchValues['new_flags_page'] || newFlagsPageSwitch.getAttribute('active'); // 默认禁用
         if (newFlagsPageState === 'on') {
-            ifNavigating("jump", rootPath + "/flags/");
+            ifNavigating('jump', rootPath + '/flags/');
         } else {
-            ifNavigating("jump", rootPath + "/experiments/");
+            ifNavigating('jump', rootPath + '/experiments/');
         }
     }
 }

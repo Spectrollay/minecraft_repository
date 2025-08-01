@@ -28,9 +28,9 @@ function showScroll(customScrollbar) {
     if (customScrollbar._scrollHideTimeout) {
         clearTimeout(customScrollbar._scrollHideTimeout); // 清除之前的隐藏定时器
     }
-    customScrollbar.style.opacity = "1"; // 显示滚动条
+    customScrollbar.style.opacity = '1'; // 显示滚动条
     customScrollbar._scrollHideTimeout = setTimeout(() => {
-        customScrollbar.style.opacity = "0"; // 3秒后隐藏滚动条
+        customScrollbar.style.opacity = '0'; // 3秒后隐藏滚动条
     }, 3000);
 }
 
@@ -115,7 +115,7 @@ function handlePointerMove(e, dragState, thumb, container, content, customScroll
     const maxScrollTop = content.scrollHeight - containerHeight; // 计算页面内容的滚动位置
 
     container.scrollTo({
-        top: (newTop / maxThumbTop) * maxScrollTop, behavior: "instant" // 滚动时不产生动画
+        top: (newTop / maxThumbTop) * maxScrollTop, behavior: 'instant' // 滚动时不产生动画
     });
 
     updateThumb(thumb, container, content, customScrollbar);
@@ -195,7 +195,7 @@ function initializeScrollContainers() {
 }
 
 // 初始化滚动容器
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
     initializeScrollContainers();
 });
 
@@ -242,7 +242,7 @@ class CustomButton extends HTMLElement {
         const js = this.getAttribute('js') || 'false'; // 附带函数
         const text = this.getAttribute('text') || ''; // 文本
 
-        if (ctype === "default") {
+        if (ctype === 'default') {
             if (cisTip === true) {
                 this.innerHTML = `
                     <div class="btn_with_tooltip_cont">
@@ -277,7 +277,7 @@ class CustomButton extends HTMLElement {
                 this.dispatchEvent(buttonClickEvent);
             });
             if (this.status !== 'disabled') {
-                if (js !== "false") {
+                if (js !== 'false') {
                     button.addEventListener('click', () => {
                         try {
                             logManager.log(`按钮 ${text} 执行函数: ${js}`);
@@ -543,10 +543,10 @@ customElements.define('custom-dropdown', CustomDropdown);
 
 // Modal弹窗
 function showModal(modal) {
-    const overlay = document.getElementById("overlay_" + modal);
+    const overlay = document.getElementById('overlay_' + modal);
     const frame = document.getElementById(modal);
-    overlay.style.display = "block";
-    frame.style.display = "block";
+    overlay.style.display = 'block';
+    frame.style.display = 'block';
     frame.focus(); // 将焦点聚集到弹窗上,防止选中弹窗下方元素
     logManager.log("显示弹窗 " + modal);
 
@@ -582,7 +582,7 @@ function hideModal(source) {
         return;
     }
 
-    const overlay = document.getElementById("overlay_" + frameId);
+    const overlay = document.getElementById('overlay_' + frameId);
     const frame = document.getElementById(frameId);
 
     if (!overlay || !frame) {
@@ -590,8 +590,8 @@ function hideModal(source) {
         return;
     }
 
-    overlay.style.display = "none";
-    frame.style.display = "none";
+    overlay.style.display = 'none';
+    frame.style.display = 'none';
     logManager.log("隐藏弹窗 " + frameId);
 
     // 创建弹窗隐藏自定义事件
@@ -611,15 +611,15 @@ document.querySelectorAll('modal_close_btn').forEach(modal_close_btn => {
 
 // Pop弹窗
 function showPop(message, duration, styleClass) {
-    const area = document.getElementById("pop_area");
-    const pop = document.createElement("div");
+    const area = document.getElementById('pop_area');
+    const pop = document.createElement('div');
 
     duration = Number(duration);
     if (!Number.isFinite(duration) || duration <= 0) {
         duration = 3000;
     }
 
-    pop.className = "pop" + (styleClass ? ` ${styleClass}` : "");
+    pop.className = 'pop' + (styleClass ? ` ${styleClass}` : '');
     pop.textContent = message;
 
     setTimeout(() => {
@@ -629,14 +629,14 @@ function showPop(message, duration, styleClass) {
         // 插入后触发动画
         requestAnimationFrame(() => {
             void pop.offsetHeight;
-            pop.classList.add("show");
+            pop.classList.add('show');
         });
 
         manageVisiblePops(); // 控制最多显示5个
 
         // 自动移除
         setTimeout(() => {
-            pop.classList.remove("show");
+            pop.classList.remove('show');
             setTimeout(() => {
                 // 删除前尝试恢复旧的未到消失时间的pop
                 if (area.contains(pop)) {
@@ -649,17 +649,17 @@ function showPop(message, duration, styleClass) {
 }
 
 function manageVisiblePops() {
-    const area = document.getElementById("pop_area");
-    const pops = Array.from(area.querySelectorAll(".pop"));
+    const area = document.getElementById('pop_area');
+    const pops = Array.from(area.querySelectorAll('.pop'));
 
     // 找出所有还未到消失时间的pop
-    const visiblePops = pops.filter(p => p.style.display !== 'none' && p.classList.contains("show"));
+    const visiblePops = pops.filter(p => p.style.display !== 'none' && p.classList.contains('show'));
 
     if (visiblePops.length >= 5) {
         // 隐藏旧的那个还在显示的pop
         for (let i = pops.length - 1; i >= 0; i--) {
             const p = pops[i];
-            if (p.style.display !== 'none' && p.classList.contains("show")) {
+            if (p.style.display !== 'none' && p.classList.contains('show')) {
                 p.style.display = 'none';
                 break;
             }
@@ -668,17 +668,17 @@ function manageVisiblePops() {
 }
 
 function restoreHiddenPop() {
-    const area = document.getElementById("pop_area");
-    const pops = Array.from(area.querySelectorAll(".pop"));
+    const area = document.getElementById('pop_area');
+    const pops = Array.from(area.querySelectorAll('.pop'));
 
     // 当前显示的pop数量
-    const visibleCount = pops.filter(p => p.style.display !== 'none' && p.classList.contains("show")).length;
+    const visibleCount = pops.filter(p => p.style.display !== 'none' && p.classList.contains('show')).length;
 
     // 只有有空位时才恢复隐藏的pop
     if (visibleCount < 5) {
         for (let i = pops.length - 1; i >= 0; i--) {
             const p = pops[i];
-            if (p.style.display === 'none' && p.classList.contains("show")) {
+            if (p.style.display === 'none' && p.classList.contains('show')) {
                 p.style.display = '';
                 break;
             }
@@ -737,9 +737,9 @@ class CustomSlider extends HTMLElement {
         const segments = sliderData.segments; // 分段滑块标识
         const initialValue = sliderData.initialValue || minValue; // 默认值(默认为最小值)
         const showSegments = this.getAttribute('data-show-segments');
-        const customSegments = this.getAttribute('data-custom-segments') === "true";
+        const customSegments = this.getAttribute('data-custom-segments') === 'true';
         const segmentValues = customSegments ? JSON.parse(this.getAttribute('data-segment-values')) : [];
-        const isDisabled = this.getAttribute('status') === "disabled"; // 状态
+        const isDisabled = this.getAttribute('status') === 'disabled'; // 状态
         const type = this.getAttribute('type');
         const sliderId = this.id; // ID
 
@@ -832,7 +832,7 @@ class CustomSlider extends HTMLElement {
 
         if (type === 'range') {
             // 添加最小值和最大值提示
-            if (showSegments === null || showSegments === "true") {
+            if (showSegments === null || showSegments === 'true') {
                 const minValueLabel = document.createElement('div');
                 minValueLabel.classList.add('slider_value_info');
                 minValueLabel.textContent = formatIntegerValue(minValue);
@@ -861,7 +861,7 @@ class CustomSlider extends HTMLElement {
                     slider.appendChild(segment);
                 }
 
-                if (showSegments === "true") {
+                if (showSegments === 'true') {
                     const segmentValueLabel = document.createElement('div');
                     const segmentValue = customSegments ? segmentValues[i] : minValue + i * (maxValue - minValue) / segments;
                     segmentValueLabel.classList.add('slider_value_info');
@@ -1036,12 +1036,12 @@ class CustomSwitch extends HTMLElement {
         this.isSwitchDisabled = this.getAttribute('status') !== 'enabled';
 
         // 更新元素的类名
-        const switchElement = this.querySelector(".switch");
+        const switchElement = this.querySelector('.switch');
         if (switchElement) {
-            switchElement.classList.toggle("on", this.isSwitchOn);
-            switchElement.classList.toggle("off", !this.isSwitchOn);
-            switchElement.classList.toggle("disabled_switch", this.isSwitchDisabled);
-            switchElement.classList.toggle("normal_switch", !this.isSwitchDisabled);
+            switchElement.classList.toggle('on', this.isSwitchOn);
+            switchElement.classList.toggle('off', !this.isSwitchOn);
+            switchElement.classList.toggle('disabled_switch', this.isSwitchDisabled);
+            switchElement.classList.toggle('normal_switch', !this.isSwitchDisabled);
         }
     }
 
@@ -1060,8 +1060,8 @@ class CustomSwitch extends HTMLElement {
     }
 
     bindEvents() {
-        const switchElement = this.querySelector(".switch");
-        const switchSlider = this.querySelector(".switch_slider");
+        const switchElement = this.querySelector('.switch');
+        const switchSlider = this.querySelector('.switch_slider');
         logManager.log(`开关 ${this.id} 值设置为: ${this.isSwitchOn}`);
 
         if (!this.isSwitchDisabled) {
@@ -1111,23 +1111,23 @@ class CustomSwitch extends HTMLElement {
 
             // 绑定点击和拖动事件
             const parentElement = this.parentElement.parentElement;
-            parentElement.addEventListener("click", handleClick);
-            switchElement.addEventListener("mousedown", handlePointerDown);
-            switchElement.addEventListener("touchstart", handlePointerDown);
-            switchElement.addEventListener("mousemove", handlePointerMove);
-            switchElement.addEventListener("touchmove", handlePointerMove);
-            document.addEventListener("mouseup", handlePointerUp);
-            document.addEventListener("touchend", handlePointerUp);
+            parentElement.addEventListener('click', handleClick);
+            switchElement.addEventListener('mousedown', handlePointerDown);
+            switchElement.addEventListener('touchstart', handlePointerDown);
+            switchElement.addEventListener('mousemove', handlePointerMove);
+            switchElement.addEventListener('touchmove', handlePointerMove);
+            document.addEventListener('mouseup', handlePointerUp);
+            document.addEventListener('touchend', handlePointerUp);
         }
     }
 
     updateSwitchState(isOn) {
         this.setAttribute('active', isOn ? 'on' : 'off');
-        const switchElement = this.querySelector(".switch");
-        const switchSlider = this.querySelector(".switch_slider");
+        const switchElement = this.querySelector('.switch');
+        const switchSlider = this.querySelector('.switch_slider');
 
-        switchElement.classList.toggle("on", isOn);
-        switchElement.classList.toggle("off", !isOn);
+        switchElement.classList.toggle('on', isOn);
+        switchElement.classList.toggle('off', !isOn);
         logManager.log(isOn ? "打开开关 " + this.id : "关闭开关 " + this.id);
         playSound('click');
 
@@ -1145,7 +1145,7 @@ class CustomSwitch extends HTMLElement {
             switchSlider.classList.remove('switch_bounce_left');
         }
 
-        const switchStatus = this.querySelector(".switch_status");
+        const switchStatus = this.querySelector('.switch_status');
         if (switchStatus) {
             switchStatus.textContent = `Toggle: ${isOn ? 'Open' : 'Close'}`;
         }
@@ -1421,7 +1421,7 @@ class TextField extends HTMLElement {
         }
 
         const currentValue = this.inputField.value;
-        if (this.parentElement && this.parentElement.classList.contains("do_not_save")) return;
+        if (this.parentElement && this.parentElement.classList.contains('do_not_save')) return;
 
         const keyInStoredData = this.classList[0];
 

@@ -47,14 +47,14 @@
 
 我们非常欢迎并感谢所有为本项目做出贡献的开发者和社区成员！你的参与是项目持续发展的动力。如果你有兴趣为星月 Minecraft 版本库添砖加瓦，无论是代码贡献、Bug 反馈、功能建议还是文档优化，都请参阅以下指引：
 
-1.  **报告 Bug 或提出功能建议**：请直接在 [**GitHub Issues**](https://github.com/Spectrollay/minecraft_repository/issues) 页面提交。在提交前，请先搜索是否已有类似问题，并尽量提供详细的描述和复现步骤。
-2.  **提交代码贡献**：
+1. **报告 Bug 或提出功能建议**：请直接在 [**GitHub Issues**](https://github.com/Spectrollay/minecraft_repository/issues) 页面提交。在提交前，请先搜索是否已有类似问题，并尽量提供详细的描述和复现步骤。
+2. **提交代码贡献**：
     * 首先，请 Fork 本仓库。
     * 接着，创建你自己的功能分支 (`git checkout -b feature/YourFeatureName`)。
     * 完成开发后，请提交你的更改 (`git commit -m 'feat: Add new feature'`)。
     * 最后，将你的分支推送到远程仓库 (`git push origin feature/YourFeatureName`) 并提交 Pull Request (PR)。
     * 请确保你的代码符合项目规范，并附上清晰的 PR 描述。
-3.  **完善文档或翻译**：我们同样欢迎对项目文档进行改进或提供多语言翻译。
+3. **完善文档或翻译**：我们同样欢迎对项目文档进行改进或提供多语言翻译。
 
 ---
 

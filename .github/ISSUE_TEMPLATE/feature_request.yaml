@@ -1,7 +1,7 @@
 name: 新功能提议
 description: 向我们提出你希望的新功能
 title: "[新功能]: "
-labels: ["新功能(new feature)"]
+labels: [ "新功能(new feature)" ]
 
 body:
   - type: markdown

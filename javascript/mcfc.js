@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2020. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,10 +41,10 @@ const styleMap = {
 
 // 字符宽度分组池
 const charPools = {
-    'charWidth1': "',.:;i|! `l",
-    'charWidth2': "*-I[]jt\"()<>fk{}",
-    'charWidth3': "$%&+/0123456789=?ABCDEFGHJKLMNOPQRSTUVWXYZ\\^_abcdeghmnopqrsuvwxyz",
-    'charWidth4': "@~"
+    'charWidth1': '\',.:;i|! `l',
+    'charWidth2': '*-I[]jt\"()<>fk{}',
+    'charWidth3': '$%&+/0123456789=?ABCDEFGHJKLMNOPQRSTUVWXYZ\\^_abcdeghmnopqrsuvwxyz',
+    'charWidth4': '@~'
 };
 
 // 构建字符 => 宽度类名映射表
@@ -149,7 +149,7 @@ function getStrokeColor(color) {
 
 // 将带有§代码的字符串解析为HTML结构
 function parseMinecraftText(text, defaultColor) {
-    const container = document.createElement("span");
+    const container = document.createElement('span');
     let currentColor = `color: ${defaultColor};`;
     let strokeColor = getStrokeColor(defaultColor);
     let currentStyles = '';
@@ -186,22 +186,22 @@ function parseMinecraftText(text, defaultColor) {
 
         // 处理空格字符
         if (text[i] === ' ') {
-            const spaceSpan = document.createElement("span");
-            spaceSpan.textContent = "\u00A0";  // HTML的空格符号为&nbsp;
+            const spaceSpan = document.createElement('span');
+            spaceSpan.textContent = '\u00A0';  // HTML的空格符号为&nbsp;
             container.appendChild(spaceSpan);
             continue;
         }
 
         // 创建两个嵌套元素以支持描边和乱码
-        const outerSpan = document.createElement("span");
-        const innerSpan = document.createElement("span");
+        const outerSpan = document.createElement('span');
+        const innerSpan = document.createElement('span');
 
         outerSpan.style.cssText = `paint-order: stroke; -webkit-text-stroke: 0.03em ${strokeColor}; display: inline-block;`;
         innerSpan.style.cssText = currentColor + currentStyles;
 
         if (obfuscated) {
             const widthClass = getCharWidthClass(text[i]);
-            outerSpan.classList.add("randomChar", widthClass);
+            outerSpan.classList.add('randomChar', widthClass);
             outerSpan.dataset.char = text[i]; // 保存原字符用于乱码还原
             innerSpan.textContent = getRandomChar(text[i]);
         } else {
@@ -229,8 +229,8 @@ function renderAllMinecraftText() {
 
 // 每30ms更新一次乱码字符
 setInterval(() => {
-    document.querySelectorAll(".randomChar").forEach(element => { // element是外部元素
-        const baseChar = element.dataset.char || "a";
+    document.querySelectorAll('.randomChar').forEach(element => { // element是外部元素
+        const baseChar = element.dataset.char || 'a';
         if (element.firstChild && element.firstChild.nodeName === 'SPAN') { // 确保内部元素存在
             element.firstChild.textContent = getRandomChar(baseChar);
         }

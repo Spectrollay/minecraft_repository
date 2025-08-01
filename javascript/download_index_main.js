@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2020. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,10 @@
 
 rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
 hostPath = window.location.origin;
-data = hostPath + "/data";
+data = hostPath + '/data';
 
-const mainContainer = document.querySelector("generate-area.main_gen");
-const sidebarContainer = document.querySelector("generate-area.sidebar_gen");
+const mainContainer = document.querySelector('generate-area.main_gen');
+const sidebarContainer = document.querySelector('generate-area.sidebar_gen');
 let dataFile, dataPath, edition;
 if (hostPath.includes('https')) {
     dataPath = data + '/minecraft_repository';
@@ -66,7 +66,7 @@ if (dataFile && mainContainer && sidebarContainer) {
     fetch(dataFile)
         .then(response => response.text())
         .then(rawJson => {
-            const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, "").trim(); // 移除注释
+            const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, '').trim(); // 移除注释
             const versions = JSON.parse(cleanedJson);
 
             // 清除原有内容
@@ -75,25 +75,25 @@ if (dataFile && mainContainer && sidebarContainer) {
 
             // 遍历所有版本
             versions.forEach(version => {
-                const mainBlock = document.createElement("div");
-                const sidebarBlock = document.createElement("div");
+                const mainBlock = document.createElement('div');
+                const sidebarBlock = document.createElement('div');
 
                 mainBlock.innerHTML = `
                     <div class="block_spacing"></div>
                     <div class="block" id="${version.id}">
                         <div class="block_main wrap_flex">
-                            <div>
+                            <div class="version_info">
                                 <div class="title2 download_block_title">${version.title}</div>
                                 ${version.logo ? `<div class="update_logo_area">
                                     <img alt="" class="update_logo" src="${rootPath}/images/update/logo/${version.logo}"/>
-                                </div>` : ""}
+                                </div>` : ''}
                             </div>
                             <div class="update_artwork_area">
                                 <img alt="" class="update_artwork" src="${rootPath}/images/update/artwork/${version.artwork}"/>
                             </div>
                         </div>
                         <div class="block_main wrap_flex">
-                            <div class="download_block_description">${version.description}</div>
+                            <div class="download_block_description release_description">${version.description}</div>
                             <div class="link_block_group">
                                 <div class="link_block_group_title">下载</div>
                                 <div class="wrap_flex">
@@ -102,7 +102,7 @@ if (dataFile && mainContainer && sidebarContainer) {
                                         <div class="link_title">
                                             <img alt="" class="link_title_img" src="${rootPath}/images/logo/${platformKey}.png"/>${platformName}
                                         </div>
-                                    </link-block>`).join("")}
+                                    </link-block>`).join('')}
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ if (dataFile && mainContainer && sidebarContainer) {
                 `;
 
                 sidebarBlock.innerHTML = `
-                    <a class="sidebar_item" href="${window.location}#${version.id}"><article_list>${version.id}</article_list></a>
+                    <a class="sidebar_item" href="${window.location}#${version.id}"><article_list>${version.title}</article_list></a>
                 `;
 
                 // 添加到容器中

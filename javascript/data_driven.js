@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2020. Spectrollay
+ * Copyright © 2020. Spectrollay
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 
 rootPath = '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '');
 hostPath = window.location.origin;
-data = hostPath + "/data";
+data = hostPath + '/data';
 
 // 友链
 (async function () {
@@ -35,15 +35,15 @@ data = hostPath + "/data";
     try {
         const response = await fetch(reciprocal_links);
         let rawJson = await response.text(); // 获取原始文本
-        const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, "").trim(); // 移除注释
+        const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, '').trim(); // 移除注释
         const data = JSON.parse(cleanedJson); // 解析为JSON对象
-        const container = document.getElementById("reciprocal_link_list");
+        const container = document.getElementById('reciprocal_link_list');
         if (container) {
             container.innerHTML = '';
             data.forEach(link => {
-                const block = document.createElement("link-block");
-                block.className = "reciprocal_link_block";
-                block.setAttribute("onclick", `playSound('click');openLink('${link.url}');`);
+                const block = document.createElement('link-block');
+                block.className = 'reciprocal_link_block';
+                block.setAttribute('onclick', `playSound('click');openLink('${link.url}');`);
                 block.innerHTML = `
                     <div class="link_title">
                         <img alt="" class="link_title_img" loading="lazy" src="${link.img}">
@@ -71,13 +71,13 @@ data = hostPath + "/data";
     try {
         const response = await fetch(donors);
         let rawJson = await response.text(); // 获取原始文本
-        const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, "").trim(); // 移除注释
+        const cleanedJson = rawJson.replace(/ \/\/.*|\/\*[\s\S]*?\*\//g, '').trim(); // 移除注释
         const data = JSON.parse(cleanedJson); // 解析为JSON对象
-        const container = document.getElementById("donate_list");
+        const container = document.getElementById('donate_list');
         if (container) {
             data.forEach(entry => {
-                const block = document.createElement("tr");
-                block.className = "donor_list";
+                const block = document.createElement('tr');
+                block.className = 'donor_list';
                 block.innerHTML = `
                     <td class="donor_name">${entry.user}</td>
                     <td class="donor_amount">${entry.amount}</td>

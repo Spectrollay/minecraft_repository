@@ -55,14 +55,14 @@ You're warmly invited to join our active community! Connect with Minecraft enthu
 
 We highly appreciate and welcome all developers and community members who wish to contribute to this project! Your involvement is the driving force behind its continuous improvement. If you're interested in enhancing the StarMoon Minecraft Repository, whether through code contributions, bug reports, feature suggestions, or documentation improvements, please follow these guidelines:
 
-1.  **Report Bugs or Suggest Features**: Please submit them directly on the [**GitHub Issues**](https://github.com/Spectrollay/minecraft_repository/issues) page. Before submitting, kindly search to see if a similar issue already exists, and provide detailed descriptions and steps to reproduce if applicable.
-2.  **Submit Code Contributions**:
+1. **Report Bugs or Suggest Features**: Please submit them directly on the [**GitHub Issues**](https://github.com/Spectrollay/minecraft_repository/issues) page. Before submitting, kindly search to see if a similar issue already exists, and provide detailed descriptions and steps to reproduce if applicable.
+2. **Submit Code Contributions**:
     * First, **Fork** this repository.
     * Next, create your own feature branch (`git checkout -b feature/YourFeatureName`).
     * After completing your development, commit your changes (`git commit -m 'feat: Add new feature'`).
     * Finally, push your branch to the remote repository (`git push origin feature/YourFeatureName`) and submit a **Pull Request (PR)**.
     * Please ensure your code adheres to project standards and includes a clear PR description.
-3.  **Improve Documentation or Translations**: We also welcome contributions to improve project documentation or provide multi-language translations (especially for the upcoming multi-language site!).
+3. **Improve Documentation or Translations**: We also welcome contributions to improve project documentation or provide multi-language translations (especially for the upcoming multi-language site!).
 
 ---
 

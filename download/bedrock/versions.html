@@ -41,13 +41,6 @@
     <link href="./stylesheet/mcfc.css" rel="stylesheet">
     <link href="./images/logo/Bedrock_Edition_icon.png" rel="icon">
     <style>
-        .version_info {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
         .description_info {
             display: flex;
             align-items: center;
@@ -109,6 +102,7 @@
         <div class="header_logo">
             <img alt="" class="title_icon" src="./images/logo/Bedrock_Edition_icon.png"/>
             <img alt="" class="title_icon platform_icon" src=""/>
+            <div class="header_title">下载</div>
         </div>
         <div class="header_right">
             <div class="header_item header_item_right" id="reload" onclick="playSoundType(this);reloadPage();">
@@ -139,6 +133,9 @@
                             <div class="wrap_flex">
                                 <div class="title1" id="update_name"></div>
                             </div>
+                        </div>
+                        <div class="banner_area">
+                            <div class="banner neutral_banner" id="banner_tip"></div>
                         </div>
                         <div class="mclang_cn_fix" id="mclang_cn_fix">
                             <div class="block_main wrap_flex">
@@ -254,15 +251,17 @@
 </body>
 
 <script src="./javascript/loading.js"></script>
+<script src="./library/lunar.js"></script>
 <script src="./library/accessibility.js"></script>
 <script src="./library/lazyLoadImage.js"></script>
 <script src="./javascript/public_script.js"></script>
 <script src="./javascript/public_define.js"></script>
 <script src="./javascript/custom_elements.js"></script>
+<script src="./javascript/events.js"></script>
 <script src="./javascript/download_index_version.js"></script>
 <script src="./javascript/mcfc.js"></script>
 <script>
-    document.getElementById("ctr_sidebar").href = window.location.origin + window.location.pathname + window.location.search + "#mclang_cn_fix";
+    document.getElementById('ctr_sidebar').href = window.location.origin + window.location.pathname + window.location.search + '#mclang_cn_fix';
 
     // 惰性加载
     const lazyImage = new LazyLoadImage('img');
