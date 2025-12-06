@@ -88,9 +88,9 @@ if (dataFile && mainContainer && sidebarContainer) {
                                     <img alt="" class="update_logo" src="${rootPath}/images/update/logo/${version.logo}"/>
                                 </div>` : ''}
                             </div>
-                            <div class="update_artwork_area">
+                            ${version.artwork ? `<div class="update_artwork_area">
                                 <img alt="" class="update_artwork" src="${rootPath}/images/update/artwork/${version.artwork}"/>
-                            </div>
+                            </div>` : ''}
                         </div>
                         <div class="block_main wrap_flex">
                             <div class="download_block_description release_description">${version.description}</div>

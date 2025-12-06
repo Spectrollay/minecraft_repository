@@ -199,6 +199,7 @@
   "images\\update\\artwork\\Pocket_0.8.0.jpg": "6c1d5fdb1ac66da97224e7c2a3a37839",
   "images\\update\\artwork\\Pocket_0.9.0.jpg": "589df8c9387056101b713dc5171a5a79",
   "images\\update\\artwork\\Spring_to_Life_Artwork.jpg": "ce69fd6bc2d520eb5f20d22525f48241",
+  "images\\update\\artwork\\The_Copper_Age_Key_Art.png": "a6762e217d08ed9047d26469f689c6ef",
   "images\\update\\artwork\\The_Garden_Awakens_Artwork.jpg": "320413cfc3125a364a505fa357de6fa7",
   "images\\update\\artwork\\Trails_&_Tales_Artwork.jpg": "3f06c1816826d8c0964efc5691bbaa12",
   "images\\update\\artwork\\Tricky_Trials_Artwork.png": "e9debc7c8c8e9175e7e007f297b0941c",
@@ -219,13 +220,13 @@
   "javascript\\advanced.js": "bc40e0973abb7bd1267d07da6f6e6793",
   "javascript\\custom_elements.js": "b3edea4721146bef77de13e703decca9",
   "javascript\\data_driven.js": "e5b90750ed44a97047385a7e1a5d41b2",
-  "javascript\\download_index_main.js": "494d1e01caf931de3ca09646dbd88be4",
+  "javascript\\download_index_main.js": "64c06128648a048a3997fc948f80d9b6",
   "javascript\\download_index_version.js": "bccb2e7474567994f016f4d3f2c11e1c",
   "javascript\\editions.js": "1c336c108b6aab1791de8ca06bd10817",
   "javascript\\events.js": "ecaa1b1ddb791c3c99a911606f518bd5",
   "javascript\\loading.js": "d7a7ffdb350583d5e93dd1becf7587f4",
   "javascript\\mcfc.js": "8de5462bccf9655903ad6d8ead6740f5",
-  "javascript\\public_define.js": "9dd817f7afcbd03966e7e29045148574",
+  "javascript\\public_define.js": "b1189f2cf44ea6ed35a8aa8048f3ff9b",
   "javascript\\public_script.js": "b080091e24b31a3ba97a4f442c4f38ac",
   "javascript\\text_to_speech.js": "50c29c83768354558bb11341641dd998",
   "library\\accessibility.js": "7a98062f3e01e942be9db1c865694929",
@@ -253,5 +254,5 @@
   "stylesheet\\mcfc.css": "ac391b301b9b2c78ff1d04cd9b355055",
   "stylesheet\\public_style.css": "df41e7db197168fc516438cd67cc3b56",
   "Template\\index.html": "0c01287475ceb4ca1600a5f03d91a4cb",
-  "updatelog\\index.html": "f104293e758b8d6f221bd356e0c7c966"
+  "updatelog\\index.html": "bca9eee1fb414f6eae93a99c724b2813"
 }
