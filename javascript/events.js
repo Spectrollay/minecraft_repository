@@ -125,7 +125,7 @@ const solarHolidayData = [
         name: '世界地球日', // 4月22日
         isCurrentDay: () => M === 4 && D >= 20 && D <= 25,
         getTip: () => {
-            if (Y === 2026) return `<span></span>`; // TODO 即将到来
+            if (Y === 2026) return `<span><a href="https://www.earthday.org/earth-day-2026/" target="_blank">OUR POWER, OUR PLANET</a></span>`;
             return `<span>第${Y - 1969}个<a href="https://www.earthday.org" target="_blank">世界地球日</a></span>`;
         }
     },
