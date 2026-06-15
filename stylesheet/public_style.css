@@ -838,6 +838,7 @@ link-block {
     overflow: hidden;
     padding: 5px 17px;
     position: relative;
+    white-space: nowrap;
 }
 
 link-block::before {
@@ -905,13 +906,20 @@ link-block:hover::after {
 link-block:hover, link-block:active {
     border: 2px solid #6D6D6E;
     background-color: #58585A;
+    white-space: normal;
 }
 
 .link_title, .link_text {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 10px 4px;
+    margin: 10px 6px;
+}
+
+.link_title, .link_description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 12px);
 }
 
 .link_title {
@@ -929,8 +937,9 @@ link-block:hover, link-block:active {
 }
 
 .link_description {
-    margin-bottom: 6px;
     color: #D0D1D4;
+    font-size: 14px;
+    margin: 0 6px 6px 6px;
 }
 
 .block_main, .version_block_left, .version_block_right {

@@ -229,7 +229,7 @@
   "javascript\\events.js": "61980a1b818112c1057f3284fa7a246c",
   "javascript\\loading.js": "d7a7ffdb350583d5e93dd1becf7587f4",
   "javascript\\mcfc.js": "8de5462bccf9655903ad6d8ead6740f5",
-  "javascript\\public_define.js": "e64cae1dd9965c266f8fdaa0b18fcd27",
+  "javascript\\public_define.js": "c08632ce6cd96eba0936a462113b6816",
   "javascript\\public_script.js": "b080091e24b31a3ba97a4f442c4f38ac",
   "javascript\\text_to_speech.js": "50c29c83768354558bb11341641dd998",
   "library\\accessibility.js": "7a98062f3e01e942be9db1c865694929",
@@ -255,7 +255,7 @@
   "stylesheet\\editions.css": "f630b5c3734bdb6805dc8574ebd578f9",
   "stylesheet\\loading_mask.css": "ece11e6b8e65aacc739a061d3ab3a738",
   "stylesheet\\mcfc.css": "ac391b301b9b2c78ff1d04cd9b355055",
-  "stylesheet\\public_style.css": "df41e7db197168fc516438cd67cc3b56",
+  "stylesheet\\public_style.css": "38244fc346219d3b6486df3c8457b632",
   "Template\\index.html": "0c01287475ceb4ca1600a5f03d91a4cb",
-  "updatelog\\index.html": "bca9eee1fb414f6eae93a99c724b2813"
+  "updatelog\\index.html": "7685db7f0d92dc75cc9a10f307705c3d"
 }

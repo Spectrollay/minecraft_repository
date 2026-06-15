@@ -25,15 +25,15 @@
 const main_version_name = '4';
 const primary_version_name = main_version_name + '.6'; // 例 4.0
 const secondary_version_name = primary_version_name + '.7'; // 例 4.0.0
-const version_name_short = secondary_version_name + '.10'; // 例 4.0.0.1  NOTE 小版本
+const version_name_short = secondary_version_name + '.11'; // 例 4.0.0.1  NOTE 小版本
 const version_type = 'Stable'; // Preview/Insider_(Preview/Alpha/Beta)/Canary/Alpha/Beta/Pre/RC/Stable/Release/SP
 const version_type_count = version_type + ''; // 例 Build1  NOTE 小版本编号
 const version_name = version_name_short + '.' + version_type; // 例 4.0.0.1.Build
 const version_nickname = secondary_version_name + '-' + version_type_count; // 例 4.0.0-Build1
-const update_count = '20260329' + '.01'; // NOTE 小版本,有更改版本的提交就变
+const update_count = '20260615' + '.01'; // NOTE 小版本,有更改版本的提交就变
 const publish_version_name = primary_version_name + '.' + update_count; // 例 4.20240101.01
 const server_version = '4.0';
-let commit = '#2026042201'; // 例 #2025010101 , 仅留 # 则从 update_count 提取  NOTE 提交编号,有不更改版本的提交就变
+let commit = '#'; // 例 #2025010101 , 仅留 # 则从 update_count 提取  NOTE 提交编号,有不更改版本的提交就变
 if (commit === '#') {
     commit = '#' + update_count.replace(/\./g, '');
 }
