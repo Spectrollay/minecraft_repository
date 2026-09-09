@@ -45,7 +45,7 @@ Want to experience the StarMoon Minecraft Repository right now? Click the link b
 
 You're warmly invited to join our active community! Connect with Minecraft enthusiasts and developers worldwide, share experiences, get the latest updates, or offer your valuable suggestions and feedback:
 
-[![Telegram](https://img.shields.io/badge/Telegram-Group-blue?style=for-the-badge)](https://t.me/Spectrollay_MCW)
+[![Telegram](https://img.shields.io/badge/Telegram-Group-blue?style=for-the-badge)](https://t.me/spectrollay_workshop)
 [![QQ-Group](https://img.shields.io/badge/QQ-Group-blue?style=for-the-badge&logo=tencent-qq)](https://qm.qq.com/q/AqLmKLH9mM)
 [![YH-Group](https://img.shields.io/badge/Yunhu-Group-blue?style=for-the-badge)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)
 

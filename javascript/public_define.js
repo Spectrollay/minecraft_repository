@@ -33,7 +33,7 @@ const version_nickname = secondary_version_name + '-' + version_type_count; // �
 const update_count = '20260822' + '.01'; // NOTE 小版本,有更改版本的提交就变
 const publish_version_name = primary_version_name + '.' + update_count; // 例 4.20240101.01
 const server_version = '4.0';
-let commit = '#'; // 例 #2025010101 , 仅留 # 则从 update_count 提取  NOTE 提交编号,有不更改版本的提交就变
+let commit = '#2026090901'; // 例 #2025010101 , 仅留 # 则从 update_count 提取  NOTE 提交编号,有不更改版本的提交就变
 if (commit === '#') {
     commit = '#' + update_count.replace(/\./g, '');
 }
@@ -221,7 +221,7 @@ const commonTips = [
         weight: 10
     },
     {
-        text: `<span>想和大家一起闲聊吹水?<br>快加入 <a href='https://t.me/Spectrollay_MCW' target='_blank'>Telegram</a> | <a href='https://qm.qq.com/q/AqLmKLH9mM' target='_blank'>QQ</a> | <a href='https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802' target='_blank'>云湖</a> 群聊!</span>`,
+        text: `<span>想和大家一起闲聊吹水?<br>快加入 <a href='https://t.me/spectrollay_workshop' target='_blank'>Telegram</a> | <a href='https://qm.qq.com/q/AqLmKLH9mM' target='_blank'>QQ</a> | <a href='https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802' target='_blank'>云湖</a> 群聊!</span>`,
         weight: 10
     },
     {
@@ -534,7 +534,7 @@ if (pageInfo) {
         <div class="page_info_title">BASED ON</div>
         <div class="page_info"><span><a href="https://html.spec.whatwg.org/" target="_blank">HTML5</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">Web API</a> | <a href="https://webkit.org/" target="_blank">WebKit</a> | <a href="https://github.com/Spectrollay/OreUI" target="_blank">OreUI</a></span></div>
         <div class="page_info_title">ABOUT US</div>
-        <div class="page_info"><span>Developer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Maintainer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Program Group: <a href="https://t.me/Spectrollay_MCW" target="_blank">Telegram</a> | <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> | <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a><br>Official Channel: <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> | <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a><span></div>
+        <div class="page_info"><span>Developer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Maintainer: <a href="https://github.com/Spectrollay" target="_blank">@Spectrollay</a><br>Program Group: <a href="https://t.me/spectrollay_workshop" target="_blank">Telegram</a> | <a href="https://qm.qq.com/q/AqLmKLH9mM" target="_blank">QQ</a> | <a href="https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802" target="_blank">云湖</a><br>Official Channel: <a href="https://t.me/spectrollay_minecraft_repository" target="_blank">Telegram</a> | <a href="https://pd.qq.com/s/h8a7gt2u4" target="_blank">QQ</a><span></div>
         <div class="page_info_title">MADE WITH ❤️ IN CHINA</div>
         <div class="page_info"><br></div>
     </div>`;

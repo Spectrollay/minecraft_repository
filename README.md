@@ -37,7 +37,7 @@
 
 欢迎加入我们的活跃社区，与全球的 Minecraft 爱好者和开发者们一同交流、分享经验、获取最新动态，或提出你宝贵的建议和反馈：
 
-[![Telegram](https://img.shields.io/badge/Telegram-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://t.me/Spectrollay_MCW)
+[![Telegram](https://img.shields.io/badge/Telegram-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://t.me/spectrollay_workshop)
 [![QQ-Group](https://img.shields.io/badge/QQ-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge&logo=tencent-qq)](https://qm.qq.com/q/AqLmKLH9mM)
 [![YH-Group](https://img.shields.io/badge/云湖-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)
 
